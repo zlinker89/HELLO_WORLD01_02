@@ -48,3 +48,7 @@ C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\Helloword01_02\bin\BL.dll
 C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\Helloword01_02\bin\Entities.dll
 C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\Helloword01_02\bin\BL.pdb
 C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\Helloword01_02\bin\Entities.pdb
+C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\Helloword01_02\bin\Interfaces.dll
+C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\Helloword01_02\bin\DAL.dll
+C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\Helloword01_02\bin\Interfaces.pdb
+C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\Helloword01_02\bin\DAL.pdb
