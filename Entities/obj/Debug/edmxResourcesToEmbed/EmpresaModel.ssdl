@@ -4,31 +4,31 @@
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="bigint" Nullable="false" />
-    <Property Name="nombre" Type="nchar" MaxLength="10" />
-    <Property Name="rango_evaluacion" Type="nchar" MaxLength="10" />
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" />
+    <Property Name="rango_evaluacion" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="empleado">
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="bigint" Nullable="false" />
-    <Property Name="cedula" Type="nchar" MaxLength="10" />
-    <Property Name="Nombre" Type="nchar" MaxLength="10" />
-    <Property Name="tipo" Type="nchar" MaxLength="10" />
-    <Property Name="Departament" Type="nchar" MaxLength="10" />
-    <Property Name="Area" Type="nchar" MaxLength="10" />
-    <Property Name="SubArea" Type="nchar" MaxLength="10" />
-    <Property Name="CrewCd" Type="nchar" MaxLength="10" />
-    <Property Name="RosterPosition" Type="nchar" MaxLength="10" />
-    <Property Name="Unit" Type="nchar" MaxLength="10" />
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cedula" Type="varchar" MaxLength="50" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" />
+    <Property Name="tipo" Type="varchar" MaxLength="50" />
+    <Property Name="Departament" Type="varchar" MaxLength="50" />
+    <Property Name="Area" Type="varchar" MaxLength="50" />
+    <Property Name="SubArea" Type="varchar" MaxLength="50" />
+    <Property Name="CrewCd" Type="varchar" MaxLength="50" />
+    <Property Name="RosterPosition" Type="varchar" MaxLength="50" />
+    <Property Name="Unit" Type="varchar" MaxLength="50" />
     <Property Name="id_user" Type="bigint" />
   </EntityType>
   <EntityType Name="empleados_selecionados">
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="id_empleados" Type="bigint" />
     <Property Name="id_periodos" Type="bigint" />
   </EntityType>
@@ -36,38 +36,38 @@
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="int" Nullable="false" />
-    <Property Name="nombre" Type="nchar" MaxLength="10" />
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" />
     <Property Name="fechainicio" Type="date" />
-    <Property Name="periodo" Type="nchar" MaxLength="10" />
-    <Property Name="tipo_de_evaluacion" Type="nchar" MaxLength="10" />
-    <Property Name="estado" Type="nchar" MaxLength="10" />
+    <Property Name="periodo" Type="varchar" MaxLength="50" />
+    <Property Name="tipo_de_evaluacion" Type="varchar" MaxLength="50" />
+    <Property Name="estado" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="periodos">
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="fechainicio" Type="date" />
     <Property Name="fechafinal" Type="date" />
-    <Property Name="metodologia" Type="nchar" MaxLength="10" />
+    <Property Name="metodologia" Type="varchar" MaxLength="50" />
     <Property Name="Tmuestra" Type="int" />
-    <Property Name="id_evaluacion" Type="int" />
+    <Property Name="id_evaluacion" Type="bigint" />
     <Property Name="semestre" Type="int" />
   </EntityType>
   <EntityType Name="preguntas">
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="bigint" Nullable="false" />
-    <Property Name="nombre" Type="nvarchar(max)" />
-    <Property Name="respuesta" Type="nvarchar(max)" />
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="50" />
+    <Property Name="respuesta" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="preguntas_competencia">
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="id_preguntas" Type="bigint" />
     <Property Name="id_compentecias" Type="bigint" />
   </EntityType>
@@ -75,29 +75,19 @@
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="id_periodo" Type="bigint" />
     <Property Name="id_empleados_selecionados" Type="bigint" />
     <Property Name="id_competencia" Type="bigint" />
     <Property Name="tipo_evaluacion" Type="nchar" MaxLength="10" />
   </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
-  </EntityType>
   <EntityType Name="usuarios">
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="bigint" Nullable="false" />
-    <Property Name="nombre_usuario" Type="nchar" MaxLength="10" />
-    <Property Name="password_usuario" Type="nchar" MaxLength="10" />
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre_usuario" Type="varchar" MaxLength="50" />
+    <Property Name="password_usuario" Type="varchar" MaxLength="50" />
   </EntityType>
   <Association Name="FK_empleado_usuarios">
     <End Role="usuarios" Type="Self.usuarios" Multiplicity="0..1" />
@@ -216,7 +206,6 @@
     <EntitySet Name="preguntas" EntityType="Self.preguntas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="preguntas_competencia" EntityType="Self.preguntas_competencia" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="R_Evaluacion" EntityType="Self.R_Evaluacion" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="usuarios" EntityType="Self.usuarios" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_empleado_usuarios" Association="Self.FK_empleado_usuarios">
       <End Role="usuarios" EntitySet="usuarios" />

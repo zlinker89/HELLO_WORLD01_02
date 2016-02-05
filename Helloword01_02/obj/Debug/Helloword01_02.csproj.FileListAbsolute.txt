@@ -44,3 +44,7 @@ C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\Helloword01_02\bin\es\System
 C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\Helloword01_02\obj\Debug\Helloword01_02.csprojResolveAssemblyReference.cache
 C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\Helloword01_02\obj\Debug\Helloword01_02.dll
 C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\Helloword01_02\obj\Debug\Helloword01_02.pdb
+C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\Helloword01_02\bin\BL.dll
+C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\Helloword01_02\bin\Entities.dll
+C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\Helloword01_02\bin\BL.pdb
+C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\Helloword01_02\bin\Entities.pdb

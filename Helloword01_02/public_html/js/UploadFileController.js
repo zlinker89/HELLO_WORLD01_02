@@ -78,11 +78,10 @@ app.controller('PreviewController', function($scope, XLSXReaderService,$http) {
                     alert("No se encuentra el campo cedula");
                 }else{
                     for (var i in obj) {
-                        console.log();
                         if(obj[i].Cedula !== ""){
                                 var empleado = {
                                     id: null, 
-                                    Cedula: obj[i].Cedula,
+                                    cedula: obj[i].Cedula,
                                     Nombre: obj[i].Nombre,
                                     tipo: obj[i].Type,
                                     Departament: obj[i].Department,
@@ -92,11 +91,11 @@ app.controller('PreviewController', function($scope, XLSXReaderService,$http) {
                                     RosterPosition: obj[i]['Roster position'],
                                     Unit: obj[i].Unit
                                 }
-                                console.log(JSON.stringify(empleado));
+                                //console.log(JSON.stringify(empleado));
 
-                                /*$http.post("/api/empleado/", empleado).then(function (data) {
+                                $http.post("/api/Empleado/", empleado).then(function (data) {
                                     console.log(JSON.stringify(data.data));
-                                });*/
+                                });
                         }else{
                             alert("No se encuentra la cedula en la fila" + (Number(i) + 2));
                         }

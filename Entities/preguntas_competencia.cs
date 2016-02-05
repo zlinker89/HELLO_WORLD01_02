@@ -14,7 +14,7 @@ namespace Entities
     
     public partial class preguntas_competencia
     {
-        public string id { get; set; }
+        public long id { get; set; }
         public Nullable<long> id_preguntas { get; set; }
         public Nullable<long> id_compentecias { get; set; }
     

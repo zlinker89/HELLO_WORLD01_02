@@ -33,7 +33,6 @@ namespace Entities
         public virtual DbSet<preguntas> preguntas { get; set; }
         public virtual DbSet<preguntas_competencia> preguntas_competencia { get; set; }
         public virtual DbSet<R_Evaluacion> R_Evaluacion { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<usuarios> usuarios { get; set; }
     }
 }

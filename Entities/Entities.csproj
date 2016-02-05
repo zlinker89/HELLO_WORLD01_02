@@ -88,21 +88,16 @@
     <Compile Include="R_Evaluacion.cs">
       <DependentUpon>EmpresaModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="sysdiagrams.cs">
-      <DependentUpon>EmpresaModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="usuarios.cs">
       <DependentUpon>EmpresaModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.Config" />
     <EntityDeploy Include="EmpresaModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>EmpresaModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config" />
     <None Include="EmpresaModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>EmpresaModel.edmx</DependentUpon>

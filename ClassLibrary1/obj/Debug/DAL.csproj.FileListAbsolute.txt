@@ -1,5 +1,0 @@
-C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\ClassLibrary1\bin\Debug\ClassLibrary1.dll
-C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\ClassLibrary1\bin\Debug\ClassLibrary1.pdb
-C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\ClassLibrary1\obj\Debug\DAL.csprojResolveAssemblyReference.cache
-C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\ClassLibrary1\obj\Debug\ClassLibrary1.dll
-C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\ClassLibrary1\obj\Debug\ClassLibrary1.pdb

@@ -25,7 +25,7 @@ namespace Entities
         public Nullable<System.DateTime> fechafinal { get; set; }
         public string metodologia { get; set; }
         public Nullable<int> Tmuestra { get; set; }
-        public Nullable<int> id_evaluacion { get; set; }
+        public Nullable<long> id_evaluacion { get; set; }
         public Nullable<int> semestre { get; set; }
     
         public virtual ICollection<empleados_selecionados> empleados_selecionados { get; set; }

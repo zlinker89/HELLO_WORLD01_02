@@ -19,7 +19,7 @@ namespace Entities
             this.periodos = new HashSet<periodos>();
         }
     
-        public int id { get; set; }
+        public long id { get; set; }
         public string nombre { get; set; }
         public Nullable<System.DateTime> fechainicio { get; set; }
         public string periodo { get; set; }

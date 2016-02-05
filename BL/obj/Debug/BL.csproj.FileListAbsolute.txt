@@ -1,5 +1,4 @@
 C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\BL\bin\Debug\BL.dll
 C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\BL\bin\Debug\BL.pdb
-C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\BL\obj\Debug\BL.csprojResolveAssemblyReference.cache
 C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\BL\obj\Debug\BL.dll
 C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\BL\obj\Debug\BL.pdb

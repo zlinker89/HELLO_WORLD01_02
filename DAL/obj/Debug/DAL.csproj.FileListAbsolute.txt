@@ -1,0 +1,4 @@
+C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\DAL\bin\Debug\DAL.dll
+C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\DAL\bin\Debug\DAL.pdb
+C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\DAL\obj\Debug\DAL.dll
+C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\DAL\obj\Debug\DAL.pdb
