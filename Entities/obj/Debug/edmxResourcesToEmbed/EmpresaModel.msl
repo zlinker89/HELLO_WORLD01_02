@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Drummond02ModelStoreContainer" CdmEntityContainer="Drummond02Entities">
+    <EntitySetMapping Name="competencias">
+      <EntityTypeMapping TypeName="Drummond02Model.competencias">
+        <MappingFragment StoreEntitySet="competencias">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="rango_evaluacion" ColumnName="rango_evaluacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="empleado">
+      <EntityTypeMapping TypeName="Drummond02Model.empleado">
+        <MappingFragment StoreEntitySet="empleado">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="cedula" ColumnName="cedula" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="Departament" ColumnName="Departament" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="SubArea" ColumnName="SubArea" />
+          <ScalarProperty Name="CrewCd" ColumnName="CrewCd" />
+          <ScalarProperty Name="RosterPosition" ColumnName="RosterPosition" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="id_user" ColumnName="id_user" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="empleados_selecionados">
+      <EntityTypeMapping TypeName="Drummond02Model.empleados_selecionados">
+        <MappingFragment StoreEntitySet="empleados_selecionados">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_empleados" ColumnName="id_empleados" />
+          <ScalarProperty Name="id_periodos" ColumnName="id_periodos" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="evaluacion">
+      <EntityTypeMapping TypeName="Drummond02Model.evaluacion">
+        <MappingFragment StoreEntitySet="evaluacion">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="fechainicio" ColumnName="fechainicio" />
+          <ScalarProperty Name="periodo" ColumnName="periodo" />
+          <ScalarProperty Name="tipo_de_evaluacion" ColumnName="tipo_de_evaluacion" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="periodos">
+      <EntityTypeMapping TypeName="Drummond02Model.periodos">
+        <MappingFragment StoreEntitySet="periodos">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="fechainicio" ColumnName="fechainicio" />
+          <ScalarProperty Name="fechafinal" ColumnName="fechafinal" />
+          <ScalarProperty Name="metodologia" ColumnName="metodologia" />
+          <ScalarProperty Name="Tmuestra" ColumnName="Tmuestra" />
+          <ScalarProperty Name="id_evaluacion" ColumnName="id_evaluacion" />
+          <ScalarProperty Name="semestre" ColumnName="semestre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="preguntas">
+      <EntityTypeMapping TypeName="Drummond02Model.preguntas">
+        <MappingFragment StoreEntitySet="preguntas">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="respuesta" ColumnName="respuesta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="preguntas_competencia">
+      <EntityTypeMapping TypeName="Drummond02Model.preguntas_competencia">
+        <MappingFragment StoreEntitySet="preguntas_competencia">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_preguntas" ColumnName="id_preguntas" />
+          <ScalarProperty Name="id_compentecias" ColumnName="id_compentecias" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="R_Evaluacion">
+      <EntityTypeMapping TypeName="Drummond02Model.R_Evaluacion">
+        <MappingFragment StoreEntitySet="R_Evaluacion">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_periodo" ColumnName="id_periodo" />
+          <ScalarProperty Name="id_empleados_selecionados" ColumnName="id_empleados_selecionados" />
+          <ScalarProperty Name="id_competencia" ColumnName="id_competencia" />
+          <ScalarProperty Name="tipo_evaluacion" ColumnName="tipo_evaluacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="Drummond02Model.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usuarios">
+      <EntityTypeMapping TypeName="Drummond02Model.usuarios">
+        <MappingFragment StoreEntitySet="usuarios">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre_usuario" ColumnName="nombre_usuario" />
+          <ScalarProperty Name="password_usuario" ColumnName="password_usuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
