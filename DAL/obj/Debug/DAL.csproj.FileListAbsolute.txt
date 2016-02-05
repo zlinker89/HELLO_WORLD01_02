@@ -2,3 +2,13 @@ C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\DAL\bin\Debug\DAL.dll
 C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\DAL\bin\Debug\DAL.pdb
 C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\DAL\obj\Debug\DAL.dll
 C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\DAL\obj\Debug\DAL.pdb
+C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\DAL\bin\Debug\Entities.dll
+C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\DAL\bin\Debug\Interfaces.dll
+C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\DAL\bin\Debug\EntityFramework.dll
+C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\DAL\bin\Debug\Entities.pdb
+C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\DAL\bin\Debug\Interfaces.pdb
+C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\DAL\bin\Debug\EntityFramework.xml
+C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\DAL\bin\Debug\DAL.dll.config
+C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\DAL\bin\Debug\EntityFramework.SqlServer.xml
