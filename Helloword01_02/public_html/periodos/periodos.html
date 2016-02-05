@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Periodos</title>
+
+		<!-- Bootstrap CSS -->
+		<link href="../css/bootstrap.min.css" rel="stylesheet">
+		<link href="../css/font-awesome.css" rel="stylesheet">
+		<link href="../css/side-wraper.css" rel="stylesheet">
+		<!--Mis estilos-->
+		<link href="../css/estilos.css" rel="stylesheet">
+		<link href="../css/menu.css" rel="stylesheet">
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+	<div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#menu-toggle"  id="menu-toggle" style="text-align: center;">
+                    	<button class="btn btn-primary" >Cerrar</button>
+                    </a>
+                </li>
+                <li>
+                	<a href="../loginadmin/evaluacion.html">
+                		<div class="col-xs-12 caja_izq row-centered"><i class="fa fa-pencil icono_grandes"></i>
+                		<h4 >Evaluacion</h4>
+                		</div>
+                	</a>
+                </li>
+                <li>
+                    <a href="empleados.html" class="verde">
+                		<div class="col-xs-12 caja_izq row-centered"><i class="fa fa-users icono_grandes"></i>
+                		<h4 >Empleados</h4>
+                		</div>
+                	</a>
+                </li>
+                <li>
+                    <a href="periodos.html" class="morado">
+                		<div class="col-xs-12 caja_izq row-centered"><i class="fa fa-clock-o icono_grandes"></i>
+                		<h4 >Periodo</h4>
+                		</div>
+                	</a>
+                </li>
+                <li>
+                    <a href="../reportes/reportes.html" class="amarillo">
+                		<div class="col-xs-12 caja_izq row-centered"><i class="fa fa-bar-chart icono_grandes"></i>
+                		<h4 >Reportes</h4>
+                		</div>
+                	</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row" id="menu">
+					<nav class="navbar navbar-default" role="navigation">
+						<!-- Brand and toggle get grouped for better mobile display -->
+						<div class="navbar-header">
+							<button type="button" id="mostrar" class="navbar-toggle pull-left menu_responsive" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+							<a class="navbar-brand" href="#">logo</a>
+						</div>
+						<ul class="nav navbar-nav navbar-right hidden-xs hidden-sm">
+							<li>
+								<span class="col-xs-8"><h2>Usuario</h2> </span>
+								<span class="col-xs-4" id="icono_user"><i class="fa fa-user"></i></span>
+							</li>	
+						</ul>
+						<!-- Collect the nav links, forms, and other content for toggling -->
+						<div class="collapse navbar-collapse navbar-ex1-collapse">
+							
+						</div><!-- /.navbar-collapse -->
+					</nav>
+				</div>
+				<div class="row" >
+					<div class="row" id="iconos_der">
+							<a href="listaperiodos.html" class="morado">
+							<div class="col-xs-6 col-sm-3 caja_der " style="text-align: center"><i class="fa fa-th-list icono_grandes"></i>
+							<h4 >Lista de periodos</h4>
+							</a>
+							</div>
+							<a data-toggle="modal" href='#periodos'>
+								<div class="col-xs-6 col-sm-3 caja_der morado" style="text-align: center"><i class="fa fa-clock-o icono_grandes"></i>
+								<h4 >Periodos</h4>
+								</div>
+							</a>
+					<div class="row">
+						<div class="col-xs-12 col-sm-offset-7 col-sm-5 submenu">
+							<div class="col-xs-6  col-sm-offset-6 col-sm-3 caja_der azul" style="text-align: center"><i class="fa fa-question fa-3x"></i>
+							<h4 >Ayuda</h4>
+							</div>
+							<div class="col-xs-6  col-sm-3 caja_der azul" style="text-align: center"><i class="fa fa-times fa-3x"></i>
+							<h4 >Cerrar</h4>
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+		<!-- jQuery -->
+		<script src="../js/jquery.js"></script>
+		<!-- Bootstrap JavaScript -->
+		<script src="../js/bootstrap.min.js"></script>
+		<script type="text/javascript" >
+		// accion del boton mostrar del navbar
+			$("#mostrar").click(function(){
+		        $("#wrapper").toggleClass("toggled");
+			});
+			$("#menu-toggle").click(function(e) {
+		        e.preventDefault();
+		        $("#wrapper").toggleClass("toggled");
+		    });
+		</script>
+	</body>
+</html>
+<!-- Aqui comienza el modal de periodos-->
+<div class="modal fade" id="periodos" "myModal_confirmacion_pagina_guardada" data-keyboard="false" data-backdrop>
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times fa-1x"></i></button>
+					<h4 class="modal-title"></h4>
+				</div>
+				<div class="modal-body">
+					<form>
+						<div class="row">
+							<div class="col-sm-4" tm>
+								<label for="">Tamaño de la muestra: </label>
+							</div>
+							<div class="col-sm-8">
+								<input type="text" class="form-control" id="" placeholder="">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-8">
+								<div class="col-sm-12"><label for="">Seleccione el tipo de la evaluacion: </label></div>
+								<div class="col-sm-12"><input type="text" class="form-control" id="" placeholder=""></div>
+								<div class="col-sm-12"><label for="">Metodologia: </label></div>
+								<div class="col-sm-12">
+									<div class="radio">
+										<label class="radio-inline">
+										  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 90°
+										</label>
+										<label class="radio-inline">
+										  <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 180°
+										</label>
+										<label class="radio-inline">
+										  <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 360°
+										</label>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-4">
+								<div class="col-sm-12"><label for="">Fecha: </label></div>
+								<div class="col-sm-12"><input type="date"/></div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-7 col-sm-offset-1">
+								<p style="background: #dddddd; text-align: justify; padding: 3px;">
+									Recuerde  selecionar y guardar antes de salir  asigneles el grupo de empleado en el icono listar empleados para que se les notifique a los  empleados si tiene alguna duda el boton de ayuda de la parte inferior del sistema lo ayuda
+								</p>
+							</div>
+							<div class="col-sm-3 col-sm-offset-1">
+								<button type="submit" class="btn btn-primary" style="background: #b4a7d6">Guardar cambios</button>
+							</div>
+						</div>
+					</form>
+					
+
+				</div>
+			</div>
+		</div>
+	</div>

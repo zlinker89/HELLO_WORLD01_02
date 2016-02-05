@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es" ng-app="preguntas">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Empleados - Preguntas</title>
+
+		<!-- Bootstrap CSS -->
+		<link href="../css/bootstrap.min.css" rel="stylesheet">
+		<link href="../css/font-awesome.css" rel="stylesheet">
+		<link href="../css/side-wraper.css" rel="stylesheet">
+		<!--Mis estilos-->
+		<link href="../css/estilos.css" rel="stylesheet">
+		<link href="../css/menu.css" rel="stylesheet">
+		<link href="../css/breadcrumbs.css" rel="stylesheet">
+
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+		<style type="text/css">
+		
+		#menu, #footer{
+			z-index:70 !important;
+		}
+			.submenu{
+				transform:translate(-35px,-55px) !important;
+			}
+			.pregunta{
+				padding: 1% 5% 1% 5%
+			}
+			.add-on{
+				position: absolute;
+				transform:translate(-18px,3px) !important;
+			}
+			p{
+				text-align: justify;
+			}
+			@media(max-width: 940px){
+				.submenu{
+					transform:translate(0px,-55px) !important;
+				}
+				h4{
+					font-size: 95%;
+				}
+			}
+			@media(max-width:890px){
+				#breads{
+					transform: translate(30px,-40px);
+				}
+				#breads .navbar-nav>li, .navbar-nav {
+					float: left !important;
+				}
+
+				
+			}
+		</style>
+	</head>
+	<body data-spy="scroll" data-target=".navbar" data-offset="50">
+	<div id="wrapper" ng-controller="preguntaList">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#menu-toggle"  id="menu-toggle" style="text-align: center;">
+                    	<button class="btn btn-primary" >Cerrar</button>
+                    </a>
+                </li>
+                <li>
+                	<a style="visibility: hidden;">
+                		<!--estan ocultos pues su objetivo es llenar el espacio :)-->
+                		<div class="col-xs-12 caja_izq row-centered"><i class="fa fa-file-text-o icono_grandes"></i>
+                		<h4 >de rrelleno</h4>
+                		</div>
+                	</a>
+                </li>
+                <li>
+                    <a href="evaluacion-empleados.html" class="verde">
+                		<div class="col-xs-12 caja_izq row-centered"><i class="fa fa-file-text-o icono_grandes"></i>
+                		<h4 >Evaluaciones</h4>
+                		</div>
+                	</a>
+                </li>
+                <li>
+                    <a style="visibility: hidden;">
+                    	<!--estan ocultos pues su objetivo es llenar el espacio :)-->
+                		<div class="col-xs-12 caja_izq row-centered"><i class="fa fa-clock-o icono_grandes"></i>
+                		<h4 >de rrelleno</h4>
+                		</div>
+                	</a>
+                </li>
+                <li>
+                    <a href="../reportes/reportes.html" class="morado">
+                		<div class="col-xs-12 caja_izq row-centered"><i class="fa fa-bar-chart icono_grandes"></i>
+                		<h4 >Resultados</h4>
+                		</div>
+                	</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+		<div class="row" id="breads">
+			<nav class=" ">
+			      <div class="navbar navbar-default" >
+				        <div class="nav navbar-nav btn-group btn-breadcrumb">
+				          <li ng-repeat="e in examen"><a href="#pagina{{$index + 1}}" class="btn btn{{$index + 1}}">
+				          	{{$index + 1}}
+				          </a></li>
+				          
+				        </div>
+			      </div>
+			</nav>
+			<div ng-show="error" class="col-sm-6">
+				<div class="alert alert-danger">
+					<button type="button" class="close" ng-click="error = false" aria-hidden="true">&times;</button>
+					<strong>ERROR:</strong> Faltan <strong>{{faltan}}</strong> preguntas de <strong>{{npreguntas}} </strong>por marcar.
+				</div>
+			</div>
+			<div ng-show="mensaje" class="col-sm-6">
+				<div class="alert alert-success">
+					<button type="button" class="close" ng-click="mensaje = false" aria-hidden="true">&times;</button>
+					<strong>Datos enviados.</strong>
+				</div>
+			</div>
+			<div ng-show="guardado" class="col-sm-6">
+				<div class="alert alert-warning">
+					<button type="button" class="close" ng-click="guardado = false" aria-hidden="true">&times;</button>
+					<strong>Datos Guardados.</strong>
+				</div>
+			</div>
+		        <!-- <nav class="navbar btn-group btn-breadcrumb">
+		            <a href="#pagina1" class="btn btn-primary"><i class="glyphicon glyphicon-home"></i></a>
+		            <a href="#pagina2" class="btn btn-rojo">Snippets</a>
+		            <a href="#pagina3" class="btn btn-success">Breadcrumbs</a>
+		            <a href="#pagina4" class="btn btn-warning">Rainbow</a>
+		            <a href="#pagina4" class="btn btn-warning">Rainbow</a>
+		            <a href="#pagina4" class="btn btn-warning">Rainbow</a>
+		            <a href="#pagina4" class="btn btn-warning">Rainbow</a>
+		        </nav> -->
+		</div>
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row" id="menu">
+					<nav class="navbar navbar-default" role="navigation">
+						<!-- Brand and toggle get grouped for better mobile display -->
+						<div class="navbar-header">
+							<button type="button" id="mostrar" class="navbar-toggle pull-left menu_responsive" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+							<a class="navbar-brand" href="#">logo</a>
+						</div>
+						<ul class="nav navbar-nav navbar-right hidden-xs hidden-sm">
+							<li>
+								<span class="col-xs-8"><h2>Usuario</h2> </span>
+								<span class="col-xs-4" id="icono_user"><i class="fa fa-user"></i></span>
+							</li>	
+						</ul>
+						<!-- Collect the nav links, forms, and other content for toggling -->
+						<div class="collapse navbar-collapse navbar-ex1-collapse">
+							
+						</div><!-- /.navbar-collapse -->
+					</nav>
+				</div>
+				
+				<div class="row caja_der" >
+					<div  class="col-sm-12  pregunta">
+						
+						
+						<div  class="well well-lg btn{{$index + 1}}" ng-repeat="(key, e) in examen">
+							<div id="pagina{{$index + 1}}"></div>
+							<br>
+							<br>
+							<br>
+							<br>
+							<br>
+							<div  class="row container-fluid " >
+								<h4  class="col-sm-12"><strong>{{e.competencia}}</strong></h4>
+										<ol class="col-sm-10 col-sm-offset-1" style="text-align:justify">
+											<li ng-repeat="(key_p, p) in e.preguntas">
+												<p>{{p.pregunta}}</p>
+						                        <div  ng-repeat="r in p.respuestas">
+						                        	<div style="font-size: 1.3em; margin-bottom: 20px;">
+							                        	<label>
+							                        	    <input type="radio" ng-checked="r.seleccion"  value="{{key}}" ng-click="seleccion($event)" name="{{key + ' - ' + p.pregunta }}" alt="{{key_p}}" id="{{$index}}" >
+							                        	    {{r.respuesta}}
+							                        	</label>
+						                        	</div>
+						                        </div>
+											</li>
+										</ol>
+
+										<div class="col-xs-2 col-xs-offset-10" >
+				                        	<a class="btn" ng-click="GuardarRespuestas($index)" style="color: green">
+					                        	<div class="col-xs-6"  style="text-align: center;">
+					                        		<i class="fa fa-save fa-4x"></i> <br>
+						                            Guardar
+					                        	</div>
+				                        	</a>
+										</div>
+							</div>
+						</div>
+						<div class="col-xs-2 col-xs-offset-5">
+							<button type="button" ng-click="EnviarRespuestas()" class="btn btn-success btn-lg">Enviar Respuestas</button>
+						</div>
+					</div>
+				</div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+		<!-- jQuery -->
+		<script src="../js/jquery.js"></script>
+		<!-- Bootstrap JavaScript -->
+		<script src="../js/bootstrap.min.js"></script>
+		<script src="../js/angular1.min.js"></script>
+		<!--MIS APPS-->
+		<script src="../js/examenInit.js" type="text/javascript"></script>
+
+		<script type="text/javascript" >
+		// accion del boton mostrar del navbar
+			$("#mostrar").click(function(){
+		        $("#wrapper").toggleClass("toggled");
+			});
+			$("#menu-toggle").click(function(e) {
+		        e.preventDefault();
+		        $("#wrapper").toggleClass("toggled");
+		    });
+		</script>
+	</body>
+</html>
