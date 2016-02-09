@@ -51,6 +51,8 @@
     <Compile Include="competencias.cs">
       <DependentUpon>EmpresaModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DTOs\empleadoDTO.cs" />
+    <Compile Include="DTOs\usuariosDTO.cs" />
     <Compile Include="empleado.cs">
       <DependentUpon>EmpresaModel.tt</DependentUpon>
     </Compile>

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Entities;
 using DAL;
 using Interfaces;
-namespace BL
+namespace BLL
 {
     public class UsuarioBLL : AbstractCRUD<usuarios,long>
     {
@@ -46,7 +46,14 @@ namespace BL
 
         public List<usuarios> Search(Func<usuarios, bool> pre)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return u.Search(pre);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
     }
 }

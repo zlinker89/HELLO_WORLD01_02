@@ -52,51 +52,56 @@ app.controller('PreviewController', function($scope, XLSXReaderService,$http) {
 
         try{
             if($scope.sheets !== undefined){
-                var obj = $scope.sheets[$scope.sheet];
-                //console.log($scope.sheets["Sheet1"]);
+                var obj2 = $scope.sheets[$scope.sheet];
+                var obj = [];
+                for (var j = 0; j < obj2.length; j++) {
+                    if (obj2[j].Cedula !== "" && obj2[j].Cedula !== null && obj2[j].Cedula !== undefined) {
+                        obj.push(obj2[j]);
+                    }
+                }
                 /* ---------------------------------BARRA PROGRESO ---------------------------------*/
                 var barra = $(".progress-bar");
-                var intervalo = setInterval(function(){
-                   barra.width(barra.width() + (100/obj.length) +"%" );
-                   if(barra.width() > 100){
-                   
-                        barra.removeClass("active");
-                        // aqui oculto la barra y muestro el mensaje
-                        setTimeout(function(){
-                            $(".progress").css("display","none");
-                            document.getElementById("mensaje").style.display = "block";
-                            // cerramos el modal
-                            setTimeout(function(){$('#ventana1').modal('hide');},1500)
-                        },1000);
-                        
-                        clearInterval(intervalo);
-                   }
-                   
-                },obj.length/10);
+                barra.width("100%");
+                //console.log($scope.sheets["Sheet1"]);
+                
+                
 
                 if(obj[0].Cedula === undefined){
                     alert("No se encuentra el campo cedula");
-                }else{
-                    for (var i in obj) {
-                        if(obj[i].Cedula !== ""){
-                                var empleado = {
-                                    id: null, 
-                                    cedula: obj[i].Cedula,
-                                    Nombre: obj[i].Nombre,
-                                    tipo: obj[i].Type,
-                                    Departament: obj[i].Department,
-                                    Area: obj[i].Area,
-                                    SubArea: obj[i].SubArea,
-                                    CrewCd: obj[i]['Crew Cd'],
-                                    RosterPosition: obj[i]['Roster position'],
-                                    Unit: obj[i].Unit
-                                }
-                                //console.log(JSON.stringify(empleado));
+                } else {
+                    $scope.contador = 0;
+                    $scope.tamano = obj.length;
+                    for (var i = 0; i < obj.length;i++) {
+                        if (obj[i].Cedula !== "" && obj[i].Cedula !== null && obj[i].Cedula !== undefined) {
+                            var empleado = {
+                                id: null,
+                                cedula: obj[i].Cedula,
+                                Nombre: obj[i].Nombre,
+                                tipo: obj[i].Type,
+                                Departament: obj[i].Department,
+                                Area: obj[i].Area,
+                                SubArea: obj[i].SubArea,
+                                CrewCd: obj[i]['Crew Cd'],
+                                RosterPosition: obj[i]['Roster position'],
+                                Unit: obj[i].Unit
+                            }
+                            //console.log(JSON.stringify(empleado));
 
-                                $http.post("/api/Empleado/", empleado).then(function (data) {
-                                    console.log(JSON.stringify(data.data));
-                                });
-                        }else{
+                            $http.post("/api/Empleado/", empleado).then(function (data) {
+                                $scope.contador++;
+                                console.log(JSON.stringify(data.data));
+                                if ($scope.contador == obj.length - 1) {
+                                    barra.removeClass("active");
+                                    // aqui oculto la barra y muestro el mensaje
+                                    setTimeout(function () {
+                                        $(".progress").css("display", "none");
+                                        document.getElementById("mensaje").style.display = "block";
+                                        // cerramos el modal
+                                        setTimeout(function () { $('#ventana1').modal('hide'); }, 1500)
+                                    }, 1000);
+                                }
+                            });
+                        } else {
                             alert("No se encuentra la cedula en la fila" + (Number(i) + 2));
                         }
                     }

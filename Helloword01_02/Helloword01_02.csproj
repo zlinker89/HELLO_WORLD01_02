@@ -361,6 +361,10 @@
       <Project>{ed282965-75da-4443-a500-b5536a6f50fe}</Project>
       <Name>Entities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Interfaces\Interfaces.csproj">
+      <Project>{bd7f550e-e145-4d59-b84f-1e3a125aae89}</Project>
+      <Name>Interfaces</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

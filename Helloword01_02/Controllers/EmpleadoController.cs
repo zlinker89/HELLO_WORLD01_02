@@ -10,12 +10,14 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using Entities;
-
+using Entities.DTOs;
+using BLL;
 namespace Helloword01_02.Controllers
 {
     public class EmpleadoController : ApiController
     {
         private Drummond02Entities db = new Drummond02Entities();
+        private UsuarioBLL usuarioHelper = new UsuarioBLL();
 
         // GET api/Empleado
         public IQueryable<empleado> Getempleado()
@@ -74,13 +76,33 @@ namespace Helloword01_02.Controllers
         [ResponseType(typeof(empleado))]
         public async Task<IHttpActionResult> Postempleado(empleado empleado)
         {
-            if (!ModelState.IsValid)
+            try
+            {
+                // crea el objeto
+                usuarios u = new usuarios();
+                // verifico si ya existe un usuario
+                var cont = usuarioHelper.Search(x => x.nombre_usuario == empleado.cedula).ToList();
+                if (cont.Count() == 0)
+                {
+                    // SOLO registra un susuario si este no existe
+                    u.nombre_usuario = empleado.cedula;
+                    u.password_usuario = empleado.cedula;
+                    // insertar el usuario
+                    usuarioHelper.Create(u);
+                    //obtener el usario
+                    u = usuarioHelper.Search(x => x.nombre_usuario == empleado.cedula).First();
+                    empleado.id_user = u.id;
+                    // guardamos
+                    db.empleado.Add(empleado);
+                    await db.SaveChangesAsync();
+                }
+                
+            }
+            catch (Exception)
             {
                 return BadRequest(ModelState);
             }
-
-            db.empleado.Add(empleado);
-            await db.SaveChangesAsync();
+            
 
             return CreatedAtRoute("DefaultApi", new { id = empleado.id }, empleado);
         }

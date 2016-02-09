@@ -46,7 +46,14 @@ namespace DAL
 
         public List<usuarios> Search(Func<usuarios, bool> pre)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return db.usuarios.Where(pre).ToList();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
     }
 }
