@@ -93,6 +93,7 @@
     <EntitySetMapping Name="usuarios">
       <EntityTypeMapping TypeName="Drummond02Model.usuarios">
         <MappingFragment StoreEntitySet="usuarios">
+          <ScalarProperty Name="tipo_usuario" ColumnName="tipo_usuario" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="nombre_usuario" ColumnName="nombre_usuario" />
           <ScalarProperty Name="password_usuario" ColumnName="password_usuario" />
