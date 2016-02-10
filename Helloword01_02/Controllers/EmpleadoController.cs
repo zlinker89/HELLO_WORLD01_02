@@ -87,6 +87,7 @@ namespace Helloword01_02.Controllers
                     // SOLO registra un susuario si este no existe
                     u.nombre_usuario = empleado.cedula;
                     u.password_usuario = empleado.cedula;
+                    u.tipo_usuario = "Empleado";
                     // insertar el usuario
                     usuarioHelper.Create(u);
                     //obtener el usario
