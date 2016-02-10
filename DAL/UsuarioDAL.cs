@@ -41,7 +41,7 @@ namespace DAL
 
         public List<usuarios> GetAll()
         {
-            throw new NotImplementedException();
+            return db.usuarios.ToList();
         }
 
         public List<usuarios> Search(Func<usuarios, bool> pre)

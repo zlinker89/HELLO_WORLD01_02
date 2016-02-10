@@ -140,6 +140,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\EmpleadoController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -293,7 +294,7 @@
     <Content Include="public_html\login-empleados\test.html" />
     <Content Include="public_html\loginadmin\competencias.html" />
     <Content Include="public_html\loginadmin\evaluacion.html" />
-    <Content Include="public_html\loginadmin\login.html" />
+    <Content Include="public_html\login.html" />
     <Content Include="public_html\loginadmin\preguntas.html" />
     <Content Include="public_html\modal.html" />
     <Content Include="public_html\periodos\listaperiodos.html" />

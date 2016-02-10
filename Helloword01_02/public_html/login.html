@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html lang="es" ng-app="login">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Pagina principal</title>
+
+		<!-- Bootstrap CSS -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/font-awesome.css" rel="stylesheet">
+		<style type="text/css">
+		/* centered columns styles */
+		.row-centered {
+		    text-align:center;
+		}
+		.col-centered {
+		    display:inline-block;
+		    float:none;
+		    /* reset the text-align */
+		    text-align:left;
+		    /* inline-block space fix */
+		    margin-right:-4px;
+		}
+		#imagen{
+				margin-top: 8vh;
+				border-radius: 200px;
+				background: rgba(0,200,50,0.1);
+				height: 200px;
+				width: 200px;
+			}
+			#login{
+				height: 80vh;
+				border: 1px dashed green;
+				margin-top: 5%
+			}
+			.txtinput{
+				margin-top: 15%;
+				text-align: center;
+			}
+			@media(max-width: 500px){
+				#login{
+					margin-top: 0px;
+				}
+			}
+		</style>
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 col-md-4 col-md-offset-4" id="login">
+					<div class="row row-centered">
+						<div class="col-xs-12 col-sm-12 col-centered">
+							<div class="row row-centered">
+								<div class="col-xs-10 col-sm-4 col-md-8 col-centered">
+									<div id="imagen"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+                    <div class="row" ng-controller="LoginForm">
+                        <div class="col-sm-12" ng-show="error">
+                            <div class="alert alert-danger">
+                                <button type="button" class="close" ng-click="error=false" aria-hidden="true">&times;</button>
+                                <strong>Error: {{error}} </strong>
+                            </div>
+                        </div>
+                        <form>
+
+                            <div class="form-group col-xs-10 col-xs-offset-1 txtinput">
+                                <input ng-model="nombre" type="text" class="form-control" id="" placeholder="Usuario">
+                            </div>
+                            <div class="form-group col-xs-10 col-xs-offset-1 txtinput">
+                                <input ng-model="contrasena" type="password" class="form-control" id="" placeholder="Contraseña">
+                            </div>
+
+                            <div ng-click="Login()" class="form-group col-xs-10 col-xs-offset-1 txtinput">
+                                <button type="button" class="btn btn-lg btn-primary">Ingresar</button>
+                            </div>
+
+                        </form>
+                    </div>
+				</div>
+			</div>
+		</div>
+		<!-- jQuery -->
+		<script src="js/jquery.js"></script>
+        <script src="js/angular.min.js"></script>
+
+		<!-- Bootstrap JavaScript -->
+		<script src="js/bootstrap.min.js"></script>
+	</body>
+</html>
+<script type="text/javascript">
+    var app = angular.module('login', []);
+    app.controller("LoginForm", function ($scope, $http) {
+        $scope.Login = function () {
+            var usuario = {
+                nombre_usuario: $scope.nombre,
+                password_usuario: $scope.contrasena
+            };
+            console.log("enviando " + JSON.stringify(usuario));
+            $http.post('/api/login/', usuario).then(function (d) {
+                console.log(d.data);
+                // establecemos las acciones a tomar
+                if (d.data.tipo_usuario == null) {
+                    $scope.error = "Usuario o contraseña invalido.";
+                } else if (d.data.tipo_usuario === "Empleado") {
+                    // creo la sesion
+                    localStorage.setItem("usuario", JSON.stringify(d.data));
+                    location.href = "/public_html/login-empleados/Moduloempleados.html";
+                }
+            });
+        };
+    });
+</script>
