@@ -13,3 +13,9 @@ Helloword01_02/bin/DAL.pdb
 *.dll
 Helloword01_02/bin/Helloword01_02.pdb
 *.pdb
+*.cache
+Helloword01_02/bin/Helloword01_02.dll
+*.cache
+Helloword01_02/obj/Debug/Helloword01_02.dll
+*.cache
+*.pdb
