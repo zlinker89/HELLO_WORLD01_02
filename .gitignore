@@ -1,0 +1,15 @@
+*.dll
+BL/bin/Debug/BL.pdb
+*.pdb
+BL/obj/Debug/BL.dll
+*.cache
+DAL/bin/Debug/DAL.dll
+*.cache
+DAL/obj/Debug/DAL.dll
+*.suo
+Helloword01_02/bin/BL.dll
+*.dll
+Helloword01_02/bin/DAL.pdb
+*.dll
+Helloword01_02/bin/Helloword01_02.pdb
+*.pdb
