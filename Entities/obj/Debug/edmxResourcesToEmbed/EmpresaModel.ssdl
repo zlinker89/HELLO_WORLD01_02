@@ -86,10 +86,33 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="nombre_usuario" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="password_usuario" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="tipo_usuario" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="nombre_usuario" Type="varchar" MaxLength="50" />
+    <Property Name="password_usuario" Type="varchar" MaxLength="50" />
   </EntityType>
+  <Association Name="FK_empleado_usuarios">
+    <End Role="usuarios" Type="Self.usuarios" Multiplicity="0..1" />
+    <End Role="empleado" Type="Self.empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuarios">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="empleado">
+        <PropertyRef Name="id_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_empleados_selecionados_empleado1">
+    <End Role="empleado" Type="Self.empleado" Multiplicity="0..1" />
+    <End Role="empleados_selecionados" Type="Self.empleados_selecionados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="empleado">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="empleados_selecionados">
+        <PropertyRef Name="id_empleados" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_empleados_selecionados_periodos1">
     <End Role="periodos" Type="Self.periodos" Multiplicity="0..1" />
     <End Role="empleados_selecionados" Type="Self.empleados_selecionados" Multiplicity="*" />
@@ -184,6 +207,14 @@
     <EntitySet Name="preguntas_competencia" EntityType="Self.preguntas_competencia" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="R_Evaluacion" EntityType="Self.R_Evaluacion" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="usuarios" EntityType="Self.usuarios" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_empleado_usuarios" Association="Self.FK_empleado_usuarios">
+      <End Role="usuarios" EntitySet="usuarios" />
+      <End Role="empleado" EntitySet="empleado" />
+    </AssociationSet>
+    <AssociationSet Name="FK_empleados_selecionados_empleado1" Association="Self.FK_empleados_selecionados_empleado1">
+      <End Role="empleado" EntitySet="empleado" />
+      <End Role="empleados_selecionados" EntitySet="empleados_selecionados" />
+    </AssociationSet>
     <AssociationSet Name="FK_empleados_selecionados_periodos1" Association="Self.FK_empleados_selecionados_periodos1">
       <End Role="periodos" EntitySet="periodos" />
       <End Role="empleados_selecionados" EntitySet="empleados_selecionados" />

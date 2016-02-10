@@ -22,7 +22,6 @@ namespace Entities
         public long id { get; set; }
         public string nombre_usuario { get; set; }
         public string password_usuario { get; set; }
-        public string tipo_usuario { get; set; }
     
         public virtual ICollection<empleado> empleado { get; set; }
     }

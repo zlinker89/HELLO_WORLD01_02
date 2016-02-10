@@ -103,10 +103,9 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="nombre_usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="password_usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nombre_usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="password_usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="empleado" Relationship="Self.FK_empleado_usuarios" FromRole="usuarios" ToRole="empleado" />
-    <Property Name="tipo_usuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <Association Name="FK_preguntas_competencia_competencias1">
     <End Role="competencias" Type="Self.competencias" Multiplicity="0..1" />
