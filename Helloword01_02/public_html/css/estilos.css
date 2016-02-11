@@ -1,14 +1,19 @@
 			/*-------------------------ICONOS--------------------------------------------------*/
+
 			.icono_grandes{
-				font-size: 6.4em !important;
+				font-size: 2em !important;
 			}
 			#icono_user{
 				color: white;
 				margin-top: 10px;
-				font-size: 3em;
+				font-size: 1.5em;
 			}
 			#iconos_der{
 				height: 70vh;
+			}
+
+			.caja_der.azul{
+				color: yellow;
 			}
 			/*-------------FIN------------ICONOS--------------------------------------------------*/
 
@@ -25,20 +30,31 @@
 			}
 			.caja_der{
 				margin-top: 80px;
+
 			}
 			.sidebar-brand{
 				display: none;
 			}
 			#sidebar-wrapper, .sidebar-nav{
 				overflow: hidden !important;
+				text-align: center;
+				box-shadow: 2px -10px 3px black;
 			}
 			/*--------------FIN-----------CAJAS--------------------------------------------------*/
 
 			/*-------------------------MENUS--------------------------------------------------*/
-			.submenu{
-				margin-right: 5px;
+			.etiquetas{
+				float: right;
+				font-size: 1em !important;
+				transform:translate(-20px,0px);
+				width: 90px;
 			}
-			.navbar h2{
+			.submenu{
+				transform: translate(-60px,-60px);
+
+			}
+			.navbar h4{
+				margin-top: 15px;
 				color: white !important;
 			}
 			#menu{
@@ -58,7 +74,9 @@
 
 
 			/*-------------------------COLORES--------------------------------------------------*/
-			
+			.txt-blanco{
+				color: white;
+			}
 			.naranja{
 			    color: #ffd966 !important;
 			}
@@ -83,7 +101,7 @@
 				text-decoration: none !important;
 			}
 			.amarillo{
-				color: #ffd966;
+				color: #dfab16;
 				text-decoration: none !important;
 			}
 			.blanco{
@@ -106,7 +124,7 @@
 				text-decoration: none !important;
 			}
 			.amarillo:hover{
-				color: #bf9000 !important;
+				color: #184b5e !important;
 				text-decoration: none !important;
 			}
 			.morado:hover{
@@ -122,6 +140,7 @@
 			/*-------------------------CENTRAR DIVS--------------------------------------------------*/
 			.row-centered {
 			    text-align:center;
+				margin-left: -15%;			    
 			}
 			.col-centered {
 			    display:inline-block;
@@ -208,6 +227,10 @@
 
 			/*-------------------------RESPONSIVE--------------------------------------------------*/
 			@media(max-width:990px){
+				#breads .navbar .btn{
+            	width: 3vw;
+
+            }
 				#izq{
 					display: block;
 				}
@@ -231,6 +254,9 @@
 				}
 				.sidebar-brand{
 					display: block !important;
+				}
+				.submenu{
+					transform: translate(0px,-60px);
 				}
 			}
 			/*--------------FIN-----------RESPONSIVE--------------------------------------------------*/
@@ -295,52 +321,82 @@
             	background: none !important;
             	border: none !important;
             	padding: 0px !important;
+            	height: 50px;
+
             }
             /***************COLORES**********************/
             #breads .navbar .btn{
-            	color:black;
+            	color:white;
+            	text-align: justify;
+            	margin: 0;
+            	padding-top: 0;
+            	padding-bottom: 0;
+
             }
             .btn1{
-            	background: #E0F7FA!important;
-            	border: #E0F7FA !important;
+			background: #004C66!important;
+		    border:#004C66 !important;
+		    width: 90px;
+		    height: 20px;
+
+		   
+  			
+
+			    
+            	
             }
             .btn2{
-            	background: #E8F5E9 !important;
-            	border: #E8F5E9 !important;
+            	background: #007BA6 !important;
+            	border: #007BA6 !important;
+            	width: 90px;
+		    	height: 20px;
+            	
             }
             .btn3{
-            	background: #F0F4C3 !important;
-            	border: #FFE0B2 !important;
+            	background: #2F94BA !important;
+            	border: #2F94BA !important;
+            	 width: 90px;
+		    	height: 20px;
             }
             .btn4{
-            	background: #FFECB3 !important;
-            	border: #FFECB3 !important;
+            	background: #0098CC!important;
+            	border: #0098CC !important;
+            	 width: 90px;
+		    	height: 20px;
             }
             .btn5{
-            	background: #D7CCC8 !important;
-            	border: #D7CCC8 !important;
+            	background: #00ABE5 !important;
+            	border: #00ABE5 !important;
+            	 width: 90px;
+		    	height: 20px;
             }
             .btn6{
-            	background: #FFCCBC !important;
-            	border: #FFCCBC !important;
+            	background: #29B6F6 !important;
+            	border: #29B6F6!important;
+            	 width: 90px;
+		    	height: 20px;
             }
             .btn7{
-            	background: #CFD8DC !important;
-            	border: #CFD8DC !important;
+            	background: #4FC3F7 !important;
+            	border: #4FC3F7!important;
+            	 width: 90px;
+		    height: 20px;
             }
             #breads .navbar .active .btn{
-            	background: darkblue !important;
+            	
             	color: white;
+            	height: 40px;
             }
 
             /*********fin******COLORES**********************/
 
             #breads{
             	background:white;
-            	padding-bottom: 0px; 
+            	padding-bottom: 0; 
             	padding-top:50px;
             	transform:translate(5%,-20px);
             	width: 100%;
+            	height: 90px;
             	position: fixed;
             	z-index: 69;
             }
@@ -348,4 +404,22 @@
             a:link   {   
                 box-decoration-break: none;
                 text-decoration:none;   
+            }
+            .img-circle{
+               box-shadow: 01px 0px 01px   black; 
+               padding:25px;
+               margin-bottom: 40px;
+            }
+            img{
+                padding:10px;
+            }
+
+            #footer{
+            	position: fixed;
+            	bottom: 0;
+            	left: 0;
+            	right: 0;
+            	height: 8%;
+            	background: #184b5e;
+            	z-index: 10071;
             }

@@ -1,10 +1,10 @@
--<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Modulo Reportes</title>
+        <title>Reportes</title>
 
         <!-- Bootstrap CSS -->
         <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -16,119 +16,141 @@
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
-                <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-                <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
         <style type="text/css">
-            #menu{
-                transform:translate(0px,-20px);
+            table tbody tr:nth-child(odd){
+                background: #dddddd !important;
             }
-            #iconos_der{
-                height: auto;
-                float: auto;
-                padding: auto;
-
+            table tbody tr:nth-child(even), table thead tr:nth-child(odd){
+                background: #b4a7d6 !important;
             }
-            
+            .alineacion{
+                margin-left: 15px;
+            }
         </style>
     </head>
     <body>
-        <div id="wrapper">
+    <div id="wrapper">
 
-            <!-- Sidebar -->
-            <div id="sidebar-wrapper">
-                <ul class="sidebar-nav">
-                    <li class="sidebar-brand">
-                        <a href="#menu-toggle"  id="menu-toggle" style="text-align: center;">
-                            <button class="btn btn-primary" >Cerrar</button>
-                        </a>
-                    </li>
-                    <li>
-                        <a>
-                            <div class="col-xs-12 caja_izq" style="text-align: center"><i class="fa fa-pencil icono_grandes"></i>
-                                <h4 >Evaluacion</h4>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a style="color: #93c47d;">
-                            <div class="col-xs-12 caja_izq" style="text-align: center"><i class="fa fa-users icono_grandes"></i>
-                                <h4 >Empleados</h4>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a style="color: #8e7cc3;">
-                            <div class="col-xs-12 caja_izq" style="text-align: center"><i class="fa fa-clock-o icono_grandes"></i>
-                                <h4 >Periodo</h4>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a style="color: #ffd966;">
-                            <div class="col-xs-12 caja_izq" style="text-align: center"><i class="fa fa-bar-chart icono_grandes"></i>
-                                <h4 >Reportes</h4>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /#sidebar-wrapper -->
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#menu-toggle"  id="menu-toggle" style="text-align: center;">
+                        <button class="btn btn-primary" >Cerrar</button>
+                    </a>
+                </li>
+                <li>
+                       <div style="margin-right:35px; margin-top:30px;" class="row col-xs-12 col-sm-12">
+                       <img  src= "../img/logo.png"  alt= "..."  class= "img-circle"  width="170px" height="200px" >
+                       </div>
+                </li>
+                <li>
+                    <a href="../loginadmin/evaluacion.html" class="amarillo">
+                        <div class="col-xs-12 caja_izq row-centered"><i class="fa fa-pencil icono_grandes"></i>
+                        <h4 class="etiquetas">Evaluacion</h4>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="empleados.html" class="amarillo">
+                        <div class="col-xs-12 caja_izq row-centered"><i class="fa fa-users icono_grandes"></i>
+                        <h4 class="etiquetas">Empleados</h4>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="periodos.html" class="amarillo">
+                        <div class="col-xs-12 caja_izq row-centered"><i class="fa fa-clock-o icono_grandes"></i>
+                        <h4 class="etiquetas">Periodo</h4>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="../reportes/reportes.html" class="amarillo">
+                        <div class="col-xs-12 caja_izq row-centered"><i class="fa fa-bar-chart icono_grandes"></i>
+                        <h4 class="etiquetas">Reportes</h4>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
 
-            <!-- Page Content -->
-            <div id="page-content-wrapper">
-                <div class="container-fluid">
-                    <div class="row" id="menu">
-                        <nav class="navbar navbar-default" role="navigation">
-                            <!-- Brand and toggle get grouped for better mobile display -->
-                            <div class="navbar-header">
-                                <button type="button" id="mostrar" class="navbar-toggle pull-left" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                                    <span class="sr-only">Toggle navigation</span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                </button>
-                                <a class="navbar-brand" href="#">logo</a>
-                            </div>
-                            <ul class="nav navbar-nav navbar-right hidden-xs hidden-sm">
-                                <li>
-                                    <span class="col-xs-8"> <h2> Usuario</h2> </span>
-                                    <span class="col-xs-4" id="icono_user"><i class="fa fa-user"></i></span>
-                                </li>	
-                            </ul>
-                            <!-- Collect the nav links, forms, and other content for toggling -->
-                            <div class="collapse navbar-collapse navbar-ex1-collapse">
-
-                            </div><!-- /.navbar-collapse -->
-                        </nav>
-                    </div>
-                    <div class="row" >
-                        <div class="row;align="center"" id="iconos_der">
-                             <div class="col-xs-6 col-sm-3 caja_der " style="text-align: center;padding:10px; color: #ffd966"><a class="naranja" data-toggle="modal" data-target="#myModal" href=""><i  class="fa fa-bar-chart icono_grandes"></i><h4 >Reportes Generales</h4></a>
-
-                            </div>
-
-                            <div class="modal fade" id="myModal" role="dialog" data-keyboard="false" data-backdrop>
-                                <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                            <h4 class="modal-title">Modal Header</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p>This is a large modal.</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                        </div>
-                                    </div>
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row" id="menu">
+                    <nav class="navbar navbar-default" role="navigation">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" id="mostrar" class="navbar-toggle pull-left menu_responsive" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="#">logo</a>
+                        </div>
+                        <ul class="nav navbar-nav navbar-right hidden-xs hidden-sm">
+                            <li>
+                                <span class="col-xs-8"><h4>Usuario</h4> </span>
+                                <span class="col-xs-4" id="icono_user"><i class="fa fa-user"></i></span>
+                            </li>   
+                        </ul>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse navbar-ex1-collapse">
+                            
+                        </div><!-- /.navbar-collapse -->
+                    </nav>
+                </div>
+                <div class="row" id="iconos_der" >
+                            <a class="amarillo" data-toggle="modal" data-target="#myModals" href="">
+                                <div class="col-xs-6 col-sm-3  caja_der amarillo" style="text-align: center;">
+                                    <i  class="fa fa-bar-chart icono_grandes"></i><h4 >Reportes Generales</h4>
                                 </div>
-                            </div>
+                            </a>
+                            <a class="amarillo" data-toggle="modal" data-target="#myModals"  href="">
+                                 <div class="col-xs-6 col-sm-3 caja_der amarillo" style="text-align:center;"> 
+                                        <i class="fa fa-area-chart icono_grandes"></i><h4 > Reportes de Periodos</h4>
+                                 </div>  
+                            </a>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-offset-7 col-sm-5 submenu">
+                        <div class="col-xs-6  col-sm-offset-6 col-sm-3 caja_der amarillo" style="text-align: center"><i class="fa fa-question fa-3x"></i>
+                        <h4 >Ayuda</h4>
                         </div>
-
-                        <div class="col-xs-6 col-sm-3 caja_der " style="text-align:center;padding:10px; color: #ffd966;"> <a class="naranja" data-toggle="modal" data-target="#myModals"  href=""><i class="fa fa-area-chart icono_grandes"></i><h4 > Reportes de Periodos</h4></a>
-
+                        <div class="col-xs-6  col-sm-3 caja_der amarillo" style="text-align: center"><i class="fa fa-times fa-3x"></i>
+                        <h4 >Cerrar</h4>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+        <!-- jQuery -->
+        <script src="../js/jquery.js"></script>
+        <!-- Bootstrap JavaScript -->
+        <script src="../js/bootstrap.min.js"></script>
+        <script type="text/javascript" >
+        // accion del boton mostrar del navbar
+            $("#mostrar").click(function(){
+                $("#wrapper").toggleClass("toggled");
+            });
+            $("#menu-toggle").click(function(e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+            });
+        </script>
+    </body>
+</html>
+
+<!--modales de item-->
                         <div class="modal fade" id="myModals" role="dialog" data-keyboard="false" data-backdrop>
                             <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
@@ -136,51 +158,25 @@
                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
 
                                     </div>
+                                   
+                                      <div class="col-xs-12 col-sm-4 caja_der" style="text-align: center; color: #ffd966">
+                                        <a class="amarillo" data-toggle="modal" data-target="#Rdepartamento" href="">
+                                            <i  class="fa fa-building icono_grandes"></i>   <h4 >Reportes por  Departamentos</h4>
+                                        </a> 
+                                     </div>
+                                      <div class="col-xs-12 col-sm-4 caja_der " style="text-align: center; color: #ffd966"><a class="amarillo" data-toggle="modal" data-target="#Rarea" href=""><i  class="fa fa-building-o icono_grandes"></i>   <h4 >Reportes por Area</h4></a> 
 
-                                    <div class="col-xs-6 col-sm-3 caja_der " style="text-align: center; color: #ffd966"><a class="naranja" data-toggle="modal" data-target="#Rdepartamento" href=""><i  class="fa fa-building icono_grandes"></i>   <h4 >Reportes por  Departamentos</h4></a> 
-
-                                    </div>
-                                    <div class="col-xs-6 col-sm-3 caja_der " style="text-align: center; color: #ffd966"><a class="naranja" data-toggle="modal" data-target="#Rarea" href=""><i  class="fa fa-building-o icono_grandes"></i>   <h4 >Reportes por Area</h4></a> 
-
-                                    </div>
-                                    <div class="col-xs-6 col-sm-3 caja_der " style="text-align: center; color: #ffd966"><a class="naranja" data-toggle="modal" data-target="#Rusuarios" href=""><i  class="fa fa-user icono_grandes"></i>   <h4 >Reportes por Usuarios</h4></a> 
-
-                                    </div>
+                                          </div>
+                                      <div class="col-xs-12 col-sm-4 caja_der " style="text-align: center; color: #ffd966"><a class=" amarillo" data-toggle="modal" data-target="#Rusuarios" href=""><i  class="fa fa-user icono_grandes"></i>   <h4 >Reportes por Usuarios</h4></a> 
+                                     </div>
                                     <div class="modal-footer">
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-12 col-sm-offset-7 col-sm-5 submenu">
-                        <div class="col-xs-6  col-sm-offset-6 col-sm-3 caja_der azul" style="text-align: center"><i class="fa fa-question fa-3x"></i>
-                            <h4 >Ayuda</h4>
-                        </div>
-                        <div class="col-xs-6  col-sm-3 caja_der azul" style="text-align: center"><i class="fa fa-times fa-3x"></i>
-                            <h4 >Cerrar</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    
-
-<!-- jQuery -->
-<script src="../js/jquery.js"></script>
-<!-- Bootstrap JavaScript -->
-<script src="../js/bootstrap.min.js"></script>
-<script type="text/javascript" >
-// accion del boton mostrar del navbar
-    $("#mostrar").click(function () {
-        $("#wrapper").toggleClass("toggled");
-    });
-    $("#menu-toggle").click(function (e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
-</script>
+                </div>  
+<!--modales-->
 <div class="modal fade" id="Rdepartamento" role="dialog" data-keyboard="false" data-backdrop>
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -202,10 +198,9 @@
                 <br> 
                 <br>
                 <br>
-                <label>Continuar</label> <a href=""><i class="fa fa-arrow-right"></i></a>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+               <button class="btn btn-primary">continuar</button>
             </div>
         </div>
     </div>
@@ -216,7 +211,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Selecione el departamento en el cual desea obtener informacion</h4>
+                <h4 class="modal-title">Selecione el Area en el cual desea obtener informacion</h4>
             </div>
             <div class="modal-body">
                 <label>Departamento</label>
@@ -251,7 +246,7 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" >Continuar</button>
             </div>
         </div>
     </div>
@@ -261,37 +256,22 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Selecione el departamento en el cual desea obtener informacion</h4>
+                <h4 class="modal-title">Digite el usuario  del cual desea obtener informacion</h4>
             </div>
             <div class="modal-body">
-                <label>Departamento</label>
-                <select class="form-control">
-                    <option value="valledupar">Valledupar</option>
-                    <option value="mina">Mina Pribenow</option>
-                    <option value="bogota">Sede Bogota</option>
-                    <option value="puerto">Puerto</option>
-                </select>
-                <br>
-                <br>
-                <label>Area</label>
-                <select class="form-control">
-                    <option value="Administrativa">Administrativa</option>
-                    <option value="operativa">Operativa</option>
-
-                </select>
-                <br>
-                <br>
+            <br>
                 <label>Usuarios</label>
                 <input type="text" class="form-control" id="usr">
                 <br>
                 <br>
-             <i class="fa fa-arrow-circle-right fa-3x"></i><br>
-             <label>Continuar</label>
-
+                <br>
+                <br>
             </div>
-            <div class="modal-footer"></div>
-         </body>
-       </html>
+            <div class="modal-footer">
+                <button class="btn btn-primary">continuar</button>
+            </div>
 
 
-
+</div>
+</div>
+</div>

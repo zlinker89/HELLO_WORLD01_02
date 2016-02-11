@@ -38,30 +38,35 @@
                     </a>
                 </li>
                 <li>
-                    <a href="evaluacion.html">
+                       <div style="margin-right:35px; margin-top:30px;" class="row col-xs-12 col-sm-12">
+                       <img  src= "../img/logo.png"  alt= "..."  class= "img-circle"  width="170px" height="200px" >
+                       </div>
+                </li>
+                <li>
+                    <a href="evaluacion.html" class="amarillo">
                         <div class="col-xs-12 caja_izq row-centered"><i class="fa fa-pencil icono_grandes"></i>
-                        <h4 >Evaluacion</h4>
+                        <h4 class="etiquetas">Evaluacion</h4>
                         </div>
                     </a>
                 </li>
                 <li>
-                    <a href="../Empleados/indexempleado.html" class="verde">
+                    <a href="../Empleados/indexempleado.html" class="amarillo">
                         <div class="col-xs-12 caja_izq row-centered"><i class="fa fa-users icono_grandes"></i>
-                        <h4 >Empleados</h4>
+                        <h4 class="etiquetas">Empleados</h4>
                         </div>
                     </a>
                 </li>
                 <li>
-                    <a href="../periodos/periodos.html" class="morado">
+                    <a href="../periodos/periodos.html" class="amarillo">
                         <div class="col-xs-12 caja_izq row-centered"><i class="fa fa-clock-o icono_grandes"></i>
-                        <h4 >Periodo</h4>
+                        <h4 class="etiquetas">Periodo</h4>
                         </div>
                     </a>
                 </li>
                 <li>
                     <a href="../reportes/reportes.html" class="amarillo">
                         <div class="col-xs-12 caja_izq row-centered"><i class="fa fa-bar-chart icono_grandes"></i>
-                        <h4 >Reportes</h4>
+                        <h4 class="etiquetas">Reportes</h4>
                         </div>
                     </a>
                 </li>
@@ -86,7 +91,7 @@
 						</div>
 						<ul class="nav navbar-nav navbar-right hidden-xs hidden-sm">
 							<li>
-								<span class="col-xs-8"><h2>Usuario</h2> </span>
+								<span class="col-xs-8"><h4>Usuario</h4> </span>
 								<span class="col-xs-4" id="icono_user"><i class="fa fa-user"></i></span>
 							</li>	
 						</ul>
@@ -104,7 +109,7 @@
 									<div class="form-group">
 										<div class="col-md-2 hidden-sm hidden-xs hidden-md"><label style="margin-top: 5px;" for="busqueda">Buscar:</label></div>
 										<div class="col-sm-8"><input type="text" size="40" ng-model="query" ng-change="search()" id="busqueda" class="form-control" placeholder="ingrese texto a buscar"></div>
-										<div class="col-sm-1 pull-right"><a data-toggle="modal" data-backdrop="static" data-keyboard="false" href='#modal-id'><i class="fa fa-plus-circle fa-3x"></i></a></div>
+										<div class="col-sm-1 pull-right"><a class="amarillo" data-toggle="modal" data-backdrop="static" data-keyboard="false" href='#modal-id'><i class="fa fa-plus-circle fa-3x"></i></a></div>
 									</div>
 								</form>
 							</div>
@@ -139,8 +144,8 @@
 								                    <tr ng-repeat="item in pagedItems[currentPage] | orderBy:sortingOrder:reverse">
 								                        <td>{{item.pregunta}}</td>
 								                        <td>
-								                           	<a class="btn" data-toggle="modal" data-backdrop="static" data-keyboard="false" href='#modificar-evaluacion'>
-								                           		<i class="fa fa-pencil fa-3x"></i>
+								                           	<a class="btn amarillo" data-toggle="modal" data-backdrop="static" data-keyboard="false" href='#modificar-evaluacion'>
+								                           		<i class="fa fa-pencil fa-2x"></i>
 								                           	</a>
 								                        </td>
 								                    </tr>
@@ -150,13 +155,13 @@
 								        <div class="col-sm-12">
 								                
 								                <div class="col-sm-4 col-sm-offset-4">
-								                    <a href ng-click="prevPage()" class="verde">
+								                    <a href ng-click="prevPage()" class="amarillo">
 								                        <div class="col-xs-6" ng-class="{gris: currentPage == 0}" style="text-align: center;">
 								                                <i class="fa fa-arrow-circle-left fa-4x"></i> <br>
 								                                Anterior
 								                        </div>
 								                    </a>
-								                    <a href ng-click="nextPage()"  class="verde">
+								                    <a href ng-click="nextPage()"  class="amarillo">
 								                        <div class="col-xs-6" ng-class="{gris: currentPage == pagedItems.length - 1}" style="text-align: center;">
 								                                <i class="fa fa-arrow-circle-right fa-4x"></i> <br>
 								                                Siguiente
@@ -170,16 +175,16 @@
 					</div>
 					<div class="row">
 						<div class="col-xs-12 col-sm-offset-7 col-sm-5 submenu">
-							<a href="competencias.html" class="col-xs-6  col-sm-offset-3 col-sm-3 caja_der azul">
+							<a href="competencias.html" class="col-xs-6  col-md-offset-3 col-md-3 caja_der amarillo">
 								<div  style="text-align: center"><i class="fa fa-arrow-circle-left fa-3x"></i>
 								<h4 >Regresar</h4>
 								</div>
 							</a>
 							
-							<div class="col-xs-6  col-sm-3 caja_der azul" style="text-align: center"><i class="fa fa-question fa-3x"></i>
+							<div class="col-xs-6  col-md-3 caja_der amarillo" style="text-align: center"><i class="fa fa-question fa-3x"></i>
 							<h4 >Ayuda</h4>
 							</div>
-							<div class="col-xs-6  col-sm-3 caja_der azul" style="text-align: center"><i class="fa fa-times fa-3x"></i>
+							<div class="col-xs-6  col-md-3 caja_der amarillo" style="text-align: center"><i class="fa fa-times fa-3x"></i>
 							<h4 >Cerrar</h4>
 							</div>
 						</div>
