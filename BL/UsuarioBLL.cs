@@ -36,7 +36,7 @@ namespace BL
 
         public usuarios GetById(long id)
         {
-            throw new NotImplementedException();
+            return u.Search(x => x.id == id).FirstOrDefault();
         }
 
         public List<usuarios> GetAll()
