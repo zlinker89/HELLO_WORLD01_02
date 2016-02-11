@@ -14,6 +14,7 @@
     <!--Mis estilos-->
     <link href="css/estilos.css" rel="stylesheet">
     <link href="css/menu.css" rel="stylesheet">
+    <link href="css/spinner.css" rel="stylesheet" />
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -142,8 +143,10 @@
                             <input ng-model="contrasena" type="password" name="" id="input" class="form-control" value="" required="required" title="" placeholder="Contraseña">
                         </div>
                     </div>
-
-                    <div class="col-xs-12  col-sm-12 col-md-12 text-center boton">
+                    <div ng-show="loader" class="col-xs-offset-5 col-xs-4 ">
+                        <div class="loader"></div>
+                    </div>
+                    <div ng-show="loader == false" class="col-xs-12  col-sm-12 col-md-12 text-center boton">
                         <button ng-click="Login()" type="button" class="btn btn-lg btn-default">Ingresar</button>
                     </div>
                 </div>
@@ -171,13 +174,19 @@
 <script type="text/javascript">
     var app = angular.module('login', []);
     app.controller("LoginForm", function ($scope, $http) {
+        $scope.loader = false;
         $scope.Login = function () {
+            // mostramos el loader
+            $scope.loader = true;
+
             var usuario = {
                 nombre_usuario: $scope.nombre,
                 password_usuario: $scope.contrasena
             };
             console.log("enviando " + JSON.stringify(usuario));
             $http.post('/api/login/', usuario).then(function (d) {
+                // ocultamos el loader
+                $scope.loader = false;
                 console.log(d.data);
                 // establecemos las acciones a tomar
                 if (d.data.tipo_usuario == null) {

@@ -164,6 +164,7 @@
     <Content Include="public_html\css\font-awesome.min.css" />
     <Content Include="public_html\css\menu.css" />
     <Content Include="public_html\css\side-wraper.css" />
+    <Content Include="public_html\css\spinner.css" />
     <Content Include="public_html\Empleados\img\tablero.png" />
     <Content Include="public_html\Empleados\img\tablero1.png" />
     <Content Include="public_html\Empleados\indexempleado.html" />
