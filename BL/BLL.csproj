@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="empleadoBLL.cs" />
     <Compile Include="LoginBLL.cs" />
     <Compile Include="Logout.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

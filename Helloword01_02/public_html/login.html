@@ -108,12 +108,6 @@
             <br />
             <br />
             <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
         </div>
         <div class=" col-sm-12 col-md-12 c" ng-controller="LoginForm">
             <div class="col-sm-12 error" ng-show="error">
@@ -190,7 +184,12 @@
                     $scope.error = "Usuario o contraseña invalido.";
                 } else if (d.data.tipo_usuario === "Empleado") {
                     // creo la sesion
-                    localStorage.setItem("usuario", JSON.stringify(d.data));
+                    var u = {
+                        id: d.data.id,
+                        nombre: d.data.nombre_usuario,
+                        empleado: d.data.empleado
+                    }
+                    localStorage.setItem("usuario", JSON.stringify(u));
                     location.href = "/public_html/login-empleados/Moduloempleados.html";
                 }
             });

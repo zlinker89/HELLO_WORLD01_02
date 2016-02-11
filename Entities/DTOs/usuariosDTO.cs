@@ -12,6 +12,7 @@ namespace Entities.DTOs
         public string nombre_usuario { get; set; }
         public string password_usuario { get; set; }
         public string tipo_usuario { get; set; }
+        public empleadoDTO empleado { get; set; }
 
     }
 }
