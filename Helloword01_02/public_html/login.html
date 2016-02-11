@@ -28,7 +28,6 @@
             background-size: cover;
             background-repeat: no-repeat;
         }
-
         @media(max-width: 890px) {
             body {
                 background-image: url(img/fondo3p.png);
@@ -117,7 +116,7 @@
             <br />
         </div>
         <div class=" col-sm-12 col-md-12 c" ng-controller="LoginForm">
-            <div class="col-sm-12" ng-show="error">
+            <div class="col-sm-12 error" ng-show="error">
                 <div class="alert alert-danger">
                     <button type="button" class="close" ng-click="error=false" aria-hidden="true">&times;</button>
                     <strong>Error: {{error}} </strong>
