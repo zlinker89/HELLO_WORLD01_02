@@ -1,6 +1,11 @@
 .navbar-default .navbar-brand {
     color: rgba(255, 255, 255, 1);
 }
+.navbar h4{
+    width:250px;
+    text-align:right;
+    transform: translate(-50px,0px);
+}
 .navbar-default {
     font-size: 14px;
     background-color: rgba(24, 75, 94, 1);
