@@ -1,5 +1,20 @@
+var app = angular.module('miApp', []);
+// verifico si existe una sesion
+var sesion = JSON.parse(localStorage.getItem("usuario")) || null;
+if (sesion === null) {
+    location.href = "../login.html";
+} else if (sesion.tipo_usuario !== "Empleado") {
+    cerrarSession();
+}
+var url = '/api/logout/' + sesion.id;
 var data = [];
-miApp.controller('resultados',function ($scope,$http) {
+app.controller('resultados', function ($scope, $http) {
+    $scope.usuario = sesion;
+
+    $scope.LogOut = function () {
+        // cerramos session
+        cerrarSession();
+    }
 	$scope.resultados = [
 		{competencia:"Orientacion a Resultados", liderados: 2.8,jefe:1.0,pares:2.8,autoevaluacion:1.3},
 		{competencia:"Enfoque en la Seguridad, \nSalud y Medio Ambiente", liderados: 2,jefe:1,pares:1.8,autoevaluacion:2.4},
@@ -96,4 +111,8 @@ miApp.controller('resultados',function ($scope,$http) {
 
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
+}
+function cerrarSession() {
+    localStorage.removeItem("usuario");
+    location.href = "../login.html";
 }

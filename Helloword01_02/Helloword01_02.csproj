@@ -181,6 +181,7 @@
     <Content Include="public_html\js\controlGrafica.js" />
     <Content Include="public_html\js\d3.min.js" />
     <Content Include="public_html\js\EvaluacionInit.js" />
+    <Content Include="public_html\js\ExamenINI.js" />
     <Content Include="public_html\js\examenInit.js" />
     <Content Include="public_html\js\handsontable\handsontable.full.min.css" />
     <Content Include="public_html\js\handsontable\handsontable.full.min.js" />
@@ -281,6 +282,7 @@
     <Content Include="public_html\js\PreguntaInit.js" />
     <Content Include="public_html\js\preguntas.js" />
     <Content Include="public_html\js\radarChar.js" />
+    <Content Include="public_html\js\sessionApp.js" />
     <Content Include="public_html\js\UploadFileController.js" />
     <Content Include="public_html\js\xlsx\jszip.js" />
     <Content Include="public_html\js\xlsx\lodash.min.js" />

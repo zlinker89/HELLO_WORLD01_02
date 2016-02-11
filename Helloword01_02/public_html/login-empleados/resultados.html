@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="es" ng-app="preguntas">
+﻿<!DOCTYPE html>
+<html lang="es" ng-app="miApp">
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -51,152 +51,155 @@
 		</style>
 	</head>
 	<body>
-	<div id="wrapper">
+        <div id="wrapper" ng-controller="resultados">
 
-        <!-- Sidebar -->
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                    <a href="#menu-toggle"  id="menu-toggle" style="text-align: center;">
-                    	<button class="btn btn-primary" >Cerrar</button>
-                    </a>
-                </li>
-                <li>
-                       <div style="margin-right:35px; margin-top:30px;" class="row col-xs-12 col-sm-12">
-                       <img  src= "../img/logo.png"  alt= "..."  class= "img-circle"  width="170px" height="200px" >
-                       </div>
-                </li>
-                
-                <li>
-                    <a href="evaluacion-empleados.html" class="amarillo">
-                		<div class="col-xs-12 caja_izq row-centered"><i class="fa fa-file-text-o icono_grandes"></i>
-                		<h4 class="etiquetas">Evaluación</h4>
-                		</div>
-                	</a>
-                </li>
-               
-                <li>
-                    <a href="resultados.html" class="amarillo">
-                		<div class="col-xs-12 caja_izq row-centered"><i class="fa fa-bar-chart icono_grandes"></i>
-                		<h4 class="etiquetas">Resultados</h4>
-                		</div>
-                	</a>
-                </li>
-            </ul>
-        </div>
-        <!-- /#sidebar-wrapper -->
+            <!-- Sidebar -->
+            <div id="sidebar-wrapper">
+                <ul class="sidebar-nav">
+                    <li class="sidebar-brand">
+                        <a href="#menu-toggle" id="menu-toggle" style="text-align: center;">
+                            <button class="btn btn-primary">Cerrar</button>
+                        </a>
+                    </li>
+                    <li>
+                        <div style="margin-right:35px; margin-top:30px;" class="row col-xs-12 col-sm-12">
+                            <img src="../img/logo.png" alt="..." class="img-circle" width="170px" height="200px">
+                        </div>
+                    </li>
 
-        <!-- Page Content -->
-        <div id="page-content-wrapper">
-            <div class="container-fluid">
-                <div class="row" id="menu">
-					<nav class="navbar navbar-default" role="navigation">
-						<!-- Brand and toggle get grouped for better mobile display -->
-						<div class="navbar-header">
-							<button type="button" id="mostrar" class="navbar-toggle pull-left menu_responsive" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-								<span class="sr-only">Toggle navigation</span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</button>
-							<a class="navbar-brand" href="#">logo</a>
-						</div>
-						<ul class="nav navbar-nav navbar-right hidden-xs hidden-sm">
-							<li>
-								<span class="col-xs-8"><h4>Usuario</h4> </span>
-								<span class="col-xs-4" id="icono_user"><i class="fa fa-user"></i></span>
-							</li>	
-						</ul>
-						<!-- Collect the nav links, forms, and other content for toggling -->
-						<div class="collapse navbar-collapse navbar-ex1-collapse">
-							
-						</div><!-- /.navbar-collapse -->
-					</nav>
-				</div>
-				<div class="row" >
-					<div class="row">
-						<div class="row" id="iconos_der">
-							<div class="col-xs-6 col-sm-3 caja_der " style="text-align: center" ng-controller="resultados">
-								<div class="col-xs-12 col-sm-12" id="tabla">
-									<div class="table-responsive">
-										<table class="table table-bordered table-hover">
-											<thead>
-												<tr>
-													<th>Competencias</th>
-													<th>Liderados</th>
-													<th>Jefe</th>
-													<th>Pares</th>
-													<th>Autoevaluación</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr ng-repeat="r in resultados">
-													<td>{{r.competencia}}</td>
-													<td>{{r.liderados}}</td>
-													<td>{{r.jefe}}</td>
-													<td>{{r.pares}}</td>
-													<td>{{r.autoevaluacion}}</td>
-												</tr>
-											</tbody>
-										</table>
-									</div>
-								</div>
-								<div class="col-sm-5 hidden-xs hidden-sm">
-									<div id="soyleyenda">
-										<div class="row">
-											<div class="col-sm-2">
-												<div style="background:#EDC951; color:white; width:30px; height: 30px; border-radius: 25px;"></div>
-											</div>
-											<br>
-											<div class="col-sm-6"  style="transform:translate(15px,-12px)"><strong>Liderados</strong></div>
-										</div>
-										<div class="row">
-											<div class="col-sm-2">
-												<div style="background:#CC333F; color:white; width:30px; height: 30px; border-radius: 25px;"></div>
-											</div>
-											<br>
-											<div class="col-sm-6"  style="transform:translate(15px,-12px)"><strong>Jefe</strong></div>
-										</div>
-										<div class="row">
-											<div class="col-sm-2">
-												<div style="background:#00A0B0; color:white; width:30px; height: 30px; border-radius: 25px;"></div>
-											</div>
-											<br>
-											<div class="col-sm-6"  style="transform:translate(15px,-12px)"><strong>Pares</strong></div>
-										</div>
-										<div class="row">
-											<div class="col-sm-2">
-												<div style="background:#ffaa99; color:white; width:30px; height: 30px; border-radius: 25px;"></div>
-											</div>
-											<br>
-											<div class="col-sm-6"  style="transform:translate(15px,-12px)"><strong>Autoevaluación</strong></div>
-										</div>
-										
-									</div>
-									<div class="col-sm-5 radarChart"></div>
-									
-											
-											
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-xs-12 col-sm-offset-7 col-sm-5 submenu">
-								<div class="col-xs-6  col-sm-offset-6 col-sm-3 caja_der amarillo" style="text-align: center"><i class="fa fa-question fa-3x"></i>
-								<h4 >Ayuda</h4>
-								</div>
-								<div class="col-xs-6  col-sm-3 caja_der amarillo" style="text-align: center"><i class="fa fa-times fa-3x"></i>
-								<h4 >Cerrar</h4>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+                    <li>
+                        <a href="evaluacion-empleados.html" class="amarillo">
+                            <div class="col-xs-12 caja_izq row-centered">
+                                <i class="fa fa-file-text-o icono_grandes"></i>
+                                <h4 class="etiquetas">Evaluación</h4>
+                            </div>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="resultados.html" class="amarillo">
+                            <div class="col-xs-12 caja_izq row-centered">
+                                <i class="fa fa-bar-chart icono_grandes"></i>
+                                <h4 class="etiquetas">Resultados</h4>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
             </div>
-        </div>
-        <!-- /#page-content-wrapper -->
+            <!-- /#sidebar-wrapper -->
+            <!-- Page Content -->
+            <div id="page-content-wrapper">
+                <div class="container-fluid">
+                    <div class="row" id="menu">
+                        <nav class="navbar navbar-default" role="navigation">
+                            <!-- Brand and toggle get grouped for better mobile display -->
+                            <div class="navbar-header">
+                                <button type="button" id="mostrar" class="navbar-toggle pull-left menu_responsive" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <a class="navbar-brand" href="#">logo</a>
+                            </div>
+                            <ul class="nav navbar-nav navbar-right hidden-xs hidden-sm">
+                                <li>
+                                    <span class="col-xs-8"><h4>{{usuario.empleado.Nombre}}</h4> </span>
+                                    <span class="col-xs-4" id="icono_user"><i class="fa fa-user"></i></span>
+                                </li>
+                            </ul>
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse navbar-ex1-collapse">
 
-    </div>
+                            </div><!-- /.navbar-collapse -->
+                        </nav>
+                    </div>
+                    <div class="row">
+                        <div class="row">
+                            <div class="row" id="iconos_der">
+                                <div class="col-xs-6 col-sm-3 caja_der " style="text-align: center">
+                                    <div class="col-xs-12 col-sm-12" id="tabla">
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Competencias</th>
+                                                        <th>Liderados</th>
+                                                        <th>Jefe</th>
+                                                        <th>Pares</th>
+                                                        <th>Autoevaluación</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="r in resultados">
+                                                        <td>{{r.competencia}}</td>
+                                                        <td>{{r.liderados}}</td>
+                                                        <td>{{r.jefe}}</td>
+                                                        <td>{{r.pares}}</td>
+                                                        <td>{{r.autoevaluacion}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-5 hidden-xs hidden-sm">
+                                        <div id="soyleyenda">
+                                            <div class="row">
+                                                <div class="col-sm-2">
+                                                    <div style="background:#EDC951; color:white; width:30px; height: 30px; border-radius: 25px;"></div>
+                                                </div>
+                                                <br>
+                                                <div class="col-sm-6" style="transform:translate(15px,-12px)"><strong>Liderados</strong></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-2">
+                                                    <div style="background:#CC333F; color:white; width:30px; height: 30px; border-radius: 25px;"></div>
+                                                </div>
+                                                <br>
+                                                <div class="col-sm-6" style="transform:translate(15px,-12px)"><strong>Jefe</strong></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-2">
+                                                    <div style="background:#00A0B0; color:white; width:30px; height: 30px; border-radius: 25px;"></div>
+                                                </div>
+                                                <br>
+                                                <div class="col-sm-6" style="transform:translate(15px,-12px)"><strong>Pares</strong></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-2">
+                                                    <div style="background:#ffaa99; color:white; width:30px; height: 30px; border-radius: 25px;"></div>
+                                                </div>
+                                                <br>
+                                                <div class="col-sm-6" style="transform:translate(15px,-12px)"><strong>Autoevaluación</strong></div>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-sm-5 radarChart"></div>
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-offset-7 col-sm-5 submenu">
+                                    <div class="col-xs-6  col-sm-offset-6 col-sm-3 caja_der amarillo" style="text-align: center">
+                                        <i class="fa fa-question fa-3x"></i>
+                                        <h4>Ayuda</h4>
+                                    </div>
+                                    <div ng-click="LogOut()" class="col-xs-6  col-sm-3 caja_der amarillo" style="text-align: center; cursor:pointer;">
+                                        <i class="fa fa-times fa-3x"></i>
+                                        <h4>Cerrar</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /#page-content-wrapper -->
+
+        </div>
     <!-- /#wrapper -->
     	<script src="../js/radarChar.js"></script>	
 		<!-- jQuery -->
@@ -205,7 +208,7 @@
 		<script src="../js/bootstrap.min.js"></script>
 		<script src="../js/angular.min.js"></script>
 		<script src="../js/Chart.min.js"></script>
-		<script src="../js/app.js"></script>
+        <script src="../js/sessionApp.js"></script>
 		<script src="../js/controlGrafica.js" type="text/javascript"></script>
 		<script type="text/javascript" >
 		// accion del boton mostrar del navbar

@@ -38,13 +38,27 @@ var examen = [
 		{pregunta: "6Analiza posibles obstáculos o bamrreras que pueden impedir el logro de los objetivos y propone soluciones para removerlos.  "}]}
 ];
 // esto estara visible en mis apps
-var miApp = angular.module("preguntas",[]);
+var miApp = angular.module("miApp",[]);
 // cargamos lo que tengo guardado
-
+// verifico si existe una sesion
+    var sesion = JSON.parse(localStorage.getItem("usuario")) || null;
+    if (sesion === null) {
+        location.href = "../login.html";
+    } else if (sesion.tipo_usuario !== "Empleado") {
+        cerrarSession();
+    }
+    var url = '/api/logout/' + sesion.id;
+        
 
 //localStorage.setItem(tprueba,undefined);
 
-miApp.controller("preguntaList", function($scope, $http){
+    miApp.controller("preguntaList", function ($scope, $http) {
+        $scope.usuario = sesion;
+
+        $scope.LogOut = function () {
+            // cerramos session
+            cerrarSession();
+        }
 	$scope.respuestas = [
 		{respuesta: "CASI NUNCA"},
 		{respuesta: "EN POCAS OCASIONES"},
@@ -54,7 +68,7 @@ miApp.controller("preguntaList", function($scope, $http){
 	];
 	$scope.nombres = "Franklin ospino";
 	$scope.pagina = localStorage.getItem("competencia" + tprueba) || 0;
-	var respuestas = JSON.parse(localStorage.getItem(tprueba)) || [];
+	var respuestas = JSON.parse(localStorage.getItem(tprueba + sesion.empleado.cedula)) || [];
 	
 	$scope.contador = 0;
 	//marco solo la primera vez
@@ -109,7 +123,7 @@ miApp.controller("preguntaList", function($scope, $http){
 
 	$scope.GuardarRespuestas = function (c) {
 		localStorage.setItem("competencia" + tprueba,c);
-		localStorage.setItem(tprueba,JSON.stringify(respuestas));
+		localStorage.setItem(tprueba + sesion.empleado.cedula,JSON.stringify(respuestas));
 		$scope.error = false;
 		$scope.mensaje = false;
 	};
