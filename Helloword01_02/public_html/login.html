@@ -44,7 +44,8 @@
                 height: 420px;
                 background-color: #FAFAFA;
                 margin-top: 20px;
-                margin-left: 20px: border-radius: 10px;
+                margin-left: 20px; 
+                border-radius: 10px;
                 box-shadow: 5px 10px 10px 5px #777;
                 z-index: 1;
             }
@@ -111,7 +112,7 @@
             <br />
         </div>
         <div class=" col-sm-12 col-md-12 c" ng-controller="LoginForm">
-            <div class="col-sm-12 error" ng-show="error">
+            <div class="col-sm-12 error" style="z-index:1000" ng-show="error">
                 <div class="alert alert-danger">
                     <button type="button" class="close" ng-click="error=false" aria-hidden="true">&times;</button>
                     <strong>Error: {{error}} </strong>
@@ -187,20 +188,33 @@
             $http.post('/api/login/', usuario).then(function (d) {
                 // ocultamos el loader
                 $scope.loader = false;
-                console.log(d.data);
                 // establecemos las acciones a tomar
-                if (d.data.tipo_usuario == null) {
+                if (d.data.tipo_usuarios == null) {
                     $scope.error = "Usuario o contraseña invalido.";
-                } else if (d.data.tipo_usuario === "Empleado") {
+                } else if (d.data.tipo_usuarios !== undefined) {
                     // creo la sesion
                     var u = {
                         id: d.data.id,
                         nombre: d.data.nombre_usuario,
-                        tipo_usuario: d.data.tipo_usuario,
+                        tipo_usuario: d.data.tipo_usuarios,
                         empleado: d.data.empleado
                     }
+
                     localStorage.setItem("usuario", JSON.stringify(u));
-                    location.href = "/public_html/login-empleados/Moduloempleados.html";
+
+                    if(u.tipo_usuario.length < 2){
+                        if (u.tipo_usuario[0].tipo == "Empleado") {
+                            location.href = "/public_html/login-empleados/Moduloempleados.html";
+                        }
+                    } else if (u.tipo_usuario.length > 1) {
+                        if (u.tipo_usuario[0].tipo == "Administrador") {
+                            location.href = "/public_html/Empleados/indexempleado.html";
+                        } else if (u.tipo_usuario[0].tipo == "Seguridad") {
+                            location.href = "/public_html/seguridad/index.html";
+                        } else {
+                            location.href = "/public_html/login-empleados/Moduloempleados.html";
+                        }
+                    }
                 }
             });
         };

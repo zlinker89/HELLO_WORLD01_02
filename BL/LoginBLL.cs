@@ -27,11 +27,18 @@ namespace BL
                     uDTO.nombre_usuario = usuario.nombre_usuario;
                     uDTO.password_usuario = usuario.password_usuario;
                     // inicializamos la lista
-                    uDTO.tipo_usuarios = new List<tipo_usuario>();
-                    List<Usuario_Tipo_usuario> TiposUsuarios = tipoHelper.Search(x => x.id_user == usuario.id).ToList();
+                    uDTO.tipo_usuarios = new List<tipo_usuarioDTO>();
+
+                    List<Usuario_Tipo_usuario> TiposUsuarios = new List<Usuario_Tipo_usuario>();
+                    TiposUsuarios = tipoHelper.Search(x => x.id_user == usuario.id);
                     foreach (Usuario_Tipo_usuario t in TiposUsuarios)
                     {
-                        uDTO.tipo_usuarios.Add(tipo_usuarioHelper.Search(x => x.id == t.idtipo_usuario).FirstOrDefault());
+                        tipo_usuario tipo = tipo_usuarioHelper.Search(x => x.id == t.idtipo_usuario).FirstOrDefault();
+                        // pasamos a DTO
+                        tipo_usuarioDTO tipoDTO = new tipo_usuarioDTO();
+                        tipoDTO.id = tipo.id;
+                        tipoDTO.tipo = tipo.tipo_usuario1;
+                        uDTO.tipo_usuarios.Add(tipoDTO);
                     }
                     // buscamos el empleado
                     empleado e = empleadoHelper.Search(x => x.id_user == usuario.id).FirstOrDefault();

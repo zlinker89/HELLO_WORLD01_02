@@ -45,7 +45,14 @@ namespace BL
 
         public List<Usuario_Tipo_usuario> Search(Func<Usuario_Tipo_usuario, bool> pre)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return u.Search(pre);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
     }
 }

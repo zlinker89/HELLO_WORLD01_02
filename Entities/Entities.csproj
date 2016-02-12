@@ -53,6 +53,7 @@
     </Compile>
     <Compile Include="DTOs\empleadoDTO.cs" />
     <Compile Include="DTOs\tipos_usuarioDTO.cs" />
+    <Compile Include="DTOs\tipo_usuarioDTO.cs" />
     <Compile Include="DTOs\usuariosDTO.cs" />
     <Compile Include="empleado.cs">
       <DependentUpon>EmpresaModel.tt</DependentUpon>

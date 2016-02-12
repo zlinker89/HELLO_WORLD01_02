@@ -11,7 +11,7 @@ namespace Entities.DTOs
         public long id { get; set; }
         public string nombre_usuario { get; set; }
         public string password_usuario { get; set; }
-        public List<tipo_usuario> tipo_usuarios { get; set; }
+        public List<tipo_usuarioDTO> tipo_usuarios { get; set; }
         public empleadoDTO empleado { get; set; }
 
     }
