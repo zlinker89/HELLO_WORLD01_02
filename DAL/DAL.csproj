@@ -49,6 +49,8 @@
   <ItemGroup>
     <Compile Include="EmpleadoDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="tipo_usuarioDAL.cs" />
+    <Compile Include="Usuario_tipo_usuarioDAL.cs" />
     <Compile Include="UsuarioDAL.cs" />
   </ItemGroup>
   <ItemGroup>

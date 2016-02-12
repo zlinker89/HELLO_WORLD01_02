@@ -12,18 +12,11 @@ namespace Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class empleados_selecionados
+    public partial class tipo_usuario
     {
-        public empleados_selecionados()
-        {
-            this.R_Evaluacion = new HashSet<R_Evaluacion>();
-        }
-    
         public long id { get; set; }
-        public Nullable<long> id_empleados { get; set; }
-        public Nullable<long> id_periodos { get; set; }
+        public Nullable<long> tipo_usuario1 { get; set; }
     
-        public virtual periodos periodos { get; set; }
-        public virtual ICollection<R_Evaluacion> R_Evaluacion { get; set; }
+        public virtual Usuario_Tipo_usuario Usuario_Tipo_usuario { get; set; }
     }
 }

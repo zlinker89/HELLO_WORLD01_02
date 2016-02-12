@@ -52,6 +52,7 @@
       <DependentUpon>EmpresaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DTOs\empleadoDTO.cs" />
+    <Compile Include="DTOs\tipos_usuarioDTO.cs" />
     <Compile Include="DTOs\usuariosDTO.cs" />
     <Compile Include="empleado.cs">
       <DependentUpon>EmpresaModel.tt</DependentUpon>
@@ -90,7 +91,13 @@
     <Compile Include="R_Evaluacion.cs">
       <DependentUpon>EmpresaModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="tipo_usuario.cs">
+      <DependentUpon>EmpresaModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="usuarios.cs">
+      <DependentUpon>EmpresaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Usuario_Tipo_usuario.cs">
       <DependentUpon>EmpresaModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>

@@ -12,6 +12,8 @@ namespace BL
     {
         private UsuarioBLL usuarioHelper = new UsuarioBLL();
         private empleadoBLL empleadoHelper = new empleadoBLL();
+        private Usuario_Tipo_usuarioBLL tipoHelper = new Usuario_Tipo_usuarioBLL();
+        private tipo_usuarioBLL tipo_usuarioHelper = new tipo_usuarioBLL();
         public usuariosDTO LogIn(usuarios obj)
         {
             usuariosDTO uDTO = new usuariosDTO();
@@ -24,7 +26,13 @@ namespace BL
                     uDTO.id = usuario.id;
                     uDTO.nombre_usuario = usuario.nombre_usuario;
                     uDTO.password_usuario = usuario.password_usuario;
-                    uDTO.tipo_usuario = usuario.tipo_usuario;
+                    // inicializamos la lista
+                    uDTO.tipo_usuarios = new List<tipo_usuario>();
+                    List<Usuario_Tipo_usuario> TiposUsuarios = tipoHelper.Search(x => x.id_user == usuario.id).ToList();
+                    foreach (Usuario_Tipo_usuario t in TiposUsuarios)
+                    {
+                        uDTO.tipo_usuarios.Add(tipo_usuarioHelper.Search(x => x.tipo_usuario1 == t.id).FirstOrDefault());
+                    }
                     // buscamos el empleado
                     empleado e = empleadoHelper.Search(x => x.id_user == usuario.id).FirstOrDefault();
                     // inicializamos el objeto

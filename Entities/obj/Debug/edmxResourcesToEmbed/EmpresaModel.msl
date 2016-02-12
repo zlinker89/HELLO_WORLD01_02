@@ -90,10 +90,26 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="tipo_usuario">
+      <EntityTypeMapping TypeName="Drummond02Model.tipo_usuario">
+        <MappingFragment StoreEntitySet="tipo_usuario">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="tipo_usuario1" ColumnName="tipo_usuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuario_Tipo_usuario">
+      <EntityTypeMapping TypeName="Drummond02Model.Usuario_Tipo_usuario">
+        <MappingFragment StoreEntitySet="Usuario_Tipo_usuario">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="idtipo_usuario" ColumnName="idtipo_usuario" />
+          <ScalarProperty Name="id_user" ColumnName="id_user" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="usuarios">
       <EntityTypeMapping TypeName="Drummond02Model.usuarios">
         <MappingFragment StoreEntitySet="usuarios">
-          <ScalarProperty Name="tipo_usuario" ColumnName="tipo_usuario" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="nombre_usuario" ColumnName="nombre_usuario" />
           <ScalarProperty Name="password_usuario" ColumnName="password_usuario" />

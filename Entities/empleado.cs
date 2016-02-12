@@ -14,11 +14,6 @@ namespace Entities
     
     public partial class empleado
     {
-        public empleado()
-        {
-            this.empleados_selecionados = new HashSet<empleados_selecionados>();
-        }
-    
         public long id { get; set; }
         public string cedula { get; set; }
         public string Nombre { get; set; }
@@ -32,6 +27,5 @@ namespace Entities
         public Nullable<long> id_user { get; set; }
     
         public virtual usuarios usuarios { get; set; }
-        public virtual ICollection<empleados_selecionados> empleados_selecionados { get; set; }
     }
 }
