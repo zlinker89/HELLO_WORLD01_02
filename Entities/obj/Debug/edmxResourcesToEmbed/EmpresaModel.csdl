@@ -101,17 +101,17 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="tipo_usuario1" Type="Int64" />
-    <NavigationProperty Name="Usuario_Tipo_usuario" Relationship="Self.FK_tipo_usuario_Usuario_Tipo_usuario" FromRole="tipo_usuario" ToRole="Usuario_Tipo_usuario" />
+    <Property Name="tipo_usuario1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Usuario_Tipo_usuario" Relationship="Self.FK_Usuario_Tipo_usuario_tipo_usuario" FromRole="tipo_usuario" ToRole="Usuario_Tipo_usuario" />
   </EntityType>
   <EntityType Name="Usuario_Tipo_usuario">
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id" Type="Int64" Nullable="false" />
     <Property Name="idtipo_usuario" Type="Int64" />
     <Property Name="id_user" Type="Int64" />
-    <NavigationProperty Name="tipo_usuario" Relationship="Self.FK_tipo_usuario_Usuario_Tipo_usuario" FromRole="Usuario_Tipo_usuario" ToRole="tipo_usuario" />
+    <NavigationProperty Name="tipo_usuario" Relationship="Self.FK_Usuario_Tipo_usuario_tipo_usuario" FromRole="Usuario_Tipo_usuario" ToRole="tipo_usuario" />
     <NavigationProperty Name="usuarios" Relationship="Self.FK_Usuario_Tipo_usuario_usuarios" FromRole="Usuario_Tipo_usuario" ToRole="usuarios" />
   </EntityType>
   <EntityType Name="usuarios">
@@ -220,15 +220,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_tipo_usuario_Usuario_Tipo_usuario">
-    <End Role="Usuario_Tipo_usuario" Type="Self.Usuario_Tipo_usuario" Multiplicity="0..1" />
-    <End Role="tipo_usuario" Type="Self.tipo_usuario" Multiplicity="*" />
+  <Association Name="FK_Usuario_Tipo_usuario_tipo_usuario">
+    <End Role="tipo_usuario" Type="Self.tipo_usuario" Multiplicity="0..1" />
+    <End Role="Usuario_Tipo_usuario" Type="Self.Usuario_Tipo_usuario" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Usuario_Tipo_usuario">
+      <Principal Role="tipo_usuario">
         <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="tipo_usuario">
-        <PropertyRef Name="tipo_usuario1" />
+      <Dependent Role="Usuario_Tipo_usuario">
+        <PropertyRef Name="idtipo_usuario" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -288,9 +288,9 @@
       <End Role="preguntas" EntitySet="preguntas" />
       <End Role="preguntas_competencia" EntitySet="preguntas_competencia" />
     </AssociationSet>
-    <AssociationSet Name="FK_tipo_usuario_Usuario_Tipo_usuario" Association="Self.FK_tipo_usuario_Usuario_Tipo_usuario">
-      <End Role="Usuario_Tipo_usuario" EntitySet="Usuario_Tipo_usuario" />
+    <AssociationSet Name="FK_Usuario_Tipo_usuario_tipo_usuario" Association="Self.FK_Usuario_Tipo_usuario_tipo_usuario">
       <End Role="tipo_usuario" EntitySet="tipo_usuario" />
+      <End Role="Usuario_Tipo_usuario" EntitySet="Usuario_Tipo_usuario" />
     </AssociationSet>
     <AssociationSet Name="FK_Usuario_Tipo_usuario_usuarios" Association="Self.FK_Usuario_Tipo_usuario_usuarios">
       <End Role="usuarios" EntitySet="usuarios" />

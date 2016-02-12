@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Drummond02Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Drummond02Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="competencias">
           <Key>
             <PropertyRef Name="id" />
@@ -91,7 +91,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="tipo_usuario" Type="bigint" />
+          <Property Name="tipo_usuario" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Usuario_Tipo_usuario">
           <Key>
@@ -109,18 +109,6 @@
           <Property Name="nombre_usuario" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="password_usuario" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <Association Name="FK_empleado_usuarios">
-          <End Role="usuarios" Type="Self.usuarios" Multiplicity="0..1" />
-          <End Role="empleado" Type="Self.empleado" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="usuarios">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="empleado">
-              <PropertyRef Name="id_user" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_empleados_selecionados_periodos1">
           <End Role="periodos" Type="Self.periodos" Multiplicity="0..1" />
           <End Role="empleados_selecionados" Type="Self.empleados_selecionados" Multiplicity="*" />
@@ -205,30 +193,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_tipo_usuario_Usuario_Tipo_usuario">
-          <End Role="Usuario_Tipo_usuario" Type="Self.Usuario_Tipo_usuario" Multiplicity="0..1" />
-          <End Role="tipo_usuario" Type="Self.tipo_usuario" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Usuario_Tipo_usuario">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="tipo_usuario">
-              <PropertyRef Name="tipo_usuario" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Usuario_Tipo_usuario_usuarios">
-          <End Role="usuarios" Type="Self.usuarios" Multiplicity="0..1" />
-          <End Role="Usuario_Tipo_usuario" Type="Self.Usuario_Tipo_usuario" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="usuarios">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Usuario_Tipo_usuario">
-              <PropertyRef Name="id_user" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="Drummond02ModelStoreContainer">
           <EntitySet Name="competencias" EntityType="Self.competencias" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="empleado" EntityType="Self.empleado" Schema="dbo" store:Type="Tables" />
@@ -241,10 +205,6 @@
           <EntitySet Name="tipo_usuario" EntityType="Self.tipo_usuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuario_Tipo_usuario" EntityType="Self.Usuario_Tipo_usuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="usuarios" EntityType="Self.usuarios" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_empleado_usuarios" Association="Self.FK_empleado_usuarios">
-            <End Role="usuarios" EntitySet="usuarios" />
-            <End Role="empleado" EntitySet="empleado" />
-          </AssociationSet>
           <AssociationSet Name="FK_empleados_selecionados_periodos1" Association="Self.FK_empleados_selecionados_periodos1">
             <End Role="periodos" EntitySet="periodos" />
             <End Role="empleados_selecionados" EntitySet="empleados_selecionados" />
@@ -273,17 +233,8 @@
             <End Role="periodos" EntitySet="periodos" />
             <End Role="R_Evaluacion" EntitySet="R_Evaluacion" />
           </AssociationSet>
-          <AssociationSet Name="FK_tipo_usuario_Usuario_Tipo_usuario" Association="Self.FK_tipo_usuario_Usuario_Tipo_usuario">
-            <End Role="Usuario_Tipo_usuario" EntitySet="Usuario_Tipo_usuario" />
-            <End Role="tipo_usuario" EntitySet="tipo_usuario" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Usuario_Tipo_usuario_usuarios" Association="Self.FK_Usuario_Tipo_usuario_usuarios">
-            <End Role="usuarios" EntitySet="usuarios" />
-            <End Role="Usuario_Tipo_usuario" EntitySet="Usuario_Tipo_usuario" />
-          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Drummond02Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -388,17 +339,17 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="tipo_usuario1" Type="Int64" />
-          <NavigationProperty Name="Usuario_Tipo_usuario" Relationship="Self.FK_tipo_usuario_Usuario_Tipo_usuario" FromRole="tipo_usuario" ToRole="Usuario_Tipo_usuario" />
+          <Property Name="tipo_usuario1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Usuario_Tipo_usuario" Relationship="Self.FK_Usuario_Tipo_usuario_tipo_usuario" FromRole="tipo_usuario" ToRole="Usuario_Tipo_usuario" />
         </EntityType>
         <EntityType Name="Usuario_Tipo_usuario">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int64" Nullable="false" />
           <Property Name="idtipo_usuario" Type="Int64" />
           <Property Name="id_user" Type="Int64" />
-          <NavigationProperty Name="tipo_usuario" Relationship="Self.FK_tipo_usuario_Usuario_Tipo_usuario" FromRole="Usuario_Tipo_usuario" ToRole="tipo_usuario" />
+          <NavigationProperty Name="tipo_usuario" Relationship="Self.FK_Usuario_Tipo_usuario_tipo_usuario" FromRole="Usuario_Tipo_usuario" ToRole="tipo_usuario" />
           <NavigationProperty Name="usuarios" Relationship="Self.FK_Usuario_Tipo_usuario_usuarios" FromRole="Usuario_Tipo_usuario" ToRole="usuarios" />
         </EntityType>
         <EntityType Name="usuarios">
@@ -507,15 +458,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_tipo_usuario_Usuario_Tipo_usuario">
-          <End Role="Usuario_Tipo_usuario" Type="Self.Usuario_Tipo_usuario" Multiplicity="0..1" />
-          <End Role="tipo_usuario" Type="Self.tipo_usuario" Multiplicity="*" />
+        <Association Name="FK_Usuario_Tipo_usuario_tipo_usuario">
+          <End Role="tipo_usuario" Type="Self.tipo_usuario" Multiplicity="0..1" />
+          <End Role="Usuario_Tipo_usuario" Type="Self.Usuario_Tipo_usuario" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Usuario_Tipo_usuario">
+            <Principal Role="tipo_usuario">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="tipo_usuario">
-              <PropertyRef Name="tipo_usuario1" />
+            <Dependent Role="Usuario_Tipo_usuario">
+              <PropertyRef Name="idtipo_usuario" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -575,9 +526,9 @@
             <End Role="preguntas" EntitySet="preguntas" />
             <End Role="preguntas_competencia" EntitySet="preguntas_competencia" />
           </AssociationSet>
-          <AssociationSet Name="FK_tipo_usuario_Usuario_Tipo_usuario" Association="Self.FK_tipo_usuario_Usuario_Tipo_usuario">
-            <End Role="Usuario_Tipo_usuario" EntitySet="Usuario_Tipo_usuario" />
+          <AssociationSet Name="FK_Usuario_Tipo_usuario_tipo_usuario" Association="Self.FK_Usuario_Tipo_usuario_tipo_usuario">
             <End Role="tipo_usuario" EntitySet="tipo_usuario" />
+            <End Role="Usuario_Tipo_usuario" EntitySet="Usuario_Tipo_usuario" />
           </AssociationSet>
           <AssociationSet Name="FK_Usuario_Tipo_usuario_usuarios" Association="Self.FK_Usuario_Tipo_usuario_usuarios">
             <End Role="usuarios" EntitySet="usuarios" />

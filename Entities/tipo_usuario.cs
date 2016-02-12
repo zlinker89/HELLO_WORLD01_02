@@ -14,9 +14,14 @@ namespace Entities
     
     public partial class tipo_usuario
     {
-        public long id { get; set; }
-        public Nullable<long> tipo_usuario1 { get; set; }
+        public tipo_usuario()
+        {
+            this.Usuario_Tipo_usuario = new HashSet<Usuario_Tipo_usuario>();
+        }
     
-        public virtual Usuario_Tipo_usuario Usuario_Tipo_usuario { get; set; }
+        public long id { get; set; }
+        public string tipo_usuario1 { get; set; }
+    
+        public virtual ICollection<Usuario_Tipo_usuario> Usuario_Tipo_usuario { get; set; }
     }
 }

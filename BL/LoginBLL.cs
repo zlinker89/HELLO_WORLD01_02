@@ -31,7 +31,7 @@ namespace BL
                     List<Usuario_Tipo_usuario> TiposUsuarios = tipoHelper.Search(x => x.id_user == usuario.id).ToList();
                     foreach (Usuario_Tipo_usuario t in TiposUsuarios)
                     {
-                        uDTO.tipo_usuarios.Add(tipo_usuarioHelper.Search(x => x.tipo_usuario1 == t.id).FirstOrDefault());
+                        uDTO.tipo_usuarios.Add(tipo_usuarioHelper.Search(x => x.id == t.idtipo_usuario).FirstOrDefault());
                     }
                     // buscamos el empleado
                     empleado e = empleadoHelper.Search(x => x.id_user == usuario.id).FirstOrDefault();

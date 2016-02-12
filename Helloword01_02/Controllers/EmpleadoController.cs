@@ -19,6 +19,7 @@ namespace Helloword01_02.Controllers
         private Drummond02Entities db = new Drummond02Entities();
         private UsuarioBLL usuarioHelper = new UsuarioBLL();
         private Usuario_Tipo_usuarioBLL utu = new Usuario_Tipo_usuarioBLL();
+        private tipo_usuarioBLL tipo_usuarioHelper = new tipo_usuarioBLL(); 
         // GET api/Empleado
         public IQueryable<empleado> Getempleado()
         {
@@ -94,7 +95,7 @@ namespace Helloword01_02.Controllers
                     // enlazamos el usuario con su tipo_usuario
                     Usuario_Tipo_usuario utipo = new Usuario_Tipo_usuario();
                     utipo.id_user = u.id;
-                    utipo.idtipo_usuario = 1; // id 1 es empleado
+                    utipo.idtipo_usuario = tipo_usuarioHelper.Search(x => x.tipo_usuario1 == "Empleado").FirstOrDefault().id; // id 1 es empleado
                     // lo insertamos
                     utu.Create(utipo);
                     empleado.id_user = u.id;
