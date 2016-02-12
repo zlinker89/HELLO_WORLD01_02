@@ -72,28 +72,37 @@
         <div id="page-content-wrapper">
             <div class="container-fluid">
                 <div class="row" id="menu">
-					<nav class="navbar navbar-default" role="navigation">
-						<!-- Brand and toggle get grouped for better mobile display -->
-						<div class="navbar-header">
-							<button type="button" id="mostrar" class="navbar-toggle pull-left menu_responsive" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-								<span class="sr-only">Toggle navigation</span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</button>
-							<a class="navbar-brand" href="#">logo</a>
-						</div>
-						<ul class="nav navbar-nav navbar-right hidden-xs hidden-sm">
-							<li>
-								<span class="col-xs-8"><h4>{{usuario.empleado.Nombre}}</h4> </span>
-								<span class="col-xs-4" id="icono_user"><i class="fa fa-user"></i></span>
-							</li>	
-						</ul>
-						<!-- Collect the nav links, forms, and other content for toggling -->
-						<div class="collapse navbar-collapse navbar-ex1-collapse">
-							
-						</div><!-- /.navbar-collapse -->
-					</nav>
+                    <nav class="navbar navbar-default" role="navigation">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" id="mostrar" class="navbar-toggle pull-left menu_responsive" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand hidden-lg hidden-md pull-right" style="color:black;transform:translate(0px,-3px)" ng-show="usuario.tipo_usuario.length > 1">
+                                <select class="form-control" ng-model="tipos" ng-change="CambiarPagina()">
+                                    <option ng-repeat="t in usuario.tipo_usuario">{{t.tipo}}</option>
+                                </select>
+                            </a>
+                        </div>
+                        <ul class="nav navbar-nav navbar-right hidden-xs hidden-sm">
+                            <li style="transform:translate(330px,15px);z-index:2000;" ng-show="usuario.tipo_usuario.length > 1" class="hidden-sm hidden-xs">
+                                <select ng-model="tipos" ng-change="CambiarPagina()">
+                                    <option ng-repeat="t in usuario.tipo_usuario">{{t.tipo}}</option>
+                                </select>
+                            </li>
+                            <li id="icono_user">
+                                <span class="col-xs-8"><h4>{{usuario.empleado.Nombre}}</h4> </span>
+                                <span class="col-xs-4"><i class="fa fa-user"></i></span>
+                            </li>
+                        </ul>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse navbar-ex1-collapse">
+
+                        </div><!-- /.navbar-collapse -->
+                    </nav>
 				</div>
 				<div class="row" >
 					<div class="row">

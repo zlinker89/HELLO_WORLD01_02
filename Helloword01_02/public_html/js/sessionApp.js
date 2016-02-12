@@ -15,12 +15,22 @@
     }
     var url = '/api/logout/' + sesion.id;
     app.controller("pagina", function ($scope, $http) {
+        $scope.tipos = sesion.tipo_usuario[0].tipo;
         $scope.usuario = sesion;
 
         $scope.LogOut = function () {
             // cerramos session
             cerrarSession();
-        }
+        };
+        $scope.CambiarPagina = function () {
+            if ($scope.tipos == "Administrador") {
+                location.href = "/public_html/Empleados/indexempleado.html";
+            } else if ($scope.tipos == "Seguridad") {
+                location.href = "/public_html/seguridad/index.html";
+            } else {
+                location.href = "/public_html/login-empleados/Moduloempleados.html";
+            }
+        };
     });
 
     function cerrarSession() {

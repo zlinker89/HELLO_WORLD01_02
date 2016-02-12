@@ -16,12 +16,22 @@ if (sesion === null) {
 var url = '/api/logout/' + sesion.id;
 var data = [];
 app.controller('resultados', function ($scope, $http) {
+    $scope.tipos = sesion.tipo_usuario[0].tipo;
     $scope.usuario = sesion;
 
     $scope.LogOut = function () {
         // cerramos session
         cerrarSession();
     }
+    $scope.CambiarPagina = function () {
+        if ($scope.tipos == "Administrador") {
+            location.href = "/public_html/Empleados/indexempleado.html";
+        } else if ($scope.tipos == "Seguridad") {
+            location.href = "/public_html/seguridad/index.html";
+        } else {
+            location.href = "/public_html/login-empleados/Moduloempleados.html";
+        }
+    };
 	$scope.resultados = [
 		{competencia:"Orientacion a Resultados", liderados: 2.8,jefe:1.0,pares:2.8,autoevaluacion:1.3},
 		{competencia:"Enfoque en la Seguridad, \nSalud y Medio Ambiente", liderados: 2,jefe:1,pares:1.8,autoevaluacion:2.4},

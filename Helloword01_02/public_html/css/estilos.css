@@ -5,8 +5,8 @@
 			}
 			#icono_user{
 				color: white;
-				margin-top: 10px;
 				font-size: 1.5em;
+                transform:translate(-47px,12px);
 			}
 			#iconos_der{
 				height: 70vh;
