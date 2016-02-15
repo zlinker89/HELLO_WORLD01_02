@@ -1,4 +1,5 @@
-﻿// verifico si existe una sesion
+﻿var app = angular.module('miApp', []);
+// verifico si existe una sesion
 var sesion = JSON.parse(localStorage.getItem("usuario")) || null;
 console.log(sesion.tipo_usuario[0].tipo);
 if (sesion === null) {
