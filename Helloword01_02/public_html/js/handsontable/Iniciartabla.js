@@ -1,6 +1,38 @@
 ﻿var hot;
+// verifico si existe una sesion
+var sesion = JSON.parse(localStorage.getItem("usuario")) || null;
+console.log(sesion.tipo_usuario[0].tipo);
+if (sesion === null) {
+    location.href = "../login.html";
+} else if (sesion.tipo_usuario.length < 2) {
+    if (sesion.tipo_usuario[0].tipo !== 'Empleado') {
+        cerrarSession();
+    } else if (sesion.tipo_usuario.length > 2) {
+        if (sesion.tipo_usuario[0].tipo !== 'Administrador' || sesion.tipo_usuario[0].tipo !== 'Seguridad') {
+            cerrarSession();
+        }
+    }
+}
+var url = '/api/logout/' + sesion.id;
+angular.module("miApp", []).controller("tabla", function ($scope, $http) {
+    $scope.tipos = "Administrador";
+    $scope.usuario = sesion;
 
-angular.module("miApp", []).controller("tabla", function ($scope,$http) {
+    $scope.LogOut = function () {
+        // cerramos session
+        cerrarSession();
+    };
+    $scope.CambiarPagina = function () {
+        // session
+        if ($scope.tipos == "Administrador") {
+            location.href = "/public_html/Empleados/indexempleado.html";
+        } else if ($scope.tipos == "Seguridad") {
+            location.href = "/public_html/seguridad/index.html";
+        } else {
+            location.href = "/public_html/login-empleados/Moduloempleados.html";
+        }
+    };
+    // fin session
         $scope.enviado = false;
         /*$http.get('/api/empleado/').then(function (d) {
             var hotElement = document.getElementById('example');
@@ -233,3 +265,7 @@ angular.module("miApp", []).controller("tabla", function ($scope,$http) {
         }
     };
 });
+function cerrarSession() {
+    localStorage.removeItem("usuario");
+    location.href = "../login.html";
+}

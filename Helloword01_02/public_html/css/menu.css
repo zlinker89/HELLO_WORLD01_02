@@ -3,8 +3,8 @@
 }
 .navbar h4{
     width:250px;
-    text-align:right;
-    transform: translate(-50px,0px);
+    text-align:left;
+    transform: translate(30px,7px);
 }
 .navbar-default {
     font-size: 14px;

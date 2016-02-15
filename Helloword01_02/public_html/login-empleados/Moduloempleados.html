@@ -33,6 +33,7 @@
                     	<button class="btn btn-primary" >Cerrar</button>
                     </a>
                 </li>
+
                 <li>
                        <div style="margin-right:35px; margin-top:30px;" class="row col-xs-12 col-sm-12">
                        <img  src= "../img/logo.png"  alt= "..."  class= "img-circle"  width="150px" height="150px" >
@@ -82,9 +83,9 @@
                                     <option ng-repeat="t in usuario.tipo_usuario">{{t.tipo}}</option>
                                 </select>
                             </li>
-                            <li id="icono_user">
+                            <li >
                                 <span class="col-xs-8"><h4>{{usuario.empleado.Nombre}}</h4> </span>
-                                <span class="col-xs-4"><i class="fa fa-user"></i></span>
+                                <span class="col-xs-4" id="icono_user"><i class="fa fa-user"></i></span>
                             </li>	
 						</ul>
 						<!-- Collect the nav links, forms, and other content for toggling -->

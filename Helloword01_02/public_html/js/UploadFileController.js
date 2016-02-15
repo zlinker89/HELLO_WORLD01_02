@@ -1,4 +1,21 @@
 var app = angular.module("miApp", []);
+// verifico si existe una sesion
+var sesion = JSON.parse(localStorage.getItem("usuario")) || null;
+console.log(sesion.tipo_usuario[0].tipo);
+if (sesion === null) {
+    location.href = "../login.html";
+} else if (sesion.tipo_usuario.length < 2) {
+    if (sesion.tipo_usuario[0].tipo !== 'Empleado') {
+        cerrarSession();
+    } else if (sesion.tipo_usuario.length > 2) {
+        if (sesion.tipo_usuario[0].tipo !== 'Administrador' || sesion.tipo_usuario[0].tipo !== 'Seguridad') {
+            cerrarSession();
+        }
+    }
+}
+var url = '/api/logout/' + sesion.id;
+
+
 app.factory("XLSXReaderService", ['$q', '$rootScope',
     function($q, $rootScope) {
         var service = function(data) {
@@ -22,7 +39,8 @@ app.factory("XLSXReaderService", ['$q', '$rootScope',
     }
 ]);
 
-app.controller('PreviewController', function($scope, XLSXReaderService,$http) {
+app.controller('PreviewController', function ($scope, XLSXReaderService, $http) {
+    
     document.getElementById("mensaje").style.display = "none";
     document.getElementById("error").style.display = "none";
     $scope.showPreview = false;
@@ -132,3 +150,30 @@ app.controller('PreviewController', function($scope, XLSXReaderService,$http) {
     //    }
     //}
 });
+
+
+app.controller("pagina", function ($scope) {
+    // session
+    $scope.tipos = "Administrador";
+    $scope.usuario = sesion;
+
+    $scope.LogOut = function () {
+        // cerramos session
+        cerrarSession();
+    };
+    $scope.CambiarPagina = function () {
+        if ($scope.tipos == "Administrador") {
+            location.href = "/public_html/Empleados/indexempleado.html";
+        } else if ($scope.tipos == "Seguridad") {
+            location.href = "/public_html/seguridad/index.html";
+        } else {
+            location.href = "/public_html/login-empleados/Moduloempleados.html";
+        }
+    };
+    // fin session
+
+});
+function cerrarSession() {
+    localStorage.removeItem("usuario");
+    location.href = "../login.html";
+}

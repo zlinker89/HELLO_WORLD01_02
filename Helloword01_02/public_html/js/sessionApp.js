@@ -15,7 +15,7 @@
     }
     var url = '/api/logout/' + sesion.id;
     app.controller("pagina", function ($scope, $http) {
-        $scope.tipos = sesion.tipo_usuario[0].tipo;
+        $scope.tipos = "Empleado";
         $scope.usuario = sesion;
 
         $scope.LogOut = function () {
