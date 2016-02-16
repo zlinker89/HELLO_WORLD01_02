@@ -142,8 +142,10 @@
     <Compile Include="Controllers\CompetenciasController.cs" />
     <Compile Include="Controllers\CompetenciasEvaluacionController.cs" />
     <Compile Include="Controllers\EmpleadoController.cs" />
+    <Compile Include="Controllers\EvaluacionByNameController.cs" />
     <Compile Include="Controllers\EvaluacionController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\PeriodosController.cs" />
     <Compile Include="Controllers\PreguntaCompetenciaController.cs" />
     <Compile Include="Controllers\PreguntasController.cs" />
     <Compile Include="Global.asax.cs">
@@ -284,6 +286,7 @@
     <Content Include="public_html\js\jquery.js" />
     <Content Include="public_html\js\listaperiodo.js" />
     <Content Include="public_html\js\npm.js" />
+    <Content Include="public_html\js\PeriodosInit.js" />
     <Content Include="public_html\js\PreguntaInit.js" />
     <Content Include="public_html\js\preguntas.js" />
     <Content Include="public_html\js\radarChar.js" />
@@ -306,7 +309,6 @@
     <Content Include="public_html\login.html" />
     <Content Include="public_html\loginadmin\preguntas.html" />
     <Content Include="public_html\modal.html" />
-    <Content Include="public_html\periodos\listaperiodos.html" />
     <Content Include="public_html\periodos\periodos.html" />
     <Content Include="public_html\reportes\index.html" />
     <Content Include="public_html\reportes\reportes.html" />

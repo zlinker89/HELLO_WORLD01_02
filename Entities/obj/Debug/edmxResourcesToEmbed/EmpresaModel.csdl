@@ -61,10 +61,11 @@
     <Property Name="metodologia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Tmuestra" Type="Int32" />
     <Property Name="id_evaluacion" Type="Int64" />
-    <Property Name="semestre" Type="Int32" />
     <NavigationProperty Name="empleados_selecionados" Relationship="Self.FK_empleados_selecionados_periodos1" FromRole="periodos" ToRole="empleados_selecionados" />
     <NavigationProperty Name="evaluacion" Relationship="Self.FK_periodos_evaluacion1" FromRole="periodos" ToRole="evaluacion" />
     <NavigationProperty Name="R_Evaluacion" Relationship="Self.FK_R_Evaluacion_periodos1" FromRole="periodos" ToRole="R_Evaluacion" />
+    <Property Name="estado" Type="Byte" />
+    <Property Name="nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="preguntas">
     <Key>

@@ -57,7 +57,8 @@
           <Property Name="metodologia" Type="varchar" MaxLength="50" />
           <Property Name="Tmuestra" Type="int" />
           <Property Name="id_evaluacion" Type="bigint" />
-          <Property Name="semestre" Type="int" />
+          <Property Name="estado" Type="tinyint" />
+          <Property Name="nombre" Type="varchar" MaxLength="250" />
         </EntityType>
         <EntityType Name="preguntas">
           <Key>
@@ -378,10 +379,11 @@
           <Property Name="metodologia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Tmuestra" Type="Int32" />
           <Property Name="id_evaluacion" Type="Int64" />
-          <Property Name="semestre" Type="Int32" />
           <NavigationProperty Name="empleados_selecionados" Relationship="Self.FK_empleados_selecionados_periodos1" FromRole="periodos" ToRole="empleados_selecionados" />
           <NavigationProperty Name="evaluacion" Relationship="Self.FK_periodos_evaluacion1" FromRole="periodos" ToRole="evaluacion" />
           <NavigationProperty Name="R_Evaluacion" Relationship="Self.FK_R_Evaluacion_periodos1" FromRole="periodos" ToRole="R_Evaluacion" />
+          <Property Name="estado" Type="Byte" />
+          <Property Name="nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="preguntas">
           <Key>
@@ -704,13 +706,14 @@
           <EntitySetMapping Name="periodos">
             <EntityTypeMapping TypeName="Drummond02Model.periodos">
               <MappingFragment StoreEntitySet="periodos">
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="fechainicio" ColumnName="fechainicio" />
                 <ScalarProperty Name="fechafinal" ColumnName="fechafinal" />
                 <ScalarProperty Name="metodologia" ColumnName="metodologia" />
                 <ScalarProperty Name="Tmuestra" ColumnName="Tmuestra" />
                 <ScalarProperty Name="id_evaluacion" ColumnName="id_evaluacion" />
-                <ScalarProperty Name="semestre" ColumnName="semestre" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

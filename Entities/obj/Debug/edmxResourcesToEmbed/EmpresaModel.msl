@@ -50,13 +50,14 @@
     <EntitySetMapping Name="periodos">
       <EntityTypeMapping TypeName="Drummond02Model.periodos">
         <MappingFragment StoreEntitySet="periodos">
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="fechainicio" ColumnName="fechainicio" />
           <ScalarProperty Name="fechafinal" ColumnName="fechafinal" />
           <ScalarProperty Name="metodologia" ColumnName="metodologia" />
           <ScalarProperty Name="Tmuestra" ColumnName="Tmuestra" />
           <ScalarProperty Name="id_evaluacion" ColumnName="id_evaluacion" />
-          <ScalarProperty Name="semestre" ColumnName="semestre" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

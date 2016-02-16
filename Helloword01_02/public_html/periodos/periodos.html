@@ -1,84 +1,143 @@
 ﻿<!DOCTYPE html>
 <html lang="es" ng-app="miApp">
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Periodos</title>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Periodos</title>
 
-		<!-- Bootstrap CSS -->
-		<link href="../css/bootstrap.min.css" rel="stylesheet">
-		<link href="../css/font-awesome.css" rel="stylesheet">
-		<link href="../css/side-wraper.css" rel="stylesheet">
-		<!--Mis estilos-->
-		<link href="../css/estilos.css" rel="stylesheet">
-		<link href="../css/menu.css" rel="stylesheet">
-		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-		<!--[if lt IE 9]>
-			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-		<![endif]-->
-		<style type="text/css">
-			table tbody tr:nth-child(odd){
-				background: #dddddd !important;
-			}
-			table tbody tr:nth-child(even), table thead tr:nth-child(odd){
-				background: #b4a7d6 !important;
-			}
-			.alineacion{
-				margin-left: 15px;
-			}
-		</style>
-	</head>
-	<body>
-	<div id="wrapper" ng-controller="pagina">
+    <!-- Bootstrap CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.css" rel="stylesheet">
+    <link href="../css/side-wraper.css" rel="stylesheet">
+    <!--Mis estilos-->
+    <link href="../css/estilos.css" rel="stylesheet">
+    <link href="../css/menu.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style type="text/css">
+        table tbody tr:nth-child(odd) {
+            background: #dddddd !important;
+        }
+
+        table tbody tr:nth-child(even), table thead tr:nth-child(odd) {
+            background: #b4a7d6 !important;
+        }
+
+        .alineacion {
+            margin-left: 15px;
+        }
+        .twitter-typeahead {
+            width: 100%;
+        }
+
+            .twitter-typeahead .tt-query,
+            .twitter-typeahead .tt-hint {
+                margin-bottom: 0;
+            }
+
+        .tt-dropdown-menu {
+            min-width: 160px;
+            margin-top: 2px;
+            padding: 5px 0;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border: 1px solid rgba(0,0,0,.2);
+            *border-right-width: 2px;
+            *border-bottom-width: 2px;
+            -webkit-border-radius: 6px;
+            -moz-border-radius: 6px;
+            border-radius: 6px;
+            -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+            -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+            box-shadow: 0 5px 10px rgba(0,0,0,.2);
+            -webkit-background-clip: padding-box;
+            -moz-background-clip: padding;
+            background-clip: padding-box;
+            width: 100%;
+        }
+
+        .tt-suggestion {
+            display: block;
+            padding: 3px 20px;
+        }
+
+            .tt-suggestion.tt-is-under-cursor {
+                color: #fff;
+                background-color: #0081c2;
+                background-image: -moz-linear-gradient(top, #0088cc, #0077b3);
+                background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0077b3));
+                background-image: -webkit-linear-gradient(top, #0088cc, #0077b3);
+                background-image: -o-linear-gradient(top, #0088cc, #0077b3);
+                background-image: linear-gradient(to bottom, #0088cc, #0077b3);
+                background-repeat: repeat-x;
+                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0);
+            }
+
+                .tt-suggestion.tt-is-under-cursor a {
+                    color: #fff;
+                }
+
+            .tt-suggestion p {
+                margin: 0;
+            }
+    </style>
+</head>
+<body>
+    <div id="wrapper" ng-controller="pagina">
 
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <a href="#menu-toggle"  id="menu-toggle" style="text-align: center;">
-                    	<button class="btn btn-primary" >Cerrar</button>
+                    <a href="#menu-toggle" id="menu-toggle" style="text-align: center;">
+                        <button class="btn btn-primary">Cerrar</button>
                     </a>
                 </li>
                 <li>
-                       <div style="margin-right:35px; margin-top:30px;" class="row col-xs-12 col-sm-12">
-                       <img  src= "../img/logo.png"  alt= "..."  class= "img-circle"  width="150px" height="150px" >
-                       </div>
+                    <div style="margin-right:35px; margin-top:30px;" class="row col-xs-12 col-sm-12">
+                        <img src="../img/logo.png" alt="..." class="img-circle" width="150px" height="150px">
+                    </div>
                 </li>
                 <li>
-                	<a href="../loginadmin/evaluacion.html" class="amarillo">
-                		<div class="col-xs-12 caja_izq row-centered"><i class="fa fa-pencil icono_grandes"></i>
-                		<h4 class="etiquetas">Evaluacion</h4>
-                		</div>
-                	</a>
+                    <a href="../loginadmin/evaluacion.html" class="amarillo">
+                        <div class="col-xs-12 caja_izq row-centered">
+                            <i class="fa fa-pencil icono_grandes"></i>
+                            <h4 class="etiquetas">Evaluacion</h4>
+                        </div>
+                    </a>
                 </li>
                 <li>
                     <a href="../Empleados/indexempleado.html" class="amarillo">
-                		<div class="col-xs-12 caja_izq row-centered"><i class="fa fa-users icono_grandes"></i>
-                		<h4 class="etiquetas">Empleados</h4>
-                		</div>
-                	</a>
+                        <div class="col-xs-12 caja_izq row-centered">
+                            <i class="fa fa-users icono_grandes"></i>
+                            <h4 class="etiquetas">Empleados</h4>
+                        </div>
+                    </a>
                 </li>
                 <li>
                     <a href="periodos.html" class="activo">
-                		<div class="col-xs-12 caja_izq row-centered"><i class="fa fa-clock-o icono_grandes"></i>
-                		<h4 class="etiquetas">Periodo</h4>
-                		</div>
-                	</a>
+                        <div class="col-xs-12 caja_izq row-centered">
+                            <i class="fa fa-clock-o icono_grandes"></i>
+                            <h4 class="etiquetas">Periodo</h4>
+                        </div>
+                    </a>
                 </li>
                 <li>
                     <a href="../reportes/index.html" class="amarillo">
-                		<div class="col-xs-12 caja_izq row-centered"><i class="fa fa-bar-chart icono_grandes"></i>
-                		<h4 class="etiquetas">Reportes</h4>
-                		</div>
-                	</a>
+                        <div class="col-xs-12 caja_izq row-centered">
+                            <i class="fa fa-bar-chart icono_grandes"></i>
+                            <h4 class="etiquetas">Reportes</h4>
+                        </div>
+                    </a>
                 </li>
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
-
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">
@@ -105,7 +164,9 @@
                                 </select>
                             </li>
                             <li>
-                                <span class="col-xs-8"><h4>{{usuario.empleado.Nombre}}</h4> </span>
+                                <span class="col-xs-8">
+                                    <h4>{{usuario.empleado.Nombre}}</h4>
+                                </span>
                                 <span class="col-xs-4" id="icono_user"><i class="fa fa-user"></i></span>
                             </li>
                         </ul>
@@ -114,416 +175,485 @@
 
                         </div><!-- /.navbar-collapse -->
                     </nav>
-				</div>
-				<div class="row" >
-					<div class="col-sm-12">
-						<br>
-						<div class="col-sm-8">
-							<div style="text-align: center;">
-								<h3>Lista de periodos</h3>
-								<br>
-							</div>
-							<table class="table table-hover">
-								<thead>
-									<tr>
-										<th >Nombre de periodo</th>
-										<th style="text-align: center;" colspan="">Estado</th>
-										<th style="text-align: center;">Editar fecha de fin</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>Periodo 1</td>
-										<td style="text-align: center;"><i class="fa fa-toggle-on fa-2x"></i></td>
-										<td style="text-align: center;"> <a data-toggle="modal" href='#editarperiodo'><i class="fa fa-pencil fa-2x"></i></a></td>
-									</tr>
-									<tr>
-										<td >Periodo 1</td>
-										<td style="text-align: center;" ><i class="fa fa-toggle-on fa-2x"></i></td>
-										<td style="text-align: center;"><a data-toggle="modal" href='#editarperiodo'><i class="fa fa-pencil fa-2x"></i></td>
-									</tr>
-									<tr>
-										<td>Periodo 1</td>
-										<td style="text-align: center;"><i class="fa fa-toggle-on fa-2x"></i></td>
-										<td style="text-align: center;"><a data-toggle="modal" href='#editarperiodo'><i class="fa fa-pencil fa-2x"></i></td>
-									</tr>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <br>
+                        <div class="col-sm-12">
+                            <div style="text-align: center;">
+                                <h3>Lista de periodos</h3>
+                                <br>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-2 hidden-sm hidden-xs hidden-md"><label style="margin-top: 5px;" for="busqueda">Buscar:</label></div>
+                                <div class="col-sm-8 col-xs-10"><input type="text" size="40" ng-model="query" ng-change="search()" id="busqueda" class="form-control" placeholder="ingrese texto a buscar"></div>
+                                <div class="col-xs-1">
+                                    <a class="amarillo" data-toggle="modal" data-backdrop="static" data-keyboard="false" href='#periodos'><i class="fa fa-plus-circle fa-3x"></i></a>
+                                </div>
+                            </div>
+                            <div>
+                                <script type="text/javascript">
+                                    var sortingOrder = 'evaluacion';
+                                </script>
 
-								</tbody>
 
-							</table>		
-						</div>
-					</div>
-					<div class="col-sm-6">
-							<a data-toggle="modal" href='#periodos'>
-								<div class="col-xs-6 col-sm-3 caja_der morado" style="text-align: center"><i class="fa fa-clock-o fa-2x"></i>
-								<h4>Periodos</h4>
-								</div>
-							</a>
-							<a data-toggle="modal" href='#empleados'>
-								<div class="col-xs-6 col-sm-4 caja_der morado" style="text-align: center">
-									<div class="row">
-										<i class="fa fa-th-list fa-2x"></i>
-										<h4> Empleados</h4>
-									</div>
-								</div>
-							</a>
-							<a data-toggle="modal" href='#notificaciones'>
-							<div class="col-xs-6 col-sm-4 caja_der morado" style="text-align: center">
-								<div class="row">
-									<i class="fa fa-bell-o fa-2x"></i>
-									<h4 >Notificaciones</h4>
-								</div>
-							</div>
-							</a>
-					
-				</div>
-				<div class="row">
-					<div class="col-xs-12 col-sm-offset-7 col-sm-5 submenu">
-						<div class="col-xs-6  col-sm-offset-6 col-sm-3 caja_der amarillo" style="text-align: center"><i class="fa fa-question fa-3x"></i>
-						<h4 >Ayuda</h4>
-						</div>
-                        <div ng-click="LogOut()" class="col-xs-4  col-sm-3 caja_der amarillo" style="text-align: center; cursor:pointer;">
-                            <i class="fa fa-times fa-3x"></i>
-                            <h4>Cerrar</h4>
+
+                                <div class="col-sm-12">
+                                    <h4>Pagina {{currentPage + 1}} de {{pagedItems.length}} </h4>
+                                </div>
+                                <div class="col-sm-12">
+
+                                    <table class="table table-bordered table-hover" style="text-align: center;">
+                                        <thead>
+                                            <tr class="list-group-item-header">
+                                                <th>Nombre de periodo</th>
+                                                <th style="text-align: center;" colspan="">Estado</th>
+                                                <th style="text-align: center;">Editar fecha de fin</th>
+                                                <th style="text-align: center;">Enviar notifiaciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="item in pagedItems[currentPage] | orderBy:sortingOrder:reverse">
+                                                <td>{{item.nombre}}</td>
+                                                <td ng-switch="item.estado">
+                                                    <div ng-switch-when="0">
+                                                        <i class="fa fa-toggle-off fa-2x rojo"></i>
+                                                    </div>
+                                                    <div ng-switch-default>
+                                                        <i class="fa fa-toggle-on fa-2x verde"></i>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <a ng-click="cambiarPregunta($index)" class="btn amarillo" data-toggle="modal" data-backdrop="static" data-keyboard="false" href='#modificar-evaluacion'>
+                                                        <i class="fa fa-pencil-square fa-2x"></i>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a data-toggle="modal" href='#notificaciones' class="btn amarillo" data-toggle="modal" data-backdrop="static" data-keyboard="false" href='#modificar-evaluacion'>
+                                                        <i class="fa fa-bell-slash-o fa-2x"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col-sm-12">
+
+                                    <div class="col-sm-4 col-sm-offset-4">
+                                        <a href ng-click="prevPage()" class="amarillo">
+                                            <div class="col-xs-6" ng-class="{gris: currentPage == 0}" style="text-align: center;">
+                                                <i class="fa fa-arrow-circle-left fa-4x"></i>
+                                                <br>
+                                                Anterior
+                                            </div>
+                                        </a>
+                                        <a href ng-click="nextPage()" class="amarillo">
+                                            <div class="col-xs-6" ng-class="{gris: currentPage == pagedItems.length - 1}" style="text-align: center;">
+                                                <i class="fa fa-arrow-circle-right fa-4x"></i>
+                                                <br>
+                                                Siguiente
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-					</div>
-				</div>
+                    </div>
+                    <div class="col-sm-6">
+                        <a data-toggle="modal" href='#empleados'>
+                            <div class="col-xs-6 col-sm-4 caja_der morado" style="text-align: center">
+                                <div class="row">
+                                    <i class="fa fa-th-list fa-2x"></i>
+                                    <h4> Empleados</h4>
+                                </div>
+                            </div>
+                        </a>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-offset-7 col-sm-5 submenu">
+                            <div class="col-xs-6  col-sm-offset-6 col-sm-3 caja_der amarillo" style="text-align: center">
+                                <i class="fa fa-question fa-3x"></i>
+                                <h4>Ayuda</h4>
+                            </div>
+                            <div ng-click="LogOut()" class="col-xs-4  col-sm-3 caja_der amarillo" style="text-align: center; cursor:pointer;">
+                                <i class="fa fa-times fa-3x"></i>
+                                <h4>Cerrar</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /#page-content-wrapper -->
+            <!--MODALES-->
+            <!-- Aqui comienza el modal de periodos-->
+            <div class="modal fade" id="periodos" data-keyboard="false" data-backdrop>
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times fa-1x"></i></button>
+                            <h4 class="modal-title">Crear Periodo</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <label for="nombre">Nombre: </label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input ng-model="nombre" type="text" class="form-control" id="nombre">
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <label>Tamaño de la muestra: </label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="number" ng-model="tamano" class="form-control">
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <div class="col-sm-8">
+                                        <div class="col-sm-12"><label>Seleccione la evaluacion: </label></div>
+                                        <div class="col-sm-12"><input id="query" type="text" class="form-control"></div>
+                                        <div class="col-sm-12"><label for="">Metodologia: </label></div>
+                                        <div class="col-sm-12">
+                                            <div class="radio" ng-init="metodologia = 360">
+                                                <label class="radio-inline">
+                                                    <input type="radio" ng-model="metodologia" name="inlineRadioOptions" id="inlineRadio1" value="90"> 90°
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" ng-model="metodologia" name="inlineRadioOptions" id="inlineRadio2" value="180"> 180°
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" ng-model="metodologia" name="inlineRadioOptions" id="inlineRadio3" value="360"> 360°
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="col-sm-12"><label for="">Fecha Finalizacion: </label></div>
+                                        <div class="col-sm-12"><input ng-model="fecha_fin" type="date" /></div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-7 col-sm-offset-1">
+                                        <p style="background: #dddddd; text-align: justify; padding: 3px;">
+                                            Recuerde  selecionar y guardar antes de salir  asigneles el grupo de empleado en el icono listar empleados para que se les notifique a los  empleados si tiene alguna duda el boton de ayuda de la parte inferior del sistema lo ayuda
+                                        </p>
+                                    </div>
+                                    <div class="col-sm-3 col-sm-offset-1">
+                                        <button ng-click="RegistrarPeriodo()" class="btn btn-primary" style="background: #b4a7d6">Guardar cambios</button>
+                                    </div>
+                                </div>
+                            </form>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Aqui empieza el modal enviar notificaciones-->
+            <div class="modal" id="enviarnotificaciones" data-keyboard="false" data-backdrop>
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title"> NOTIFICACIONES</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row alineacion">
+                                <h5> Generar notificaciones</h5>
+                                <div class="col-sm-12">
+                                    <span class="col-sm-4"><label for="">Evaluación: </label></span>
+                                    <span class="col-sm-offset-2 col-sm-6"><i class="fa fa-toggle-on fa-2x"></i></span>
+                                </div>
+                                <br>
+                                <br>
+                                <div class="col-sm-4">
+                                    <label for="">Tamaño de la muestra: </label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="" placeholder="1000">
+                                </div>
+                            </div>
+                            <br>
+                            <br>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%" ,>
+                                    <span class="sr-only">45% Complete</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Aqui empieza el modal notificaciones-->
+            <div class="modal" id="notificaciones" data-keyboard="false" data-backdrop>
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title"></h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-sm-8 col-sm-offset-2">
+                                    <div style="text-align: center;">
+                                        <h3>NOTIFICACIONES</h3>
+                                        <br>
+                                    </div>
+                                    <div>
+                                        <script type="text/javascript">
+                                            var sortingOrder = 'evaluacion';
+                                        </script>
+
+
+
+                                        <div class="col-sm-12">
+                                            <h4>Pagina {{currentPage + 1}} de {{pagedItems.length}} </h4>
+                                        </div>
+                                        <div class="col-sm-12">
+
+                                            <table class="table table-bordered table-hover" style="text-align: center;">
+                                                <thead>
+                                                    <tr class="list-group-item-header">
+                                                        <th>Nombre de periodo</th>
+                                                        <th style="text-align: center;" colspan="">Estado</th>
+                                                        <th style="text-align: center;">Editar fecha de fin</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="item in pagedItems[currentPage] | orderBy:sortingOrder:reverse">
+                                                        <td>{{item.nombre}}</td>
+
+                                                        <td>
+                                                            <a ng-click="cambiarPregunta($index)" class="btn amarillo" data-toggle="modal" data-backdrop="static" data-keyboard="false" href='#modificar-evaluacion'>
+                                                                <i class="fa fa-pencil-square fa-2x"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="col-sm-12">
+
+                                            <div class="col-sm-4 col-sm-offset-4">
+                                                <a href ng-click="prevPage()" class="amarillo">
+                                                    <div class="col-xs-6" ng-class="{gris: currentPage == 0}" style="text-align: center;">
+                                                        <i class="fa fa-arrow-circle-left fa-4x"></i>
+                                                        <br>
+                                                        Anterior
+                                                    </div>
+                                                </a>
+                                                <a href ng-click="nextPage()" class="amarillo">
+                                                    <div class="col-xs-6" ng-class="{gris: currentPage == pagedItems.length - 1}" style="text-align: center;">
+                                                        <i class="fa fa-arrow-circle-right fa-4x"></i>
+                                                        <br>
+                                                        Siguiente
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-8">
+                                            <p style="background: #dddddd; text-align: justify; padding: 3px;">
+                                                Recuerde  selecionar y guardar antes de salir  asigneles el grupo de empleado en el icono listar empleados para que se les notifique a los  empleados si tiene alguna duda el boton de ayuda de la parte inferior del sistema lo ayuda
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" ng-show="bandera">
+                                        <ul class="list-group">
+                                            <li class="list-group-item">
+                                                <label for="usr">Evaluacion 1 </label>
+                                                <a data-toggle="modal" href='#enviarnotificaciones'>
+                                                    <span class="pull-right"><button type="button" data-dismiss="modal" class="btn btn-primary">Enviar notificaciones</button></span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <!-- /#page-content-wrapper -->
 
+
+
+        <!-- Aqui comienza el modal de editar periodo-->
+
+        <div class="modal" id="editarperiodo" data-keyboard="false" data-backdrop>
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title"></h4>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="row">
+                                <div class="col-sm-4" tm>
+                                    <label for="">Nombre del periodo: </label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="" placeholder="Periodo 1">
+                                </div>
+                                <div class="col-sm-4" tm>
+                                    <label for="">Tamaño de la muestra: </label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="" placeholder="100">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <div class="col-sm-12"><label for="">Seleccione el tipo de la evaluacion: </label></div>
+                                    <div class="col-sm-12"><input type="text" class="form-control" id="" placeholder="Evaluacion 1"></div>
+                                    <div class="col-sm-12"><label for="">Metodologia: </label></div>
+                                    <div class="col-sm-12">
+                                        <div class="radio">
+                                            <label class="radio-inline">
+                                                <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 90°
+                                            </label>
+                                            <label class="radio-inline">
+                                                <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 180°
+                                            </label>
+                                            <label class="radio-inline">
+                                                <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 360°
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="col-sm-12"><label for="">Fecha: </label></div>
+                                    <div class="col-sm-12"><input type="date" /></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <p style="background: #dddddd; text-align: justify; padding: 3px;">
+                                        Recuerde  selecionar y guardar antes de salir  asigneles el grupo de empleado en el icono listar empleados para que se les notifique a los  empleados si tiene alguna duda el boton de ayuda de la parte inferior del sistema lo ayuda
+                                    </p>
+                                </div>
+                                <div class="col-sm-4">
+                                    <button type="submit" class="btn btn-primary" style="background: #b4a7d6">Guardar cambios</button>
+                                </div>
+                            </div>
+                        </form>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Aqui comienza el modal empleado-->
+        <div class="modal" id="empleados" data-keyboard="false" data-backdrop>
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title"></h4>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="row">
+                                <div style="text-align: center; color: #b4a7d6 ">
+                                    <h3>Empleados</h3>
+                                    <br>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="col-sm-4" style="text-align: center">
+                                        <label for="">Documento del empleado </label>
+                                        <br>
+                                        <br>
+                                        <br>
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <input type="text" class="form-control" id="" placeholder="">
+                                    </div>
+
+
+                                    <!-- Esta es la primera tabla-->
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <div class="col-sm-12">
+                                                <h4>Pares <i class="fa fa-plus-circle fa-2x morado"></i></h4>
+                                            </div>
+                                            <tr>
+                                                <th>Identificacion</th>
+                                                <th style="text-align: center;" colspan="">Nombre</th>
+                                                <th style="text-align: center;">Par</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>105688432</td>
+                                                <td style="text-align: center;"> Jesica Ramirez</td>
+                                                <td style="text-align: center;"> Par 1</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <!-- Esta es la segunda tabla-->
+
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <div class="col-sm-12">
+                                                <h4>Pares <i class="fa fa-plus-circle fa-2x morado"></i></h4>
+                                            </div>
+                                            <tr>
+                                                <th>Identificacion</th>
+                                                <th style="text-align: center;" colspan="">Nombre</th>
+                                                <th style="text-align: center;">Liderado</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1054755521</td>
+                                                <td style="text-align: center;"> Diana Ramirez</td>
+                                                <td style="text-align: center;"> Liderado 1</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <div class="pull-right">
+                                        <button type="submit" class="btn btn-primary" style="background: #b4a7d6">Guardar cambios</button>
+                                    </div>
+
+                                </div>
+                        </form>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Fin modales-->
     </div>
-		<!-- jQuery -->
-		<script src="../js/jquery.js"></script>
-		<!-- Bootstrap JavaScript -->
-		<script src="../js/bootstrap.min.js"></script>
-        <script src="../js/angular1.min.js"></script>
-        <script src="../js/SessionAdmin.js"></script>
-		<script type="text/javascript" >
-		// accion del boton mostrar del navbar
-			$("#mostrar").click(function(){
-		        $("#wrapper").toggleClass("toggled");
-			});
-			$("#menu-toggle").click(function(e) {
-		        e.preventDefault();
-		        $("#wrapper").toggleClass("toggled");
-		    });
-		</script>
-		
-	</body>
+    <!-- jQuery -->
+    <script src="../js/jquery.js"></script>
+    <!-- Bootstrap JavaScript -->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/angular1.min.js"></script>
+    <script src="../js/PeriodosInit.js"></script>
+    <script type="text/javascript">
+        // accion del boton mostrar del navbar
+        $("#mostrar").click(function () {
+            $("#wrapper").toggleClass("toggled");
+        });
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+    </script>
+
+</body>
 </html>
-<!-- Aqui comienza el modal de periodos-->
-<div class="modal fade" id="periodos" "myModal_confirmacion_pagina_guardada" data-keyboard="false" data-backdrop>
-		<div class="modal-dialog modal-lg">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times fa-1x"></i></button>
-					<h4 class="modal-title"></h4>
-				</div>
-				<div class="modal-body">
-					<form>
-						<div class="row">
-							<div class="col-sm-4" tm>
-								<label for="">Tamaño de la muestra: </label>
-							</div>
-							<div class="col-sm-8">
-								<input type="text" class="form-control" id="" placeholder="">
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm-8">
-								<div class="col-sm-12"><label for="">Seleccione el tipo de la evaluacion: </label></div>
-								<div class="col-sm-12"><input type="text" class="form-control" id="" placeholder=""></div>
-								<div class="col-sm-12"><label for="">Metodologia: </label></div>
-								<div class="col-sm-12">
-									<div class="radio">
-										<label class="radio-inline">
-										  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 90°
-										</label>
-										<label class="radio-inline">
-										  <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 180°
-										</label>
-										<label class="radio-inline">
-										  <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 360°
-										</label>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-4">
-								<div class="col-sm-12"><label for="">Fecha: </label></div>
-								<div class="col-sm-12"><input type="date"/></div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm-7 col-sm-offset-1">
-								<p style="background: #dddddd; text-align: justify; padding: 3px;">
-									Recuerde  selecionar y guardar antes de salir  asigneles el grupo de empleado en el icono listar empleados para que se les notifique a los  empleados si tiene alguna duda el boton de ayuda de la parte inferior del sistema lo ayuda
-								</p>
-							</div>
-							<div class="col-sm-3 col-sm-offset-1">
-								<button type="submit" class="btn btn-primary" style="background: #b4a7d6">Guardar cambios</button>
-							</div>
-						</div>
-					</form>
-					
-
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Aqui empieza el modal enviar notificaciones-->
-	<div class="modal" id="enviarnotificaciones" data-keyboard="false" data-backdrop>
-		<div class="modal-dialog modal-lg">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title"> NOTIFICACIONES</h4>
-				</div>
-				<div class="modal-body">
-					<div class="row alineacion">
-						<h5> Generar notificaciones</h5>
-						<div class="col-sm-12">
-							<span class="col-sm-4"><label for="">Evaluación: </label></span>
-							<span class="col-sm-offset-2 col-sm-6"><i class="fa fa-toggle-on fa-2x"></i></span>
-						</div>
-						<br>
-						<br>
-						<div class="col-sm-4">
-							<label for="">Tamaño de la muestra: </label>
-						</div>
-						<div class="col-sm-8">
-							<input type="text" class="form-control" id="" placeholder="1000">
-						</div>
-					</div>
-					<br>
-					<br>
-					<div class="progress">
-	  					<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%",>
-	   					<span class="sr-only">45% Complete</span>
-	  					</div>
-					</div>
-				</div>
-				
-			</div>
-		</div>
-	</div>
-
-	<!-- Aqui empieza el modal notificaciones-->
-	<div class="modal" id="notificaciones"   data-keyboard="false" data-backdrop>
-	    	<div class="modal-dialog modal-lg">
-	    		<div class="modal-content">
-	    			<div class="modal-header">
-	    				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-	    				<h4 class="modal-title"></h4>
-	    			</div>
-	    			<div class="modal-body">
-	    				<div class="row" >
-	    						<div class="col-sm-8 col-sm-offset-2">
-	    							<div style="text-align: center;">
-	    								<h3>NOTIFICACIONES</h3>
-	    								<br>
-	    							</div>
-	    							<table class="table table-hover">
-	    								<thead>
-	    									<tr>
-	    										<th >Nombre de Evaluación</th>
-	    										<th style="text-align: center;" colspan="">Estado</th>
-	    										<th style="text-align: center;">Notificaciones</th>
-	    									</tr>
-	    								</thead>
-	    								<tbody>
-	    									<tr>
-	    										<td>Evaluación 1</td>
-	    										<td style="text-align: center;"><i class="fa fa-toggle-on fa-2x"></i></td>
-	    										<td style="text-align: center;"><a href='#'><i ng-click='periodosnotificaciones()' class="fa fa-bell-o fa-2x"></i></a>
-	    										</td>
-	    									</tr>
-	    									<tr>
-	    										<td >Evaluación 2</td>
-	    										<td style="text-align: center;" ><i class="fa fa-toggle-on fa-2x"></i></td>
-	    										<td style="text-align: center;"><a href='#'><i ng-click='periodosnotificaciones()' class="fa fa-bell-o fa-2x"></i></td>
-	    									</tr>
-	    									<tr>
-	    										<td>Evaluación 3</td>
-	    										<td style="text-align: center;"><i class="fa fa-toggle-on fa-2x"></i></td>
-	    										<td style="text-align: center;"><a href='#'><i ng-click='periodosnotificaciones()' class="fa fa-bell-o fa-2x"></i></td>
-	    									</tr>
-
-	    								</tbody>
-	    							</table>	
-	    							<div class="row">
-	    									<div class="col-sm-8">
-	    										<p style="background: #dddddd; text-align: justify; padding: 3px;">
-	    											Recuerde  selecionar y guardar antes de salir  asigneles el grupo de empleado en el icono listar empleados para que se les notifique a los  empleados si tiene alguna duda el boton de ayuda de la parte inferior del sistema lo ayuda
-	    										</p>
-	    									</div>
-	    							</div>
-	    							   <div class="form-group" ng-show="bandera">
-	    								   <ul class="list-group">
-	    									   	<li class="list-group-item">
-	    									   		<label for="usr">Evaluacion 1 </label>
-	    									   		<a data-toggle="modal" href='#enviarnotificaciones'>
-	    									   		<span  class="pull-right"><button type="button" data-dismiss="modal" class="btn btn-primary">Enviar notificaciones</button></span>
-	    									   		</a>
-	    									   	</li>
-	    								   </ul>
-	    								</div>
-	    							</div>
-	    						</div>
-	    				</div>
-	    			</div>
-	    		</div>
-	    	</div>
-	    </div>
-		
-
-
-	<!-- Aqui comienza el modal de editar periodo-->
-
-	<div class="modal" id="editarperiodo" data-keyboard="false" data-backdrop>
-			<div class="modal-dialog modal-lg">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						<h4 class="modal-title"></h4>
-					</div>
-					<div class="modal-body">
-						<form>
-							<div class="row">
-								<div class="col-sm-4" tm>
-									<label for="">Nombre del periodo: </label>
-								</div>
-								<div class="col-sm-8">
-									<input type="text" class="form-control" id="" placeholder="Periodo 1">
-								</div>
-								<div class="col-sm-4" tm>
-									<label for="">Tamaño de la muestra: </label>
-								</div>
-								<div class="col-sm-8">
-									<input type="text" class="form-control" id="" placeholder="100">
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-sm-8">
-									<div class="col-sm-12"><label for="">Seleccione el tipo de la evaluacion: </label></div>
-									<div class="col-sm-12"><input type="text" class="form-control" id="" placeholder="Evaluacion 1"></div>
-									<div class="col-sm-12"><label for="">Metodologia: </label></div>
-									<div class="col-sm-12">
-										<div class="radio">
-											<label class="radio-inline">
-											  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 90°
-											</label>
-											<label class="radio-inline">
-											  <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 180°
-											</label>
-											<label class="radio-inline">
-											  <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 360°
-											</label>
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-4">
-									<div class="col-sm-12"><label for="">Fecha: </label></div>
-									<div class="col-sm-12"><input type="date"/></div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-sm-8">
-									<p style="background: #dddddd; text-align: justify; padding: 3px;">
-										Recuerde  selecionar y guardar antes de salir  asigneles el grupo de empleado en el icono listar empleados para que se les notifique a los  empleados si tiene alguna duda el boton de ayuda de la parte inferior del sistema lo ayuda
-									</p>
-								</div>
-								<div class="col-sm-4">
-									<button type="submit" class="btn btn-primary" style="background: #b4a7d6">Guardar cambios</button>
-								</div>
-							</div>
-						</form>
-						
-
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<!-- Aqui comienza el modal empleado-->
-		<div class="modal" id="empleados" data-keyboard="false" data-backdrop>
-			<div class="modal-dialog modal-lg">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						<h4 class="modal-title"></h4>
-					</div>
-					<div class="modal-body">
-						<form>
-							<div class="row">
-							<div style="text-align: center; color: #b4a7d6 ">
-									<h3>Empleados</h3>
-									<br>
-								</div>
-								<div class="col-sm-12" >
-								<div class="col-sm-4" style="text-align: center">
-									<label for="">Documento del empleado </label>
-									<br>
-									<br>
-									<br>
-								</div>
-								<div class="col-sm-7">
-									<input type="text" class="form-control" id="" placeholder="">
-								</div>
-
-
-								<!-- Esta es la primera tabla-->
-								<table class="table table-hover">
-									<thead>
-									<div class="col-sm-12">
-										<h4>Pares <i class="fa fa-plus-circle fa-2x morado"></i></h4>
-									</div>
-										<tr>
-											<th>Identificacion</th>
-											<th style="text-align: center;" colspan="">Nombre</th>
-											<th style="text-align: center;">Par</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>105688432</td>
-											<td style="text-align: center;"> Jesica Ramirez</td>
-											<td style="text-align: center;"> Par 1</td>
-										</tr>
-									</tbody>
-								</table>
-
-								<!-- Esta es la segunda tabla-->
-
-								<table class="table table-hover">
-									<thead>
-									<div class="col-sm-12">
-										<h4>Pares <i class="fa fa-plus-circle fa-2x morado"></i></h4>
-									</div>
-										<tr>
-											<th>Identificacion</th>
-											<th style="text-align: center;" colspan="">Nombre</th>
-											<th style="text-align: center;">Liderado</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>1054755521</td>
-											<td style="text-align: center;"> Diana Ramirez</td>
-											<td style="text-align: center;"> Liderado 1</td>
-										</tr>
-									</tbody>
-								</table>
-								
-								<div class="pull-right">
-									<button type="submit" class="btn btn-primary" style="background: #b4a7d6">Guardar cambios</button>
-								</div>
-
-							</div>
-						</form>
-						
-
-					</div>
-				</div>
-			</div>
-		</div>
