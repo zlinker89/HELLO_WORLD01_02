@@ -288,7 +288,7 @@
     <Content Include="public_html\js\xlsx\lodash.min.js" />
     <Content Include="public_html\js\xlsx\xlsx-reader.js" />
     <Content Include="public_html\js\xlsx\xlsx.js" />
-    <Content Include="public_html\img\evaluacion-empleados.html" />
+    <Content Include="public_html\login-empleados\evaluacion-empleados.html" />
     <Content Include="public_html\login-empleados\examen.html" />
     <Content Include="public_html\login-empleados\explicacion.html" />
     <Content Include="public_html\login-empleados\listado-competencias.html" />
