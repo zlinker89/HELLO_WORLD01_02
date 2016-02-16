@@ -7,6 +7,7 @@
     <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="nombre" Type="varchar" MaxLength="50" />
     <Property Name="rango_evaluacion" Type="varchar" MaxLength="50" />
+    <Property Name="idevaluacion" Type="bigint" />
   </EntityType>
   <EntityType Name="empleado">
     <Key>
@@ -38,10 +39,8 @@
     </Key>
     <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="nombre" Type="varchar" MaxLength="50" />
-    <Property Name="fechainicio" Type="date" />
-    <Property Name="periodo" Type="varchar" MaxLength="50" />
     <Property Name="tipo_de_evaluacion" Type="varchar" MaxLength="50" />
-    <Property Name="estado" Type="varchar" MaxLength="50" />
+    <Property Name="estado" Type="tinyint" />
   </EntityType>
   <EntityType Name="periodos">
     <Key>
@@ -104,6 +103,18 @@
     <Property Name="nombre_usuario" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="password_usuario" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
+  <Association Name="FK_competencias_evaluacion">
+    <End Role="evaluacion" Type="Self.evaluacion" Multiplicity="0..1" />
+    <End Role="competencias" Type="Self.competencias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="evaluacion">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="competencias">
+        <PropertyRef Name="idevaluacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_empleado_usuarios">
     <End Role="usuarios" Type="Self.usuarios" Multiplicity="0..1" />
     <End Role="empleado" Type="Self.empleado" Multiplicity="*" />
@@ -140,7 +151,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_preguntas_competencia_competencias1">
+  <Association Name="FK_preguntas_competencia_competencias">
     <End Role="competencias" Type="Self.competencias" Multiplicity="0..1" />
     <End Role="preguntas_competencia" Type="Self.preguntas_competencia" Multiplicity="*" />
     <ReferentialConstraint>
@@ -236,6 +247,10 @@
     <EntitySet Name="tipo_usuario" EntityType="Self.tipo_usuario" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Usuario_Tipo_usuario" EntityType="Self.Usuario_Tipo_usuario" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="usuarios" EntityType="Self.usuarios" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_competencias_evaluacion" Association="Self.FK_competencias_evaluacion">
+      <End Role="evaluacion" EntitySet="evaluacion" />
+      <End Role="competencias" EntitySet="competencias" />
+    </AssociationSet>
     <AssociationSet Name="FK_empleado_usuarios" Association="Self.FK_empleado_usuarios">
       <End Role="usuarios" EntitySet="usuarios" />
       <End Role="empleado" EntitySet="empleado" />
@@ -248,7 +263,7 @@
       <End Role="evaluacion" EntitySet="evaluacion" />
       <End Role="periodos" EntitySet="periodos" />
     </AssociationSet>
-    <AssociationSet Name="FK_preguntas_competencia_competencias1" Association="Self.FK_preguntas_competencia_competencias1">
+    <AssociationSet Name="FK_preguntas_competencia_competencias" Association="Self.FK_preguntas_competencia_competencias">
       <End Role="competencias" EntitySet="competencias" />
       <End Role="preguntas_competencia" EntitySet="preguntas_competencia" />
     </AssociationSet>

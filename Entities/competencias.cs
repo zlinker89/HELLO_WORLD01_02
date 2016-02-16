@@ -23,8 +23,10 @@ namespace Entities
         public long id { get; set; }
         public string nombre { get; set; }
         public string rango_evaluacion { get; set; }
+        public Nullable<long> idevaluacion { get; set; }
     
         public virtual ICollection<preguntas_competencia> preguntas_competencia { get; set; }
         public virtual ICollection<R_Evaluacion> R_Evaluacion { get; set; }
+        public virtual evaluacion evaluacion { get; set; }
     }
 }

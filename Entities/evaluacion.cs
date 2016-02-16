@@ -17,15 +17,15 @@ namespace Entities
         public evaluacion()
         {
             this.periodos = new HashSet<periodos>();
+            this.competencias = new HashSet<competencias>();
         }
     
         public long id { get; set; }
         public string nombre { get; set; }
-        public Nullable<System.DateTime> fechainicio { get; set; }
-        public string periodo { get; set; }
         public string tipo_de_evaluacion { get; set; }
-        public string estado { get; set; }
+        public Nullable<byte> estado { get; set; }
     
         public virtual ICollection<periodos> periodos { get; set; }
+        public virtual ICollection<competencias> competencias { get; set; }
     }
 }

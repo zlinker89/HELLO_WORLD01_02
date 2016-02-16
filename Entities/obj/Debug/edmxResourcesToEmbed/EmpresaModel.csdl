@@ -9,6 +9,8 @@
     <Property Name="rango_evaluacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="preguntas_competencia" Relationship="Self.FK_preguntas_competencia_competencias1" FromRole="competencias" ToRole="preguntas_competencia" />
     <NavigationProperty Name="R_Evaluacion" Relationship="Self.FK_R_Evaluacion_competencias" FromRole="competencias" ToRole="R_Evaluacion" />
+    <Property Name="idevaluacion" Type="Int64" />
+    <NavigationProperty Name="evaluacion" Relationship="Drummond02Model.FK_competencias_evaluacion" FromRole="competencias" ToRole="evaluacion" />
   </EntityType>
   <EntityType Name="empleado">
     <Key>
@@ -43,11 +45,10 @@
     </Key>
     <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="fechainicio" Type="DateTime" Precision="0" />
-    <Property Name="periodo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="tipo_de_evaluacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="estado" Type="Byte" />
     <NavigationProperty Name="periodos" Relationship="Self.FK_periodos_evaluacion1" FromRole="evaluacion" ToRole="periodos" />
+    <NavigationProperty Name="competencias" Relationship="Drummond02Model.FK_competencias_evaluacion" FromRole="evaluacion" ToRole="competencias" />
   </EntityType>
   <EntityType Name="periodos">
     <Key>
@@ -108,7 +109,7 @@
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="idtipo_usuario" Type="Int64" />
     <Property Name="id_user" Type="Int64" />
     <NavigationProperty Name="tipo_usuario" Relationship="Self.FK_Usuario_Tipo_usuario_tipo_usuario" FromRole="Usuario_Tipo_usuario" ToRole="tipo_usuario" />
@@ -296,5 +297,21 @@
       <End Role="usuarios" EntitySet="usuarios" />
       <End Role="Usuario_Tipo_usuario" EntitySet="Usuario_Tipo_usuario" />
     </AssociationSet>
+    <AssociationSet Name="FK_competencias_evaluacion" Association="Drummond02Model.FK_competencias_evaluacion">
+      <End Role="evaluacion" EntitySet="evaluacion" />
+      <End Role="competencias" EntitySet="competencias" />
+    </AssociationSet>
   </EntityContainer>
+  <Association Name="FK_competencias_evaluacion">
+    <End Type="Drummond02Model.evaluacion" Role="evaluacion" Multiplicity="0..1" />
+    <End Type="Drummond02Model.competencias" Role="competencias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="evaluacion">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="competencias">
+        <PropertyRef Name="idevaluacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>
