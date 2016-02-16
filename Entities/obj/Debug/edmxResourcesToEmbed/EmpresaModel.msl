@@ -4,6 +4,7 @@
     <EntitySetMapping Name="competencias">
       <EntityTypeMapping TypeName="Drummond02Model.competencias">
         <MappingFragment StoreEntitySet="competencias">
+          <ScalarProperty Name="idevaluacion" ColumnName="idevaluacion" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
           <ScalarProperty Name="rango_evaluacion" ColumnName="rango_evaluacion" />
@@ -41,8 +42,6 @@
         <MappingFragment StoreEntitySet="evaluacion">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
-          <ScalarProperty Name="fechainicio" ColumnName="fechainicio" />
-          <ScalarProperty Name="periodo" ColumnName="periodo" />
           <ScalarProperty Name="tipo_de_evaluacion" ColumnName="tipo_de_evaluacion" />
           <ScalarProperty Name="estado" ColumnName="estado" />
         </MappingFragment>
@@ -64,9 +63,9 @@
     <EntitySetMapping Name="preguntas">
       <EntityTypeMapping TypeName="Drummond02Model.preguntas">
         <MappingFragment StoreEntitySet="preguntas">
+          <ScalarProperty Name="idcompetencia" ColumnName="idcompetencia" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
-          <ScalarProperty Name="respuesta" ColumnName="respuesta" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

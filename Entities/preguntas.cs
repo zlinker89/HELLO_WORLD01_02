@@ -21,8 +21,9 @@ namespace Entities
     
         public long id { get; set; }
         public string nombre { get; set; }
-        public string respuesta { get; set; }
+        public long idcompetencia { get; set; }
     
         public virtual ICollection<preguntas_competencia> preguntas_competencia { get; set; }
+        public virtual competencias competencias { get; set; }
     }
 }

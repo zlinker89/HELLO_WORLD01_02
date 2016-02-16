@@ -139,8 +139,13 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\CompetenciasController.cs" />
+    <Compile Include="Controllers\CompetenciasEvaluacionController.cs" />
     <Compile Include="Controllers\EmpleadoController.cs" />
+    <Compile Include="Controllers\EvaluacionController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\PreguntaCompetenciaController.cs" />
+    <Compile Include="Controllers\PreguntasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -282,6 +287,7 @@
     <Content Include="public_html\js\PreguntaInit.js" />
     <Content Include="public_html\js\preguntas.js" />
     <Content Include="public_html\js\radarChar.js" />
+    <Content Include="public_html\js\SessionAdmin.js" />
     <Content Include="public_html\js\sessionApp.js" />
     <Content Include="public_html\js\UploadFileController.js" />
     <Content Include="public_html\js\xlsx\jszip.js" />

@@ -1,4 +1,8 @@
 var app = angular.module("miApp", []);
+
+// Obtengo los id de la evaluacion y competencia
+var vars = getVarsUrl();
+console.log(vars);
 // verifico si existe una sesion
 var sesion = JSON.parse(localStorage.getItem("usuario")) || null;
 console.log(sesion.tipo_usuario[0].tipo);
@@ -16,6 +20,7 @@ if (sesion === null) {
 var url = '/api/logout/' + sesion.id;
 
 app.controller("evaluaciones", function ($scope, $filter, $http) {
+    $scope.idevaluacion = vars.evaluacion;
     // session
     $scope.tipos = "Administrador";
     $scope.usuario = sesion;
@@ -41,93 +46,138 @@ app.controller("evaluaciones", function ($scope, $filter, $http) {
     $scope.itemsPerPage = 5;
     $scope.pagedItems = [];
     $scope.currentPage = 0;
-    $scope.items = [
-        {"idpregunta":1,"pregunta":"pregunta 1", "estado":true},
-        {"idpregunta":2,"pregunta":"pregunta 2", "estado":true},
-        {"idpregunta":3,"pregunta":"pregunta 3", "estado":false},
-        {"idpregunta":4,"pregunta":"pregunta 4", "estado":true},
-        {"idpregunta":5,"pregunta":"pregunta 5", "estado":false},
-        {"idpregunta":6,"pregunta":"pregunta 6", "estado":false},
-        {"idpregunta":7,"pregunta":"pregunta 7", "estado":false},
-        {"idpregunta":8,"pregunta":"pregunta 8", "estado":true},
-        {"idpregunta":9,"pregunta":"pregunta 9", "estado":false},
-        {"idpregunta":10,"pregunta":"pregunta 10", "estado":true},
-        {"idpregunta":11,"pregunta":"pregunta 11", "estado":false},
-    ];
-    // respuestas que seleccionan
-    var respuestas = [];
-    var searchMatch = function (haystack, needle) {
-        if (!needle) {
-            return true;
-        }
-        return haystack.toString().toLowerCase().indexOf(needle.toLowerCase()) !== -1;
-    };
+    // get y filtrado
+    $scope.iniciar = function () {
+        $http.get('/api/preguntacompetencia/' + vars.competencia).then(function (d) {
+            console.log(d.data);
+            $scope.items = d.data;
 
-    // init the filtered items
-    $scope.search = function () {
-        $scope.filteredItems = $filter('filter')($scope.items, function (item) {
-            for(var attr in item) {
-                if (searchMatch(item[attr], $scope.query))
+            // respuestas que seleccionan
+            var respuestas = [];
+            var searchMatch = function (haystack, needle) {
+                if (!needle) {
                     return true;
+                }
+                return haystack.toString().toLowerCase().indexOf(needle.toLowerCase()) !== -1;
+            };
+
+            // init the filtered items
+            $scope.search = function () {
+                $scope.filteredItems = $filter('filter')($scope.items, function (item) {
+                    for (var attr in item) {
+                        if (searchMatch(item[attr], $scope.query))
+                            return true;
+                    }
+                    return false;
+                });
+                // take care of the sorting order
+                if ($scope.sortingOrder !== '') {
+                    $scope.filteredItems = $filter('orderBy')($scope.filteredItems, $scope.sortingOrder, $scope.reverse);
+                }
+                $scope.currentPage = 0;
+                // now group by pages
+                $scope.groupToPages();
+            };
+
+            // calculate page in place
+            $scope.groupToPages = function () {
+                $scope.pagedItems = [];
+
+                for (var i = 0; i < $scope.filteredItems.length; i++) {
+                    if (i % $scope.itemsPerPage === 0) {
+                        $scope.pagedItems[Math.floor(i / $scope.itemsPerPage)] = [$scope.filteredItems[i]];
+                    } else {
+                        $scope.pagedItems[Math.floor(i / $scope.itemsPerPage)].push($scope.filteredItems[i]);
+                    }
+                }
+            };
+
+            $scope.range = function (start, end) {
+                var ret = [];
+                if (!end) {
+                    end = start;
+                    start = 0;
+                }
+                for (var i = start; i < end; i++) {
+                    ret.push(i);
+                }
+                return ret;
+            };
+
+            $scope.prevPage = function () {
+                if ($scope.currentPage > 0) {
+                    $scope.currentPage--;
+                }
+            };
+
+            $scope.nextPage = function () {
+                if ($scope.currentPage < $scope.pagedItems.length - 1) {
+                    $scope.currentPage++;
+                }
+            };
+
+            $scope.setPage = function () {
+                $scope.currentPage = this.n;
+            };
+
+            // functions have been describe process the data for display
+            $scope.search();
+
+            $scope.cambiarPregunta = function (i) {
+                $scope.nombre_pregunta_update = $scope.items[i].nombre;
+                $scope.id = $scope.items[i].id;
+                $scope.idcompetencia = $scope.items[i].idcompetencia
             }
-            return false;
         });
-        // take care of the sorting order
-        if ($scope.sortingOrder !== '') {
-            $scope.filteredItems = $filter('orderBy')($scope.filteredItems, $scope.sortingOrder, $scope.reverse);
-        }
-        $scope.currentPage = 0;
-        // now group by pages
-        $scope.groupToPages();
-    };
-    
-    // calculate page in place
-    $scope.groupToPages = function () {
-        $scope.pagedItems = [];
-        
-        for (var i = 0; i < $scope.filteredItems.length; i++) {
-            if (i % $scope.itemsPerPage === 0) {
-                $scope.pagedItems[Math.floor(i / $scope.itemsPerPage)] = [ $scope.filteredItems[i] ];
-            } else {
-                $scope.pagedItems[Math.floor(i / $scope.itemsPerPage)].push($scope.filteredItems[i]);
-            }
-        }
-    };
-    
-    $scope.range = function (start, end) {
-        var ret = [];
-        if (!end) {
-            end = start;
-            start = 0;
-        }
-        for (var i = start; i < end; i++) {
-            ret.push(i);
-        }
-        return ret;
-    };
-    
-    $scope.prevPage = function () {
-        if ($scope.currentPage > 0) {
-            $scope.currentPage--;
-        }
-    };
-    
-    $scope.nextPage = function () {
-        if ($scope.currentPage < $scope.pagedItems.length - 1) {
-            $scope.currentPage++;
-        }
-    };
-    
-    $scope.setPage = function () {
-        $scope.currentPage = this.n;
     };
 
-    // functions have been describe process the data for display
-    $scope.search();
+    // create
+    $scope.RegistrarPregunta = function () {
+        var pregunta = {
+            id: null,
+            nombre: $scope.pregunta,
+            idcompetencia: Number(vars.competencia)
+        };
+        $http.post('/api/Preguntas/', pregunta).then(function (d) {
+            console.log(d.data);
+            // refrescamos
+            $scope.iniciar();
+        });
+    };
 
-    
+    // update
+    $scope.UpdatePregunta = function () {
+        var pregunta = {
+            id: $scope.id,
+            nombre: $scope.nombre_pregunta_update,
+            idcompetencia: $scope.idcompetencia,
+        };
+        console.log(pregunta);
+        $http.put('/api/Preguntas/' + pregunta.id, pregunta).then(function () {
+            // refrescamos
+            $scope.iniciar();
+        });
+    };
+
+
+    // iniciamos
+    $scope.iniciar();
 });
 function cerrarSession() {
     localStorage.removeItem("usuario");
     location.href = "../login.html";
+}
+
+/*
+    * Funcion que recoje los valores pasados por get de una url.
+*/
+function getVarsUrl() {
+    var url = location.search.replace("?", "");
+    var arrUrl = url.split("&");
+    var urlObj = {};
+    for (var i = 0; i < arrUrl.length; i++) {
+        var x = arrUrl[i].split("=");
+        urlObj[x[0]] = x[1]
+    }
+    return urlObj;
 }
