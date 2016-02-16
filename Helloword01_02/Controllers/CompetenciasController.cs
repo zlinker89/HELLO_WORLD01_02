@@ -21,10 +21,10 @@ namespace Helloword01_02.Controllers
         public IQueryable<CompetenciaDTO> Getcompetencias()
         {
             var competencias = from c in db.competencias
-                               where c.idevaluacion == 1
                                select new CompetenciaDTO()
                                {
                                    id = c.id,
+                                   idevaluacion = c.idevaluacion,
                                    nombre = c.nombre,
                                    rango_evaluacion = c.rango_evaluacion
                                };

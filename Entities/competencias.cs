@@ -18,6 +18,7 @@ namespace Entities
         {
             this.preguntas_competencia = new HashSet<preguntas_competencia>();
             this.R_Evaluacion = new HashSet<R_Evaluacion>();
+            this.preguntas = new HashSet<preguntas>();
         }
     
         public long id { get; set; }
@@ -28,5 +29,6 @@ namespace Entities
         public virtual ICollection<preguntas_competencia> preguntas_competencia { get; set; }
         public virtual ICollection<R_Evaluacion> R_Evaluacion { get; set; }
         public virtual evaluacion evaluacion { get; set; }
+        public virtual ICollection<preguntas> preguntas { get; set; }
     }
 }

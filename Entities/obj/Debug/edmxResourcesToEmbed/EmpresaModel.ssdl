@@ -59,8 +59,8 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="nombre" Type="nvarchar" MaxLength="50" />
-    <Property Name="respuesta" Type="nvarchar" MaxLength="50" />
+    <Property Name="nombre" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="idcompetencia" Type="bigint" Nullable="false" />
   </EntityType>
   <EntityType Name="preguntas_competencia">
     <Key>
@@ -175,6 +175,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_preguntas_competencias">
+    <End Role="competencias" Type="Self.competencias" Multiplicity="1" />
+    <End Role="preguntas" Type="Self.preguntas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="competencias">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="preguntas">
+        <PropertyRef Name="idcompetencia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_R_Evaluacion_competencias">
     <End Role="competencias" Type="Self.competencias" Multiplicity="0..1" />
     <End Role="R_Evaluacion" Type="Self.R_Evaluacion" Multiplicity="*" />
@@ -270,6 +282,10 @@
     <AssociationSet Name="FK_preguntas_competencia_preguntas1" Association="Self.FK_preguntas_competencia_preguntas1">
       <End Role="preguntas" EntitySet="preguntas" />
       <End Role="preguntas_competencia" EntitySet="preguntas_competencia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_preguntas_competencias" Association="Self.FK_preguntas_competencias">
+      <End Role="competencias" EntitySet="competencias" />
+      <End Role="preguntas" EntitySet="preguntas" />
     </AssociationSet>
     <AssociationSet Name="FK_R_Evaluacion_competencias" Association="Self.FK_R_Evaluacion_competencias">
       <End Role="competencias" EntitySet="competencias" />

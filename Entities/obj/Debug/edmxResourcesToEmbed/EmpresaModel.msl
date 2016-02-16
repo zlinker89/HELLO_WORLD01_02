@@ -63,9 +63,9 @@
     <EntitySetMapping Name="preguntas">
       <EntityTypeMapping TypeName="Drummond02Model.preguntas">
         <MappingFragment StoreEntitySet="preguntas">
+          <ScalarProperty Name="idcompetencia" ColumnName="idcompetencia" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
-          <ScalarProperty Name="respuesta" ColumnName="respuesta" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

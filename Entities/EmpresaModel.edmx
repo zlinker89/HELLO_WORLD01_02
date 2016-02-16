@@ -64,8 +64,8 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="nombre" Type="nvarchar" MaxLength="50" />
-          <Property Name="respuesta" Type="nvarchar" MaxLength="50" />
+          <Property Name="nombre" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="idcompetencia" Type="bigint" Nullable="false" />
         </EntityType>
         <EntityType Name="preguntas_competencia">
           <Key>
@@ -180,6 +180,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_preguntas_competencias">
+          <End Role="competencias" Type="Self.competencias" Multiplicity="1" />
+          <End Role="preguntas" Type="Self.preguntas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="competencias">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="preguntas">
+              <PropertyRef Name="idcompetencia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_R_Evaluacion_competencias">
           <End Role="competencias" Type="Self.competencias" Multiplicity="0..1" />
           <End Role="R_Evaluacion" Type="Self.R_Evaluacion" Multiplicity="*" />
@@ -276,6 +288,10 @@
             <End Role="preguntas" EntitySet="preguntas" />
             <End Role="preguntas_competencia" EntitySet="preguntas_competencia" />
           </AssociationSet>
+          <AssociationSet Name="FK_preguntas_competencias" Association="Self.FK_preguntas_competencias">
+            <End Role="competencias" EntitySet="competencias" />
+            <End Role="preguntas" EntitySet="preguntas" />
+          </AssociationSet>
           <AssociationSet Name="FK_R_Evaluacion_competencias" Association="Self.FK_R_Evaluacion_competencias">
             <End Role="competencias" EntitySet="competencias" />
             <End Role="R_Evaluacion" EntitySet="R_Evaluacion" />
@@ -312,6 +328,7 @@
           <NavigationProperty Name="R_Evaluacion" Relationship="Self.FK_R_Evaluacion_competencias" FromRole="competencias" ToRole="R_Evaluacion" />
           <Property Name="idevaluacion" Type="Int64" />
           <NavigationProperty Name="evaluacion" Relationship="Drummond02Model.FK_competencias_evaluacion" FromRole="competencias" ToRole="evaluacion" />
+          <NavigationProperty Name="preguntas" Relationship="Drummond02Model.FK_preguntas_competencias" FromRole="competencias" ToRole="preguntas" />
         </EntityType>
         <EntityType Name="empleado">
           <Key>
@@ -371,9 +388,10 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="respuesta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="preguntas_competencia" Relationship="Self.FK_preguntas_competencia_preguntas1" FromRole="preguntas" ToRole="preguntas_competencia" />
+          <Property Name="idcompetencia" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="competencias" Relationship="Drummond02Model.FK_preguntas_competencias" FromRole="preguntas" ToRole="competencias" />
         </EntityType>
         <EntityType Name="preguntas_competencia">
           <Key>
@@ -602,6 +620,10 @@
             <End Role="evaluacion" EntitySet="evaluacion" />
             <End Role="competencias" EntitySet="competencias" />
           </AssociationSet>
+          <AssociationSet Name="FK_preguntas_competencias" Association="Drummond02Model.FK_preguntas_competencias">
+            <End Role="competencias" EntitySet="competencias" />
+            <End Role="preguntas" EntitySet="preguntas" />
+          </AssociationSet>
         </EntityContainer>
         <Association Name="FK_competencias_evaluacion">
           <End Type="Drummond02Model.evaluacion" Role="evaluacion" Multiplicity="0..1" />
@@ -612,6 +634,18 @@
             </Principal>
             <Dependent Role="competencias">
               <PropertyRef Name="idevaluacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_preguntas_competencias">
+          <End Type="Drummond02Model.competencias" Role="competencias" Multiplicity="1" />
+          <End Type="Drummond02Model.preguntas" Role="preguntas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="competencias">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="preguntas">
+              <PropertyRef Name="idcompetencia" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -683,9 +717,9 @@
           <EntitySetMapping Name="preguntas">
             <EntityTypeMapping TypeName="Drummond02Model.preguntas">
               <MappingFragment StoreEntitySet="preguntas">
+                <ScalarProperty Name="idcompetencia" ColumnName="idcompetencia" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="respuesta" ColumnName="respuesta" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

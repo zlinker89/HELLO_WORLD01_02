@@ -103,7 +103,9 @@
                                 </select>
                             </li>
                             <li>
-                                <span class="col-xs-8"><h4>{{usuario.empleado.Nombre}}</h4> </span>
+                                <span class="col-xs-8">
+                                    <h4>{{usuario.empleado.Nombre}}</h4>
+                                </span>
                                 <span class="col-xs-4" id="icono_user"><i class="fa fa-user"></i></span>
                             </li>
                         </ul>
@@ -121,7 +123,9 @@
                                     <div class="form-group">
                                         <div class="col-md-2 hidden-sm hidden-xs hidden-md"><label style="margin-top: 5px;" for="busqueda">Buscar:</label></div>
                                         <div class="col-sm-8 col-xs-10"><input type="text" size="40" ng-model="query" ng-change="search()" id="busqueda" class="form-control" placeholder="ingrese texto a buscar"></div>
-                                        <div class="col-xs-1"><a class="amarillo" data-toggle="modal" data-backdrop="static" data-keyboard="false" href='#modal-id'><i class="fa fa-plus-circle fa-3x"></i></a></div>
+                                        <div class="col-xs-1">
+                                            <a class="amarillo" data-toggle="modal" data-backdrop="static" data-keyboard="false" href='#modal-id'><i class="fa fa-plus-circle fa-3x"></i></a>
+                                        </div>
                                     </div>
                                 </form>
                             </div>
@@ -161,7 +165,7 @@
                                                     </td>
                                                     <td>
                                                         <a href="#modificar-evaluacion" ng-click="cambiarCompetencia($index)" data-toggle="modal" data-backdrop="static" data-keyboard="false"><i class="fa fa-pencil-square fa-2x amarillo"></i></a>
-                                                        <a ng-href="competencias.html?evaluacion={{item.id}}"><i class="fa fa-list-alt fa-2x amarillo"></i></a>
+                                                        <a ng-href="preguntas.html?evaluacion={{item.idevaluacion}}&competencia={{item.id}}"><i class="fa fa-list-alt fa-2x amarillo"></i></a>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -170,16 +174,18 @@
                                     <div class="col-sm-12">
 
                                         <div class="col-sm-4 col-sm-offset-4">
-                                            
+
                                             <a href ng-click="prevPage()" class="amarillo">
                                                 <div class="col-xs-6" ng-class="{gris: currentPage == 0}" style="text-align: center;">
-                                                    <i class="fa fa-arrow-circle-left fa-4x"></i> <br>
+                                                    <i class="fa fa-arrow-circle-left fa-4x"></i>
+                                                    <br>
                                                     Anterior
                                                 </div>
                                             </a>
                                             <a href ng-click="nextPage()" class="amarillo">
                                                 <div class="col-xs-6" ng-class="{gris: currentPage == pagedItems.length - 1}" style="text-align: center;">
-                                                    <i class="fa fa-arrow-circle-right fa-4x"></i> <br>
+                                                    <i class="fa fa-arrow-circle-right fa-4x"></i>
+                                                    <br>
                                                     Siguiente
                                                 </div>
                                             </a>

@@ -54,6 +54,7 @@
     <Compile Include="DTOs\CompetenciaDTO.cs" />
     <Compile Include="DTOs\empleadoDTO.cs" />
     <Compile Include="DTOs\EvaluacionDTO.cs" />
+    <Compile Include="DTOs\PreguntaDTO.cs" />
     <Compile Include="DTOs\tipos_usuarioDTO.cs" />
     <Compile Include="DTOs\tipo_usuarioDTO.cs" />
     <Compile Include="DTOs\usuariosDTO.cs" />

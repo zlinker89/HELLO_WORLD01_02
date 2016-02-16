@@ -27,6 +27,7 @@
         <AssociationConnector Association="Drummond02Model.FK_Usuario_Tipo_usuario_tipo_usuario" ManuallyRouted="false" />
         <AssociationConnector Association="Drummond02Model.FK_Usuario_Tipo_usuario_usuarios" ManuallyRouted="false" />
         <AssociationConnector Association="Drummond02Model.FK_competencias_evaluacion" />
+        <AssociationConnector Association="Drummond02Model.FK_preguntas_competencias" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
