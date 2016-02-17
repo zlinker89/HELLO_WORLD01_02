@@ -11,13 +11,13 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using Entities;
 using Entities.DTOs;
-
+using BL;
 namespace Helloword01_02.Controllers
 {
     public class PeriodosController : ApiController
     {
         private Drummond02Entities db = new Drummond02Entities();
-
+        private empleados_selecionadosBLL empleadoSeleccionadoHelper = new empleados_selecionadosBLL();
         // GET api/Periodos
         public IQueryable<PeriodoDTO> Getperiodos()
         {
@@ -27,7 +27,6 @@ namespace Helloword01_02.Controllers
                                id = p.id,
                                id_evaluacion = p.id_evaluacion,
                                metodologia = p.metodologia,
-                               Tmuestra = p.Tmuestra,
                                fechainicio = p.fechainicio,
                                fechafinal = p.fechafinal,
                                estado = p.estado,
@@ -87,14 +86,22 @@ namespace Helloword01_02.Controllers
         [ResponseType(typeof(periodos))]
         public async Task<IHttpActionResult> Postperiodos(periodos periodos)
         {
-            if (!ModelState.IsValid)
+            if (db.periodos.Where(x => x.nombre == periodos.nombre).ToList().Count() == 0)
             {
-                return BadRequest(ModelState);
+                db.periodos.Add(periodos);
+                await db.SaveChangesAsync();
+                // aqui la logica de negocio
+                try
+                {
+                    empleados_selecionados empleadoseleccionado = new empleados_selecionados();
+                    empleadoseleccionado.id_periodos = db.periodos.Where(x => x.nombre == periodos.nombre).FirstOrDefault().id;
+                    empleadoSeleccionadoHelper.Create(empleadoseleccionado);
+                }
+                catch (Exception e)
+                {
+                    throw e;
+                }  
             }
-
-            db.periodos.Add(periodos);
-            await db.SaveChangesAsync();
-
             return CreatedAtRoute("DefaultApi", new { id = periodos.id }, periodos);
         }
 

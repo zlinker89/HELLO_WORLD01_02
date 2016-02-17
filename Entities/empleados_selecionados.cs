@@ -25,5 +25,6 @@ namespace Entities
     
         public virtual periodos periodos { get; set; }
         public virtual ICollection<R_Evaluacion> R_Evaluacion { get; set; }
+        public virtual empleado empleado { get; set; }
     }
 }

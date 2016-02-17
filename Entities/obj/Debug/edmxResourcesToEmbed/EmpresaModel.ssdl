@@ -50,7 +50,6 @@
     <Property Name="fechainicio" Type="date" />
     <Property Name="fechafinal" Type="date" />
     <Property Name="metodologia" Type="varchar" MaxLength="50" />
-    <Property Name="Tmuestra" Type="int" />
     <Property Name="id_evaluacion" Type="bigint" />
     <Property Name="estado" Type="tinyint" />
     <Property Name="nombre" Type="varchar" MaxLength="250" />
@@ -125,6 +124,18 @@
       </Principal>
       <Dependent Role="empleado">
         <PropertyRef Name="id_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_empleados_selecionados_empleado">
+    <End Role="empleado" Type="Self.empleado" Multiplicity="0..1" />
+    <End Role="empleados_selecionados" Type="Self.empleados_selecionados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="empleado">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="empleados_selecionados">
+        <PropertyRef Name="id_empleados" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -267,6 +278,10 @@
     <AssociationSet Name="FK_empleado_usuarios" Association="Self.FK_empleado_usuarios">
       <End Role="usuarios" EntitySet="usuarios" />
       <End Role="empleado" EntitySet="empleado" />
+    </AssociationSet>
+    <AssociationSet Name="FK_empleados_selecionados_empleado" Association="Self.FK_empleados_selecionados_empleado">
+      <End Role="empleado" EntitySet="empleado" />
+      <End Role="empleados_selecionados" EntitySet="empleados_selecionados" />
     </AssociationSet>
     <AssociationSet Name="FK_empleados_selecionados_periodos1" Association="Self.FK_empleados_selecionados_periodos1">
       <End Role="periodos" EntitySet="periodos" />

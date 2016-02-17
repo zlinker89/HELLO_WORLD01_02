@@ -33,10 +33,19 @@ namespace Helloword01_02.Controllers
         }
 
         // GET api/Evaluacion/5
-        [ResponseType(typeof(evaluacion))]
+        [ResponseType(typeof(EvaluacionDTO))]
         public async Task<IHttpActionResult> Getevaluacion(long id)
         {
-            evaluacion evaluacion = await db.evaluacion.FindAsync(id);
+            var evaluacion = await db.evaluacion.Select(e =>
+                new EvaluacionDTO()
+                {
+                    id = e.id,
+                    nombre = e.nombre,
+                    tipo_de_evaluacion = e.tipo_de_evaluacion,
+                    estado = e.estado
+                }
+                ).SingleOrDefaultAsync(e => e.id == id);
+
             if (evaluacion == null)
             {
                 return NotFound();

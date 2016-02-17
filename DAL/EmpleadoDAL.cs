@@ -32,7 +32,14 @@ namespace DAL
 
         public List<empleado> GetAll()
         {
-            throw new NotImplementedException();
+            try
+            {
+                return db.empleado.ToList();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public List<empleado> Search(Func<empleado, bool> pre)

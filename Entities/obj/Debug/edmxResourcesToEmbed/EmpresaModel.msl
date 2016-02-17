@@ -56,7 +56,6 @@
           <ScalarProperty Name="fechainicio" ColumnName="fechainicio" />
           <ScalarProperty Name="fechafinal" ColumnName="fechafinal" />
           <ScalarProperty Name="metodologia" ColumnName="metodologia" />
-          <ScalarProperty Name="Tmuestra" ColumnName="Tmuestra" />
           <ScalarProperty Name="id_evaluacion" ColumnName="id_evaluacion" />
         </MappingFragment>
       </EntityTypeMapping>

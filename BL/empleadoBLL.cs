@@ -33,7 +33,7 @@ namespace BL
 
         public List<empleado> GetAll()
         {
-            throw new NotImplementedException();
+            return e.GetAll();
         }
 
         public List<empleado> Search(Func<empleado, bool> pre)

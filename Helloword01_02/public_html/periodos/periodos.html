@@ -20,13 +20,7 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <style type="text/css">
-        table tbody tr:nth-child(odd) {
-            background: #dddddd !important;
-        }
-
-        table tbody tr:nth-child(even), table thead tr:nth-child(odd) {
-            background: #b4a7d6 !important;
-        }
+        
 
         .alineacion {
             margin-left: 15px;
@@ -207,8 +201,9 @@
                                         <thead>
                                             <tr class="list-group-item-header">
                                                 <th>Nombre de periodo</th>
-                                                <th style="text-align: center;" colspan="">Estado</th>
-                                                <th style="text-align: center;">Editar fecha de fin</th>
+                                                <th style="text-align: center;">Estado</th>
+                                                <th style="text-align: center;">Editar</th>
+                                                <th style="text-align: center;">Fecha fin</th>
                                                 <th style="text-align: center;">Enviar notifiaciones</th>
                                             </tr>
                                         </thead>
@@ -224,13 +219,16 @@
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <a ng-click="cambiarPregunta($index)" class="btn amarillo" data-toggle="modal" data-backdrop="static" data-keyboard="false" href='#modificar-evaluacion'>
+                                                    <a ng-click="cambiarPeriodo($index)" class="btn amarillo" data-toggle="modal" data-backdrop="static" data-keyboard="false" href='#editarperiodo'>
                                                         <i class="fa fa-pencil-square fa-2x"></i>
                                                     </a>
                                                 </td>
                                                 <td>
-                                                    <a data-toggle="modal" href='#notificaciones' class="btn amarillo" data-toggle="modal" data-backdrop="static" data-keyboard="false" href='#modificar-evaluacion'>
-                                                        <i class="fa fa-bell-slash-o fa-2x"></i>
+                                                    {{item.fechafinal.split('T')[0]}}
+                                                </td>
+                                                <td>
+                                                    <a data-toggle="modal" href='#notificaciones' class="btn amarillo" data-toggle="modal" data-backdrop="static" data-keyboard="false">
+                                                        <i class="fa fa-bell-o fa-2x"></i>
                                                     </a>
                                                 </td>
                                             </tr>
@@ -306,18 +304,9 @@
                                 </div>
                                 <br />
                                 <div class="row">
-                                    <div class="col-sm-4">
-                                        <label>Tamaño de la muestra: </label>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <input type="number" ng-model="tamano" class="form-control">
-                                    </div>
-                                </div>
-                                <br />
-                                <div class="row">
                                     <div class="col-sm-8">
                                         <div class="col-sm-12"><label>Seleccione la evaluacion: </label></div>
-                                        <div class="col-sm-12"><input id="query" type="text" class="form-control"></div>
+                                        <div class="col-sm-12"><input id="query" type="text" class="form-control query"></div>
                                         <div class="col-sm-12"><label for="">Metodologia: </label></div>
                                         <div class="col-sm-12">
                                             <div class="radio" ng-init="metodologia = 360">
@@ -345,7 +334,7 @@
                                         </p>
                                     </div>
                                     <div class="col-sm-3 col-sm-offset-1">
-                                        <button ng-click="RegistrarPeriodo()" class="btn btn-primary" style="background: #b4a7d6">Guardar cambios</button>
+                                        <button ng-click="RegistrarPeriodo()" data-dismiss="modal" class="btn btn-primary" style="background: #b4a7d6">Guardar cambios</button>
                                     </div>
                                 </div>
                             </form>
@@ -499,41 +488,35 @@
                     <div class="modal-body">
                         <form>
                             <div class="row">
-                                <div class="col-sm-4" tm>
+                                <div class="col-sm-4">
                                     <label for="">Nombre del periodo: </label>
                                 </div>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="" placeholder="Periodo 1">
-                                </div>
-                                <div class="col-sm-4" tm>
-                                    <label for="">Tamaño de la muestra: </label>
-                                </div>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="" placeholder="100">
+                                    <input ng-model="nombre_periodo_update" type="text" class="form-control" placeholder="Periodo 1">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-8">
-                                    <div class="col-sm-12"><label for="">Seleccione el tipo de la evaluacion: </label></div>
-                                    <div class="col-sm-12"><input type="text" class="form-control" id="" placeholder="Evaluacion 1"></div>
+                                    <div class="col-sm-12"><label>Seleccione el tipo de la evaluacion: </label></div>
+                                    <div class="col-sm-12"><input type="text" id="query_update" class="form-control query" placeholder="Evaluacion 1"></div>
                                     <div class="col-sm-12"><label for="">Metodologia: </label></div>
                                     <div class="col-sm-12">
                                         <div class="radio">
                                             <label class="radio-inline">
-                                                <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 90°
+                                                <input type="radio" name="inlineRadioOptions" ng-model="metodologia_update" value="90"> 90°
                                             </label>
                                             <label class="radio-inline">
-                                                <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 180°
+                                                <input type="radio" name="inlineRadioOptions" ng-model="metodologia_update" value="180"> 180°
                                             </label>
                                             <label class="radio-inline">
-                                                <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 360°
+                                                <input type="radio" name="inlineRadioOptions" ng-model="metodologia_update" value="360"> 360°
                                             </label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
-                                    <div class="col-sm-12"><label for="">Fecha: </label></div>
-                                    <div class="col-sm-12"><input type="date" /></div>
+                                    <div class="col-sm-12"><label for="">Fecha finalizacion: </label></div>
+                                    <div class="col-sm-12"><input ng-model="fecha_fin_update" type="date" /></div>
                                 </div>
                             </div>
                             <div class="row">
@@ -543,7 +526,7 @@
                                     </p>
                                 </div>
                                 <div class="col-sm-4">
-                                    <button type="submit" class="btn btn-primary" style="background: #b4a7d6">Guardar cambios</button>
+                                    <button ng-click="UpdatePeriodo()" data-dismiss="modal" class="btn btn-primary" style="background: #b4a7d6">Guardar cambios</button>
                                 </div>
                             </div>
                         </form>

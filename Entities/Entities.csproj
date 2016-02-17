@@ -53,6 +53,7 @@
     </Compile>
     <Compile Include="DTOs\CompetenciaDTO.cs" />
     <Compile Include="DTOs\empleadoDTO.cs" />
+    <Compile Include="DTOs\empleado_seleccionadoDTO.cs" />
     <Compile Include="DTOs\EvaluacionDTO.cs" />
     <Compile Include="DTOs\PeriodoDTO.cs" />
     <Compile Include="DTOs\PreguntaDTO.cs" />
