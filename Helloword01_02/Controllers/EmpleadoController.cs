@@ -23,7 +23,14 @@ namespace Helloword01_02.Controllers
         // GET api/Empleado
         public IQueryable<empleadoDTO> Getempleado()
         {
+            var lastId = (from e in db.empleado
+                            join se in db.empleados_selecionados on e.id equals se.id_empleados
+                            where se.estado == 1
+                              select se.id_periodos).Max();
+
             var empleados = from e in db.empleado
+                            join se in db.empleados_selecionados on e.id equals se.id_empleados
+                            where se.estado == 1 && se.id_periodos == lastId
                             select new empleadoDTO()
                             {
                                 id = e.id,
