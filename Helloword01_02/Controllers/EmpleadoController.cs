@@ -21,9 +21,24 @@ namespace Helloword01_02.Controllers
         private Usuario_Tipo_usuarioBLL utu = new Usuario_Tipo_usuarioBLL();
         private tipo_usuarioBLL tipo_usuarioHelper = new tipo_usuarioBLL(); 
         // GET api/Empleado
-        public IQueryable<empleado> Getempleado()
+        public IQueryable<empleadoDTO> Getempleado()
         {
-            return db.empleado;
+            var empleados = from e in db.empleado
+                            select new empleadoDTO()
+                            {
+                                id = e.id,
+                                Nombre = e.Nombre,
+                                cedula = e.cedula,
+                                id_user = e.id_user,
+                                RosterPosition = e.RosterPosition,
+                                SubArea = e.SubArea,
+                                tipo = e.tipo,
+                                Area = e.Area,
+                                CrewCd = e.CrewCd,
+                                Departament = e.Departament,
+                                Unit = e.Unit,
+                            };
+            return empleados;
         }
 
         // GET api/Empleado/5
