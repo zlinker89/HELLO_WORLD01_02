@@ -22,6 +22,7 @@ namespace Entities
         public long id { get; set; }
         public Nullable<long> id_empleados { get; set; }
         public Nullable<long> id_periodos { get; set; }
+        public Nullable<byte> estado { get; set; }
     
         public virtual periodos periodos { get; set; }
         public virtual ICollection<R_Evaluacion> R_Evaluacion { get; set; }

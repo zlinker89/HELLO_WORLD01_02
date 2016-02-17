@@ -41,6 +41,7 @@
     <NavigationProperty Name="periodos" Relationship="Self.FK_empleados_selecionados_periodos1" FromRole="empleados_selecionados" ToRole="periodos" />
     <NavigationProperty Name="R_Evaluacion" Relationship="Self.FK_R_Evaluacion_empleados_selecionados" FromRole="empleados_selecionados" ToRole="R_Evaluacion" />
     <NavigationProperty Name="empleado" Relationship="Drummond02Model.FK_empleados_selecionados_empleado" FromRole="empleados_selecionados" ToRole="empleado" />
+    <Property Name="estado" Type="Byte" />
   </EntityType>
   <EntityType Name="evaluacion">
     <Key>

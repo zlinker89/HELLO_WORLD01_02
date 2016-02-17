@@ -31,6 +31,7 @@
     <EntitySetMapping Name="empleados_selecionados">
       <EntityTypeMapping TypeName="Drummond02Model.empleados_selecionados">
         <MappingFragment StoreEntitySet="empleados_selecionados">
+          <ScalarProperty Name="estado" ColumnName="estado" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="id_empleados" ColumnName="id_empleados" />
           <ScalarProperty Name="id_periodos" ColumnName="id_periodos" />

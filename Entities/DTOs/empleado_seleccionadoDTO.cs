@@ -11,5 +11,7 @@ namespace Entities.DTOs
         public long id { get; set; }
         public Nullable<long> id_empleados { get; set; }
         public Nullable<long> id_periodos { get; set; }
+        public Nullable<byte> estado { get; set; }
+
     }
 }

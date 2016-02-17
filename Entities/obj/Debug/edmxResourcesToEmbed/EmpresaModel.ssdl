@@ -32,6 +32,7 @@
     <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="id_empleados" Type="bigint" />
     <Property Name="id_periodos" Type="bigint" />
+    <Property Name="estado" Type="tinyint" />
   </EntityType>
   <EntityType Name="evaluacion">
     <Key>

@@ -37,6 +37,7 @@
           <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="id_empleados" Type="bigint" />
           <Property Name="id_periodos" Type="bigint" />
+          <Property Name="estado" Type="tinyint" />
         </EntityType>
         <EntityType Name="evaluacion">
           <Key>
@@ -374,6 +375,7 @@
           <NavigationProperty Name="periodos" Relationship="Self.FK_empleados_selecionados_periodos1" FromRole="empleados_selecionados" ToRole="periodos" />
           <NavigationProperty Name="R_Evaluacion" Relationship="Self.FK_R_Evaluacion_empleados_selecionados" FromRole="empleados_selecionados" ToRole="R_Evaluacion" />
           <NavigationProperty Name="empleado" Relationship="Drummond02Model.FK_empleados_selecionados_empleado" FromRole="empleados_selecionados" ToRole="empleado" />
+          <Property Name="estado" Type="Byte" />
         </EntityType>
         <EntityType Name="evaluacion">
           <Key>
@@ -719,6 +721,7 @@
           <EntitySetMapping Name="empleados_selecionados">
             <EntityTypeMapping TypeName="Drummond02Model.empleados_selecionados">
               <MappingFragment StoreEntitySet="empleados_selecionados">
+                <ScalarProperty Name="estado" ColumnName="estado" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="id_empleados" ColumnName="id_empleados" />
                 <ScalarProperty Name="id_periodos" ColumnName="id_periodos" />

@@ -21,6 +21,7 @@ namespace BL
                 foreach (empleado empleado in empleados)
                 {
                     obj.id_empleados = empleado.id;
+                    obj.estado = 1;
                     e.Create(obj);
                 }
             }
