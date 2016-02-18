@@ -35,139 +35,144 @@ angular.module("miApp", []).controller("tabla", function ($scope, $http) {
     // fin session
         $scope.enviado = false;
         
-    
+        $http.get('/api/Periodos/').then(function (d) {
+            $scope.periodos = d.data;
+            $scope.idperiodo = d.data[0].id;
+            /*SIMULACION LOCAL*/
+            $http.get('/Empleados/' + $scope.idperiodo).then(function (d) {
+                var empleados = d.data;
+                var hotElement = document.getElementById('example');
+                hot = new Handsontable(hotElement, {
+                    data: empleados,
+                    columns: [
+                            {
+                                data: "id",
+                                type: "text",
+                                readOnly: true,
+                            },
+                            {
+                                data: "cedula",
+                                type: "text",
+                                readOnly: true,
+                            },
+                            {
+                                data: "Nombre",
+                                type: "text"
+                            },
+                            {
+                                data: "tipo",
+                                type: "text"
+                            },
+                            {
+                                data: "Departament",
+                                type: "text",
+                            },
+                            {
+                                data: "Area",
+                                type: "text",
+                            },
+                            {
+                                data: "SubArea",
+                                type: "text",
+                            },
+                            {
+                                data: "CrewCd",
+                                type: "text",
+                            },
+                            {
+                                data: "RosterPosition",
+                                type: "text"
+                            },
+                            {
+                                data: "Unit",
+                                type: "text"
+                            }
+                    ],
+                    stretchH: "all",
+                    rowHeaders: true,
+                    columnSorting: true,
+                    colHeaders: [
+                        "ID",
+                        "Cedula",
+                        "Nombre",
+                        "Type",
+                        "Departament",
+                        "Area",
+                        "SubArea",
+                        "Crew Cd",
+                        "Roster position",
+                        "Unit"
+                    ],
+                });
 
-    /*SIMULACION LOCAL*/
-        $http.get('/api/Empleado/').then(function (d) {
-            var empleados = d.data;
-            var hotElement = document.getElementById('example');
-            hot = new Handsontable(hotElement, {
-                data: empleados,
-                columns: [
-                        {
-                            data: "id",
-                            type: "text",
-                            readOnly: true,
-                        },
-                        {
-                            data: "cedula",
-                            type: "text",
-                            readOnly: true,
-                        },
-                        {
-                            data: "Nombre",
-                            type: "text"
-                        },
-                        {
-                            data: "tipo",
-                            type: "text"
-                        },
-                        {
-                            data: "Departament",
-                            type: "text",
-                        },
-                        {
-                            data: "Area",
-                            type: "text",
-                        },
-                        {
-                            data: "SubArea",
-                            type: "text",
-                        },
-                        {
-                            data: "CrewCd",
-                            type: "text",
-                        },
-                        {
-                            data: "RosterPosition",
-                            type: "text"
-                        },
-                        {
-                            data: "Unit",
-                            type: "text"
+                // funciones
+
+                $scope.BuscarEmpleado = function () {
+                    $scope.enviado = false;
+                    if ($scope.buscar_cedula == undefined) {
+                        $scope.resultado = false;
+                        $scope.empleado = undefined;
+                    } else {
+                        var cont = 0;
+                        for (var i in empleados) {
+                            if (empleados[i].cedula == $scope.buscar_cedula) {
+                                // aqui el codigo cuando lo encuentro
+                                $scope.empleado = empleados[i];
+                                $scope.resultado = true;
+                                cont++;
+                            } else if (cont == 0) {
+                                $scope.empleado = undefined;
+                                $scope.resultado = false;
+                            }
                         }
-                ],
-                stretchH: "all",
-                rowHeaders: true,
-                columnSorting: true,
-                colHeaders: [
-                    "ID",
-                    "Cedula",
-                    "Nombre",
-                    "Type",
-                    "Departament",
-                    "Area",
-                    "SubArea",
-                    "Crew Cd",
-                    "Roster position",
-                    "Unit"
-                ],
+                    }
+                };
+                $scope.RemoveEmpleado = function () {
+                    // AQUI EL CODIGO PARA ENVIAR el empleado AL SERVIDOR a seleccionados
+                    if ($scope.empleado !== undefined) {
+                        if (confirm("¿Desea retirar este empleado de la lista de seleccionados?")) {
+                            // en este punto se manda el id al server para remover el empleado
+                            var index = empleados.indexOf($scope.empleado);
+                            if (index > -1) {
+                                empleados.splice(index, 1);
+                                $scope.empleado = undefined;
+                                $scope.buscar_cedula = undefined;
+                                $scope.enviado = true;
+                                $scope.resultado = false;
+                            }
+                        }
+                    }
+                };
+
+                $scope.enviar = function () {
+                    if (confirm("¿Desea guardar cambios?")) {
+                        var dataTable = hot.getData();
+                        for (var i in dataTable) {
+                            var empleado = {
+                                id: dataTable[i][0],
+                                Cedula: dataTable[i][1],
+                                Nombre: dataTable[i][2],
+                                tipo: dataTable[i][3],
+                                Departament: dataTable[i][4],
+                                Area: dataTable[i][5],
+                                SubArea: dataTable[i][6],
+                                CrewCd: dataTable[i][7],
+                                RosterPosition: dataTable[i][8],
+                                Unit: dataTable[i][9]
+                            }
+                            /*$http.post("/api/empleado/", empleado).then(function (data) {
+                                console.log(JSON.stringify(data.data));
+                            });*/
+                            console.log(JSON.stringify(empleado));
+                        }
+                    }
+                };
+
             });
-
-            // funciones
-
-            $scope.BuscarEmpleado = function () {
-                $scope.enviado = false;
-                if ($scope.buscar_cedula == undefined) {
-                    $scope.resultado = false;
-                    $scope.empleado = undefined;
-                } else {
-                    var cont = 0;
-                    for (var i in empleados) {
-                        if (empleados[i].cedula == $scope.buscar_cedula) {
-                            // aqui el codigo cuando lo encuentro
-                            $scope.empleado = empleados[i];
-                            $scope.resultado = true;
-                            cont++;
-                        } else if (cont == 0) {
-                            $scope.empleado = undefined;
-                            $scope.resultado = false;
-                        }
-                    }
-                }
-            };
-            $scope.RemoveEmpleado = function () {
-                // AQUI EL CODIGO PARA ENVIAR el empleado AL SERVIDOR a seleccionados
-                if ($scope.empleado !== undefined) {
-                    if (confirm("¿Desea retirar este empleado de la lista de seleccionados?")) {
-                        // en este punto se manda el id al server para remover el empleado
-                        var index = empleados.indexOf($scope.empleado);
-                        if (index > -1) {
-                            empleados.splice(index, 1);
-                            $scope.empleado = undefined;
-                            $scope.buscar_cedula = undefined;
-                            $scope.enviado = true;
-                            $scope.resultado = false;
-                        }
-                    }
-                }
-            };
-
-            $scope.enviar = function () {
-                if (confirm("¿Desea guardar cambios?")) {
-                    var dataTable = hot.getData();
-                    for (var i in dataTable) {
-                        var empleado = {
-                            id: dataTable[i][0],
-                            Cedula: dataTable[i][1],
-                            Nombre: dataTable[i][2],
-                            tipo: dataTable[i][3],
-                            Departament: dataTable[i][4],
-                            Area: dataTable[i][5],
-                            SubArea: dataTable[i][6],
-                            CrewCd: dataTable[i][7],
-                            RosterPosition: dataTable[i][8],
-                            Unit: dataTable[i][9]
-                        }
-                        /*$http.post("/api/empleado/", empleado).then(function (data) {
-                            console.log(JSON.stringify(data.data));
-                        });*/
-                        console.log(JSON.stringify(empleado));
-                    }
-                }
-            };
-
         });
+
+
+    
     
 
 

@@ -116,61 +116,23 @@
                             <div class="col-sm-4">
                                 <button ng-click="enviar()" type="button" class="btn btn-success">Guardar cambios</button>
                             </div>
-
-                            <!-- *****************************************MODAL************************************** -->
-                            <div class="modal fade" id="ventana">
-                                <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                            <h4 class="modal-title">Deseleccionar un empleado</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <br>
-                                                    <div class="col-sm-12">
-                                                        <div class="col-sm-2"><label for="">Documento:</label></div>
-                                                        <div class="col-sm-10"><input type="number" ng-change="BuscarEmpleado()" ng-model="buscar_cedula" class="form-control" size="60"></input></div>
-                                                    </div>
-                                                    <div class="col-sm-8 col-sm-offset-2" ng-show="enviado">
-                                                        <br>
-                                                        <div class="alert alert-success" style="text-align: center;">
-                                                            <strong>¡Operacion exitosa!</strong>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-12" ng-show="resultado">
-                                                        <br>
-                                                        <h4>Nombre: {{empleado.Nombre}}</h4>
-                                                        <div ng-show="empleado">
-                                                            <ol class="breadcrumb">
-                                                                <li><strong>{{empleado.Unit}}</strong></li>
-                                                                <li>{{empleado.Departament}}</li>
-                                                                <li>{{empleado.Area}}</li>
-                                                                <li>{{empleado.SubArea}}</li>
-                                                                <li class="active">{{empleado.CrewCd}}</li>
-                                                            </ol>
-                                                        </div>
-                                                        <hr>
-                                                    </div>
-                                                    <br>
-                                                    <br>
-                                                    <br>
-                                                    <div class="col-sm-12" ng-show="empleado">
-                                                        <div class="pull-right">
-                                                            <button ng-click="RemoveEmpleado()" type="button" class="btn btn-danger">Deseleccionar</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- ***********************************FIN******MODAL************************************** -->
                             <div class="col-sm-4">
                                 <a data-toggle="modal" href='#ventana' data-keyboard="false" data-backdrop class="btn btn-danger">Deseleccionar empleado</a>
                             </div>
+                            <br>
+                            <br>
+                            <br>
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2">Periodos:</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control" required="required">
+                                            <option ng-model="idperiodo" ng-repeat="p in periodos">{{p.nombre}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
                             <br>
                             <br>
                             <div id="example"></div>
@@ -178,6 +140,57 @@
                     </div>
                 </div>
             </div>
+            <!-- *****************************************MODAL************************************** -->
+            <div class="modal fade" id="ventana">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title">Deseleccionar un empleado</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <br>
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-2"><label for="">Documento:</label></div>
+                                        <div class="col-sm-10"><input type="number" ng-change="BuscarEmpleado()" ng-model="buscar_cedula" class="form-control" size="60"></input></div>
+                                    </div>
+                                    <div class="col-sm-8 col-sm-offset-2" ng-show="enviado">
+                                        <br>
+                                        <div class="alert alert-success" style="text-align: center;">
+                                            <strong>¡Operacion exitosa!</strong>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12" ng-show="resultado">
+                                        <br>
+                                        <h4>Nombre: {{empleado.Nombre}}</h4>
+                                        <div ng-show="empleado">
+                                            <ol class="breadcrumb">
+                                                <li><strong>{{empleado.Unit}}</strong></li>
+                                                <li>{{empleado.Departament}}</li>
+                                                <li>{{empleado.Area}}</li>
+                                                <li>{{empleado.SubArea}}</li>
+                                                <li class="active">{{empleado.CrewCd}}</li>
+                                            </ol>
+                                        </div>
+                                        <hr>
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <div class="col-sm-12" ng-show="empleado">
+                                        <div class="pull-right">
+                                            <button ng-click="RemoveEmpleado()" type="button" class="btn btn-danger">Deseleccionar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ***********************************FIN******MODAL************************************** -->
             <!-- /#page-content-wrapper -->
         </div>
 

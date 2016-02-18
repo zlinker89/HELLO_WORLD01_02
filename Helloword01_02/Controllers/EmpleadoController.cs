@@ -23,6 +23,7 @@ namespace Helloword01_02.Controllers
         // GET api/Empleado
         public IQueryable<empleadoDTO> Getempleado()
         {
+            /*
             var lastId = (from e in db.empleado
                             join se in db.empleados_selecionados on e.id equals se.id_empleados
                             where se.estado == 1
@@ -31,6 +32,22 @@ namespace Helloword01_02.Controllers
             var empleados = from e in db.empleado
                             join se in db.empleados_selecionados on e.id equals se.id_empleados
                             where se.estado == 1 && se.id_periodos == lastId
+                            select new empleadoDTO()
+                            {
+                                id = e.id,
+                                Nombre = e.Nombre,
+                                cedula = e.cedula,
+                                id_user = e.id_user,
+                                RosterPosition = e.RosterPosition,
+                                SubArea = e.SubArea,
+                                tipo = e.tipo,
+                                Area = e.Area,
+                                CrewCd = e.CrewCd,
+                                Departament = e.Departament,
+                                Unit = e.Unit,
+                            };
+            return empleados;*/
+            var empleados = from e in db.empleado
                             select new empleadoDTO()
                             {
                                 id = e.id,
