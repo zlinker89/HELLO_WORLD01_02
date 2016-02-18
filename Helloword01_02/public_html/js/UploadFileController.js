@@ -110,12 +110,11 @@ app.controller('PreviewController', function ($scope, XLSXReaderService, $http) 
                                 if ($scope.contador == obj.length - 1) {
                                     barra.removeClass("active");
                                     // aqui oculto la barra y muestro el mensaje
+                                    $scope.mensaje = true;
                                     setTimeout(function () {
                                         $(".progress").css("display", "none");
-                                        $scope.mensaje = true;
                                         // cerramos el modal
-                                        setTimeout(function () { $('#ventana1').modal('hide'); }, 1500)
-                                    }, 1000);
+                                    }, 200);
                                 }
                             });
                         }else{
