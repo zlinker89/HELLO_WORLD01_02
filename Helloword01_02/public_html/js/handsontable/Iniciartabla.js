@@ -60,6 +60,10 @@ angular.module("miApp", []).controller("tabla", function ($scope, $http) {
                                 type: "text"
                             },
                             {
+                                data: "email",
+                                type: "text"
+                            },
+                            {
                                 data: "tipo",
                                 type: "text"
                             },
@@ -95,6 +99,7 @@ angular.module("miApp", []).controller("tabla", function ($scope, $http) {
                         "ID",
                         "Cedula",
                         "Nombre",
+                        "Email",
                         "Type",
                         "Departament",
                         "Area",

@@ -32,6 +32,7 @@ namespace Helloword01_02.Controllers
                                 CrewCd = e.CrewCd,
                                 Departament = e.Departament,
                                 Unit = e.Unit,
+                                email = e.email,
                             };
             return empleados;
         }

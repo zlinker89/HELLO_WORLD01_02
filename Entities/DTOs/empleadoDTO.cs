@@ -19,5 +19,7 @@ namespace Entities.DTOs
         public string RosterPosition { get; set; }
         public string Unit { get; set; }
         public Nullable<long> id_user { get; set; }
+        public string email { get; set; }
+
     }
 }
