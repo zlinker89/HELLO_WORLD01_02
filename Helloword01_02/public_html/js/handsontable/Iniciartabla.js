@@ -101,7 +101,7 @@ angular.module("miApp", []).controller("tabla", function ($scope, $http) {
                         "Nombre",
                         "Email",
                         "Type",
-                        "Departament",
+                        "Department",
                         "Area",
                         "SubArea",
                         "Crew Cd",

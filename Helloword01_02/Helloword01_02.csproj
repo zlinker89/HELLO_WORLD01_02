@@ -175,6 +175,7 @@
     <Content Include="public_html\Empleados\img\tablero.png" />
     <Content Include="public_html\Empleados\img\tablero1.png" />
     <Content Include="public_html\Empleados\indexempleado.html" />
+    <Content Include="public_html\Empleados\listado_empleados.html" />
     <Content Include="public_html\Empleados\prueba1.html" />
     <Content Include="public_html\Empleados\seleccionados.html" />
     <Content Include="public_html\fonts\fontawesome-webfont.svg" />
@@ -191,6 +192,7 @@
     <Content Include="public_html\js\EvaluacionInit.js" />
     <Content Include="public_html\js\ExamenINI.js" />
     <Content Include="public_html\js\examenInit.js" />
+    <Content Include="public_html\js\handsontable\BuscarEmpleados.js" />
     <Content Include="public_html\js\handsontable\handsontable.full.min.css" />
     <Content Include="public_html\js\handsontable\handsontable.full.min.js" />
     <Content Include="public_html\js\handsontable\Iniciartabla.js" />
