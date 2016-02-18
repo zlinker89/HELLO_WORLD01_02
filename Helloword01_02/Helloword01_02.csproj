@@ -295,6 +295,7 @@
     <Content Include="public_html\js\radarChar.js" />
     <Content Include="public_html\js\SessionAdmin.js" />
     <Content Include="public_html\js\sessionApp.js" />
+    <Content Include="public_html\js\SessionSecurity.js" />
     <Content Include="public_html\js\UploadFileController.js" />
     <Content Include="public_html\js\xlsx\jszip.js" />
     <Content Include="public_html\js\xlsx\lodash.min.js" />
@@ -315,6 +316,8 @@
     <Content Include="public_html\periodos\periodos.html" />
     <Content Include="public_html\reportes\index.html" />
     <Content Include="public_html\reportes\reportes.html" />
+    <Content Include="public_html\seguridad\index.html" />
+    <Content Include="public_html\seguridad\seguridadUsuarios.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />

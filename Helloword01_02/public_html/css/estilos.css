@@ -425,3 +425,6 @@
             	background: #184b5e;
             	z-index: 10071;
             }
+            .mover{
+                transform:translate(110px,0px);
+            }

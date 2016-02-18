@@ -8,13 +8,15 @@ if (sesion == null) {
         cerrarSession();
     }
 } else {
+    console.log("por aca");
     var cont = 0;
     for (var i in sesion.tipo_usuario) {
-        if (sesion.tipo_usuario[i] === 'Administrador') {
+        if (sesion.tipo_usuario[i].tipo === 'Administrador') {
             cont++;
-        }
+        } 
     }
-    if (cont > 0) {
+
+    if (cont == 0) {
         cerrarSession();
         location.href = "../login.html";
     }

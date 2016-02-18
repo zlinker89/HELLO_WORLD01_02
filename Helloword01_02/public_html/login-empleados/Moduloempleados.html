@@ -78,14 +78,16 @@
                             </a>
 						</div>
 						<ul class="nav navbar-nav navbar-right hidden-xs hidden-sm">
-                            <li style="transform:translate(330px,15px);z-index:2000;" ng-show="usuario.tipo_usuario.length > 1" class="hidden-sm hidden-xs">
+                            <li style="transform:translate(330px,15px);z-index:2000;" ng-show="usuario.tipo_usuario.length > 1"  class="hidden-sm hidden-xs">
                                 <select ng-model="tipos" ng-change="CambiarPagina()">
                                     <option ng-repeat="t in usuario.tipo_usuario">{{t.tipo}}</option>
                                 </select>
                             </li>
-                            <li >
-                                <span class="col-xs-8"><h4>{{usuario.empleado.Nombre}}</h4> </span>
-                                <span class="col-xs-4" id="icono_user"><i class="fa fa-user"></i></span>
+                            <li>
+                                <div ng-class="{mover: usuario.tipo_usuario.length == 1}">
+                                    <span class="col-xs-8"><h4>{{usuario.empleado.Nombre}}</h4> </span>
+                                    <span class="col-xs-4" id="icono_user"><i class="fa fa-user"></i></span>
+                                </div>
                             </li>	
 						</ul>
 						<!-- Collect the nav links, forms, and other content for toggling -->

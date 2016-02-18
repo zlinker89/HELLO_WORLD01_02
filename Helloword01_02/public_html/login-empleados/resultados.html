@@ -113,8 +113,10 @@
                                     </select>
                                 </li>
                                 <li>
-                                    <span class="col-xs-8"><h4>{{usuario.empleado.Nombre}}</h4> </span>
-                                    <span class="col-xs-4" id="icono_user"><i class="fa fa-user"></i></span>
+                                    <div ng-class="{mover: usuario.tipo_usuario.length == 1}">
+                                        <span class="col-xs-8"><h4>{{usuario.empleado.Nombre}}</h4> </span>
+                                        <span class="col-xs-4" id="icono_user"><i class="fa fa-user"></i></span>
+                                    </div>
                                 </li>
                             </ul>
                             <!-- Collect the nav links, forms, and other content for toggling -->

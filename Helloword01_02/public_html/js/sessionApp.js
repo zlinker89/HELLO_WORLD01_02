@@ -10,11 +10,11 @@
     } else {
         var cont = 0;
         for (var i in sesion.tipo_usuario) {
-            if (sesion.tipo_usuario[i] === 'Empleado') {
+            if (sesion.tipo_usuario[i].tipo === 'Empleado') {
                 cont++;
             }
         }
-        if (cont > 0) {
+        if (cont == 0) {
             cerrarSession();
             location.href = "../login.html";
         }
