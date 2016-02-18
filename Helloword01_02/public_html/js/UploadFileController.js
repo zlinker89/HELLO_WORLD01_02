@@ -41,8 +41,8 @@ app.factory("XLSXReaderService", ['$q', '$rootScope',
 
 app.controller('PreviewController', function ($scope, XLSXReaderService, $http) {
     
-    document.getElementById("mensaje").style.display = "none";
-    document.getElementById("error").style.display = "none";
+    $scope.mensaje = false;
+    $scope.error = false;
     $scope.showPreview = false;
     $scope.showJSONPreview = true;
     $scope.json_string = "";
@@ -63,8 +63,8 @@ app.controller('PreviewController', function ($scope, XLSXReaderService, $http) 
 
     $scope.EnviarLista = function(){
         // reiniciamos siempre el modal
-        document.getElementById("mensaje").style.display = "none";
-        document.getElementById("error").style.display = "none";
+        $scope.mensaje = false;
+        $scope.error = false;
         $(".progress").css("display","block");
         $(".progress-bar").css("width","0%");
 
@@ -112,7 +112,7 @@ app.controller('PreviewController', function ($scope, XLSXReaderService, $http) 
                                     // aqui oculto la barra y muestro el mensaje
                                     setTimeout(function () {
                                         $(".progress").css("display", "none");
-                                        document.getElementById("mensaje").style.display = "block";
+                                        $scope.mensaje = true;
                                         // cerramos el modal
                                         setTimeout(function () { $('#ventana1').modal('hide'); }, 1500)
                                     }, 1000);
@@ -125,8 +125,7 @@ app.controller('PreviewController', function ($scope, XLSXReaderService, $http) 
                 }
                 
             }else{
-                document.getElementById("error").style.display = "block";
-
+                $scope.error = true;
             }
         }catch(Exepcion){
             alert("Debe seleccionar una hoja valida");

@@ -157,12 +157,12 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <div class="alert alert-success" id="mensaje">
-                                        <button type="button" data-dismiss="alert" class="close" aria-hidden="true">&times;</button>
+                                    <div class="alert alert-success" ng-show="mensaje">
+                                        <button type="button" ng-click="mensaje = false" class="close" aria-hidden="true">&times;</button>
                                         <strong>Completado!</strong> Se ha subido el archivo.
                                     </div>
-                                    <div class="alert alert-danger" id="error">
-                                        <button type="button" data-dismiss="alert" class="close" aria-hidden="true">&times;</button>
+                                    <div class="alert alert-danger" ng-show="error">
+                                        <button type="button" ng-click="error = false" class="close" aria-hidden="true">&times;</button>
                                         <strong>Error!</strong> Debe subir un archivo de excel.
                                     </div>
                                 </div>
