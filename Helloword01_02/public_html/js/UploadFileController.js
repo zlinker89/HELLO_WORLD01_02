@@ -100,7 +100,8 @@ app.controller('PreviewController', function ($scope, XLSXReaderService, $http) 
                                 SubArea: obj[i].SubArea,
                                 CrewCd: obj[i]['Crew Cd'],
                                 RosterPosition: obj[i]['Roster position'],
-                                Unit: obj[i].Unit
+                                Unit: obj[i].Unit,
+                                email: obj[i].Email
                             }
                             //console.log(JSON.stringify(empleado));
                             $http.post("/api/Empleado/", empleado).then(function (data) {
