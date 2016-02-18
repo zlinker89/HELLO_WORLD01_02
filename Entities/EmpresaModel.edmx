@@ -29,6 +29,7 @@
           <Property Name="RosterPosition" Type="varchar" MaxLength="50" />
           <Property Name="Unit" Type="varchar" MaxLength="50" />
           <Property Name="id_user" Type="bigint" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="empleados_selecionados">
           <Key>
@@ -364,6 +365,7 @@
           <Property Name="id_user" Type="Int64" />
           <NavigationProperty Name="usuarios" Relationship="Self.FK_empleado_usuarios" FromRole="empleado" ToRole="usuarios" />
           <NavigationProperty Name="empleados_selecionados" Relationship="Drummond02Model.FK_empleados_selecionados_empleado" FromRole="empleado" ToRole="empleados_selecionados" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="empleados_selecionados">
           <Key>
@@ -704,6 +706,7 @@
           <EntitySetMapping Name="empleado">
             <EntityTypeMapping TypeName="Drummond02Model.empleado">
               <MappingFragment StoreEntitySet="empleado">
+                <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="cedula" ColumnName="cedula" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />

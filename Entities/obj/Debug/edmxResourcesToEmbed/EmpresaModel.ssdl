@@ -24,6 +24,7 @@
     <Property Name="RosterPosition" Type="varchar" MaxLength="50" />
     <Property Name="Unit" Type="varchar" MaxLength="50" />
     <Property Name="id_user" Type="bigint" />
+    <Property Name="email" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="empleados_selecionados">
     <Key>

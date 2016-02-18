@@ -14,6 +14,7 @@
     <EntitySetMapping Name="empleado">
       <EntityTypeMapping TypeName="Drummond02Model.empleado">
         <MappingFragment StoreEntitySet="empleado">
+          <ScalarProperty Name="email" ColumnName="email" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="cedula" ColumnName="cedula" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
