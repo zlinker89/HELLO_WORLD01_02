@@ -1,16 +1,22 @@
 var app = angular.module("miApp", []);
 // verifico si existe una sesion
 var sesion = JSON.parse(localStorage.getItem("usuario")) || null;
-console.log(sesion.tipo_usuario[0].tipo);
-if (sesion === null) {
+if (sesion == null) {
     location.href = "../login.html";
 } else if (sesion.tipo_usuario.length < 2) {
-    if (sesion.tipo_usuario[0].tipo !== 'Empleado') {
+    if (sesion.tipo_usuario[0].tipo !== 'Administrador') {
         cerrarSession();
-    } else if (sesion.tipo_usuario.length > 2) {
-        if (sesion.tipo_usuario[0].tipo !== 'Administrador' || sesion.tipo_usuario[0].tipo !== 'Seguridad') {
-            cerrarSession();
+    }
+} else {
+    var cont = 0;
+    for (var i in sesion.tipo_usuario) {
+        if (sesion.tipo_usuario[i] === 'Administrador') {
+            cont++;
         }
+    }
+    if (cont > 0) {
+        cerrarSession();
+        location.href = "../login.html";
     }
 }
 var url = '/api/logout/' + sesion.id;
