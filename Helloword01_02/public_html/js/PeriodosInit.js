@@ -126,6 +126,11 @@ app.controller("pagina", function ($scope, $filter, $http) {
             // functions have been describe process the data for display
             $scope.search();
 
+            // get id
+            $scope.GetId = function (i) {
+                $scope.idperiodo = $scope.items[i].id;
+            };
+
             $scope.cambiarPeriodo = function (i) {
                 $http.get('/api/Evaluacion/' + $scope.items[i].id_evaluacion).then(function (d) {
                     $scope.id_pudate = $scope.items[i].id;
@@ -188,6 +193,46 @@ app.controller("pagina", function ($scope, $filter, $http) {
         
         
     };
+    
+    // enviar notificaciones
+    $scope.EnviarNotifiaciones = function () {
+        $scope.progreso = true;
+        $(".progress-bar").width("100%");
+        var notifiacion = {
+            idperiodo: $scope.idperiodo,
+            asunto: $scope.asunto,
+            mensaje: $scope.mensaje,
+            email: $scope.email,
+            pass: $scope.pass,
+            tcorreo: null
+        };
+        
+        if(notifiacion.email === undefined || notifiacion.email === ""){
+            $("#email").css('color', 'red');
+            $("#email").focus();
+            $(".progress-bar").width("0%");
+            $scope.progreso = false;
+        }else if (notifiacion.pass === undefined || notifiacion.pass === "") {
+            $("#pass").css('color', 'red');
+            $("#pass").focus();
+            $(".progress-bar").width("0%");
+            $scope.progreso = false;
+        } else {
+            var email_partes = notifiacion.email.split('@')[1];
+            notifiacion.tcorreo = email_partes;
+            // aqui se envia el correo
+            $http.post('/Notifiaciones/', notifiacion).then(function (d) {
+                console.log(d.data);
+                $scope.progreso = false;
+                setTimeout(function () {
+                    $(".progress-bar").width("0%");
+                },1000);
+            });
+        }
+        
+    };
+
+    
 
     // update
     $scope.UpdatePeriodo = function () {

@@ -227,7 +227,7 @@
                                                     {{item.fechafinal.split('T')[0]}}
                                                 </td>
                                                 <td>
-                                                    <a data-toggle="modal" href='#notificaciones' class="btn amarillo" data-toggle="modal" data-backdrop="static" data-keyboard="false">
+                                                    <a href='#enviarnotificaciones' ng-click="GetId($index)" class="btn amarillo" data-toggle="modal" data-backdrop="static" data-keyboard="false">
                                                         <i class="fa fa-bell-o fa-2x"></i>
                                                     </a>
                                                 </td>
@@ -350,130 +350,45 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h4 class="modal-title"> NOTIFICACIONES</h4>
+                            <h4 class="modal-title">Crear Notificación</h4>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body" ng-init="progreso = false">
                             <div class="row alineacion">
-                                <h5> Generar notificaciones</h5>
+                                <div class="col-sm-2"><label>Asunto:</label></div>
+                                <div class="col-sm-10"><input type="text" class="form-control" autocomplete="off"  ng-model="asunto" ng-init="asunto = 'Enhorabuena estas seleccionado'" maxlength="250"></div>
+                                <br />
+                                <br />
+                                <br />
+                                <div class="col-sm-2"><label>email:</label></div>
+                                <div class="col-sm-4"><input type="email" class="form-control" id="email" autocomplete="off" ng-model="email" placeholder="email@empresa.com" maxlength="250"></div>
+                                <div class="col-sm-2"><label>Contraseña:</label></div>
+                                <div class="col-sm-4"><input type="password" class="form-control" id="pass" ng-model="pass" autocomplete="off" placeholder="****************" maxlength="400"></div>
+                                <br />
+                                <br />
+                                <br />
+                                <label for="textarea" class="col-sm-2">Mensaje:</label>
+                                <div class="col-sm-10">
+                                    <textarea ng-model="mensaje" id="textarea" class="form-control" rows="10" required="required"></textarea>
+                                </div>
+
                                 <div class="col-sm-12">
-                                    <span class="col-sm-4"><label for="">Evaluación: </label></span>
-                                    <span class="col-sm-offset-2 col-sm-6"><i class="fa fa-toggle-on fa-2x"></i></span>
-                                </div>
-                                <br>
-                                <br>
-                                <div class="col-sm-4">
-                                    <label for="">Tamaño de la muestra: </label>
-                                </div>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="" placeholder="1000">
-                                </div>
-                            </div>
-                            <br>
-                            <br>
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%" ,>
-                                    <span class="sr-only">45% Complete</span>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-            <!-- Aqui empieza el modal notificaciones-->
-            <div class="modal" id="notificaciones" data-keyboard="false" data-backdrop>
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h4 class="modal-title"></h4>
-                        </div>
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col-sm-8 col-sm-offset-2">
-                                    <div style="text-align: center;">
-                                        <h3>NOTIFICACIONES</h3>
-                                        <br>
-                                    </div>
-                                    <div>
-                                        <script type="text/javascript">
-                                            var sortingOrder = 'evaluacion';
-                                        </script>
-
-
-
-                                        <div class="col-sm-12">
-                                            <h4>Pagina {{currentPage + 1}} de {{pagedItems.length}} </h4>
-                                        </div>
-                                        <div class="col-sm-12">
-
-                                            <table class="table table-bordered table-hover" style="text-align: center;">
-                                                <thead>
-                                                    <tr class="list-group-item-header">
-                                                        <th>Nombre de periodo</th>
-                                                        <th style="text-align: center;" colspan="">Estado</th>
-                                                        <th style="text-align: center;">Editar fecha de fin</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr ng-repeat="item in pagedItems[currentPage] | orderBy:sortingOrder:reverse">
-                                                        <td>{{item.nombre}}</td>
-
-                                                        <td>
-                                                            <a ng-click="cambiarPregunta($index)" class="btn amarillo" data-toggle="modal" data-backdrop="static" data-keyboard="false" href='#modificar-evaluacion'>
-                                                                <i class="fa fa-pencil-square fa-2x"></i>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <div class="col-sm-12">
-
-                                            <div class="col-sm-4 col-sm-offset-4">
-                                                <a href ng-click="prevPage()" class="amarillo">
-                                                    <div class="col-xs-6" ng-class="{gris: currentPage == 0}" style="text-align: center;">
-                                                        <i class="fa fa-arrow-circle-left fa-4x"></i>
-                                                        <br>
-                                                        Anterior
-                                                    </div>
-                                                </a>
-                                                <a href ng-click="nextPage()" class="amarillo">
-                                                    <div class="col-xs-6" ng-class="{gris: currentPage == pagedItems.length - 1}" style="text-align: center;">
-                                                        <i class="fa fa-arrow-circle-right fa-4x"></i>
-                                                        <br>
-                                                        Siguiente
-                                                    </div>
-                                                </a>
-                                            </div>
+                                    <div class="progress" ng-show="progreso">
+                                        <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                                            <span class="sr-only">100% Complete</span>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-sm-8">
-                                            <p style="background: #dddddd; text-align: justify; padding: 3px;">
-                                                Recuerde  selecionar y guardar antes de salir  asigneles el grupo de empleado en el icono listar empleados para que se les notifique a los  empleados si tiene alguna duda el boton de ayuda de la parte inferior del sistema lo ayuda
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="form-group" ng-show="bandera">
-                                        <ul class="list-group">
-                                            <li class="list-group-item">
-                                                <label for="usr">Evaluacion 1 </label>
-                                                <a data-toggle="modal" href='#enviarnotificaciones'>
-                                                    <span class="pull-right"><button type="button" data-dismiss="modal" class="btn btn-primary">Enviar notificaciones</button></span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                </div>
+                                <div class="col-sm-12" style="text-align:center;">
+                                    <br />
+                                    <button type="button" ng-click="EnviarNotifiaciones()" class="btn btn-success btn-lg">Enviar</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
+            
 
 
         <!-- Aqui comienza el modal de editar periodo-->

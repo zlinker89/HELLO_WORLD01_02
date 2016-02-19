@@ -55,6 +55,7 @@
     <Compile Include="DTOs\empleadoDTO.cs" />
     <Compile Include="DTOs\empleado_seleccionadoDTO.cs" />
     <Compile Include="DTOs\EvaluacionDTO.cs" />
+    <Compile Include="DTOs\NotifiacionesDTO.cs" />
     <Compile Include="DTOs\PeriodoDTO.cs" />
     <Compile Include="DTOs\PreguntaDTO.cs" />
     <Compile Include="DTOs\tipos_usuarioDTO.cs" />
