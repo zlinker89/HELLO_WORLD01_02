@@ -118,8 +118,8 @@ app.controller('resultados', function ($scope, $http) {
 		.range(["#EDC951","#CC333F","#00A0B0","#ffaa99"]);
 		
 	var radarChartOptions = {
-	  w: 400,
-	  h: 400,
+	  w: 300,
+	  h: 300,
 	  margin: margin,
 	  maxValue: 0.5,
 	  levels: 5,
