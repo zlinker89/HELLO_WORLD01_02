@@ -204,6 +204,7 @@
                                                 <th style="text-align: center;">Estado</th>
                                                 <th style="text-align: center;">Editar</th>
                                                 <th style="text-align: center;">Fecha fin</th>
+                                                <th style="text-align: center;">Empleados</th>
                                                 <th style="text-align: center;">Enviar notifiaciones</th>
                                             </tr>
                                         </thead>
@@ -227,6 +228,11 @@
                                                     {{item.fechafinal.split('T')[0]}}
                                                 </td>
                                                 <td>
+                                                    <a ng-href='empleados.html?periodo={{item.id}}' class="btn amarillo">
+                                                        <i class="fa fa-list-alt fa-2x"></i>
+                                                    </a>
+                                                </td>
+                                                <td>
                                                     <a href='#enviarnotificaciones' ng-click="GetId($index)" class="btn amarillo" data-toggle="modal" data-backdrop="static" data-keyboard="false">
                                                         <i class="fa fa-bell-o fa-2x"></i>
                                                     </a>
@@ -237,7 +243,7 @@
                                 </div>
                                 <div class="col-sm-12">
 
-                                    <div class="col-sm-4 col-sm-offset-4">
+                                    <div class="col-md-4 col-md-offset-4">
                                         <a href ng-click="prevPage()" class="amarillo">
                                             <div class="col-xs-6" ng-class="{gris: currentPage == 0}" style="text-align: center;">
                                                 <i class="fa fa-arrow-circle-left fa-4x"></i>
@@ -256,17 +262,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <a data-toggle="modal" href='#empleados'>
-                            <div class="col-xs-6 col-sm-4 caja_der morado" style="text-align: center">
-                                <div class="row">
-                                    <i class="fa fa-th-list fa-2x"></i>
-                                    <h4> Empleados</h4>
-                                </div>
-                            </div>
-                        </a>
-
                     </div>
                     <div class="row">
                         <div class="col-xs-12 col-sm-offset-7 col-sm-5 submenu">

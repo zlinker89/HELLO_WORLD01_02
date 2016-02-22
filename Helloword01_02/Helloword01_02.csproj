@@ -178,7 +178,6 @@
     <Content Include="public_html\Empleados\indexempleado.html" />
     <Content Include="public_html\Empleados\listado_empleados.html" />
     <Content Include="public_html\Empleados\prueba1.html" />
-    <Content Include="public_html\Empleados\seleccionados.html" />
     <Content Include="public_html\fonts\fontawesome-webfont.svg" />
     <Content Include="public_html\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="public_html\img\tablero.png" />
@@ -196,6 +195,7 @@
     <Content Include="public_html\js\handsontable\BuscarEmpleados.js" />
     <Content Include="public_html\js\handsontable\handsontable.full.min.css" />
     <Content Include="public_html\js\handsontable\handsontable.full.min.js" />
+    <Content Include="public_html\js\handsontable\inactivoInit.js" />
     <Content Include="public_html\js\handsontable\Iniciartabla.js" />
     <Content Include="public_html\js\handsontable\moment\locale\af.js" />
     <Content Include="public_html\js\handsontable\moment\locale\ar-ma.js" />
@@ -314,7 +314,10 @@
     <Content Include="public_html\login.html" />
     <Content Include="public_html\loginadmin\preguntas.html" />
     <Content Include="public_html\modal.html" />
+    <Content Include="public_html\periodos\empleados.html" />
+    <Content Include="public_html\periodos\Inactivos.html" />
     <Content Include="public_html\periodos\periodos.html" />
+    <Content Include="public_html\periodos\seleccionados.html" />
     <Content Include="public_html\reportes\index.html" />
     <Content Include="public_html\reportes\reportes.html" />
     <Content Include="public_html\seguridad\index.html" />
