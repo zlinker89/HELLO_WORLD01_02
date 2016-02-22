@@ -147,6 +147,7 @@ app.controller("pagina", function ($scope, $filter, $http) {
         console.log(competencia);
         $http.post('/api/Competencias/', competencia).then(function (d) {
             console.log(d.data);
+            $scope.nombre_competencia = '';
             // refrescamos
             $scope.iniciar();
         });
@@ -158,6 +159,7 @@ app.controller("pagina", function ($scope, $filter, $http) {
             id: $scope.id,
             nombre: $scope.nombre_competencia_update,
             rango_evaluacion: $scope.rango_evaluacion_update,
+            idevaluacion: idevalaucion.evaluacion
         };
         console.log(competencia);
         $http.put('/api/Competencias/' + competencia.id, competencia).then(function () {

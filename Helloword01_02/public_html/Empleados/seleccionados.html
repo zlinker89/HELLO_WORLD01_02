@@ -1,0 +1,217 @@
+﻿<!DOCTYPE html>
+<html lang="es" ng-app="miApp">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Modulo Empleados</title>
+
+        <!-- Bootstrap CSS -->
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.css" rel="stylesheet">
+        <link href="../css/side-wraper.css" rel="stylesheet">
+        <!--Mis estilos-->
+        <link href="../css/estilos.css" rel="stylesheet">
+        <link href="../css/menu.css" rel="stylesheet">
+
+        <script src="../js/handsontable/handsontable.full.min.js"></script>
+        <link href="../js/handsontable/handsontable.full.min.css" rel="stylesheet" />
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div id="wrapper" ng-controller="tabla">
+
+            <!-- Sidebar -->
+            <div id="sidebar-wrapper">
+                <ul class="sidebar-nav">
+                    <li class="sidebar-brand">
+                        <a href="#menu-toggle" id="menu-toggle" style="text-align: center;">
+                            <button class="btn btn-primary">Cerrar</button>
+                        </a>
+                    </li>
+                    <li>
+                        <div style="margin-right:35px; margin-top:30px;" class="row col-xs-12 col-sm-12">
+                            <img src="../img/logo.png" alt="..." class="img-circle" width="150px" height="150px">
+                        </div>
+                    </li>
+                    <li>
+                        <a href="../loginadmin/evaluacion.html" class="amarillo">
+                            <div class="col-xs-12 caja_izq row-centered">
+                                <i class="fa fa-pencil icono_grandes"></i>
+                                <h4 class="etiquetas">Evaluación</h4>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="indexempleado.html" class="activo">
+                            <div class="col-xs-12 caja_izq row-centered">
+                                <i class="fa fa-users icono_grandes"></i>
+                                <h4 class="etiquetas">Empleados</h4>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../periodos/periodos.html" class="amarillo">
+                            <div class="col-xs-12 caja_izq row-centered">
+                                <i class="fa fa-clock-o icono_grandes"></i>
+                                <h4 class="etiquetas">Periodos</h4>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../reportes/index.html" class="amarillo">
+                            <div class="col-xs-12 caja_izq row-centered">
+                                <i class="fa fa-bar-chart icono_grandes"></i>
+                                <h4 class="etiquetas">Reportes</h4>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /#sidebar-wrapper -->
+            <!-- Page Content -->
+            <div id="page-content-wrapper">
+                <div class="container-fluid">
+                    <div class="row" id="menu">
+                        <nav class="navbar navbar-default" role="navigation">
+                            <!-- Brand and toggle get grouped for better mobile display -->
+                            <div class="navbar-header">
+                                <button type="button" id="mostrar" class="navbar-toggle pull-left menu_responsive" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <a class="navbar-brand hidden-lg hidden-md pull-right" style="color:black;transform:translate(0px,-3px)" ng-show="usuario.tipo_usuario.length > 1">
+                                    <select class="form-control" ng-model="tipos" ng-change="CambiarPagina()">
+                                        <option ng-repeat="t in usuario.tipo_usuario">{{t.tipo}}</option>
+                                    </select>
+                                </a>
+                            </div>
+                            <ul class="nav navbar-nav navbar-right hidden-xs hidden-sm">
+                                <li style="transform:translate(330px,15px);z-index:2000;" ng-show="usuario.tipo_usuario.length > 1" class="hidden-sm hidden-xs">
+                                    <select ng-model="tipos" ng-change="CambiarPagina()">
+                                        <option ng-repeat="t in usuario.tipo_usuario">{{t.tipo}}</option>
+                                    </select>
+                                </li>
+                                <li>
+                                    <span class="col-xs-8"><h4>{{usuario.empleado.Nombre}}</h4> </span>
+                                    <span class="col-xs-4" id="icono_user"><i class="fa fa-user"></i></span>
+                                </li>
+                            </ul>
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse navbar-ex1-collapse">
+
+                            </div><!-- /.navbar-collapse -->
+                        </nav>
+                    </div>
+                    <div class="row">
+                        <div class="row caja_der" id="iconos_der">
+                            <div class="col-sm-4">
+                                <button ng-click="enviar()" type="button" class="btn btn-success">Guardar cambios</button>
+                            </div>
+                            <div class="col-sm-4">
+                                <a data-toggle="modal" href='#ventana' data-keyboard="false" data-backdrop class="btn btn-danger">Deseleccionar empleado</a>
+                            </div>
+                            <br>
+                            <br>
+                            <br>
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2">Periodos:</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control" required="required">
+                                            <option ng-model="idperiodo" ng-repeat="p in periodos">{{p.nombre}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <br>
+                            <br>
+                            <div id="example"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- *****************************************MODAL************************************** -->
+            <div class="modal fade" id="ventana">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title">Deseleccionar un empleado</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <br>
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-2"><label for="">Documento:</label></div>
+                                        <div class="col-sm-10"><input type="number" ng-change="BuscarEmpleado()" ng-model="buscar_cedula" class="form-control" size="60"></input></div>
+                                    </div>
+                                    <div class="col-sm-8 col-sm-offset-2" ng-show="enviado">
+                                        <br>
+                                        <div class="alert alert-success" style="text-align: center;">
+                                            <strong>¡Operacion exitosa!</strong>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12" ng-show="resultado">
+                                        <br>
+                                        <h4>Nombre: {{empleado.Nombre}}</h4>
+                                        <div ng-show="empleado">
+                                            <ol class="breadcrumb">
+                                                <li><strong>{{empleado.Unit}}</strong></li>
+                                                <li>{{empleado.Departament}}</li>
+                                                <li>{{empleado.Area}}</li>
+                                                <li>{{empleado.SubArea}}</li>
+                                                <li class="active">{{empleado.CrewCd}}</li>
+                                            </ol>
+                                        </div>
+                                        <hr>
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <div class="col-sm-12" ng-show="empleado">
+                                        <div class="pull-right">
+                                            <button ng-click="RemoveEmpleado()" type="button" class="btn btn-danger">Deseleccionar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ***********************************FIN******MODAL************************************** -->
+            <!-- /#page-content-wrapper -->
+        </div>
+
+
+    
+
+        <!-- jQuery -->
+        <script src="../js/jquery.js"></script>
+        <!-- Bootstrap JavaScript -->
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/angular.min.js"></script>
+        <script src="../js/handsontable/Iniciartabla.js"></script>
+        <script type="text/javascript" >
+        // accion del boton mostrar del navbar
+            $("#mostrar").click(function(){
+                $("#wrapper").toggleClass("toggled");
+            });
+            $("#menu-toggle").click(function(e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+            });
+        </script>
+    </body>
+</html>

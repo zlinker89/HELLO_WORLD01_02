@@ -146,6 +146,7 @@ app.controller("evaluaciones", function ($scope, $filter, $http) {
         };
         $http.post('/api/Preguntas/', pregunta).then(function (d) {
             console.log(d.data);
+            $scope.pregunta = '';
             // refrescamos
             $scope.iniciar();
         });
