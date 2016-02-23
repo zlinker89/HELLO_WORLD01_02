@@ -120,7 +120,6 @@ app.controller('PreviewController', function ($scope, XLSXReaderService, $http) 
                                 par3: obj[i]['Par 3'],
                                 jefe: obj[i]['Jefe']
                             }
-                            //console.log(JSON.stringify(empleado));
                             $http.post("/api/Empleado/", empleado).then(function (data) {
                                 $scope.contador++;
                                 console.log(JSON.stringify(data.data));

@@ -176,6 +176,7 @@ namespace Helloword01_02.Controllers
         {
             try
             {
+                /*
                 using (var ctx = new Drummond02Entities())
                 {
                     // crea el objeto
@@ -194,11 +195,34 @@ namespace Helloword01_02.Controllers
                         utipo.idtipo_usuario = ctx.tipo_usuario.Where(x => x.tipo_usuario1 == "Empleado").FirstOrDefault().id; // id 1 es empleado
                         empleado.id_user = u.id;
                         // guardamos
-                        db.usuarios.Add(u);
-                        db.Usuario_Tipo_usuario.Add(utipo);
-                        db.empleado.Add(empleado);
-                        await db.SaveChangesAsync();
+                        ctx.usuarios.Add(u);
+                        ctx.Usuario_Tipo_usuario.Add(utipo);
+                        ctx.empleado.Add(empleado);
+                        await ctx.SaveChangesAsync();
                     }
+                }*/
+                // crea el objeto
+                usuarios u = new usuarios();
+                // verifico si ya existe un usuario
+                var cont = usuarioHelper.Search(x => x.nombre_usuario == empleado.cedula).ToList();
+                if (cont.Count() == 0)
+                {
+                    // SOLO registra un susuario si este no existe
+                    u.nombre_usuario = empleado.cedula;
+                    u.password_usuario = empleado.cedula;
+                    // insertar el usuario
+                    usuarioHelper.Create(u);
+                    //obtener el usario
+                    u = usuarioHelper.Search(x => x.nombre_usuario == empleado.cedula).First();
+                    // enlazamos el usuario con su tipo_usuario
+                    Usuario_Tipo_usuario utipo = new Usuario_Tipo_usuario();
+                    utipo.id_user = u.id;
+                    utipo.idtipo_usuario = tipo_usuarioHelper.Search(x => x.tipo_usuario1 == "Empleado").FirstOrDefault().id; // id 1 es empleado
+                    // lo insertamos
+                    utu.Create(utipo);
+                    empleado.id_user = u.id;
+                    db.empleado.Add(empleado);
+                    await db.SaveChangesAsync();
                 }
             }
             catch (Exception)
