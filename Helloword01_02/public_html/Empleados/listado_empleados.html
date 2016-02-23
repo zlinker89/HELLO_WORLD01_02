@@ -138,7 +138,7 @@
                                 <br>
                                 <div class="col-sm-12">
                                     <div class="col-sm-2"><label for="">Documento:</label></div>
-                                    <div class="col-sm-10"><input type="number" ng-change="BuscarEmpleado()" ng-model="buscar_cedula" class="form-control" size="60"></input></div>
+                                    <div class="col-sm-10"><input type="number" id="documento" readonly ng-model="empleado.cedula" class="form-control" size="60"></input></div>
                                 </div>
                                 <div class="col-sm-8 col-sm-offset-2" ng-show="enviado">
                                     <br>
@@ -146,60 +146,60 @@
                                         <strong>¡Operacion exitosa!</strong>
                                     </div>
                                 </div>
-                                <div class="col-sm-12" ng-show="resultado">
+                                <div class="col-sm-12">
                                     <br>
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label>Nombre:</label>
-                                            <input type="text" class="form-control" ng-model="empleado.Nombre">
+                                            <input type="text" id="nombre" class="form-control" ng-model="empleado.Nombre">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label>Email:</label>
-                                            <input type="text" class="form-control" ng-model="empleado.email">
+                                            <input type="text" id="email" class="form-control" ng-model="empleado.email">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label>Type:</label>
-                                            <input type="text" class="form-control" ng-model="empleado.tipo">
+                                            <input type="text" id="tipo" class="form-control" ng-model="empleado.tipo">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label>Department:</label>
-                                            <input type="text" class="form-control" ng-model="empleado.Departament">
+                                            <input type="text" id="department" class="form-control" ng-model="empleado.Departament">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label>Area:</label>
-                                            <input type="text" class="form-control" ng-model="empleado.Area">
+                                            <input type="text" id="area" class="form-control" ng-model="empleado.Area">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label>SubArea:</label>
-                                            <input type="text" class="form-control" ng-model="empleado.SubArea">
+                                            <input type="text" id="subarea" class="form-control" ng-model="empleado.SubArea">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label>Crew Cd:</label>
-                                            <input type="text" class="form-control" ng-model="empleado.CrewCd">
+                                            <input type="text" id="crewcd" class="form-control" ng-model="empleado.CrewCd">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label>RosterPosition:</label>
-                                            <input type="text" class="form-control" ng-model="empleado.RosterPosition">
+                                            <input type="text" id="rosterposition" class="form-control" ng-model="empleado.RosterPosition">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label>Unit:</label>
-                                            <input type="text" class="form-control" ng-model="empleado.Unit">
+                                            <input type="text" id="unit" class="form-control" ng-model="empleado.Unit">
                                         </div>
                                     </div>
                                     <hr>

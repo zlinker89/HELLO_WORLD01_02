@@ -21,6 +21,8 @@ if (sesion === null) {
     }
 }
 var url = '/api/logout/' + sesion.id;
+var empleado_seleccionado;
+var row;
 angular.module("miApp", []).controller("tabla", function ($scope, $http) {
     $scope.tipos = "Administrador";
     $scope.usuario = sesion;
@@ -108,6 +110,15 @@ angular.module("miApp", []).controller("tabla", function ($scope, $http) {
                 stretchH: "all",
                 rowHeaders: true,
                 columnSorting: true,
+                afterSelectionByProp: function (r1, c1, rf, ct) {
+                    row = r1;
+                    $("#nombre").val(empleados[r1].Nombre);
+                    $("#documento").val(empleados[r1].cedula);
+                    $("#email").val(empleados[r1].email);
+                    $("#tipo").val(empleados[r1].tipo);
+                    empleado_seleccionado = empleados[r1];
+                    $("#ventana").modal("show");
+                },
                 colHeaders: [
                     "ID",
                     "Cedula",
