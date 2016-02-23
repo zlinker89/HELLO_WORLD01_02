@@ -116,6 +116,12 @@ angular.module("miApp", []).controller("tabla", function ($scope, $http) {
                     $("#documento").val(empleados[r1].cedula);
                     $("#email").val(empleados[r1].email);
                     $("#tipo").val(empleados[r1].tipo);
+                    $("#department").val(empleados[r1].Departament);
+                    $("#area").val(empleados[r1].Area);
+                    $("#subarea").val(empleados[r1].SubArea);
+                    $("#crewcd").val(empleados[r1].CrewCd);
+                    $("#unit").val(empleados[r1].Unit);
+                    $("#rosterposition").val(empleados[r1].RosterPosition);
                     empleado_seleccionado = empleados[r1];
                     $("#ventana").modal("show");
                 },
@@ -136,32 +142,25 @@ angular.module("miApp", []).controller("tabla", function ($scope, $http) {
 
             // funciones
 
-            $scope.BuscarEmpleado = function () {
-                $scope.enviado = false;
-                if ($scope.buscar_cedula == undefined) {
-                    $scope.resultado = false;
-                    $scope.empleado = undefined;
-                } else {
-                    var cont = 0;
-                    for (var i in empleados) {
-                        if (empleados[i].cedula == $scope.buscar_cedula) {
-                            // aqui el codigo cuando lo encuentro
-                            $scope.empleado = empleados[i];
-                            $scope.resultado = true;
-                            cont++;
-                        } else if (cont == 0) {
-                            $scope.empleado = undefined;
-                            $scope.resultado = false;
-                        }
-                    }
-                }
-            };
 
             $scope.SaveEmpleado = function () {
                 // AQUI EL CODIGO PARA ENVIAR el empleado AL SERVIDOR a seleccionados
-                $http.put('/api/Empleado/' + $scope.empleado.id, $scope.empleado).then(function () {
+                var empleado = {
+                    id: empleado_seleccionado.id,
+                    Nombre: $("#nombre").val(),
+                    cedula: $("#documento").val(),
+                    email: $("#email").val(),
+                    tipo: $("#tipo").val(),
+                    Departament: $("#department").val(),
+                    Area: $("#area").val(),
+                    SubArea: $("#subarea").val(),
+                    CrewCd: $("#crewcd").val(),
+                    Unit: $("#unit").val(),
+                    RosterPosition: $("#rosterposition").val()
+                }
+                $http.put('/api/Empleado/' + empleado.id, empleado).then(function () {
+                    hot.destroy();
                     $scope.iniciar();
-                    $scope.empleado = undefined;
                 });
             };
             $scope.enviar = function () {
