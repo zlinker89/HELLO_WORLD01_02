@@ -20,6 +20,15 @@ namespace Entities.DTOs
         public string Unit { get; set; }
         public Nullable<long> id_user { get; set; }
         public string email { get; set; }
+        public string liderado1 { get; set; }
+        public string liderado2 { get; set; }
+        public string liderado3 { get; set; }
+        public string liderado4 { get; set; }
+        public string liderado5 { get; set; }
+        public string par1 { get; set; }
+        public string par2 { get; set; }
+        public string par3 { get; set; }
+        public string jefe { get; set; }
 
     }
 }

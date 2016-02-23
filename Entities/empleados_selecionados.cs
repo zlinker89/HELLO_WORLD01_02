@@ -24,8 +24,8 @@ namespace Entities
         public Nullable<long> id_periodos { get; set; }
         public Nullable<byte> estado { get; set; }
     
+        public virtual empleado empleado { get; set; }
         public virtual periodos periodos { get; set; }
         public virtual ICollection<R_Evaluacion> R_Evaluacion { get; set; }
-        public virtual empleado empleado { get; set; }
     }
 }

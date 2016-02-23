@@ -16,8 +16,8 @@ namespace Entities
     {
         public evaluacion()
         {
-            this.periodos = new HashSet<periodos>();
             this.competencias = new HashSet<competencias>();
+            this.periodos = new HashSet<periodos>();
         }
     
         public long id { get; set; }
@@ -25,7 +25,7 @@ namespace Entities
         public string tipo_de_evaluacion { get; set; }
         public Nullable<byte> estado { get; set; }
     
-        public virtual ICollection<periodos> periodos { get; set; }
         public virtual ICollection<competencias> competencias { get; set; }
+        public virtual ICollection<periodos> periodos { get; set; }
     }
 }

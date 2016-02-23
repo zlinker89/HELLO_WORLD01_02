@@ -25,6 +25,15 @@
     <Property Name="Unit" Type="varchar" MaxLength="50" />
     <Property Name="id_user" Type="bigint" />
     <Property Name="email" Type="varchar" MaxLength="50" />
+    <Property Name="liderado1" Type="varchar" MaxLength="50" />
+    <Property Name="liderado2" Type="varchar" MaxLength="50" />
+    <Property Name="liderado3" Type="varchar" MaxLength="50" />
+    <Property Name="liderado4" Type="varchar" MaxLength="50" />
+    <Property Name="liderado5" Type="varchar" MaxLength="50" />
+    <Property Name="par1" Type="varchar" MaxLength="50" />
+    <Property Name="par2" Type="varchar" MaxLength="50" />
+    <Property Name="par3" Type="varchar" MaxLength="50" />
+    <Property Name="jefe" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="empleados_selecionados">
     <Key>

@@ -105,6 +105,51 @@ angular.module("miApp", []).controller("tabla", function ($scope, $http) {
                             data: "Unit",
                             type: "text",
                             readOnly: true,
+                        },
+                        {
+                            data: "Liderado 1",
+                            type: "text",
+                            readOnly: true,
+                        },
+                        {
+                            data: "Liderado 2",
+                            type: "text",
+                            readOnly: true,
+                        },
+                        {
+                            data: "Liderado 3",
+                            type: "text",
+                            readOnly: true,
+                        },
+                        {
+                            data: "Liderado 4",
+                            type: "text",
+                            readOnly: true,
+                        },
+                        {
+                            data: "Liderado 5",
+                            type: "text",
+                            readOnly: true,
+                        },
+                        {
+                            data: "Par 1",
+                            type: "text",
+                            readOnly: true,
+                        },
+                        {
+                            data: "Par 2",
+                            type: "text",
+                            readOnly: true,
+                        },
+                        {
+                            data: "Par 3",
+                            type: "text",
+                            readOnly: true,
+                        },
+                        {
+                            data: "Jefe",
+                            type: "text",
+                            readOnly: true,
                         }
                 ],
                 search:true,
@@ -137,7 +182,16 @@ angular.module("miApp", []).controller("tabla", function ($scope, $http) {
                     "SubArea",
                     "Crew Cd",
                     "Roster position",
-                    "Unit"
+                    "Unit",
+                    "Liderado 1",
+                    "Liderado 2",
+                    "Liderado 3",
+                    "Liderado 4",
+                    "Liderado 5",
+                    "Par 1",
+                    "Par 2",
+                    "Par 3",
+                    "Jefe",
                 ],
             });
             /*----------------BUSCAR EN TABLA----------------------------------------------------------------*/

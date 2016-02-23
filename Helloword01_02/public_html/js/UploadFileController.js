@@ -109,7 +109,16 @@ app.controller('PreviewController', function ($scope, XLSXReaderService, $http) 
                                 CrewCd: obj[i]['Crew Cd'],
                                 RosterPosition: obj[i]['Roster position'],
                                 Unit: obj[i].Unit,
-                                email: obj[i].Email
+                                email: obj[i].Email,
+                                liderado1: obj[i]['Liderado 1'],
+                                liderado2: obj[i]['Liderado 2'],
+                                liderado3: obj[i]['Liderado 3'],
+                                liderado4: obj[i]['Liderado 4'],
+                                liderado5: obj[i]['Liderado 5'],
+                                par1: obj[i]['Par 1'],
+                                par2: obj[i]['Par 2'],
+                                par3: obj[i]['Par 3'],
+                                jefe: obj[i]['Jefe']
                             }
                             //console.log(JSON.stringify(empleado));
                             $http.post("/api/Empleado/", empleado).then(function (data) {

@@ -4,17 +4,16 @@
     <EntitySetMapping Name="competencias">
       <EntityTypeMapping TypeName="Drummond02Model.competencias">
         <MappingFragment StoreEntitySet="competencias">
-          <ScalarProperty Name="idevaluacion" ColumnName="idevaluacion" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
           <ScalarProperty Name="rango_evaluacion" ColumnName="rango_evaluacion" />
+          <ScalarProperty Name="idevaluacion" ColumnName="idevaluacion" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="empleado">
       <EntityTypeMapping TypeName="Drummond02Model.empleado">
         <MappingFragment StoreEntitySet="empleado">
-          <ScalarProperty Name="email" ColumnName="email" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="cedula" ColumnName="cedula" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -26,16 +25,26 @@
           <ScalarProperty Name="RosterPosition" ColumnName="RosterPosition" />
           <ScalarProperty Name="Unit" ColumnName="Unit" />
           <ScalarProperty Name="id_user" ColumnName="id_user" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="liderado1" ColumnName="liderado1" />
+          <ScalarProperty Name="liderado2" ColumnName="liderado2" />
+          <ScalarProperty Name="liderado3" ColumnName="liderado3" />
+          <ScalarProperty Name="liderado4" ColumnName="liderado4" />
+          <ScalarProperty Name="liderado5" ColumnName="liderado5" />
+          <ScalarProperty Name="par1" ColumnName="par1" />
+          <ScalarProperty Name="par2" ColumnName="par2" />
+          <ScalarProperty Name="par3" ColumnName="par3" />
+          <ScalarProperty Name="jefe" ColumnName="jefe" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="empleados_selecionados">
       <EntityTypeMapping TypeName="Drummond02Model.empleados_selecionados">
         <MappingFragment StoreEntitySet="empleados_selecionados">
-          <ScalarProperty Name="estado" ColumnName="estado" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="id_empleados" ColumnName="id_empleados" />
           <ScalarProperty Name="id_periodos" ColumnName="id_periodos" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -52,22 +61,22 @@
     <EntitySetMapping Name="periodos">
       <EntityTypeMapping TypeName="Drummond02Model.periodos">
         <MappingFragment StoreEntitySet="periodos">
-          <ScalarProperty Name="nombre" ColumnName="nombre" />
-          <ScalarProperty Name="estado" ColumnName="estado" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="fechainicio" ColumnName="fechainicio" />
           <ScalarProperty Name="fechafinal" ColumnName="fechafinal" />
           <ScalarProperty Name="metodologia" ColumnName="metodologia" />
           <ScalarProperty Name="id_evaluacion" ColumnName="id_evaluacion" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="preguntas">
       <EntityTypeMapping TypeName="Drummond02Model.preguntas">
         <MappingFragment StoreEntitySet="preguntas">
-          <ScalarProperty Name="idcompetencia" ColumnName="idcompetencia" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="idcompetencia" ColumnName="idcompetencia" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

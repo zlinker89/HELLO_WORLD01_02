@@ -33,6 +33,15 @@ namespace Helloword01_02.Controllers
                                 Departament = e.Departament,
                                 Unit = e.Unit,
                                 email = e.email,
+                                liderado1 = e.liderado1,
+                                liderado2 = e.liderado2,
+                                liderado3 = e.liderado3,
+                                liderado4 = e.liderado4,
+                                liderado5 = e.liderado5,
+                                par1 = e.par1,
+                                par2 = e.par2,
+                                par3 = e.par3,
+                                jefe = e.jefe
                             };
             return empleados;
         }
@@ -90,6 +99,15 @@ namespace Helloword01_02.Controllers
                                 Departament = e.Departament,
                                 Unit = e.Unit,
                                 email = e.email,
+                                liderado1 = e.liderado1,
+                                liderado2 = e.liderado2,
+                                liderado3 = e.liderado3,
+                                liderado4 = e.liderado4,
+                                liderado5 = e.liderado5,
+                                par1 = e.par1,
+                                par2 = e.par2,
+                                par3 = e.par3,
+                                jefe = e.jefe
                             };
             return empleados;
         }
