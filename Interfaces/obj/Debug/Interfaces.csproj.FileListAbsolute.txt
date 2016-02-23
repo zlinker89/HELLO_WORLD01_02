@@ -3,3 +3,8 @@ C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\Interfaces\bin\Debug\Interfa
 C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\Interfaces\obj\Debug\Interfaces.csprojResolveAssemblyReference.cache
 C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\Interfaces\obj\Debug\Interfaces.dll
 C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\Interfaces\obj\Debug\Interfaces.pdb
+C:\Users\TECNOPARQUE\Documents\Lightshot\HELLO_WORLD01_02\Interfaces\bin\Debug\Interfaces.dll
+C:\Users\TECNOPARQUE\Documents\Lightshot\HELLO_WORLD01_02\Interfaces\bin\Debug\Interfaces.pdb
+C:\Users\TECNOPARQUE\Documents\Lightshot\HELLO_WORLD01_02\Interfaces\obj\Debug\Interfaces.csprojResolveAssemblyReference.cache
+C:\Users\TECNOPARQUE\Documents\Lightshot\HELLO_WORLD01_02\Interfaces\obj\Debug\Interfaces.dll
+C:\Users\TECNOPARQUE\Documents\Lightshot\HELLO_WORLD01_02\Interfaces\obj\Debug\Interfaces.pdb

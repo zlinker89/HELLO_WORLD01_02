@@ -28,6 +28,11 @@
 			.caja_izq{
 				margin-top: 5%;
 			}
+
+              .caja_izq:hover {
+                    background-color: #22859F;
+                    color: #fff;
+                }
 			.caja_der{
 				margin-top: 80px;
 
@@ -46,7 +51,7 @@
 			.etiquetas{
 				float: right;
 				font-size: 1em !important;
-				transform:translate(-20px,0px);
+				transform:translate(-28px,0px);
 				width: 90px;
 			}
 			.submenu{
@@ -100,7 +105,7 @@
 				text-decoration: none !important;
 			}
 			.amarillo{
-				color: #dfab16;
+				color: #9E9E9E;
 				text-decoration: none !important;
 			}
 			.blanco{
@@ -119,11 +124,11 @@
 				box-shadow: 0px 0px 55px white inset;
 			}
 			.verde:hover{
-				color: #38761d !important;
+				color: #22859f !important;
 				text-decoration: none !important;
 			}
 			.amarillo:hover{
-				color: #184b5e !important;
+				color: #22859F !important;
 				text-decoration: none !important;
 			}
 			.morado:hover{
@@ -209,8 +214,10 @@
 
 			/*-------------------------TEXTOS--------------------------------------------------*/
 			h4{
-				color: black;
+				color: #424242;
 			}
+
+            
 			.textos{
 				/*evaluaciones empleados*/
 				font-size: 2vh;
@@ -324,9 +331,25 @@
 
             }
             /***************COLORES**********************/
+
             .activo{
-                color: rgba(24, 75, 94, 1)  !important;
+                color:  #fff !important;
+              
             }
+            .activo .caja_izq{
+                background-color: rgba(34, 133, 159, 1);
+                width:280px;
+               
+            }
+
+               .activo .caja_izq .etiquetas{
+                color:#fff;
+                margin-right: 0;
+                font-weight: bold;
+                transform:translate(-55px,0px);
+               
+            }
+
             #breads .navbar .btn{
             	color:white;
             	text-align: justify;
@@ -422,7 +445,7 @@
             	left: 0;
             	right: 0;
             	height: 8%;
-            	background: #184b5e;
+            	background: #22859F;
             	z-index: 10071;
             }
             .mover{

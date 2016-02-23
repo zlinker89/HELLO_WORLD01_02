@@ -12,3 +12,17 @@ C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\DAL\bin\Debug\EntityFramewor
 C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\DAL\bin\Debug\DAL.dll.config
 C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\DAL\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\TECNOPARQUE\Documents\Lightshot\HELLO_WORLD01_02\DAL\bin\Debug\DAL.dll.config
+C:\Users\TECNOPARQUE\Documents\Lightshot\HELLO_WORLD01_02\DAL\bin\Debug\DAL.dll
+C:\Users\TECNOPARQUE\Documents\Lightshot\HELLO_WORLD01_02\DAL\bin\Debug\DAL.pdb
+C:\Users\TECNOPARQUE\Documents\Lightshot\HELLO_WORLD01_02\DAL\bin\Debug\Entities.dll
+C:\Users\TECNOPARQUE\Documents\Lightshot\HELLO_WORLD01_02\DAL\bin\Debug\EntityFramework.dll
+C:\Users\TECNOPARQUE\Documents\Lightshot\HELLO_WORLD01_02\DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\TECNOPARQUE\Documents\Lightshot\HELLO_WORLD01_02\DAL\bin\Debug\Interfaces.dll
+C:\Users\TECNOPARQUE\Documents\Lightshot\HELLO_WORLD01_02\DAL\bin\Debug\Entities.pdb
+C:\Users\TECNOPARQUE\Documents\Lightshot\HELLO_WORLD01_02\DAL\bin\Debug\Interfaces.pdb
+C:\Users\TECNOPARQUE\Documents\Lightshot\HELLO_WORLD01_02\DAL\bin\Debug\EntityFramework.xml
+C:\Users\TECNOPARQUE\Documents\Lightshot\HELLO_WORLD01_02\DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\TECNOPARQUE\Documents\Lightshot\HELLO_WORLD01_02\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+C:\Users\TECNOPARQUE\Documents\Lightshot\HELLO_WORLD01_02\DAL\obj\Debug\DAL.dll
+C:\Users\TECNOPARQUE\Documents\Lightshot\HELLO_WORLD01_02\DAL\obj\Debug\DAL.pdb
