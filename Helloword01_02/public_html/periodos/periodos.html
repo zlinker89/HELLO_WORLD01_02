@@ -20,11 +20,10 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <style type="text/css">
-        
-
         .alineacion {
             margin-left: 15px;
         }
+
         .twitter-typeahead {
             width: 100%;
         }
@@ -159,7 +158,9 @@
                             </li>
                             <li>
                                 <div ng-class="{mover: usuario.tipo_usuario.length == 1}">
-                                    <span class="col-xs-8"><h4>{{usuario.empleado.Nombre}}</h4> </span>
+                                    <span class="col-xs-8">
+                                        <h4>{{usuario.empleado.Nombre}}</h4>
+                                    </span>
                                     <span class="col-xs-4" id="icono_user"><i class="fa fa-user"></i></span>
                                 </div>
                             </li>
@@ -228,7 +229,7 @@
                                                     {{item.fechafinal.split('T')[0]}}
                                                 </td>
                                                 <td>
-                                                    <a ng-href='empleados.html?periodo={{item.id}}' class="btn amarillo">
+                                                    <a ng-href='#empleadoperiodos' ng-click="getId(item.id)" data-toggle="modal" class="btn amarillo">
                                                         <i class="fa fa-list-alt fa-2x"></i>
                                                     </a>
                                                 </td>
@@ -350,7 +351,7 @@
                         <div class="modal-body" ng-init="progreso = false">
                             <div class="row alineacion">
                                 <div class="col-sm-2"><label>Asunto:</label></div>
-                                <div class="col-sm-10"><input type="text" class="form-control" autocomplete="off"  ng-model="asunto" ng-init="asunto = 'Enhorabuena estas seleccionado'" maxlength="250"></div>
+                                <div class="col-sm-10"><input type="text" class="form-control" autocomplete="off" ng-model="asunto" ng-init="asunto = 'Enhorabuena estas seleccionado'" maxlength="250"></div>
                                 <br />
                                 <br />
                                 <br />
@@ -383,29 +384,32 @@
                 </div>
             </div>
 
-            
 
 
-        <!-- Aqui comienza el modal de editar periodo-->
 
-        <div class="modal" id="editarperiodo" data-keyboard="false" data-backdrop>
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title"></h4>
-                    </div>
-                    <div class="modal-body">
-                        <form class="row">
-                            <div class="col-sm-4">
-                                <label for="">Nombre del periodo: </label>
-                            </div>
-                            <div class="col-sm-8">
-                                <input ng-model="nombre_periodo_update" type="text" class="form-control" placeholder="Periodo 1">
-                                <br />
-                            </div>
+            <!-- Aqui comienza el modal de editar periodo-->
+
+            <div class="modal" id="editarperiodo" data-keyboard="false" data-backdrop>
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title"></h4>
+                        </div>
+                        <div class="modal-body">
+                            <form class="row">
+                                <div class="col-sm-4">
+                                    <label for="">Nombre del periodo: </label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <input ng-model="nombre_periodo_update" type="text" class="form-control" placeholder="Periodo 1">
+                                    <br />
+                                </div>
                                 <div class="col-sm-4"><label>Seleccione el tipo de la evaluacion: </label></div>
-                                <div class="col-sm-8"><input type="text" id="query_update" class="form-control query" placeholder="Evaluacion 1"><br /></div>
+                                <div class="col-sm-8">
+                                    <input type="text" id="query_update" class="form-control query" placeholder="Evaluacion 1">
+                                    <br />
+                                </div>
                                 <div class="col-sm-4"><label for="">Metodologia: </label></div>
                                 <div class="col-sm-8">
                                     <div class="radio">
@@ -422,125 +426,74 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-4"><label for="">Fecha finalizacion: </label></div>
-                                <div class="col-sm-8"><input ng-model="fecha_fin_update" type="date" />
-                                    <br /></div>
-                            <div class="col-sm-12">
-                                <br />
-                                <p style="background: #dddddd; text-align: justify; padding: 3px;">
-                                    Recuerde  selecionar y guardar antes de salir  asigneles el grupo de empleado en el icono listar empleados para que se les notifique a los  empleados si tiene alguna duda el boton de ayuda de la parte inferior del sistema lo ayuda
-                                </p>
-                            </div>
-                            <div class="col-sm-12 text-center">
-                                <button ng-click="UpdatePeriodo()" data-dismiss="modal" class="btn btn-primary" style="background: #b4a7d6">Guardar cambios</button>
-                            </div>
-                        </form>
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Aqui comienza el modal empleado-->
-        <div class="modal" id="empleados" data-keyboard="false" data-backdrop>
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title"></h4>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="row">
-                                <div style="text-align: center; color: #b4a7d6 ">
-                                    <h3>Empleados</h3>
-                                    <br>
+                                <div class="col-sm-8">
+                                    <input ng-model="fecha_fin_update" type="date" />
+                                    <br />
                                 </div>
                                 <div class="col-sm-12">
-                                    <div class="col-sm-4" style="text-align: center">
-                                        <label for="">Documento del empleado </label>
-                                        <br>
-                                        <br>
-                                        <br>
-                                    </div>
-                                    <div class="col-sm-7">
-                                        <input type="text" class="form-control" id="" placeholder="">
-                                    </div>
-
-
-                                    <!-- Esta es la primera tabla-->
-                                    <table class="table table-hover">
-                                        <thead>
-                                            <div class="col-sm-12">
-                                                <h4>Pares <i class="fa fa-plus-circle fa-2x morado"></i></h4>
-                                            </div>
-                                            <tr>
-                                                <th>Identificacion</th>
-                                                <th style="text-align: center;" colspan="">Nombre</th>
-                                                <th style="text-align: center;">Par</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>105688432</td>
-                                                <td style="text-align: center;"> Jesica Ramirez</td>
-                                                <td style="text-align: center;"> Par 1</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-
-                                    <!-- Esta es la segunda tabla-->
-
-                                    <table class="table table-hover">
-                                        <thead>
-                                            <div class="col-sm-12">
-                                                <h4>Pares <i class="fa fa-plus-circle fa-2x morado"></i></h4>
-                                            </div>
-                                            <tr>
-                                                <th>Identificacion</th>
-                                                <th style="text-align: center;" colspan="">Nombre</th>
-                                                <th style="text-align: center;">Liderado</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>1054755521</td>
-                                                <td style="text-align: center;"> Diana Ramirez</td>
-                                                <td style="text-align: center;"> Liderado 1</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-
-                                    <div class="pull-right">
-                                        <button type="submit" class="btn btn-primary" style="background: #b4a7d6">Guardar cambios</button>
-                                    </div>
-
+                                    <br />
+                                    <p style="background: #dddddd; text-align: justify; padding: 3px;">
+                                        Recuerde  selecionar y guardar antes de salir  asigneles el grupo de empleado en el icono listar empleados para que se les notifique a los  empleados si tiene alguna duda el boton de ayuda de la parte inferior del sistema lo ayuda
+                                    </p>
                                 </div>
-                        </form>
+                                <div class="col-sm-12 text-center">
+                                    <button ng-click="UpdatePeriodo()" data-dismiss="modal" class="btn btn-primary" style="background: #b4a7d6">Guardar cambios</button>
+                                </div>
+                            </form>
 
 
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Aqui comienza el modal empleado-->
+            <div class="modal" id="empleadoperiodos" data-keyboard="false" data-backdrop>
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title">Empleados</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div style="transform:translate(150px,-70px);">
+                                    <a ng-href="Inactivos.html?periodo={{idperiodo}}">
+                                        <div class="col-xs-6 col-sm-3 caja_der amarillo" style="text-align: center">
+                                            <i class="fa fa-times-circle-o fa-5x"></i>
+                                            <h4>Inactivos</h4>
+                                        </div>
+                                    </a>
+                                    <a ng-href="seleccionados.html?periodo={{idperiodo}}">
+                                        <div class="col-xs-6 col-sm-3 caja_der amarillo" style="text-align: center">
+                                            <i class="fa fa-check-circle-o fa-5x"></i>
+                                            <h4>Seleccionados</h4>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Fin modales-->
         </div>
-        <!--Fin modales-->
-    </div>
-    <!-- jQuery -->
-    <script src="../js/jquery.js"></script>
-    <!-- Bootstrap JavaScript -->
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/angular1.min.js"></script>
-    <script src="../js/PeriodosInit.js"></script>
-    <script type="text/javascript">
-        // accion del boton mostrar del navbar
-        $("#mostrar").click(function () {
-            $("#wrapper").toggleClass("toggled");
-        });
-        $("#menu-toggle").click(function (e) {
-            e.preventDefault();
-            $("#wrapper").toggleClass("toggled");
-        });
-    </script>
+        <!-- jQuery -->
+        <script src="../js/jquery.js"></script>
+        <!-- Bootstrap JavaScript -->
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/angular1.min.js"></script>
+        <script src="../js/PeriodosInit.js"></script>
+        <script type="text/javascript">
+            // accion del boton mostrar del navbar
+            $("#mostrar").click(function () {
+                $("#wrapper").toggleClass("toggled");
+            });
+            $("#menu-toggle").click(function (e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+            });
+        </script>
 
 </body>
 </html>

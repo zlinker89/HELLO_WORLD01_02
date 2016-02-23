@@ -107,6 +107,7 @@ angular.module("miApp", []).controller("tabla", function ($scope, $http) {
                             readOnly: true,
                         }
                 ],
+                search:true,
                 stretchH: "all",
                 rowHeaders: true,
                 columnSorting: true,
@@ -139,8 +140,38 @@ angular.module("miApp", []).controller("tabla", function ($scope, $http) {
                     "Unit"
                 ],
             });
-
+            /*----------------BUSCAR EN TABLA----------------------------------------------------------------*/
+            var buscarField = document.getElementById("buscar");
             // funciones
+            Handsontable.Dom.addEvent(buscarField, 'keyup', function (event) {
+                //                    debugger
+                hot.loadData(empleados);
+
+                var queryResult = hot.search.query(this.value);
+                rows = getRowsFromObjects(queryResult);
+                //console.log('searchFiled', buscarField.value);
+                //console.log('rows', rows);
+
+                //console.log('tData', empleados);
+                var filtered = empleados.filter(function (_, index) {
+                    return !buscarField.value || rows.indexOf(index) >= 0;
+                });
+                //console.log('filtered', filtered);
+
+                hot.loadData(filtered);
+
+                //                                        hot.render();
+            });
+            function getRowsFromObjects(queryResult) {
+                rows = [];
+                for (var i = 0, l = queryResult.length; i < l; i++) {
+                    //                        debugger
+                    rows.push(queryResult[i].row);
+                }
+                console.log('rows', rows);
+                return rows;
+            }
+            /*-------fin---------BUSCAR EN TABLA----------------------------------------------------------------*/
 
 
             $scope.SaveEmpleado = function () {
@@ -191,6 +222,7 @@ angular.module("miApp", []).controller("tabla", function ($scope, $http) {
 
     // iniciamos el script
     $scope.iniciar();
+    
 });
 function cerrarSession() {
     localStorage.removeItem("usuario");

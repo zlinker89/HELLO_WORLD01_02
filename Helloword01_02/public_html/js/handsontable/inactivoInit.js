@@ -112,6 +112,7 @@ angular.module("miApp", []).controller("tabla", function ($scope, $http) {
                         }
                 ],
                 stretchH: "all",
+                search:true,
                 rowHeaders: true,
                 columnSorting: true,
                 afterSelectionByProp: function (r1, c1, rf, ct) {
@@ -136,6 +137,38 @@ angular.module("miApp", []).controller("tabla", function ($scope, $http) {
                 ],
             });
             // funciones
+            /*----------------BUSCAR EN TABLA----------------------------------------------------------------*/
+            var buscarField = document.getElementById("buscar");
+            // funciones
+            Handsontable.Dom.addEvent(buscarField, 'keyup', function (event) {
+                //                    debugger
+                hot.loadData(empleados);
+
+                var queryResult = hot.search.query(this.value);
+                rows = getRowsFromObjects(queryResult);
+                //console.log('searchFiled', buscarField.value);
+                //console.log('rows', rows);
+
+                //console.log('tData', empleados);
+                var filtered = empleados.filter(function (_, index) {
+                    return !buscarField.value || rows.indexOf(index) >= 0;
+                });
+                //console.log('filtered', filtered);
+
+                hot.loadData(filtered);
+
+                //                                        hot.render();
+            });
+            function getRowsFromObjects(queryResult) {
+                rows = [];
+                for (var i = 0, l = queryResult.length; i < l; i++) {
+                    //                        debugger
+                    rows.push(queryResult[i].row);
+                }
+                console.log('rows', rows);
+                return rows;
+            }
+            /*-------fin---------BUSCAR EN TABLA----------------------------------------------------------------*/
             //console.log(hot.getDataAtRow(1));
             $scope.AddEmpleado = function () {
                     // AQUI EL CODIGO PARA ENVIAR el empleado AL SERVIDOR a seleccionados
