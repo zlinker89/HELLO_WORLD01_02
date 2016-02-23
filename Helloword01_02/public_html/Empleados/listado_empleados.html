@@ -113,12 +113,6 @@
                 </div>
                 <div class="row">
                     <div class="row caja_der" id="iconos_der">
-                        <div class="col-sm-4">
-                            <a data-toggle="modal" href='#ventana' data-keyboard="false" data-backdrop class="btn btn-danger">Editar</a>
-                        </div>
-                        <br>
-                        <br>
-                        <br>
                         <div id="example"></div>
                     </div>
                 </div>
@@ -157,7 +151,7 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label>Email:</label>
-                                            <input type="text" id="email" class="form-control" ng-model="empleado.email">
+                                            <input type="email" id="email" class="form-control" ng-model="empleado.email">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
@@ -204,7 +198,7 @@
                                     </div>
                                     <hr>
                                 </div>
-                                <div class="col-sm-12" ng-show="empleado">
+                                <div class="col-sm-12">
                                     <div class="pull-right">
                                         <button ng-click="SaveEmpleado()" data-dismiss="modal" type="button" class="btn btn-success">Guardar</button>
                                     </div>
