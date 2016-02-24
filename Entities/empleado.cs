@@ -17,6 +17,7 @@ namespace Entities
         public empleado()
         {
             this.empleados_selecionados = new HashSet<empleados_selecionados>();
+            this.R_Evaluacion = new HashSet<R_Evaluacion>();
         }
     
         public long id { get; set; }
@@ -43,5 +44,6 @@ namespace Entities
     
         public virtual usuarios usuarios { get; set; }
         public virtual ICollection<empleados_selecionados> empleados_selecionados { get; set; }
+        public virtual ICollection<R_Evaluacion> R_Evaluacion { get; set; }
     }
 }

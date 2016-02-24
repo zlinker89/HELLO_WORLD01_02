@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Drummond02Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Drummond02Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="competencias">
           <Key>
             <PropertyRef Name="id" />
@@ -94,7 +94,8 @@
           <Property Name="id_periodo" Type="bigint" />
           <Property Name="id_empleados_selecionados" Type="bigint" />
           <Property Name="id_competencia" Type="bigint" />
-          <Property Name="tipo_evaluacion" Type="nchar" MaxLength="10" />
+          <Property Name="resultado" Type="varchar" MaxLength="50" />
+          <Property Name="id_evaluado" Type="bigint" />
         </EntityType>
         <EntityType Name="tipo_usuario">
           <Key>
@@ -227,6 +228,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_R_Evaluacion_empleado">
+          <End Role="empleado" Type="Self.empleado" Multiplicity="0..1" />
+          <End Role="R_Evaluacion" Type="Self.R_Evaluacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="empleado">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="R_Evaluacion">
+              <PropertyRef Name="id_evaluado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_R_Evaluacion_empleados_selecionados">
           <End Role="empleados_selecionados" Type="Self.empleados_selecionados" Multiplicity="0..1" />
           <End Role="R_Evaluacion" Type="Self.R_Evaluacion" Multiplicity="*" />
@@ -323,6 +336,10 @@
             <End Role="competencias" EntitySet="competencias" />
             <End Role="R_Evaluacion" EntitySet="R_Evaluacion" />
           </AssociationSet>
+          <AssociationSet Name="FK_R_Evaluacion_empleado" Association="Self.FK_R_Evaluacion_empleado">
+            <End Role="empleado" EntitySet="empleado" />
+            <End Role="R_Evaluacion" EntitySet="R_Evaluacion" />
+          </AssociationSet>
           <AssociationSet Name="FK_R_Evaluacion_empleados_selecionados" Association="Self.FK_R_Evaluacion_empleados_selecionados">
             <End Role="empleados_selecionados" EntitySet="empleados_selecionados" />
             <End Role="R_Evaluacion" EntitySet="R_Evaluacion" />
@@ -340,8 +357,7 @@
             <End Role="Usuario_Tipo_usuario" EntitySet="Usuario_Tipo_usuario" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Drummond02Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -385,6 +401,7 @@
           <Property Name="jefe" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="usuarios" Relationship="Self.FK_empleado_usuarios" FromRole="empleado" ToRole="usuarios" />
           <NavigationProperty Name="empleados_selecionados" Relationship="Self.FK_empleados_selecionados_empleado" FromRole="empleado" ToRole="empleados_selecionados" />
+          <NavigationProperty Name="R_Evaluacion" Relationship="Drummond02Model.FK_R_Evaluacion_empleado" FromRole="empleado" ToRole="R_Evaluacion" />
         </EntityType>
         <EntityType Name="empleados_selecionados">
           <Key>
@@ -452,10 +469,12 @@
           <Property Name="id_periodo" Type="Int64" />
           <Property Name="id_empleados_selecionados" Type="Int64" />
           <Property Name="id_competencia" Type="Int64" />
-          <Property Name="tipo_evaluacion" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="competencias" Relationship="Self.FK_R_Evaluacion_competencias" FromRole="R_Evaluacion" ToRole="competencias" />
           <NavigationProperty Name="empleados_selecionados" Relationship="Self.FK_R_Evaluacion_empleados_selecionados" FromRole="R_Evaluacion" ToRole="empleados_selecionados" />
           <NavigationProperty Name="periodos" Relationship="Self.FK_R_Evaluacion_periodos1" FromRole="R_Evaluacion" ToRole="periodos" />
+          <Property Name="resultado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="id_evaluado" Type="Int64" />
+          <NavigationProperty Name="empleado" Relationship="Drummond02Model.FK_R_Evaluacion_empleado" FromRole="R_Evaluacion" ToRole="empleado" />
         </EntityType>
         <EntityType Name="tipo_usuario">
           <Key>
@@ -705,7 +724,23 @@
             <End Role="usuarios" EntitySet="usuarios" />
             <End Role="Usuario_Tipo_usuario" EntitySet="Usuario_Tipo_usuario" />
           </AssociationSet>
+          <AssociationSet Name="FK_R_Evaluacion_empleado" Association="Drummond02Model.FK_R_Evaluacion_empleado">
+            <End Role="empleado" EntitySet="empleado" />
+            <End Role="R_Evaluacion" EntitySet="R_Evaluacion" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_R_Evaluacion_empleado">
+          <End Type="Drummond02Model.empleado" Role="empleado" Multiplicity="0..1" />
+          <End Type="Drummond02Model.R_Evaluacion" Role="R_Evaluacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="empleado">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="R_Evaluacion">
+              <PropertyRef Name="id_evaluado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -803,11 +838,12 @@
           <EntitySetMapping Name="R_Evaluacion">
             <EntityTypeMapping TypeName="Drummond02Model.R_Evaluacion">
               <MappingFragment StoreEntitySet="R_Evaluacion">
+                <ScalarProperty Name="id_evaluado" ColumnName="id_evaluado" />
+                <ScalarProperty Name="resultado" ColumnName="resultado" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="id_periodo" ColumnName="id_periodo" />
                 <ScalarProperty Name="id_empleados_selecionados" ColumnName="id_empleados_selecionados" />
                 <ScalarProperty Name="id_competencia" ColumnName="id_competencia" />
-                <ScalarProperty Name="tipo_evaluacion" ColumnName="tipo_evaluacion" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -89,7 +89,8 @@
     <Property Name="id_periodo" Type="bigint" />
     <Property Name="id_empleados_selecionados" Type="bigint" />
     <Property Name="id_competencia" Type="bigint" />
-    <Property Name="tipo_evaluacion" Type="nchar" MaxLength="10" />
+    <Property Name="resultado" Type="varchar" MaxLength="50" />
+    <Property Name="id_evaluado" Type="bigint" />
   </EntityType>
   <EntityType Name="tipo_usuario">
     <Key>
@@ -222,6 +223,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_R_Evaluacion_empleado">
+    <End Role="empleado" Type="Self.empleado" Multiplicity="0..1" />
+    <End Role="R_Evaluacion" Type="Self.R_Evaluacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="empleado">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="R_Evaluacion">
+        <PropertyRef Name="id_evaluado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_R_Evaluacion_empleados_selecionados">
     <End Role="empleados_selecionados" Type="Self.empleados_selecionados" Multiplicity="0..1" />
     <End Role="R_Evaluacion" Type="Self.R_Evaluacion" Multiplicity="*" />
@@ -316,6 +329,10 @@
     </AssociationSet>
     <AssociationSet Name="FK_R_Evaluacion_competencias" Association="Self.FK_R_Evaluacion_competencias">
       <End Role="competencias" EntitySet="competencias" />
+      <End Role="R_Evaluacion" EntitySet="R_Evaluacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_R_Evaluacion_empleado" Association="Self.FK_R_Evaluacion_empleado">
+      <End Role="empleado" EntitySet="empleado" />
       <End Role="R_Evaluacion" EntitySet="R_Evaluacion" />
     </AssociationSet>
     <AssociationSet Name="FK_R_Evaluacion_empleados_selecionados" Association="Self.FK_R_Evaluacion_empleados_selecionados">

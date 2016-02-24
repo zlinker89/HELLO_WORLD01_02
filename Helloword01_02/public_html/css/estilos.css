@@ -237,6 +237,10 @@
             	width: 3vw;
 
             }
+                
+            .indicador{
+                transform:translate(0px,-60px); 
+            }
 				#izq{
 					display: block;
 				}
@@ -450,4 +454,12 @@
             }
             .mover{
                 transform:translate(110px,0px);
+            }
+            .indicador{
+                background:red; 
+                color:white; 
+                transform:translate(-15px,-60px); 
+                padding:2px; 
+                font-size:1.3em;
+                font-weight:300;
             }

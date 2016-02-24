@@ -54,6 +54,16 @@ namespace BL
                     uDTO.empleado.cedula = e.cedula;
                     uDTO.empleado.CrewCd = e.CrewCd;
                     uDTO.empleado.Departament = e.Departament;
+                    uDTO.empleado.email = e.email;
+                    uDTO.empleado.liderado1 = e.liderado1;
+                    uDTO.empleado.liderado2 = e.liderado2;
+                    uDTO.empleado.liderado3 = e.liderado3;
+                    uDTO.empleado.liderado4 = e.liderado4;
+                    uDTO.empleado.liderado5 = e.liderado5;
+                    uDTO.empleado.par1 = e.par1;
+                    uDTO.empleado.par2 = e.par2;
+                    uDTO.empleado.par3 = e.par3;
+                    uDTO.empleado.jefe = e.jefe;
                 }
                 return uDTO;
             }

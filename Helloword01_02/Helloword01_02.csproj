@@ -150,6 +150,7 @@
     <Compile Include="Controllers\PeriodosController.cs" />
     <Compile Include="Controllers\PreguntaCompetenciaController.cs" />
     <Compile Include="Controllers\PreguntasController.cs" />
+    <Compile Include="Controllers\ResultadosByController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -289,6 +290,7 @@
     <Content Include="public_html\js\handsontable\zeroclipboard\ZeroClipboard.swf" />
     <Content Include="public_html\js\jquery.js" />
     <Content Include="public_html\js\listaperiodo.js" />
+    <Content Include="public_html\js\ModuloEvaluacion.js" />
     <Content Include="public_html\js\npm.js" />
     <Content Include="public_html\js\PeriodosInit.js" />
     <Content Include="public_html\js\PreguntaInit.js" />

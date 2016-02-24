@@ -46,6 +46,28 @@ namespace Helloword01_02.Controllers
             return empleados;
         }
 
+
+        [Route("~/PeriodoEmpleados/{idempleado}/")]
+        [HttpGet]
+        public IEnumerable<PeriodoDTO> GetPeriodoByIdEmpleado(long idempleado)
+        {
+            var periodos = from p in db.periodos
+                           join es in db.empleados_selecionados on p.id equals es.id_periodos
+                           where p.estado != 0 && es.id_empleados == idempleado
+                           select new PeriodoDTO()
+                           {
+                               id = p.id,
+                               id_evaluacion = p.id_evaluacion,
+                               metodologia = p.metodologia,
+                               nombre = p.nombre,
+                               estado = p.estado,
+                               fechafinal = p.fechafinal,
+                               fechainicio = p.fechainicio
+                           };
+            return periodos;
+        }
+
+
         [Route("~/RemoveEmpleados/{inutil}")]
         [HttpPut]
         public empleado_seleccionadoDTO UpdateEmpleadoSeleccion(long inutil, empleado_seleccionadoDTO empleado)
