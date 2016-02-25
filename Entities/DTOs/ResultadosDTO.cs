@@ -14,5 +14,7 @@ namespace Entities.DTOs
         public Nullable<long> id_competencia { get; set; }
         public string resultado { get; set; }
         public Nullable<long> id_evaluado { get; set; }
+        public string tipo_evaluacion { get; set; }
+
     }
 }

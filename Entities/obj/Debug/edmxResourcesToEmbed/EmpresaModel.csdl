@@ -114,6 +114,7 @@
     <Property Name="resultado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="id_evaluado" Type="Int64" />
     <NavigationProperty Name="empleado" Relationship="Drummond02Model.FK_R_Evaluacion_empleado" FromRole="R_Evaluacion" ToRole="empleado" />
+    <Property Name="tipo_evaluacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="tipo_usuario">
     <Key>

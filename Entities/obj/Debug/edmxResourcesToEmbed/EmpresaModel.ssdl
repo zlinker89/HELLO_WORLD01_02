@@ -91,6 +91,7 @@
     <Property Name="id_competencia" Type="bigint" />
     <Property Name="resultado" Type="varchar" MaxLength="50" />
     <Property Name="id_evaluado" Type="bigint" />
+    <Property Name="tipo_evaluacion" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="tipo_usuario">
     <Key>

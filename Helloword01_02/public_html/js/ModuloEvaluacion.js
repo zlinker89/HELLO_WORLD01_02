@@ -28,7 +28,7 @@ app.controller("pagina", function ($scope, $http, $q) {
     $http.get('/PeriodoEmpleados/' + sesion.id).then(function (p) {
         console.log(p.data);
         $scope.periodos = p.data;
-        
+        $scope.periodo_seleccionado = p.data[0].nombre;
         $scope.Cambiarperiodo = function () {
             // verifico si hay resultados
             var cliderados = 0;
@@ -36,17 +36,20 @@ app.controller("pagina", function ($scope, $http, $q) {
             var jefe = 0;
             var auto = 0;
             var list = [];
+            var idperiodo_seleccionado;
             // obtengo listas de empleados
             for (var l in p.data) {
-                if (p.data[l].id == $scope.periodo_seleccionado) {
+                if (p.data[l].nombre == $scope.periodo_seleccionado) {
                     $scope.metodologia = p.data[l].metodologia
+                    idperiodo_seleccionado = p.data[l].id;
                 }
             }
-            
+            // GUARDAMOS EL PERIODO
+            localStorage.setItem("idperiodo",idperiodo_seleccionado);
             // liderados
             
             for (var i = 1; i <= 5; i++) {
-                $http.get('/ResultadoBy/' + $scope.periodo_seleccionado + '/' + sesion.id + '/' + sesion.empleado["liderado" + i] + '/').then(function (d) {
+                $http.get('/ResultadoBy/' + idperiodo_seleccionado + '/' + sesion.id + '/' + sesion.empleado["liderado" + i] + '/').then(function (d) {
                     if (d.data.length > 0) {
                         cliderados++;
                     }
@@ -64,7 +67,7 @@ app.controller("pagina", function ($scope, $http, $q) {
             };
             // pares
             for (var i = 1; i <= 3; i++) {
-                $http.get('/ResultadoBy/' + $scope.periodo_seleccionado + '/' + sesion.id + '/' + sesion.empleado["par" + i] + '/').then(function (d) {
+                $http.get('/ResultadoBy/' + idperiodo_seleccionado + '/' + sesion.id + '/' + sesion.empleado["par" + i] + '/').then(function (d) {
                     if (d.data.length > 0) {
                         cpar++;
                         console.log(cpar + "i");
@@ -82,7 +85,7 @@ app.controller("pagina", function ($scope, $http, $q) {
                 }
             };
             // jefe
-            $http.get('/ResultadoBy/' + $scope.periodo_seleccionado + '/' + sesion.id + '/' + sesion.empleado["jefe"] + '/').then(function (d) {
+            $http.get('/ResultadoBy/' + idperiodo_seleccionado + '/' + sesion.id + '/' + sesion.empleado["jefe"] + '/').then(function (d) {
                 if (d.data.length > 0) {
                     jefe++;
                 }
@@ -92,22 +95,20 @@ app.controller("pagina", function ($scope, $http, $q) {
             });
             $scope.ClickJefe = function () {
                 $http.get('/EmpleadosByCedula/' + sesion.empleado["jefe"]).then(function (d) {
-                    list = [];
-                    list.push(d.data);
-                    $scope.listado = list;
+                    localStorage.setItem("evaluando", JSON.stringify(d.data));
+                    location.href = "explicacion.html";
                 });
             };
             // autoevaluacion
-            $http.get('/ResultadoBy/' + $scope.periodo_seleccionado + '/' + sesion.id + '/' + sesion.empleado["jefe"] + '/').then(function (d) {
+            $http.get('/ResultadoBy/' + idperiodo_seleccionado + '/' + sesion.id + '/' + sesion.empleado["jefe"] + '/').then(function (d) {
                 if (d.data.length > 0) {
                     auto++;
                 }
                 $scope.nauto = 1 - auto;
             });
             $scope.ClickAuto = function () {
-                list = [];
-                list.push(sesion);
-                $scope.listado = list;
+                localStorage.setItem("evaluando", JSON.stringify(sesion));
+                location.href = "explicacion.html";
             };
             // mostramos
             
@@ -118,7 +119,7 @@ app.controller("pagina", function ($scope, $http, $q) {
                 location.href = "explicacion.html";
             }
         };
-        $scope.periodo_seleccionado = p.data[0].id;
+        
         $scope.Cambiarperiodo();
 
     });
