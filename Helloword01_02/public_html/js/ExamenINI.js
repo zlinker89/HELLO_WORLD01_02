@@ -1,42 +1,6 @@
 // valor temporal
 var tprueba = localStorage.getItem("tprueba");
-var examen = [
-	{competencia: "Orientación a Resultados", preguntas: [
-	    {pregunta: "Contribuye a generar una cultura orientada al logro de resultados velando por mantener la efectividad de los procesos."},
-		{pregunta: "Alinea sus propios planes de trabajo con las metas del área e identifica recursos y planes de acción realistas y necesarios a corto, mediano y largo plazo. " },
-		{pregunta: "Actúa con confianza en sí mismo, tomando la iniciativa y decisiones para resolver desafíos o situaciones complejas cuando surjan. " },
-		{pregunta: "Analiza posibles obstáculos o barreras que pueden impedir el logro de los objetivos y propone soluciones para removerlos.  "}]},
-	{competencia: "Enfoque en la Salud, Seguridad y Medio Ambiente", preguntas: [
-	    {pregunta: "1Contribuye a generar una cultura orientada al logro de resultados velando por mantener la efectividad de los procesos."},
-		{pregunta: "1Alin2ea sus propios planes de trabajo con las metas del área e identifica recursos y planes de acción realistas y necesarios a corto, mediano y largo plazo. " },
-		{pregunta: "1Anali3za posibles obstáculos o barreras que pueden impedir el logro de los objetivos y propone soluciones para removerlos.  " },
-		{pregunta: "1Anali4za posibles obstáculos o barreras que pueden impedir el logro de los objetivos y propone soluciones para removerlos.  "}]},
-	{competencia: "Capacidad de aprendizaje y de enseñar a otros", preguntas: [
-	    {pregunta: "2Contribudye a generar una cultura orientada al logro de resultados velando por mantener la efectividad de los procesos."},
-		{pregunta: "2Alinea sfus propios planes de trabajo con las metas del área e identifica recursos y planes de acción realistas y necesarios a corto, mediano y largo plazo. " },
-		{pregunta: "2Analiza josibles obstáculos o barreras que pueden impedir el logro de los objetivos y propone soluciones para removerlos.  " },
-		{pregunta: "2Analiza posibles obsthgháculos o barreras que pueden impedir el logro de los objetivos y propone soluciones para removerlos.  "}]},
-	{competencia: "Trabajo en Equipo", preguntas: [
-	    {pregunta: "3Contribuye a generar una c6567ultura orientada al logro de resultados velando por mantener la efectividad de los procesos."},
-		{pregunta: "3Alinea sus propios pjfhlanes de trabajo con las metas del área e identifica recursos y planes de acción realistas y necesarios a corto, mediano y largo plazo. " },
-		{pregunta: "3Analiza posibles obsthfgáculos o barreras que pueden impedir el logro de los objetivos y propone soluciones para removerlos.  " },
-		{pregunta: "3Analiza posibles obstácuooplos o barreras que pueden impedir el logro de los objetivos y propone soluciones para removerlos.  "}]},
-	{competencia: "Comunicación Efectiva", preguntas: [
-	    {pregunta: "4Contribuye a generar unlpa cultura orientada al logro de resultados velando por mantener la efectividad de los procesos."},
-		{pregunta: "4Alinea sus propios plankks de trabajo con las metas del área e identifica recursos y planes de acción realistas y necesarios a corto, mediano y largo plazo. " },
-		{pregunta: "4Analiza posibles obstá{{culos o barreras que pueden impedir el logro de los objetivos y propone soluciones para removerlos.  " },
-		{pregunta: "4Analiza posibles obst}áculos o barreras que pueden impedir el logro de los objetivos y propone soluciones para removerlos.  "}]},
-	{competencia: "Liderazgo - Capacidad de Influenciar", preguntas: [
-	    {pregunta: "5Contribuye a generar una cgultura orientada al logro de resultados velando por mantener la efectividad de los procesos."},
-		{pregunta: "5Alinea sus propios plahnes de trabajo con las metas del área e identifica recursos y planes de acción realistas y necesarios a corto, mediano y largo plazo. " },
-		{pregunta: "5Analiza posibles obstáculos o barireras que pueden impedir el logro de los objetivos y propone soluciones para removerlos.  " },
-		{pregunta: "5Analiza posibles obstáculos o barpreras que pueden impedir el logro de los objetivos y propone soluciones para removerlos.  "}]},
-	{competencia: "Líderazgo -Promotor de Confianza", preguntas: [
-	    {pregunta: "6Contribuye a generar una cultura´´ orientada al logro de resultados velando por mantener la efectividad de los procesos."},
-		{pregunta: "6Alinea sus propios planes de- trabajo con las metas del área e identifica recursos y planes de acción realistas y necesarios a corto, mediano y largo plazo. " },
-		{pregunta: "6Analiza posibles obstáculos o barrerans que pueden impedir el logro de los objetivos y propone soluciones para removerlos.  "},
-		{pregunta: "6Analiza posibles obstáculos o bamrreras que pueden impedir el logro de los objetivos y propone soluciones para removerlos.  "}]}
-];
+
 // esto estara visible en mis apps
 var miApp = angular.module("miApp",[]);
 // cargamos lo que tengo guardado
@@ -62,6 +26,7 @@ var miApp = angular.module("miApp",[]);
     miApp.controller("preguntaList", function ($scope, $http) {
         $scope.tipos = sesion.tipo_usuario[0].tipo;
         $scope.usuario = sesion;
+        var idperiodo = localStorage.getItem("idperiodo");
 
         $scope.LogOut = function () {
             // cerramos session
@@ -76,7 +41,6 @@ var miApp = angular.module("miApp",[]);
                 location.href = "/public_html/login-empleados/Moduloempleados.html";
             }
         };
-        var idperiodo = localStorage.getItem("idperiodo");
         $http.get('/Examen/'+idperiodo+'/').then(function (d) {
             $scope.respuestas = [
 		        { respuesta: "CASI NUNCA" },
@@ -183,7 +147,14 @@ var miApp = angular.module("miApp",[]);
                 }
             };
         });
-	
+	//envio de preguntas ala base de datos
+        $("#capturar").click(function () {
+            $.post("examen.html", function (data, status) {
+                alert("Data: " + data + "\nStatus: " + status);
+            });
+        });
+
+
 
     });
     function cerrarSession() {
