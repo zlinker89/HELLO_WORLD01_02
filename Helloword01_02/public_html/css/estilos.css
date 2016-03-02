@@ -35,12 +35,9 @@
                 }
 			.caja_der{
 				margin-top: 80px;
-			
-            
             }
             .caja_tabla{
-                overflow:scroll;
-                }
+            }
 			.sidebar-brand{
 				display: none;
 			}
@@ -68,8 +65,8 @@
 			#menu{
 				position: absolute;
 				top: 0px;
-				right: 0px;
-				left: 14px;
+                right:0px;
+                left:0px;
 			}
 			.navbar-right{
 				margin-right: 20px;
@@ -78,6 +75,9 @@
 				/*menu de empleados evaluacion*/
 				margin-top: 15% !important;
 			}
+            #mostrar{
+                transform:translate(20px,0px);
+            }
 			/*--------------FIN-----------MENUS--------------------------------------------------*/
 
 
