@@ -35,8 +35,12 @@
                 }
 			.caja_der{
 				margin-top: 80px;
-
-			}
+			
+            
+            }
+            .caja_tabla{
+                overflow:scroll;
+                }
 			.sidebar-brand{
 				display: none;
 			}
