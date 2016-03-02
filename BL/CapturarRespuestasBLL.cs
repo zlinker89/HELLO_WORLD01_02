@@ -10,5 +10,7 @@ namespace BL
 {
     class CapturarRespuestasBLL
     {
+        private Drummond02Entities db = new Drummond02Entities();
+
     }
 }

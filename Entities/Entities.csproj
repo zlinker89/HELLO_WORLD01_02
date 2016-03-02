@@ -60,6 +60,7 @@
     <Compile Include="DTOs\PeriodoDTO.cs" />
     <Compile Include="DTOs\PreguntaDTO.cs" />
     <Compile Include="DTOs\ResultadosDTO.cs" />
+    <Compile Include="DTOs\R_EvaluacionDTO.cs" />
     <Compile Include="DTOs\tipos_usuarioDTO.cs" />
     <Compile Include="DTOs\tipo_usuarioDTO.cs" />
     <Compile Include="DTOs\usuariosDTO.cs" />

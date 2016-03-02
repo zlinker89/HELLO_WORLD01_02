@@ -104,6 +104,26 @@ var miApp = angular.module("miApp",[]);
                 }
                 console.log(JSON.stringify(respuestas));
                 $scope.GuardarRespuestas(r.target.id);
+                //envio de preguntas ala base de datos
+                $("#capturar").click(function () {
+                    //instancio variable para capturar datos
+
+                    var respuesta = (JSON.stringify(respuestas))
+
+                    $.ajax({
+                        type: "POST",
+                        url: "http://localhost:1442/api/R_Evaluacion",
+                        data: JSON.stringify(respuesta),
+                        dataType: "json",
+                        processData: true,
+                        success: function (data, status, xhr) {
+                            alert(data.competencia + " - " + xhr.competencia);
+                        },
+                        error: function (xhr) {
+                            alert(xhr.responseText);
+                        }
+                    });
+                });
 
             };
 
@@ -147,17 +167,9 @@ var miApp = angular.module("miApp",[]);
                 }
             };
         });
-	//envio de preguntas ala base de datos
-        $("#capturar").click(function () {
-            $.post("examen.html", function (data, status) {
-                alert("Data: " + data + "\nStatus: " + status);
-            });
-        });
-
-
-
-    });
-    function cerrarSession() {
-        localStorage.removeItem("usuario");
-        location.href = "../login.html";
-    }
+        
+        function cerrarSession() {
+            localStorage.removeItem("usuario");
+            location.href = "../login.html";
+        }
+    })

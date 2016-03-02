@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CapturarRespuestasBLL.cs" />
     <Compile Include="empleadoBLL.cs" />
     <Compile Include="empleados_selecionadosBLL.cs" />
     <Compile Include="enviodenotificacionesBLL.cs" />
