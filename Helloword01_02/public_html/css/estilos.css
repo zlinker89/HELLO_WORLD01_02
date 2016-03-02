@@ -30,7 +30,7 @@
 			}
 
               .caja_izq:hover {
-                    background-color: #22859F;
+                    background-color: #E0E0E0;
                     color: #fff;
                 }
 			.caja_der{
@@ -345,8 +345,8 @@
               
             }
             .activo .caja_izq{
-                background-color: rgba(34, 133, 159, 1);
-                width:280px;
+                background-color:#BDBDBD;
+                width:260px;
                
             }
 
@@ -354,7 +354,7 @@
                 color:#fff;
                 margin-right: 0;
                 font-weight: bold;
-                transform:translate(-55px,0px);
+                transform:translate(-50px,0px);
                
             }
 
@@ -453,7 +453,7 @@
             	left: 0;
             	right: 0;
             	height: 8%;
-            	background: #22859F;
+            	background: #e31937;
             	z-index: 10071;
             }
             .mover{

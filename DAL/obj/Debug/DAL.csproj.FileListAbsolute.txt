@@ -26,3 +26,17 @@ C:\Users\TECNOPARQUE\Documents\Lightshot\HELLO_WORLD01_02\DAL\bin\Debug\EntityFr
 C:\Users\TECNOPARQUE\Documents\Lightshot\HELLO_WORLD01_02\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
 C:\Users\TECNOPARQUE\Documents\Lightshot\HELLO_WORLD01_02\DAL\obj\Debug\DAL.dll
 C:\Users\TECNOPARQUE\Documents\Lightshot\HELLO_WORLD01_02\DAL\obj\Debug\DAL.pdb
+C:\Users\vides\Desktop\HELLO_WORLD01_02\DAL\bin\Debug\DAL.dll.config
+C:\Users\vides\Desktop\HELLO_WORLD01_02\DAL\bin\Debug\DAL.dll
+C:\Users\vides\Desktop\HELLO_WORLD01_02\DAL\bin\Debug\DAL.pdb
+C:\Users\vides\Desktop\HELLO_WORLD01_02\DAL\bin\Debug\Entities.dll
+C:\Users\vides\Desktop\HELLO_WORLD01_02\DAL\bin\Debug\EntityFramework.dll
+C:\Users\vides\Desktop\HELLO_WORLD01_02\DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\vides\Desktop\HELLO_WORLD01_02\DAL\bin\Debug\Interfaces.dll
+C:\Users\vides\Desktop\HELLO_WORLD01_02\DAL\bin\Debug\Entities.pdb
+C:\Users\vides\Desktop\HELLO_WORLD01_02\DAL\bin\Debug\Interfaces.pdb
+C:\Users\vides\Desktop\HELLO_WORLD01_02\DAL\bin\Debug\EntityFramework.xml
+C:\Users\vides\Desktop\HELLO_WORLD01_02\DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\vides\Desktop\HELLO_WORLD01_02\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+C:\Users\vides\Desktop\HELLO_WORLD01_02\DAL\obj\Debug\DAL.dll
+C:\Users\vides\Desktop\HELLO_WORLD01_02\DAL\obj\Debug\DAL.pdb
