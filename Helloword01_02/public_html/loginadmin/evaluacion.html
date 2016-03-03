@@ -27,6 +27,7 @@
 		</style>
 	</head>
 	<body>
+
         <div id="wrapper" ng-controller="pagina">
 
             <!-- Sidebar -->
@@ -39,14 +40,16 @@
                     </li>
                     <li>
                         <div style="margin-right:35px; margin-top:30px;" class="row col-xs-12 col-sm-12">
-                            <img src="../img/logo.png" alt="..." class="img-circle" width="150px" height="150px">
+                            <img src="../img/user.png" alt="..." class="img-circle" width="150px" height="150px">
+
+                            <div style="margin-right: 25px; margin-top: 0; transform: translate(0px,-35px);"><h4><span class="label label-primary">Franklin Ospino</span></h4></div>
                         </div>
-                    </li>
+
                     <li>
-                        <a href="evaluacion.html" class="activo">
+                        <a href="../loginadmin/evaluacion.html" class="activo" class="amarillo">
                             <div class="col-xs-12 caja_izq row-centered">
                                 <i class="fa fa-pencil icono_grandes"></i>
-                                <h4 class="etiquetas">Evaluacion</h4>
+                                <h4 class="etiquetas">Evaluación</h4>
                             </div>
                         </a>
                     </li>
@@ -60,10 +63,10 @@
                     </li>
                     <li>
                         <a href="../periodos/periodos.html" class="amarillo">
-                            <div class="col-xs-12 caja_izq row-centered">
-                                <i class="fa fa-clock-o icono_grandes"></i>
-                                <h4 class="etiquetas">Periodo</h4>
-                            </div>
+                            <div class=" col-xs-12 caja_izq row-centered">
+                            <i class="fa fa-clock-o icono_grandes"></i>
+                            <h4 class="etiquetas">Periodo</h4>
+</div>
                         </a>
                     </li>
                     <li>
@@ -74,7 +77,15 @@
                             </div>
                         </a>
                     </li>
+
+                   
                 </ul>
+                <div class="row col-xs-12 col-sm-12 caja_logo">
+
+                    <img src="../img/logo2.jpg" class="img-rounded" width="90px" height="90px" />
+                    <img src="../img/logo.png" class="img-rounded" width="70px" height="70px" />
+
+                </div>
             </div>
             <!-- /#sidebar-wrapper -->
             <!-- Page Content -->
@@ -123,7 +134,7 @@
                                         <div class="form-group">
                                             <div class="col-md-2 hidden-sm hidden-xs hidden-md"><label style="margin-top: 5px;" for="busqueda">Buscar:</label></div>
                                             <div class="col-sm-8 col-xs-10"><input type="text" size="40" ng-model="query" ng-change="search()" id="busqueda" class="form-control" placeholder="ingrese texto a buscar"></div>
-                                            <div class="col-sm-1 pull-right"><a class="amarillo" data-toggle="modal" data-backdrop="static" data-keyboard="false" href='#modal-id'><i class="fa fa-plus-circle fa-3x"></i></a></div>
+                                            <div class="col-sm-1 pull-right"><a class="plus" data-toggle="modal" data-backdrop="static" data-keyboard="false" href='#modal-id'><i class="fa fa-plus-circle fa-3x"></i></a></div>
                                         </div>
                                     </form>
                                 </div>

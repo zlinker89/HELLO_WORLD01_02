@@ -200,11 +200,11 @@
 
                     if(u.tipo_usuario.length < 2){
                         if (u.tipo_usuario[0].tipo == "Empleado") {
-                            location.href = "/public_html/login-empleados/Moduloempleados.html";
+                            location.href = "/public_html/login-empleados/evaluacion-empleados.html";
                         }
                     } else if (u.tipo_usuario.length > 1) {
                         if (u.tipo_usuario[0].tipo == "Administrador") {
-                            location.href = "/public_html/Empleados/indexempleado.html";
+                            location.href = "/public_html/loginadmin/evaluacion.html";
                         } else if (u.tipo_usuario[0].tipo == "Seguridad") {
                             location.href = "/public_html/seguridad/index.html";
                         } else {

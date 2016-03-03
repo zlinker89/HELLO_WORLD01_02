@@ -30,11 +30,15 @@
 			}
 
               .caja_izq:hover {
-                    background-color: #E0E0E0;
-                    color: #fff;
+                 background-color: #E0E0E0;
+                 color: #fff;
+                 border-radius: 2px 118px 107px 0px;
+                -moz-border-radius: 2px 118px 107px 0px;
+                -webkit-border-radius: 2px 118px 107px 0px;
+                border: 0px solid #000000
                 }
 			.caja_der{
-				margin-top: 80px;
+			margin-top: 80px;
             }
             .caja_tabla{
             }
@@ -46,6 +50,16 @@
 				text-align: center;
 				box-shadow: 2px -10px 3px black;
 			}
+
+            .caja_logo {
+               transform: translate(0,87vh);
+   
+         
+            }
+.caja {
+           background-color:#EEEEEE;
+
+}
 			/*--------------FIN-----------CAJAS--------------------------------------------------*/
 
 			/*-------------------------MENUS--------------------------------------------------*/
@@ -121,6 +135,11 @@
 				color: #b2573b;
 				text-decoration: none !important;
 			}
+          
+
+            .p {
+              background:#e31937; 
+            }
 			/*HOVER*/
 			.blanco:hover{
 				color: #ddd;
@@ -132,7 +151,7 @@
 				text-decoration: none !important;
 			}
 			.amarillo:hover{
-				color: #22859F !important;
+				color: #0072BC !important;
 				text-decoration: none !important;
 			}
 			.morado:hover{
@@ -228,6 +247,13 @@
 				margin-top: 8%;
 				text-align: justify;
 				padding: 3% 8% 0% 8%;
+
+                font-family: Calibri;
+	            font-size: 14px;
+	            font-style: normal;
+	            font-variant: normal;
+	            font-weight: bold;
+	            line-height: 20px
 			}
 			.textos ol{
 				/*evaluaciones empleados*/
@@ -344,9 +370,15 @@
                 color:  #fff !important;
               
             }
+
             .activo .caja_izq{
-                background-color:#BDBDBD;
+                background:#e31937;
+                
                 width:260px;
+                border-radius: 8px 118px 107px 0px;
+                -moz-border-radius: 2px 128px 107px 0px;
+                -webkit-border-radius: 2px 118px 107px 0px;
+                border: 0px solid #000000
                
             }
 
@@ -357,6 +389,8 @@
                 transform:translate(-50px,0px);
                
             }
+                /***************BOTONES***************/
+
 
             #breads .navbar .btn{
             	color:white;
@@ -366,17 +400,17 @@
             	padding-bottom: 0;
 
             }
+
+             .plus {
+            color:#0072BC;
+            
+            }
             .btn1{
 			background: #004C66!important;
 		    border:#004C66 !important;
 		    width: 90px;
 		    height: 20px;
-
-		   
-  			
-
-			    
-            	
+ 	
             }
             .btn2{
             	background: #007BA6 !important;
@@ -447,16 +481,7 @@
                 padding:10px;
             }
 
-            #footer{
-            	position: fixed;
-            	bottom: 0;
-            	left: 0;
-            	right: 0;
-            	height: 8%;
-            	background: #e31937;
-            	z-index: 10071;
-            }
-            .mover{
+         .mover{
                 transform:translate(110px,0px);
             }
             .indicador{
@@ -467,3 +492,7 @@
                 font-size:1.3em;
                 font-weight:300;
             }
+
+            
+           
+            
