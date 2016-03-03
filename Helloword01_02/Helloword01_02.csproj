@@ -152,6 +152,7 @@
     <Compile Include="Controllers\PreguntaCompetenciaController.cs" />
     <Compile Include="Controllers\PreguntasController.cs" />
     <Compile Include="Controllers\ResultadosByController.cs" />
+    <Compile Include="Controllers\ResultadosController.cs" />
     <Compile Include="Controllers\R_EvaluacionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

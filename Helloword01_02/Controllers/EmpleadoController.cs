@@ -263,37 +263,46 @@ namespace Helloword01_02.Controllers
         {
             return db.empleado.Count(e => e.id == id) > 0;
         }
-        [Route("~/EmpleadosByCedula/{cedula}/")]
+        [Route("~/EmpleadosByCedula/{cedula_evaluado}/{idperiodo}/{idempleado_seleccionado}/{tprueba}")]
         [HttpGet]
-        public empleadoDTO GetEmpleadoByCedula(string cedula)
+        public empleadoDTO GetEmpleadoByCedula(string cedula_evaluado, int idperiodo, int idempleado_seleccionado, string tprueba)
         {
-            var empleados = (from e in db.empleado
-                            where e.cedula == cedula
-                            select new empleadoDTO()
-                            {
-                                id = e.id,
-                                Nombre = e.Nombre,
-                                cedula = e.cedula,
-                                id_user = e.id_user,
-                                RosterPosition = e.RosterPosition,
-                                SubArea = e.SubArea,
-                                tipo = e.tipo,
-                                Area = e.Area,
-                                CrewCd = e.CrewCd,
-                                Departament = e.Departament,
-                                Unit = e.Unit,
-                                email = e.email,
-                                liderado1 = e.liderado1,
-                                liderado2 = e.liderado2,
-                                liderado3 = e.liderado3,
-                                liderado4 = e.liderado4,
-                                liderado5 = e.liderado5,
-                                par1 = e.par1,
-                                par2 = e.par2,
-                                par3 = e.par3,
-                                jefe = e.jefe
-                            }).FirstOrDefault();
-            return empleados;
+            empleado evaluado = db.empleado.Where(X => X.cedula == cedula_evaluado).FirstOrDefault();
+            var resultado = db.R_Evaluacion.Where(r => r.id_empleados_selecionados == idempleado_seleccionado && r.id_evaluado == evaluado.id && r.id_periodo == idperiodo && r.tipo_evaluacion == tprueba).ToList();
+            if(resultado.Count() > 0)
+            {
+                return null;
+            }
+            else
+            {
+                var empleado = (from e in db.empleado
+                                where e.id == evaluado.id
+                                select new empleadoDTO()
+                                {
+                                    id = e.id,
+                                    Nombre = e.Nombre,
+                                    cedula = e.cedula,
+                                    id_user = e.id_user,
+                                    RosterPosition = e.RosterPosition,
+                                    SubArea = e.SubArea,
+                                    tipo = e.tipo,
+                                    Area = e.Area,
+                                    CrewCd = e.CrewCd,
+                                    Departament = e.Departament,
+                                    Unit = e.Unit,
+                                    email = e.email,
+                                    liderado1 = e.liderado1,
+                                    liderado2 = e.liderado2,
+                                    liderado3 = e.liderado3,
+                                    liderado4 = e.liderado4,
+                                    liderado5 = e.liderado5,
+                                    par1 = e.par1,
+                                    par2 = e.par2,
+                                    par3 = e.par3,
+                                    jefe = e.jefe
+                                }).FirstOrDefault();
+                return empleado;
+            }
         }
     }
 }

@@ -117,23 +117,25 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>EmpresaModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="EmpresaModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>EmpresaModel.edmx</DependentUpon>
-      <LastGenOutput>EmpresaModel.Context.cs</LastGenOutput>
-    </None>
     <None Include="EmpresaModel.edmx.diagram">
       <DependentUpon>EmpresaModel.edmx</DependentUpon>
-    </None>
-    <None Include="EmpresaModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>EmpresaModel.edmx</DependentUpon>
-      <LastGenOutput>EmpresaModel.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="EmpresaModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EmpresaModel.edmx</DependentUpon>
+      <LastGenOutput>EmpresaModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="EmpresaModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EmpresaModel.edmx</DependentUpon>
+      <LastGenOutput>EmpresaModel.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -11,22 +11,25 @@ namespace Helloword01_02.Controllers
     public class ResultadosByController : ApiController
     {
         private Drummond02Entities db = new Drummond02Entities();
-        [Route("~/ResultadoBy/{idperiodo}/{idempleado_seleccionado}/{idevaluado}/")]
+        [Route("~/ResultadoBy/{idperiodo}/{idempleado_seleccionado}/{idevaluado}/{tprueba}/")]
         [HttpGet]
-        public IEnumerable<ResultadosDTO> GetResultadoByEmpleado(long idperiodo, long idempleado_seleccionado, string idevaluado)
+        public IEnumerable<ResultadosDTO> GetResultadoByEmpleado(long idperiodo, long idempleado_seleccionado, string idevaluado, string tprueba)
         {
             empleado e = db.empleado.Where(x => x.cedula == idevaluado).FirstOrDefault();
             var resultados = from r in db.R_Evaluacion
-                            where r.id_evaluado == e.id && r.id_empleados_selecionados == idempleado_seleccionado
+                            where r.id_evaluado == e.id && r.id_empleados_selecionados == idempleado_seleccionado && r.tipo_evaluacion == tprueba
                             select new ResultadosDTO()
                             {
                                 id = r.id,
                                 id_competencia = r.id_competencia,
                                 id_empleados_selecionados = r.id_empleados_selecionados,
                                 id_evaluado = r.id_evaluado,
-                                resultado = r.resultado
+                                resultado = r.resultado.Value
                             };
             return resultados;
         }
+
+        
+
     }
 }

@@ -25,6 +25,7 @@ var miApp = angular.module("miApp",[]);
 
     miApp.controller("preguntaList", function ($scope, $http) {
         $scope.tipos = sesion.tipo_usuario[0].tipo;
+        // OJO usuario contiene .empleado
         $scope.usuario = sesion;
         var idperiodo = localStorage.getItem("idperiodo");
 
@@ -42,7 +43,7 @@ var miApp = angular.module("miApp",[]);
             }
         };
         $http.get('/Examen/'+idperiodo+'/').then(function (d) {
-            $scope.respuestas = [
+            $scope.resultados = [
 		        { respuesta: "CASI NUNCA" },
 		        { respuesta: "EN POCAS OCASIONES" },
 		        { respuesta: "NORMALMENTE" },
@@ -59,9 +60,9 @@ var miApp = angular.module("miApp",[]);
             //marco solo la primera vez
             console.log(respuestas);
             for (var i in respuestas) {
-                console.log(d.data[respuestas[i].competencia].preguntas[respuestas[i].idpregunta]);
-                if (d.data[respuestas[i].competencia].preguntas[respuestas[i].idpregunta] !== undefined) {
-                    d.data[respuestas[i].competencia].preguntas[respuestas[i].idpregunta]["seleccion"] = respuestas[i].respuesta;
+                console.log(d.data[respuestas[i].indexCompetencia].preguntas[respuestas[i].idpregunta] !== undefined);
+                if (d.data[respuestas[i].indexCompetencia].preguntas[respuestas[i].idpregunta] !== undefined) {
+                    d.data[respuestas[i].indexCompetencia].preguntas[respuestas[i].idpregunta]["seleccion"] = respuestas[i].resultado;
                 }
             }
             $scope.examen = d.data;
@@ -82,21 +83,27 @@ var miApp = angular.module("miApp",[]);
 
                 /*
                 // marco la seleccion
-                $scope.examen[r.target.name].preguntas[r.target.value].respuestas[i].respuesta["seleccion"] = true;*/
+                $scope.examen[r.target.name].preguntas[r.target.value]resultados[i].resultado["seleccion"] = true;*/
                 // VERIFICO SI EXISTE
                 for (var j in respuestas) {
                     var rr = respuestas[j];
-                    if (rr.competencia === r.target.id && rr.idpregunta === r.target.alt) {
-                        rr.respuesta = r.target.value;
+                    console.log(rr.id_competencia === r.target.id && rr.idpregunta === r.target.alt);
+                    if (rr.id_competencia === $scope.examen[r.target.id].competencia.id && rr.idpregunta === r.target.alt) {
+                        rr.resultado = r.target.value;
                         cont++;
                     }
                 }
                 // primera vez
                 if (cont == 0) {
                     respuestas.push({
-                        competencia: r.target.id,
+                        id_periodo: idperiodo,
+                        id_empleados_selecionados: sesion.empleado.id,
+                        id_competencia: $scope.examen[r.target.id].competencia.id,
+                        resultado: r.target.value,
+                        id_evaluado: $scope.evaluado.id,
+                        tipo_evaluacion: tprueba,
                         idpregunta: r.target.alt,
-                        respuesta: r.target.value
+                        indexCompetencia: r.target.id
                     });
                     $scope.faltan -= 1;
                 } else {
@@ -104,27 +111,6 @@ var miApp = angular.module("miApp",[]);
                 }
                 console.log(JSON.stringify(respuestas));
                 $scope.GuardarRespuestas(r.target.id);
-                //envio de preguntas ala base de datos
-                $("#capturar").click(function () {
-                    //instancio variable para capturar datos
-
-                    var respuesta = (JSON.stringify(respuestas))
-
-                    $.ajax({
-                        type: "POST",
-                        url: "http://localhost:1442/api/R_Evaluacion",
-                        data: JSON.stringify(respuesta),
-                        dataType: "json",
-                        processData: true,
-                        success: function (data, status, xhr) {
-                            alert(data.competencia + " - " + xhr.competencia);
-                        },
-                        error: function (xhr) {
-                            alert(xhr.responseText);
-                        }
-                    });
-                });
-
             };
 
             $scope.GuardarRespuestas = function (c) {
@@ -142,28 +128,33 @@ var miApp = angular.module("miApp",[]);
                 // verifico si la cantidad es igual a la de las respuestas marcadas
                 if (cantidad_preguntas === respuestas.length) {
                     // aqui envio las respuestas
-                    console.log(respuestas);
+                    //_____________________envio al servidor
+                    $http.post('/Resultados/', respuestas).then(function (d) {
+                        console.log(d.data);
+                    });
+                    // ___________________________fin envio
                     // mensajes
                     $scope.error = false;
                     $scope.mensaje = true;
+                    
                     // reiniciamos todo
-                    localStorage.setItem("competencia" + sesion.empleado.cedula + tprueba, "0");
+                    localStorage.setItem("competencia" + sesion.empleado.cedula + tprueba + $scope.evaluado.cedula, "0");
                     localStorage.setItem(tprueba + sesion.empleado.cedula + $scope.evaluado.cedula, JSON.stringify([]));
                     // aqui lo cambio de vista
-                    // location.href = "#pagina1";
+                    location.href = "/public_html/login-empleados/evaluacion-empleados.html";
                     // desmarco todos
+                    
                     for (var i in respuestas) {
-                        //console.log(examen[respuestas[i].competencia].preguntas[respuestas[i].idpregunta].respuestas[respuestas[i].idrespuesta]);
-                        if (examen[respuestas[i].competencia].preguntas[respuestas[i].idpregunta] !== undefined) {
-                            examen[respuestas[i].competencia].preguntas[respuestas[i].idpregunta]["seleccion"] = undefined;
+                        //console.log(examen[respuestas[i].competencia].preguntas[respuestas[i].idpregunta].resultados[respuestas[i].idrespuesta]);
+                        if (d.data[respuestas[i].id_competencia].preguntas[respuestas[i].idpregunta] !== undefined) {
+                            d.data[respuestas[i].id_competencia].preguntas[respuestas[i].idpregunta]["seleccion"] = undefined;
                         }
                     }
                     respuestas = [];
-                    $scope.examen = examen;
+                    $scope.examen = d.data;
                 } else {
                     $scope.error = true;
                     $scope.mensaje = false;
-
                 }
             };
         });

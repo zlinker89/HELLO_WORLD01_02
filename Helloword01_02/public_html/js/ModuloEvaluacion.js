@@ -49,7 +49,7 @@ app.controller("pagina", function ($scope, $http, $q) {
             // liderados
             
             for (var i = 1; i <= 5; i++) {
-                $http.get('/ResultadoBy/' + idperiodo_seleccionado + '/' + sesion.id + '/' + sesion.empleado["liderado" + i] + '/').then(function (d) {
+                $http.get('/ResultadoBy/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/' + sesion.empleado["liderado" + i] + '/liderados/').then(function (d) {
                     if (d.data.length > 0) {
                         cliderados++;
                     }
@@ -57,17 +57,24 @@ app.controller("pagina", function ($scope, $http, $q) {
                 });
             }
             $scope.ClickLiderados = function () {
+                SetPrueba('liderados');
+                // traigo la lista de empleados por evaluar
                 list = [];
                 for (var i = 1; i <= 5; i++) {
-                    $http.get('/EmpleadosByCedula/' + sesion.empleado["liderado" + i]).then(function (d) {
-                        list.push(d.data);
-                        $scope.listado = list;
+                    console.log('/EmpleadosByCedula/' + sesion.empleado["liderado" + i] + '/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/liderados/');
+                    $http.get('/EmpleadosByCedula/' + sesion.empleado["liderado" + i] + '/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/liderados/').then(function (d) {
+                        console.log(d.data);
+                        if(d.data !== null){
+                            list.push(d.data);
+                            $scope.listado = list;
+                        }
                     });
                 }
             };
+
             // pares
             for (var i = 1; i <= 3; i++) {
-                $http.get('/ResultadoBy/' + idperiodo_seleccionado + '/' + sesion.id + '/' + sesion.empleado["par" + i] + '/').then(function (d) {
+                $http.get('/ResultadoBy/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/' + sesion.empleado["par" + i] + '/par/').then(function (d) {
                     if (d.data.length > 0) {
                         cpar++;
                         console.log(cpar + "i");
@@ -76,16 +83,17 @@ app.controller("pagina", function ($scope, $http, $q) {
                 });
             }
             $scope.ClickPares = function () {
+                SetPrueba('par');
                 list = [];
                 for (var i = 1; i <= 3; i++) {
-                    $http.get('/EmpleadosByCedula/' + sesion.empleado["par" + i]).then(function (d) {
+                    $http.get('/EmpleadosByCedula/' + sesion.empleado["par" + i] + '/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/par/').then(function (d) {
                         list.push(d.data);
                         $scope.listado = list;
                     });
                 }
             };
             // jefe
-            $http.get('/ResultadoBy/' + idperiodo_seleccionado + '/' + sesion.id + '/' + sesion.empleado["jefe"] + '/').then(function (d) {
+            $http.get('/ResultadoBy/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/' + sesion.empleado["jefe"] + '/jefe/').then(function (d) {
                 if (d.data.length > 0) {
                     jefe++;
                 }
@@ -94,20 +102,22 @@ app.controller("pagina", function ($scope, $http, $q) {
                 
             });
             $scope.ClickJefe = function () {
-                $http.get('/EmpleadosByCedula/' + sesion.empleado["jefe"]).then(function (d) {
+                SetPrueba('jefe');
+                $http.get('/EmpleadosByCedula/' + sesion.empleado["jefe"] + '/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/jefe/').then(function (d) {
                     localStorage.setItem("evaluando", JSON.stringify(d.data));
                     location.href = "explicacion.html";
                 });
             };
             // autoevaluacion
-            $http.get('/ResultadoBy/' + idperiodo_seleccionado + '/' + sesion.id + '/' + sesion.empleado["jefe"] + '/').then(function (d) {
+            $http.get('/ResultadoBy/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/' + sesion.empleado.cedula + '/autoevaluacion/').then(function (d) {
                 if (d.data.length > 0) {
                     auto++;
                 }
                 $scope.nauto = 1 - auto;
             });
             $scope.ClickAuto = function () {
-                localStorage.setItem("evaluando", JSON.stringify(sesion));
+                SetPrueba('autoevaluacion');
+                localStorage.setItem("evaluando", JSON.stringify(sesion.empleado));
                 location.href = "explicacion.html";
             };
             // mostramos

@@ -92,13 +92,13 @@
     <EntitySetMapping Name="R_Evaluacion">
       <EntityTypeMapping TypeName="Drummond02Model.R_Evaluacion">
         <MappingFragment StoreEntitySet="R_Evaluacion">
-          <ScalarProperty Name="tipo_evaluacion" ColumnName="tipo_evaluacion" />
-          <ScalarProperty Name="id_evaluado" ColumnName="id_evaluado" />
-          <ScalarProperty Name="resultado" ColumnName="resultado" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="id_periodo" ColumnName="id_periodo" />
           <ScalarProperty Name="id_empleados_selecionados" ColumnName="id_empleados_selecionados" />
           <ScalarProperty Name="id_competencia" ColumnName="id_competencia" />
+          <ScalarProperty Name="resultado" ColumnName="resultado" />
+          <ScalarProperty Name="id_evaluado" ColumnName="id_evaluado" />
+          <ScalarProperty Name="tipo_evaluacion" ColumnName="tipo_evaluacion" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

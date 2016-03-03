@@ -89,7 +89,7 @@
     <Property Name="id_periodo" Type="bigint" />
     <Property Name="id_empleados_selecionados" Type="bigint" />
     <Property Name="id_competencia" Type="bigint" />
-    <Property Name="resultado" Type="varchar" MaxLength="50" />
+    <Property Name="resultado" Type="float" />
     <Property Name="id_evaluado" Type="bigint" />
     <Property Name="tipo_evaluacion" Type="varchar" MaxLength="50" />
   </EntityType>

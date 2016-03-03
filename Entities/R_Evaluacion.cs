@@ -18,13 +18,13 @@ namespace Entities
         public Nullable<long> id_periodo { get; set; }
         public Nullable<long> id_empleados_selecionados { get; set; }
         public Nullable<long> id_competencia { get; set; }
-        public string resultado { get; set; }
+        public Nullable<double> resultado { get; set; }
         public Nullable<long> id_evaluado { get; set; }
         public string tipo_evaluacion { get; set; }
     
         public virtual competencias competencias { get; set; }
+        public virtual empleado empleado { get; set; }
         public virtual empleados_selecionados empleados_selecionados { get; set; }
         public virtual periodos periodos { get; set; }
-        public virtual empleado empleado { get; set; }
     }
 }
