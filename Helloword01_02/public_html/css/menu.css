@@ -11,6 +11,9 @@ color: rgba(247, 242, 242, 1);
      background-color: rgba(227, 25, 55, 1);
     border-width: 1px;
     border-radius: 4px;
+  -webkit-box-shadow: 2px 2px 5px 0px rgba(50, 50, 50, 0.5);
+-moz-box-shadow:    2px 2px 5px 0px rgba(50, 50, 50, 0.5);
+box-shadow:         2px 2px 5px 0px rgba(50, 50, 50, 0.5)
 }
 .navbar-default .navbar-nav>li>a {
     color: rgba(255, 255, 255, 1);
