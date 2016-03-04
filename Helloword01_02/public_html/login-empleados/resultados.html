@@ -38,7 +38,7 @@
 				position: absolute;
 			}
 			#soyleyenda{
-				transform: translate(70vw,-400px);
+				transform: translate(68vw,-400px);
 			}
 			@media(max-width: 900px){
 				.radarChart{
@@ -136,6 +136,19 @@
                     <div class="row">
                         <div class="row">
                             <div class="row" id="iconos_der">
+                                <div class="col-sm-12">
+                                    <div class="col-sm-12" style="transform:translate(0px,30px)">
+                                        <div class="form-group">
+                                            <br />
+                                            <label for="input" class="col-sm-5 control-label">Seleccione un periodo:</label>
+                                            <div class="col-xs-12 col-sm-7">
+                                                <select class="form-control" ng-model="periodo_seleccionado" ng-change="Cambiarperiodo()">
+                                                    <option ng-repeat="p in periodos">{{p.nombre}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="col-xs-6 col-sm-3 caja_der " style="text-align: center">
                                     <div class="col-xs-12 col-sm-12" id="tabla">
                                         <div class="table-responsive">
@@ -152,10 +165,10 @@
                                                 <tbody>
                                                     <tr ng-repeat="r in resultados">
                                                         <td>{{r.competencia}}</td>
-                                                        <td>{{r.liderados}}</td>
-                                                        <td>{{r.jefe}}</td>
-                                                        <td>{{r.pares}}</td>
-                                                        <td>{{r.autoevaluacion}}</td>
+                                                        <td ng-show="r.liderados > 0">{{r.liderados}}</td>
+                                                        <td ng-show="r.jefe > 0">{{r.jefe}}</td>
+                                                        <td ng-show="r.pares > 0">{{r.pares}}</td>
+                                                        <td ng-show="r.autoevaluacion > 0">{{r.autoevaluacion}}</td>
                                                     </tr>
                                                 </tbody>
                                             </table>
