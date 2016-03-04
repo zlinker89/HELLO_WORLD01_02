@@ -85,5 +85,89 @@ namespace Helloword01_02.Controllers
             // debe devolver solo 7
             return resultados;
         }
+
+
+        [Route("~/ResultadosToGraph/{idempleado}/{idperiodo}/")]
+        [HttpGet]
+        public List<ResultadosToGraphDTO> GetResultadosToGraph(long idempleado, long idperiodo)
+        {
+            List<ResultadosToGraphDTO> resultados = new List<ResultadosToGraphDTO>();
+            // obtengo los resultados de evaluaciones por periodo
+            List<R_Evaluacion> resultado_evaluacionlst = db.R_Evaluacion.Where(X => X.id_evaluado == idempleado && X.id_periodo == idperiodo).ToList();
+            // obtengo los promedios para jefe,liderados,pares y autoevaluacion
+            for (int j = 0; j < resultado_evaluacionlst.Count(); j++)
+            {
+                ResultadosToGraphDTO r = new ResultadosToGraphDTO();
+                if (resultado_evaluacionlst[j] != null)
+                {
+                    int idcompetencia = (int)resultado_evaluacionlst[j].id_competencia;
+                    // tomamos la competencia que vamos a promediar
+                    r.competencia = db.competencias.Where(x => x.id == idcompetencia).First().nombre;
+                    // para promedio
+                    double LideradoSuma = 0;
+                    double JefeSuma = 0;
+                    double ParesSuma = 0;
+                    double AutoSuma = 0;
+                    double Lideradocontador = 0;
+                    double Jefecontador = 0;
+                    double Parescontador = 0;
+                    double Autocontador = 0;
+
+                    for (int i = 0; i < resultado_evaluacionlst.Count(); i++)
+                    {
+                        // obtengo promedio por competencia, sumando los datos de cada tipo_empleado
+                        if (resultado_evaluacionlst[i] != null && resultado_evaluacionlst[j].id_competencia == resultado_evaluacionlst[i].id_competencia)
+                        {
+                            switch (resultado_evaluacionlst[i].tipo_evaluacion)
+                            {
+                                case "liderados":
+                                    LideradoSuma += (int)resultado_evaluacionlst[i].resultado;
+                                    Lideradocontador++;
+                                    break;
+                                case "par":
+                                    ParesSuma += (int)resultado_evaluacionlst[i].resultado;
+                                    Parescontador++;
+                                    break;
+                                case "jefe":
+                                    JefeSuma += (int)resultado_evaluacionlst[i].resultado;
+                                    Jefecontador++;
+                                    break;
+                                case "autoevaluacion":
+                                    AutoSuma += (int)resultado_evaluacionlst[i].resultado;
+                                    Autocontador++;
+                                    break;
+                            }
+                            // ponesmos null para no repetir en i
+                            if(i != j){
+                                resultado_evaluacionlst[i] = null;
+                            }
+                        }
+                    }
+                    // Obtengo promedios y actualizo el objeto con un decimal de la forma n.x
+                    if (LideradoSuma / Lideradocontador >= 0)
+                    {
+                        r.liderados = (float)(Math.Round((double)LideradoSuma / Lideradocontador, 2));
+                    }
+                    if ((float)(Math.Round((double)ParesSuma / Parescontador, 2)) >= 0)
+                    {
+                        r.pares = (float)(Math.Round((double)ParesSuma / Parescontador, 2));
+                    }
+                    if ((float)(Math.Round((double)JefeSuma / Jefecontador, 2)) >= 0)
+                    {
+                       r.jefe = (float)(Math.Round((double)JefeSuma / Jefecontador, 2)); 
+                    }
+                    if ((float)(Math.Round((double)AutoSuma / Autocontador, 2)) >= 0)
+                    {
+                        r.autoevaluacion = (float)(Math.Round((double)AutoSuma / Autocontador, 2));
+                    }
+                    
+                    // lo añadimos a la lista
+                    resultados.Add(r);
+                    // lo ponemos null
+                    resultado_evaluacionlst[j] = null;
+                }
+            }
+            return resultados;
+        }
     }
 }
