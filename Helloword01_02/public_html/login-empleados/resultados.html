@@ -40,6 +40,9 @@
 			#soyleyenda{
 				transform: translate(68vw,-400px);
 			}
+            .legend{
+                background:red;
+            }
 			@media(max-width: 900px){
 				.radarChart{
 					transform: translate(-30px,0px);
@@ -165,10 +168,10 @@
                                                 <tbody>
                                                     <tr ng-repeat="r in resultados">
                                                         <td>{{r.competencia}}</td>
-                                                        <td ng-show="r.liderados > 0">{{r.liderados}}</td>
-                                                        <td ng-show="r.jefe > 0">{{r.jefe}}</td>
-                                                        <td ng-show="r.pares > 0">{{r.pares}}</td>
-                                                        <td ng-show="r.autoevaluacion > 0">{{r.autoevaluacion}}</td>
+                                                        <td><span ng-show="r.liderados > 0">{{r.liderados}}</span></td>
+                                                        <td><span ng-show="r.jefe > 0">{{r.jefe}}</span></td>
+                                                        <td><span ng-show="r.pares > 0">{{r.pares}}</span></td>
+                                                        <td><span ng-show="r.autoevaluacion > 0">{{r.autoevaluacion}}</span></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
