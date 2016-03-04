@@ -43,7 +43,7 @@ var miApp = angular.module("miApp",[]);
             }
         };
         $http.get('/Examen/'+idperiodo+'/').then(function (d) {
-            $scope.resultados = [
+            $scope.respuestas = [
 		        { respuesta: "CASI NUNCA" },
 		        { respuesta: "EN POCAS OCASIONES" },
 		        { respuesta: "NORMALMENTE" },

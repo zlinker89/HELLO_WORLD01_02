@@ -44,30 +44,34 @@ app.controller('resultados', function ($scope, $http) {
         $scope.periodos = p.data;
         $scope.periodo_seleccionado = p.data[0].nombre;
         $scope.Cambiarperiodo = function () {
-        var idperiodo_seleccionado;
-        // obtengo id periodo
-        for (var l in p.data) {
-            if (p.data[l].nombre == $scope.periodo_seleccionado) {
-                $scope.metodologia = p.data[l].metodologia
-                idperiodo_seleccionado = p.data[l].id;
-            }
-        }
-        console.log('/ResultadosToGraph/' + sesion.empleado.id + '/' + idperiodo_seleccionado + '/');
-        $http.get('/ResultadosToGraph/' + sesion.empleado.id + '/' + idperiodo_seleccionado + '/').then(function (resultado) {
-            console.log(resultado.data);
+            // RETIRAMOS LA GRAFICA
             d3.select("svg").remove();
-            if ((resultado.data.length - 1) >= 0) {
-                $scope.resultados = resultado.data;
-                /*
-                $scope.resultados = [
-		{ competencia: "Orientacion a Resultados", liderados: 2.8, jefe: 1.0, pares: 2.8, autoevaluacion: 1.3 },
-		{ competencia: "Enfoque en la Seguridad, \nSalud y Medio Ambiente", liderados: 2, jefe: 1, pares: 1.8, autoevaluacion: 2.4 },
-		{ competencia: "Capacidad de Aprendizaje y\n de Enseñar a otros", liderados: 3, jefe: 1, pares: 3, autoevaluacion: 1.5 },
-		{ competencia: "Comunicación Efectiva", liderados: 2.5, jefe: 1.8, pares: 3, autoevaluacion: 1.8 },
-		{ competencia: "Trabajo en Equipo", liderados: 2, jefe: 2, pares: 2, autoevaluacion: 3 },
-		{ competencia: "Liderazgo Capacidad de\n Influenciar", liderados: 1.9, jefe: 1.5, pares: 1.5, autoevaluacion: 2 },
-		{ competencia: "Liderazgo Promotor de\n Confianza", liderados: 2.4, jefe: 2.3, pares: 2.3, autoevaluacion: 2.3 },
-                ];*/
+            $scope.resultados = undefined; // BORRAMOS LA TABLA SI EXISTE
+            // BORRAMOS DATOS
+            data = [];
+                var idperiodo_seleccionado;
+                // obtengo id periodo
+                for (var l in p.data) {
+                    if (p.data[l].nombre == $scope.periodo_seleccionado) {
+                        $scope.metodologia = p.data[l].metodologia
+                        idperiodo_seleccionado = p.data[l].id;
+                    }
+                }
+                console.log('/ResultadosToGraph/' + sesion.empleado.id + '/' + idperiodo_seleccionado + '/');
+                $http.get('/ResultadosToGraph/' + sesion.empleado.id + '/' + idperiodo_seleccionado + '/').then(function (resultado) {
+                    console.log(resultado.data);
+                    if ((resultado.data.length - 1) >= 0) {
+                        $scope.resultados = resultado.data;
+                        /*
+                        $scope.resultados = [
+		        { competencia: "Orientacion a Resultados", liderados: 2.8, jefe: 1.0, pares: 2.8, autoevaluacion: 1.3 },
+		        { competencia: "Enfoque en la Seguridad, \nSalud y Medio Ambiente", liderados: 2, jefe: 1, pares: 1.8, autoevaluacion: 2.4 },
+		        { competencia: "Capacidad de Aprendizaje y\n de Enseñar a otros", liderados: 3, jefe: 1, pares: 3, autoevaluacion: 1.5 },
+		        { competencia: "Comunicación Efectiva", liderados: 2.5, jefe: 1.8, pares: 3, autoevaluacion: 1.8 },
+		        { competencia: "Trabajo en Equipo", liderados: 2, jefe: 2, pares: 2, autoevaluacion: 3 },
+		        { competencia: "Liderazgo Capacidad de\n Influenciar", liderados: 1.9, jefe: 1.5, pares: 1.5, autoevaluacion: 2 },
+		        { competencia: "Liderazgo Promotor de\n Confianza", liderados: 2.4, jefe: 2.3, pares: 2.3, autoevaluacion: 2.3 },
+                        ];*/
                 ////////////////////////////////////////////////////////////// 
                 //////////////////////// Set-Up ////////////////////////////// 
                 ////////////////////////////////////////////////////////////// 
@@ -78,7 +82,7 @@ app.controller('resultados', function ($scope, $http) {
                 ////////////////////////////////////////////////////////////// 
                 ////////////////////////// Data ////////////////////////////// 
                 //////////////////////////////////////////////////////////////
-                var resultadosArray = $.map($scope.resultados[0], function (value, index) {
+                var resultadosArray = $.map($scope.resultados, function (value, index) {
                     return [value];
                 });
                 for (var i = 0; i <= resultadosArray.length - 2; i++) {
@@ -110,7 +114,7 @@ app.controller('resultados', function ($scope, $http) {
                     w: 300,
                     h: 300,
                     margin: margin,
-                    maxValue: 0.5,
+                    maxValue: 5,
                     levels: 5,
                     roundStrokes: false,
                     color: color

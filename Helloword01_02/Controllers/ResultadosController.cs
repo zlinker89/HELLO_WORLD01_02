@@ -30,14 +30,16 @@ namespace Helloword01_02.Controllers
                     int contador = 0;
                     for (int i = 0; i < resultados_anterior.Count(); i++)
                     {
-                        if (resultados_anterior[i] != null && i != j)
+                        if (resultados_anterior[i] != null)
                         {
                             if (resultados_anterior[j].id_competencia == resultados_anterior[i].id_competencia)
                             {
                                 // sumamos y contamos
                                 contador++;
                                 acumulador += resultados_anterior[i].resultado.Value;
-                                resultados_anterior[i] = null; // lo retiramos para que en la proxima pasada ya no exista
+                                if(i != j){
+                                    resultados_anterior[i] = null; // lo retiramos para que en la proxima pasada ya no exista
+                                }
                             }
                            
                         }
