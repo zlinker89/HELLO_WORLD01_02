@@ -65,7 +65,9 @@
                     <div style="margin-right:35px; margin-top:30px;" class="row col-xs-12 col-sm-12">
                         <img src="../img/user.png" alt="..." class="img-circle" width="150px" height="150px">
 
-                        <div style="margin-right: 25px; margin-top: 0; transform: translate(0px,-35px);"><h4><span class="label label-primary">Franklin Ospino</span></h4></div>
+                        <div style="margin-right: 25px; margin-top: 0; transform: translate(0px,-35px);">
+                            <h4><span class="label label-primary">{{usuario.empleado.Nombre}}</span></h4>
+                        </div>
                     </div>
                 </li>
                 <li>
@@ -122,7 +124,7 @@
                             <li>
                                 <div ng-class="{mover: usuario.tipo_usuario.length == 1}">
                                     <span class="col-xs-8">
-                                        <h4>{{usuario.empleado.Nombre}}</h4>
+                                        <h4></h4>
                                     </span>
                                     <span class="col-xs-4" id="icono_user"><i class="fa fa-user"></i></span>
                                 </div>

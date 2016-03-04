@@ -47,6 +47,7 @@ angular.module("miApp", []).controller("tabla", function ($scope, $http) {
     $scope.iniciar = function () {
         $http.get('/api/Empleado/').then(function (d) {
             var empleados = d.data;
+            console.log(empleados);
             var hotElement = document.getElementById('example');
             hot = new Handsontable(hotElement, {
                 data: empleados,
