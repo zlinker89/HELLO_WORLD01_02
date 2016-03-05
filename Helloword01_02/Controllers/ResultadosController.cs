@@ -20,68 +20,74 @@ namespace Helloword01_02.Controllers
             // ALGORITMO PARA OBTENER RESULTADO POR COMPETENCIA
             try
             {
-                for (int j = 0; j < resultados_anterior.Count();j++ )
-            {
-                R_Evaluacion r = new R_Evaluacion();
-
-                if (resultados_anterior[j] != null)
+                // solo una vez
+                // obtengo el id de empleado seleccionado con el id empleado
+                int id_empleado_seleccionado = (int)resultados_anterior[0].id_empleados_selecionados;
+                empleados_selecionados empleado_seleccionado = db.empleados_selecionados.Where(x => x.id_empleados == id_empleado_seleccionado).First();
+                for (int j = 0; j < resultados_anterior.Count(); j++)
                 {
-                    double acumulador = 0;
-                    int contador = 0;
-                    for (int i = 0; i < resultados_anterior.Count(); i++)
+                    R_Evaluacion r = new R_Evaluacion();
+                    
+
+                    if (resultados_anterior[j] != null)
                     {
-                        if (resultados_anterior[i] != null)
+                        double acumulador = 0;
+                        int contador = 0;
+                        for (int i = 0; i < resultados_anterior.Count(); i++)
                         {
-                            if (resultados_anterior[j].id_competencia == resultados_anterior[i].id_competencia)
+                            if (resultados_anterior[i] != null)
                             {
-                                // sumamos y contamos
-                                contador++;
-                                acumulador += resultados_anterior[i].resultado.Value;
-                                if(i != j){
-                                    resultados_anterior[i] = null; // lo retiramos para que en la proxima pasada ya no exista
+                                if (resultados_anterior[j].id_competencia == resultados_anterior[i].id_competencia)
+                                {
+                                    // sumamos y contamos
+                                    contador++;
+                                    acumulador += resultados_anterior[i].resultado.Value;
+                                    if (i != j)
+                                    {
+                                        resultados_anterior[i] = null; // lo retiramos para que en la proxima pasada ya no exista
+                                    }
                                 }
+
                             }
-                           
                         }
+                        // pasamos los resultados
+                        // de prueba
+                        /*
+                        resultados.Add(new R_EvaluacionDTO());
+                        resultados[cuenta].id = resultados_anterior[j].id;
+                        resultados[cuenta].id_competencia = resultados_anterior[j].id_competencia;
+                        resultados[cuenta].id_empleados_selecionados = resultados_anterior[j].id_empleados_selecionados;
+                        resultados[cuenta].id_evaluado = resultados_anterior[j].id_evaluado;
+                        resultados[cuenta].id_periodo = resultados_anterior[j].id_periodo;
+                        resultados[cuenta].tipo_evaluacion = resultados_anterior[j].tipo_evaluacion;
+                        resultados_anterior[j] = null; // retiramos este valor de la lista
+                        resultados[cuenta].resultado = acumulador / contador;
+                         */
+                        // FIN de prueba
+
+                        
+                        r.id_competencia = resultados_anterior[j].id_competencia;
+                        r.id_empleados_selecionados = empleado_seleccionado.id;
+                        r.id_evaluado = resultados_anterior[j].id_evaluado;
+                        r.id_periodo = resultados_anterior[j].id_periodo;
+                        r.tipo_evaluacion = resultados_anterior[j].tipo_evaluacion;
+                        resultados_anterior[j] = null; // retiramos este valor de la lista
+                        r.resultado = acumulador / contador;
+                        // debe devolver solo 7
+
+                        // aumento la cuenta para generar lista que notiene utilidad
+                        cuenta++;
+                        // guardamos
+                        db.R_Evaluacion.Add(r);
+                        db.SaveChanges();
                     }
-                    // pasamos los resultados
-                    // de prueba
-                    /*
-                    resultados.Add(new R_EvaluacionDTO());
-                    resultados[cuenta].id = resultados_anterior[j].id;
-                    resultados[cuenta].id_competencia = resultados_anterior[j].id_competencia;
-                    resultados[cuenta].id_empleados_selecionados = resultados_anterior[j].id_empleados_selecionados;
-                    resultados[cuenta].id_evaluado = resultados_anterior[j].id_evaluado;
-                    resultados[cuenta].id_periodo = resultados_anterior[j].id_periodo;
-                    resultados[cuenta].tipo_evaluacion = resultados_anterior[j].tipo_evaluacion;
-                    resultados_anterior[j] = null; // retiramos este valor de la lista
-                    resultados[cuenta].resultado = acumulador / contador;
-                     */
-                    // FIN de prueba
 
-                    
-                    r.id_competencia = resultados_anterior[j].id_competencia;
-                    r.id_empleados_selecionados = resultados_anterior[j].id_empleados_selecionados;
-                    r.id_evaluado = resultados_anterior[j].id_evaluado;
-                    r.id_periodo = resultados_anterior[j].id_periodo;
-                    r.tipo_evaluacion = resultados_anterior[j].tipo_evaluacion;
-                    resultados_anterior[j] = null; // retiramos este valor de la lista
-                    r.resultado = acumulador / contador;
-                    // debe devolver solo 7
-                    
-                    // aumento la cuenta para generar lista que notiene utilidad
-                    cuenta++;
-                    // guardamos
-                    db.R_Evaluacion.Add(r);
-                    db.SaveChanges();
+
                 }
-
-                
-            }
             }
             catch (Exception e)
             {
-                
+
                 throw e;
             }
             // debe devolver solo 7
@@ -140,7 +146,8 @@ namespace Helloword01_02.Controllers
                                     break;
                             }
                             // ponesmos null para no repetir en i
-                            if(i != j){
+                            if (i != j)
+                            {
                                 resultado_evaluacionlst[i] = null;
                             }
                         }
@@ -156,13 +163,13 @@ namespace Helloword01_02.Controllers
                     }
                     if ((float)(Math.Round((double)JefeSuma / Jefecontador, 2)) >= 0)
                     {
-                       r.jefe = (float)(Math.Round((double)JefeSuma / Jefecontador, 2)); 
+                        r.jefe = (float)(Math.Round((double)JefeSuma / Jefecontador, 2));
                     }
                     if ((float)(Math.Round((double)AutoSuma / Autocontador, 2)) >= 0)
                     {
                         r.autoevaluacion = (float)(Math.Round((double)AutoSuma / Autocontador, 2));
                     }
-                    
+
                     // lo añadimos a la lista
                     resultados.Add(r);
                     // lo ponemos null
