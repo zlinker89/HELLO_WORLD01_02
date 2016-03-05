@@ -87,8 +87,10 @@ app.controller("pagina", function ($scope, $http, $q) {
                 list = [];
                 for (var i = 1; i <= 3; i++) {
                     $http.get('/EmpleadosByCedula/' + sesion.empleado["par" + i] + '/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/par/').then(function (d) {
-                        list.push(d.data);
-                        $scope.listado = list;
+                        if (d.data != null) {
+                            list.push(d.data);
+                            $scope.listado = list;
+                        }
                     });
                 }
             };

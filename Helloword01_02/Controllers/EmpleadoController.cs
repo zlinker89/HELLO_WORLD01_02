@@ -263,12 +263,14 @@ namespace Helloword01_02.Controllers
         {
             return db.empleado.Count(e => e.id == id) > 0;
         }
-        [Route("~/EmpleadosByCedula/{cedula_evaluado}/{idperiodo}/{idempleado_seleccionado}/{tprueba}")]
+        [Route("~/EmpleadosByCedula/{cedula_evaluado}/{idperiodo}/{idempleado}/{tprueba}")]
         [HttpGet]
-        public empleadoDTO GetEmpleadoByCedula(string cedula_evaluado, int idperiodo, int idempleado_seleccionado, string tprueba)
+        public empleadoDTO GetEmpleadoByCedula(string cedula_evaluado, int idperiodo, int idempleado, string tprueba)
         {
             empleado evaluado = db.empleado.Where(X => X.cedula == cedula_evaluado).FirstOrDefault();
-            var resultado = db.R_Evaluacion.Where(r => r.id_empleados_selecionados == idempleado_seleccionado && r.id_evaluado == evaluado.id && r.id_periodo == idperiodo && r.tipo_evaluacion == tprueba).ToList();
+            // esto por la relacion es con empleado_seleccionado y no con empleado
+            int id_empleado_seleccionado = (int)db.empleados_selecionados.Where(x => x.id_empleados == idempleado).FirstOrDefault().id;
+            var resultado = db.R_Evaluacion.Where(r => r.id_empleados_selecionados == id_empleado_seleccionado && r.id_evaluado == evaluado.id && r.id_periodo == idperiodo && r.tipo_evaluacion == tprueba).ToList();
             if(resultado.Count() > 0)
             {
                 return null;
