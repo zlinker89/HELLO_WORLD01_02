@@ -93,6 +93,7 @@ app.controller("pagina", function ($scope, $http, $q) {
                 }
             };
             // jefe
+            console.log('/ResultadoBy/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/' + sesion.empleado["jefe"] + '/jefe/');
             $http.get('/ResultadoBy/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/' + sesion.empleado["jefe"] + '/jefe/').then(function (d) {
                 if (d.data.length > 0) {
                     jefe++;
