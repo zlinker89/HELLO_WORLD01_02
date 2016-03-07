@@ -166,6 +166,7 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="index.html" />
     <Content Include="public_html\css\bootstrap-theme.css" />
     <Content Include="public_html\css\bootstrap-theme.min.css" />
     <Content Include="public_html\css\bootstrap.css" />
@@ -184,7 +185,19 @@
     <Content Include="public_html\Empleados\prueba1.html" />
     <Content Include="public_html\fonts\fontawesome-webfont.svg" />
     <Content Include="public_html\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="public_html\img\fondo-de-prueba.png" />
+    <Content Include="public_html\img\FONDO.png" />
+    <Content Include="public_html\img\fondo1.png" />
+    <Content Include="public_html\img\fondo3.png" />
+    <Content Include="public_html\img\fondo4m.png" />
+    <Content Include="public_html\img\fondo5.jpg" />
+    <Content Include="public_html\img\logo.png" />
+    <Content Include="public_html\img\logo2.jpg" />
     <Content Include="public_html\img\tablero.png" />
+    <Content Include="public_html\img\tablero1.png" />
+    <Content Include="public_html\img\user.png" />
+    <Content Include="public_html\img\user1.jpg" />
+    <Content Include="public_html\img\user2.jpg" />
     <Content Include="public_html\js\angular.min.js" />
     <Content Include="public_html\js\angular1.min.js" />
     <Content Include="public_html\js\app.js" />
