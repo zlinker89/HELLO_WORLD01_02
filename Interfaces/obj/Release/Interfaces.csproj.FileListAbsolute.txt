@@ -1,0 +1,5 @@
+C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\Interfaces\bin\Release\Interfaces.dll
+C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\Interfaces\bin\Release\Interfaces.pdb
+C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\Interfaces\obj\Release\Interfaces.csprojResolveAssemblyReference.cache
+C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\Interfaces\obj\Release\Interfaces.dll
+C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\Interfaces\obj\Release\Interfaces.pdb

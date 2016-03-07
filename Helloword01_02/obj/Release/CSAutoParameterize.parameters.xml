@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="Drummond02Entities-Web.config Connection String" description="Drummond02Entities Cadena de conexión que usa la aplicación en web.config para obtener acceso a la base de datos." defaultValue="metadata=res://*/EmpresaModel.csdl|res://*/EmpresaModel.ssdl|res://*/EmpresaModel.msl;provider=System.Data.SqlClient;provider connection string='data source=&quot;tcp:192.168.1.5\MSSQLSERVER, 1433&quot;;initial catalog=Drummond02;persist security info=True;user id=eva;password=3152414827;MultipleActiveResultSets=True;App=EntityFramework'" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Franklin\\Documents\\GitHub\\HELLO_WORLD01_02\\Helloword01_02\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Drummond02Entities']/@connectionString" />
+  </parameter>
+</parameters>

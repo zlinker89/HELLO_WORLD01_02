@@ -1,0 +1,16 @@
+C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\BL\bin\Release\BL.dll.config
+C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\BL\bin\Release\BL.dll
+C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\BL\bin\Release\BL.pdb
+C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\BL\bin\Release\DAL.dll
+C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\BL\bin\Release\Entities.dll
+C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\BL\bin\Release\EntityFramework.dll
+C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\BL\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\BL\bin\Release\Interfaces.dll
+C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\BL\bin\Release\DAL.pdb
+C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\BL\bin\Release\Entities.pdb
+C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\BL\bin\Release\Interfaces.pdb
+C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\BL\bin\Release\EntityFramework.xml
+C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\BL\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\BL\obj\Release\BLL.csprojResolveAssemblyReference.cache
+C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\BL\obj\Release\BL.dll
+C:\Users\Franklin\Documents\GitHub\HELLO_WORLD01_02\BL\obj\Release\BL.pdb

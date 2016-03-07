@@ -1,0 +1,356 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Drummond02Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="competencias">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" />
+    <Property Name="rango_evaluacion" Type="varchar" MaxLength="50" />
+    <Property Name="idevaluacion" Type="bigint" />
+  </EntityType>
+  <EntityType Name="empleado">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cedula" Type="varchar" MaxLength="50" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" />
+    <Property Name="tipo" Type="varchar" MaxLength="50" />
+    <Property Name="Departament" Type="varchar" MaxLength="50" />
+    <Property Name="Area" Type="varchar" MaxLength="50" />
+    <Property Name="SubArea" Type="varchar" MaxLength="50" />
+    <Property Name="CrewCd" Type="varchar" MaxLength="50" />
+    <Property Name="RosterPosition" Type="varchar" MaxLength="50" />
+    <Property Name="Unit" Type="varchar" MaxLength="50" />
+    <Property Name="id_user" Type="bigint" />
+    <Property Name="email" Type="varchar" MaxLength="50" />
+    <Property Name="liderado1" Type="varchar" MaxLength="50" />
+    <Property Name="liderado2" Type="varchar" MaxLength="50" />
+    <Property Name="liderado3" Type="varchar" MaxLength="50" />
+    <Property Name="liderado4" Type="varchar" MaxLength="50" />
+    <Property Name="liderado5" Type="varchar" MaxLength="50" />
+    <Property Name="par1" Type="varchar" MaxLength="50" />
+    <Property Name="par2" Type="varchar" MaxLength="50" />
+    <Property Name="par3" Type="varchar" MaxLength="50" />
+    <Property Name="jefe" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="empleados_selecionados">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_empleados" Type="bigint" />
+    <Property Name="id_periodos" Type="bigint" />
+    <Property Name="estado" Type="tinyint" />
+  </EntityType>
+  <EntityType Name="evaluacion">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" />
+    <Property Name="tipo_de_evaluacion" Type="varchar" MaxLength="50" />
+    <Property Name="estado" Type="tinyint" />
+  </EntityType>
+  <EntityType Name="periodos">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fechainicio" Type="date" />
+    <Property Name="fechafinal" Type="date" />
+    <Property Name="metodologia" Type="varchar" MaxLength="50" />
+    <Property Name="id_evaluacion" Type="bigint" />
+    <Property Name="estado" Type="tinyint" />
+    <Property Name="nombre" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="preguntas">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="idcompetencia" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="preguntas_competencia">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_preguntas" Type="bigint" />
+    <Property Name="id_compentecias" Type="bigint" />
+  </EntityType>
+  <EntityType Name="R_Evaluacion">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_periodo" Type="bigint" />
+    <Property Name="id_empleados_selecionados" Type="bigint" />
+    <Property Name="id_competencia" Type="bigint" />
+    <Property Name="resultado" Type="float" />
+    <Property Name="id_evaluado" Type="bigint" />
+    <Property Name="tipo_evaluacion" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tipo_usuario">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tipo_usuario" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Usuario_Tipo_usuario">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idtipo_usuario" Type="bigint" />
+    <Property Name="id_user" Type="bigint" />
+  </EntityType>
+  <EntityType Name="usuarios">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre_usuario" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="password_usuario" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_competencias_evaluacion">
+    <End Role="evaluacion" Type="Self.evaluacion" Multiplicity="0..1" />
+    <End Role="competencias" Type="Self.competencias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="evaluacion">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="competencias">
+        <PropertyRef Name="idevaluacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_empleado_usuarios">
+    <End Role="usuarios" Type="Self.usuarios" Multiplicity="0..1" />
+    <End Role="empleado" Type="Self.empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuarios">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="empleado">
+        <PropertyRef Name="id_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_empleados_selecionados_empleado">
+    <End Role="empleado" Type="Self.empleado" Multiplicity="0..1" />
+    <End Role="empleados_selecionados" Type="Self.empleados_selecionados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="empleado">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="empleados_selecionados">
+        <PropertyRef Name="id_empleados" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_empleados_selecionados_periodos1">
+    <End Role="periodos" Type="Self.periodos" Multiplicity="0..1" />
+    <End Role="empleados_selecionados" Type="Self.empleados_selecionados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="periodos">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="empleados_selecionados">
+        <PropertyRef Name="id_periodos" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_periodos_evaluacion1">
+    <End Role="evaluacion" Type="Self.evaluacion" Multiplicity="0..1" />
+    <End Role="periodos" Type="Self.periodos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="evaluacion">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="periodos">
+        <PropertyRef Name="id_evaluacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_preguntas_competencia_competencias">
+    <End Role="competencias" Type="Self.competencias" Multiplicity="0..1" />
+    <End Role="preguntas_competencia" Type="Self.preguntas_competencia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="competencias">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="preguntas_competencia">
+        <PropertyRef Name="id_compentecias" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_preguntas_competencia_preguntas1">
+    <End Role="preguntas" Type="Self.preguntas" Multiplicity="0..1" />
+    <End Role="preguntas_competencia" Type="Self.preguntas_competencia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="preguntas">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="preguntas_competencia">
+        <PropertyRef Name="id_preguntas" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_preguntas_competencias">
+    <End Role="competencias" Type="Self.competencias" Multiplicity="1" />
+    <End Role="preguntas" Type="Self.preguntas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="competencias">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="preguntas">
+        <PropertyRef Name="idcompetencia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_R_Evaluacion_competencias">
+    <End Role="competencias" Type="Self.competencias" Multiplicity="0..1" />
+    <End Role="R_Evaluacion" Type="Self.R_Evaluacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="competencias">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="R_Evaluacion">
+        <PropertyRef Name="id_competencia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_R_Evaluacion_empleado">
+    <End Role="empleado" Type="Self.empleado" Multiplicity="0..1" />
+    <End Role="R_Evaluacion" Type="Self.R_Evaluacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="empleado">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="R_Evaluacion">
+        <PropertyRef Name="id_evaluado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_R_Evaluacion_empleados_selecionados">
+    <End Role="empleados_selecionados" Type="Self.empleados_selecionados" Multiplicity="0..1" />
+    <End Role="R_Evaluacion" Type="Self.R_Evaluacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="empleados_selecionados">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="R_Evaluacion">
+        <PropertyRef Name="id_empleados_selecionados" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_R_Evaluacion_periodos1">
+    <End Role="periodos" Type="Self.periodos" Multiplicity="0..1" />
+    <End Role="R_Evaluacion" Type="Self.R_Evaluacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="periodos">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="R_Evaluacion">
+        <PropertyRef Name="id_periodo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuario_Tipo_usuario_tipo_usuario">
+    <End Role="tipo_usuario" Type="Self.tipo_usuario" Multiplicity="0..1" />
+    <End Role="Usuario_Tipo_usuario" Type="Self.Usuario_Tipo_usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipo_usuario">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Usuario_Tipo_usuario">
+        <PropertyRef Name="idtipo_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuario_Tipo_usuario_usuarios">
+    <End Role="usuarios" Type="Self.usuarios" Multiplicity="0..1" />
+    <End Role="Usuario_Tipo_usuario" Type="Self.Usuario_Tipo_usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuarios">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Usuario_Tipo_usuario">
+        <PropertyRef Name="id_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Drummond02ModelStoreContainer">
+    <EntitySet Name="competencias" EntityType="Self.competencias" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="empleado" EntityType="Self.empleado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="empleados_selecionados" EntityType="Self.empleados_selecionados" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="evaluacion" EntityType="Self.evaluacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="periodos" EntityType="Self.periodos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="preguntas" EntityType="Self.preguntas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="preguntas_competencia" EntityType="Self.preguntas_competencia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="R_Evaluacion" EntityType="Self.R_Evaluacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tipo_usuario" EntityType="Self.tipo_usuario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuario_Tipo_usuario" EntityType="Self.Usuario_Tipo_usuario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="usuarios" EntityType="Self.usuarios" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_competencias_evaluacion" Association="Self.FK_competencias_evaluacion">
+      <End Role="evaluacion" EntitySet="evaluacion" />
+      <End Role="competencias" EntitySet="competencias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_empleado_usuarios" Association="Self.FK_empleado_usuarios">
+      <End Role="usuarios" EntitySet="usuarios" />
+      <End Role="empleado" EntitySet="empleado" />
+    </AssociationSet>
+    <AssociationSet Name="FK_empleados_selecionados_empleado" Association="Self.FK_empleados_selecionados_empleado">
+      <End Role="empleado" EntitySet="empleado" />
+      <End Role="empleados_selecionados" EntitySet="empleados_selecionados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_empleados_selecionados_periodos1" Association="Self.FK_empleados_selecionados_periodos1">
+      <End Role="periodos" EntitySet="periodos" />
+      <End Role="empleados_selecionados" EntitySet="empleados_selecionados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_periodos_evaluacion1" Association="Self.FK_periodos_evaluacion1">
+      <End Role="evaluacion" EntitySet="evaluacion" />
+      <End Role="periodos" EntitySet="periodos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_preguntas_competencia_competencias" Association="Self.FK_preguntas_competencia_competencias">
+      <End Role="competencias" EntitySet="competencias" />
+      <End Role="preguntas_competencia" EntitySet="preguntas_competencia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_preguntas_competencia_preguntas1" Association="Self.FK_preguntas_competencia_preguntas1">
+      <End Role="preguntas" EntitySet="preguntas" />
+      <End Role="preguntas_competencia" EntitySet="preguntas_competencia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_preguntas_competencias" Association="Self.FK_preguntas_competencias">
+      <End Role="competencias" EntitySet="competencias" />
+      <End Role="preguntas" EntitySet="preguntas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_R_Evaluacion_competencias" Association="Self.FK_R_Evaluacion_competencias">
+      <End Role="competencias" EntitySet="competencias" />
+      <End Role="R_Evaluacion" EntitySet="R_Evaluacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_R_Evaluacion_empleado" Association="Self.FK_R_Evaluacion_empleado">
+      <End Role="empleado" EntitySet="empleado" />
+      <End Role="R_Evaluacion" EntitySet="R_Evaluacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_R_Evaluacion_empleados_selecionados" Association="Self.FK_R_Evaluacion_empleados_selecionados">
+      <End Role="empleados_selecionados" EntitySet="empleados_selecionados" />
+      <End Role="R_Evaluacion" EntitySet="R_Evaluacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_R_Evaluacion_periodos1" Association="Self.FK_R_Evaluacion_periodos1">
+      <End Role="periodos" EntitySet="periodos" />
+      <End Role="R_Evaluacion" EntitySet="R_Evaluacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuario_Tipo_usuario_tipo_usuario" Association="Self.FK_Usuario_Tipo_usuario_tipo_usuario">
+      <End Role="tipo_usuario" EntitySet="tipo_usuario" />
+      <End Role="Usuario_Tipo_usuario" EntitySet="Usuario_Tipo_usuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuario_Tipo_usuario_usuarios" Association="Self.FK_Usuario_Tipo_usuario_usuarios">
+      <End Role="usuarios" EntitySet="usuarios" />
+      <End Role="Usuario_Tipo_usuario" EntitySet="Usuario_Tipo_usuario" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

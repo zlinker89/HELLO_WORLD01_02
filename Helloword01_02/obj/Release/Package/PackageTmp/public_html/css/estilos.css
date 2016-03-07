@@ -1,0 +1,512 @@
+			
+ 
+            /*-------------------------ICONOS--------------------------------------------------*/
+
+			.icono_grandes{
+				font-size: 2em !important;
+			}
+			#icono_user{
+				color: white;
+				font-size: 1.5em;
+                transform:translate(-47px,12px);
+			}
+			#iconos_der{
+				height: 70vh;
+			}
+
+			.caja_der.azul{
+				color: yellow;
+			}
+            .icono {
+              color:#0072BC;
+            }
+          
+			/*-------------FIN------------ICONOS--------------------------------------------------*/
+
+			/*-------------------------CAJAS--------------------------------------------------*/
+			.separar{
+				margin-bottom: 8px;
+			}
+			#caja, #izq,#der{
+				height: 100vh;
+			}
+			
+			.caja_izq{
+				margin-top: 5%;
+			}
+
+              .caja_izq:hover {
+                 background-color: #E0E0E0;
+                 color: #fff;
+                 border-radius: 2px 118px 107px 0px;
+                -moz-border-radius: 2px 118px 107px 0px;
+                -webkit-border-radius: 2px 118px 107px 0px;
+                border: 0px solid #000000
+                }
+			.caja_der{
+			margin-top: 80px;
+            }
+            .caja_tabla{
+            }
+			.sidebar-brand{
+				display: none;
+			}
+			#sidebar-wrapper, .sidebar-nav{
+				overflow: hidden !important;
+				text-align: center;
+				box-shadow: 2px -10px 3px black;
+			}
+
+            .caja_logo {
+                position:absolute;
+                bottom:0;
+                left:0;
+   
+         
+            }
+
+            .caja {
+           background-color:#EEEEEE;
+
+            }
+			/*--------------FIN-----------CAJAS--------------------------------------------------*/
+
+			/*-------------------------MENUS--------------------------------------------------*/
+			.etiquetas{
+				float: right;
+				font-size: 1em !important;
+				transform:translate(-28px,0px);
+				width: 90px;
+			}
+			.submenu{
+				transform: translate(-60px,-60px);
+
+			}
+			.navbar h4{
+				color: white !important;
+			}
+			#menu{
+				position: absolute;
+				top: 0px;
+                right:0px;
+                left:0px;
+			}
+			.navbar-right{
+				margin-right: 20px;
+			}
+			.icon-menu{
+				/*menu de empleados evaluacion*/
+				margin-top: 15% !important;
+			}
+            #mostrar{
+                transform:translate(20px,0px);
+            }
+			/*--------------FIN-----------MENUS--------------------------------------------------*/
+
+
+			/*-------------------------COLORES--------------------------------------------------*/
+			.txt-blanco{
+				color: white;
+			}
+			.naranja{
+			    color: #ffd966 !important;
+			}
+			.purple{
+				background: #b4a7d6 !important;
+ 			}
+			.morado{
+				color: #8e7cc3;
+				text-decoration: none !important;
+			}
+			.azul{
+				color: #085394 !important;
+				text-decoration: none !important;
+			}
+			.gris{
+				color: #dddddd !important;
+				text-decoration: none !important;
+				cursor: no-drop;
+			}
+			.verde{
+				color: #93c47d;
+				text-decoration: none !important;
+			}
+			.amarillo{
+				color: #9E9E9E;
+				text-decoration: none !important;
+			}
+			.blanco{
+				color: white;
+				text-decoration: none !important;
+				transition:color 0.2s;
+			}
+			.rojo{
+				color: #b2573b;
+				text-decoration: none !important;
+			}
+          
+
+            .p {
+              background:#e31937; 
+            }
+			/*HOVER*/
+			.blanco:hover{
+				color: #ddd;
+				text-decoration: none !important;
+				box-shadow: 0px 0px 55px white inset;
+			}
+			.verde:hover{
+				color: #22859f !important;
+				text-decoration: none !important;
+			}
+			.amarillo:hover{
+				color: #0072BC !important;
+				text-decoration: none !important;
+			}
+			.morado:hover{
+				color: #674ea7 !important;
+				text-decoration: none !important;
+			}
+			.rojo:hover{
+				color: #652322;
+				text-decoration: none !important;
+			}
+			/*--------------FIN-----------COLORES--------------------------------------------------*/
+
+			/*-------------------------CENTRAR DIVS--------------------------------------------------*/
+			.row-centered {
+			    text-align:center;
+				margin-left: -15%;			    
+			}
+			.col-centered {
+			    display:inline-block;
+			    float:none;
+			    /* reset the text-align */
+			    text-align:left;
+			    /* inline-block space fix */
+			    margin-right:-4px;
+			}
+			.centrar_div{
+				width: 40%;
+				margin: 0 auto;
+			}
+			.centrar-icons{
+				/*iconos de evaluacion empleados*/
+				width: 80%;
+				margin: 0 auto;
+				text-align: center !important;
+			}
+			/*--------------FIN-----------CENTRAR DIVS--------------------------------------------------*/
+
+			/*-------------------------LISTAS--------------------------------------------------*/
+			.list-group-item-header, table thead tr{
+				background: rgba(0,0,0,0.2) !important;
+				height: 30px !important;
+				font-size: 0.9em;
+			}
+			.list-group-item{
+                height: 60px;
+            }
+            .list-group-item:nth-child(even), table tbody tr:nth-child(even){
+                background: #eeeeee !important;
+            }
+            .list-group-item:nth-child(odd), table tbody tr:nth-child(even){
+                background: #dddddd !important;
+            }
+            /*LISTAS de competencias*/
+            .lista1 .list-group-item-header{
+				background: #6aa84f !important;
+				height: 40px !important;
+				color: white;
+				font-size: 1.3em;
+			}
+			.lista1 .list-group-item:nth-child(even){
+			    background: #eee;
+			}
+			.lista1 .list-group-item:nth-child(odd){
+			    background: #93c47d;
+			}
+			.lista2 .list-group-item-header{
+				background: #674ea7 !important;
+				height: 40px !important;
+				color: white;
+				font-size: 1.3em;
+			}
+			.lista2 .list-group-item:nth-child(even){
+			    background: #eee;
+			}
+			.lista2 .list-group-item:nth-child(odd){
+			    background: #b4a7d6;
+			}
+			.list-group a:hover{
+				box-shadow:0px 0px 45px #666 inset !important;
+				font-weight: bold;
+			}
+			/*--------------FIN-----------LISTAS--------------------------------------------------*/
+
+			/*-------------------------TEXTOS--------------------------------------------------*/
+			h4{
+				color: #424242;
+			}
+
+            .titulos{
+            font-family:Tahoma;
+            }
+            
+			.textos{
+				/*evaluaciones empleados*/
+				font-size: 2vh;
+				margin-top: 8%;
+				text-align: justify;
+				padding: 3% 8% 0% 8%;
+
+                font-family: Calibri;
+	            font-size: 14px;
+	            font-style: normal;
+	            font-variant: normal;
+	            font-weight: bold;
+	            line-height: 20px
+			}
+			.textos ol{
+				/*evaluaciones empleados*/
+				font-weight:bold;
+			}
+			/*--------------FIN-----------TEXTOS--------------------------------------------------*/
+
+			/*-------------------------RESPONSIVE--------------------------------------------------*/
+			@media(max-width:990px){
+				#breads .navbar .btn{
+            	width: 3vw;
+
+            }
+                
+            .indicador{
+                transform:translate(0px,-60px); 
+            }
+				#izq{
+					display: block;
+				}
+				.centrar_div{
+					width: 80%;
+				}
+				.centrar-icons{
+					width: 100%;
+					margin: 0 auto;
+					text-align: center !important;
+				}
+				.icon-menu{
+					/*menu de empleados evaluacion*/
+					margin-top: 25% !important;
+				}
+				.caja_izq{
+					margin-top: 3px;
+				}
+				#sidebar-wrapper, .sidebar-nav{
+					overflow: scroll !important;
+				}
+				.sidebar-brand{
+					display: block !important;
+				}
+				.submenu{
+					transform: translate(0px,-60px);
+				}
+			}
+			/*--------------FIN-----------RESPONSIVE--------------------------------------------------*/
+			
+			/*-------------------------IMAGENES--------------------------------------------------*/
+			#img-logo{
+				width: 15vw;
+				height: 15vw;
+				margin: 0 auto;
+				border-radius: 100vw;
+				border: 1px solid black;
+			}
+			#img-fondo{
+				background: url(../img/tablero.png);
+				background-size: 95% 92%;
+				background-position: center;
+				background-repeat: no-repeat;
+			}
+			/*--------------FIN-----------IMAGENES--------------------------------------------------*/
+
+			
+			
+			
+			
+			/*Centrar texto*/
+			.texto-center{
+				text-align: center;
+			}
+			/*Boton redondo*/
+			.btn-circle {
+			  width: 30px;
+			  height: 30px;
+			  text-align: center;
+			  padding: 6px 0;
+			  font-size: 12px;
+			  line-height: 1.42;
+			  border-radius: 15px;
+			}
+			.alert-danger{
+				box-shadow: 0px 0px 25px rgba(0,0,0,0.2) inset;
+			}
+			
+
+			.fileUpload {
+                position: relative;
+                overflow: hidden;
+                margin: 10px;
+            }
+            .fileUpload input.upload {
+                position: absolute;
+                top: 0;
+                right: 0;
+                margin: 0;
+                padding: 0;
+                font-size: 20px;
+                cursor: pointer;
+                opacity: 0;
+                filter: alpha(opacity=0);
+            }
+            
+            #breads .navbar{
+            	background: none !important;
+            	border: none !important;
+            	padding: 0px !important;
+            	height: 50px;
+
+            }
+            /***************COLORES**********************/
+
+            .activo{
+                color:  #fff !important;
+              
+            }
+
+            .activo .caja_izq{
+                background:#e31937;
+                
+                width:260px;
+                border-radius: 8px 118px 107px 0px;
+                -moz-border-radius: 2px 128px 107px 0px;
+                -webkit-border-radius: 2px 118px 107px 0px;
+                border: 0px solid #000000
+               
+            }
+
+               .activo .caja_izq .etiquetas{
+                color:#fff;
+                margin-right: 0;
+                font-weight: bold;
+                transform:translate(-50px,0px);
+               
+            }
+                /***************BOTONES***************/
+
+
+            #breads .navbar .btn{
+            	color:white;
+            	text-align: justify;
+            	margin: 0;
+            	padding-top: 0;
+            	padding-bottom: 0;
+
+            }
+
+             .plus {
+            color:#0072BC;
+            
+            }
+            .btn1{
+			background: #004C66!important;
+		    border:#004C66 !important;
+		    width: 90px;
+		    height: 20px;
+ 	
+            }
+            .btn2{
+            	background: #007BA6 !important;
+            	border: #007BA6 !important;
+            	width: 90px;
+		    	height: 20px;
+            	
+            }
+            .btn3{
+            	background: #2F94BA !important;
+            	border: #2F94BA !important;
+            	 width: 90px;
+		    	height: 20px;
+            }
+            .btn4{
+            	background: #0098CC!important;
+            	border: #0098CC !important;
+            	 width: 90px;
+		    	height: 20px;
+            }
+            .btn5{
+            	background: #00ABE5 !important;
+            	border: #00ABE5 !important;
+            	 width: 90px;
+		    	height: 20px;
+            }
+            .btn6{
+            	background: #29B6F6 !important;
+            	border: #29B6F6!important;
+            	 width: 90px;
+		    	height: 20px;
+            }
+            .btn7{
+            	background: #4FC3F7 !important;
+            	border: #4FC3F7!important;
+            	 width: 90px;
+		    height: 20px;
+            }
+            #breads .navbar .active .btn{
+            	
+            	color: white;
+            	height: 40px;
+            }
+
+            /*********fin******COLORES**********************/
+
+            #breads{
+            	background:white;
+            	padding-bottom: 0; 
+            	padding-top:50px;
+            	transform:translate(5%,-20px);
+            	width: 100%;
+            	height: 90px;
+            	position: fixed;
+            	z-index: 69;
+            }
+            
+            a:link   {   
+                box-decoration-break: none;
+                text-decoration:none;   
+            }
+            .img-circle{
+               box-shadow: 01px 0px 01px   black; 
+               padding:25px;
+               margin-bottom: 40px;
+            }
+            img{
+                padding:10px;
+            }
+
+         .mover{
+                transform:translate(110px,0px);
+            }
+            .indicador{
+                background:red; 
+                color:white; 
+                transform:translate(-15px,-60px); 
+                padding:2px; 
+                font-size:1.3em;
+                font-weight:300;
+            }
+
+
+
+
+           
+            
