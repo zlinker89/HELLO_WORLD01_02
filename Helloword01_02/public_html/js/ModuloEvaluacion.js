@@ -47,63 +47,80 @@ app.controller("pagina", function ($scope, $http, $q) {
             // GUARDAMOS EL PERIODO
             localStorage.setItem("idperiodo",idperiodo_seleccionado);
             // liderados
-            
+            var CANTIDAD_LIDERADOS = 5;
             for (var i = 1; i <= 5; i++) {
-                $http.get('/ResultadoBy/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/' + sesion.empleado["liderado" + i] + '/liderados/').then(function (d) {
-                    if (d.data.length > 0) {
-                        cliderados++;
-                    }
-                    $scope.nliderados = 5 - cliderados;
-                });
+                if (sesion.empleado["liderado" + i] !== null) {
+                    $http.get('/ResultadoBy/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/' + sesion.empleado["liderado" + i] + '/liderados/').then(function (d) {
+                        if (d.data.length > 0) {
+                            cliderados++;
+                        }
+                        $scope.nliderados = CANTIDAD_LIDERADOS - cliderados;
+                    });
+                } else {
+                    // disminuye si en la tabla hay menos de la cantidad limite
+                    CANTIDAD_LIDERADOS--;
+                }
             }
             $scope.ClickLiderados = function () {
                 SetPrueba('liderados');
                 // traigo la lista de empleados por evaluar
                 list = [];
                 for (var i = 1; i <= 5; i++) {
-                    console.log('/EmpleadosByCedula/' + sesion.empleado["liderado" + i] + '/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/liderados/');
-                    $http.get('/EmpleadosByCedula/' + sesion.empleado["liderado" + i] + '/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/liderados/').then(function (d) {
-                        console.log(d.data);
-                        if(d.data !== null){
-                            list.push(d.data);
-                            $scope.listado = list;
-                        }
-                    });
+                    if (sesion.empleado["liderado" + i] !== null) {
+                        console.log('/EmpleadosByCedula/' + sesion.empleado["liderado" + i] + '/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/liderados/');
+                        $http.get('/EmpleadosByCedula/' + sesion.empleado["liderado" + i] + '/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/liderados/').then(function (d) {
+                            console.log(d.data);
+                            if (d.data !== null) {
+                                list.push(d.data);
+                                $scope.listado = list;
+                            }
+                        });
+                    }
                 }
             };
 
             // pares
+            var CANTIDAD_PARES = 3;
             for (var i = 1; i <= 3; i++) {
-                $http.get('/ResultadoBy/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/' + sesion.empleado["par" + i] + '/par/').then(function (d) {
-                    if (d.data.length > 0) {
-                        cpar++;
-                        console.log(cpar + "i");
-                    }
-                    $scope.npares = 3 - cpar;
-                });
+                if (sesion.empleado["par" + i] !== null) {
+                    $http.get('/ResultadoBy/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/' + sesion.empleado["par" + i] + '/par/').then(function (d) {
+                        if (d.data.length > 0) {
+                            cpar++;
+                            console.log(cpar + "i");
+                        }
+                        $scope.npares = CANTIDAD_PARES - cpar;
+                    });
+                } else {
+                    CANTIDAD_PARES--;
+                }
             }
             $scope.ClickPares = function () {
                 SetPrueba('par');
                 list = [];
                 for (var i = 1; i <= 3; i++) {
-                    $http.get('/EmpleadosByCedula/' + sesion.empleado["par" + i] + '/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/par/').then(function (d) {
-                        if (d.data != null) {
-                            list.push(d.data);
-                            $scope.listado = list;
-                        }
-                    });
+                    if (sesion.empleado["par" + i] !== null) {
+                        $http.get('/EmpleadosByCedula/' + sesion.empleado["par" + i] + '/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/par/').then(function (d) {
+                            if (d.data != null) {
+                                list.push(d.data);
+                                $scope.listado = list;
+                            }
+                        });
+                    }
                 }
             };
             // jefe
-            console.log('/ResultadoBy/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/' + sesion.empleado["jefe"] + '/jefe/');
-            $http.get('/ResultadoBy/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/' + sesion.empleado["jefe"] + '/jefe/').then(function (d) {
-                if (d.data.length > 0) {
-                    jefe++;
-                }
-                $scope.njefe = 1 - jefe;
-
-                
-            });
+            var CANTIDAD_JEFE = 1;
+            if (sesion.empleado["jefe"] !== null) {
+                $http.get('/ResultadoBy/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/' + sesion.empleado["jefe"] + '/jefe/').then(function (d) {
+                    if (d.data.length > 0) {
+                        jefe++;
+                    }
+                    $scope.njefe = CANTIDAD_JEFE - jefe;
+                });
+            } else {
+                $scope.njefe = 0;
+            }
+            
             $scope.ClickJefe = function () {
                 SetPrueba('jefe');
                 $http.get('/EmpleadosByCedula/' + sesion.empleado["jefe"] + '/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/jefe/').then(function (d) {
