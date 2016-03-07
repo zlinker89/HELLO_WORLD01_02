@@ -1,0 +1,46 @@
+.navbar-default .navbar-brand {
+color: rgba(247, 242, 242, 1);
+}
+.navbar h4{
+    width:250px;
+    text-align:right;
+    transform: translate(-85px,7px);
+}
+.navbar-default {
+    font-size: 14px;
+     background-color: rgba(227, 25, 55, 1);
+    border-width: 1px;
+    border-radius: 4px;
+  -webkit-box-shadow: 2px 2px 5px 0px rgba(50, 50, 50, 0.5);
+-moz-box-shadow:    2px 2px 5px 0px rgba(50, 50, 50, 0.5);
+box-shadow:         2px 2px 5px 0px rgba(50, 50, 50, 0.5)
+}
+.navbar-default .navbar-nav>li>a {
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(24, 77, 94, 1);
+}
+.navbar-default .navbar-nav>li>a:hover,
+.navbar-default .navbar-nav>li>a:focus {
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(11, 117, 125, 1);
+}
+.navbar-default .navbar-nav>.active>a,
+.navbar-default .navbar-nav>.active>a:hover,
+.navbar-default .navbar-nav>.active>a:focus {
+    color: rgba(0, 0, 0, 1);
+    background-color: rgba(255, 255, 255, 1);
+}
+.navbar-default .navbar-toggle {
+    border-color: #ffffff;
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+    background-color: #ffffff;
+}
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #ffffff;
+}
+.navbar-default .navbar-toggle:hover .icon-bar,
+.navbar-default .navbar-toggle:focus .icon-bar {
+    background-color: #184b5e;
+}

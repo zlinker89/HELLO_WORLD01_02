@@ -369,6 +369,7 @@
     <Content Include="public_html\js\handsontable\moment\LICENSE" />
     <Content Include="public_html\js\handsontable\pikaday\LICENSE" />
     <Content Include="public_html\js\handsontable\zeroclipboard\LICENSE" />
+    <None Include="Properties\PublishProfiles\Drummond_pub.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

@@ -1,0 +1,194 @@
+﻿<!DOCTYPE html>
+<html lang="es" ng-app="miApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Empleados - Evaluaciones</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.css" rel="stylesheet">
+    <link href="../css/side-wraper.css" rel="stylesheet">
+    <!--Mis estilos-->
+    <link href="../css/estilos.css" rel="stylesheet">
+    <link href="../css/menu.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style type="text/css">
+        .submenu {
+            transform: translate(-35px,-55px) !important;
+        }
+
+        @media(max-width: 940px) {
+            .submenu {
+                transform: translate(0px,-55px) !important;
+            }
+
+            h4 {
+                font-size: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper" ng-controller="pagina">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#menu-toggle" id="menu-toggle" style="text-align: center;">
+                        <button class="btn btn-primary">Cerrar</button>
+                    </a>
+                </li>
+                <li>
+                    <div style="margin-right:35px; margin-top:30px;" class="row col-xs-12 col-sm-12">
+                        <img src="../img/user.png" alt="..." class="img-circle" width="150px" height="150px">
+
+                        <div style="margin-right: 25px; margin-top: 0; transform: translate(0px,-35px);">
+                            <h4><span class="label label-primary">{{usuario.empleado.Nombre}}</span></h4>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <a href="Moduloempleados.html" class="activo">
+                        <div class="col-xs-12 caja_izq row-centered">
+                            <i class="fa fa-file-text-o icono_grandes"></i>
+                            <h4 class="etiquetas">Evaluación</h4>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="resultados.html" class="amarillo">
+                        <div class="col-xs-12 caja_izq row-centered">
+                            <i class="fa fa-bar-chart icono_grandes"></i>
+                            <h4 class="etiquetas">Resultados</h4>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+            <div class="row col-xs-12 col-sm-12 caja_logo">
+
+                <img src="../img/logo2.jpg" class="img-rounded" width="90px" height="90px" />
+                <img src="../img/logo.png" class="img-rounded" width="70px" height="70px" />
+
+            </div>
+        </div>
+        <!-- /#sidebar-wrapper -->
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row" id="menu">
+                    <nav class="navbar navbar-default" role="navigation">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" id="mostrar" class="navbar-toggle pull-left menu_responsive" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand hidden-lg hidden-md pull-right" style="color:black;transform:translate(0px,-3px)" ng-show="usuario.tipo_usuario.length > 1">
+                                <select class="form-control" ng-model="tipos" ng-change="CambiarPagina()">
+                                    <option ng-repeat="t in usuario.tipo_usuario">{{t.tipo}}</option>
+                                </select>
+                            </a>
+                        </div>
+                        <ul class="nav navbar-nav navbar-right hidden-xs hidden-sm">
+                            <li style="transform:translate(330px,15px);z-index:2000;" ng-show="usuario.tipo_usuario.length > 1" class="hidden-sm hidden-xs">
+                                <select ng-model="tipos" ng-change="CambiarPagina()">
+                                    <option ng-repeat="t in usuario.tipo_usuario">{{t.tipo}}</option>
+                                </select>
+                            </li>
+                            <li>
+                                <div ng-class="{mover: usuario.tipo_usuario.length == 1}">
+                                    <span class="col-xs-8">
+                                        <h4></h4>
+                                    </span>
+                                    <span class="col-xs-4" id="icono_user"><i class="fa fa-user"></i></span>
+                                </div>
+                            </li>
+                        </ul>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse navbar-ex1-collapse">
+
+                        </div><!-- /.navbar-collapse -->
+                    </nav>
+                </div>
+                <div class="row">
+                    <div class="row">
+                        <div class="row" id="iconos_der">
+                            <div class="col-sm-12 textos">
+                                <p>
+                                    Este cuestionario busca identificar sus fortalezas y oportunidades de desarrollo, para lo cual hemos definido una serie de afirmaciones que describen diversos comportamientos. Por favor señale la frecuencia con la cual usted evidencia cada uno de estos comportamientos. Los resultados de este cuestionario serán consolidados para identificar planes de capacitación y desarrollo.
+                                </p>
+                                <br>
+                                <p>
+                                    Califique de acuerdo a siguiente valoración:
+                                </p>
+                                <ol>
+                                    <li>CASI NUNCA</li>
+                                    <li>EN POCAS OCASIONES</li>
+                                    <li>NORMALMENTE</li>
+                                    <li>CON FRECUENCIA</li>
+                                    <li>SIEMPRE</li>
+                                </ol>
+                            </div>
+                            <a href="examen.html" class="col-xs-4 col-xs-offset-4  col-sm-offset-1 col-sm-3  verde">
+                                <div style="text-align: center">
+                                    <i class="fa fa-arrow-circle-right fa-4x"></i>
+                                    <h4>Empezar</h4>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-offset-7 col-sm-5 submenu">
+                                <a href="evaluacion-empleados.html" class="col-xs-4  col-sm-offset-3 col-sm-3 caja_der amarillo">
+                                    <div style="text-align: center">
+                                        <i class="fa fa-arrow-circle-left fa-3x"></i>
+                                        <h4>Regresar</h4>
+                                    </div>
+                                </a>
+
+                                <div class="col-xs-4  col-sm-3 caja_der amarillo" style="text-align: center">
+                                    <i class="fa fa-question fa-3x"></i>
+                                    <h4>Ayuda</h4>
+                                </div>
+                                <div ng-click="LogOut()" class="col-xs-4  col-sm-3 caja_der amarillo" style="text-align: center; cursor:pointer;">
+                                    <i class="fa fa-times-circle-o fa-3x"></i>
+                                    <h4>Cerrar</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery -->
+    <script src="../js/jquery.js"></script>
+    <!-- Bootstrap JavaScript -->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/angular.min.js"></script>
+    <script src="../js/sessionApp.js"></script>
+    <script type="text/javascript">
+        // accion del boton mostrar del navbar
+        $("#mostrar").click(function () {
+            $("#wrapper").toggleClass("toggled");
+        });
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,514 @@
+﻿<!DOCTYPE html>
+<html lang="es" ng-app="miApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Periodos</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.css" rel="stylesheet">
+    <link href="../css/side-wraper.css" rel="stylesheet">
+    <!--Mis estilos-->
+    <link href="../css/estilos.css" rel="stylesheet">
+    <link href="../css/menu.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style type="text/css">
+        .alineacion {
+            margin-left: 15px;
+        }
+
+        .twitter-typeahead {
+            width: 100%;
+        }
+
+            .twitter-typeahead .tt-query,
+            .twitter-typeahead .tt-hint {
+                margin-bottom: 0;
+            }
+
+        .tt-dropdown-menu {
+            min-width: 160px;
+            margin-top: 2px;
+            padding: 5px 0;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border: 1px solid rgba(0,0,0,.2);
+            *border-right-width: 2px;
+            *border-bottom-width: 2px;
+            -webkit-border-radius: 6px;
+            -moz-border-radius: 6px;
+            border-radius: 6px;
+            -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+            -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+            box-shadow: 0 5px 10px rgba(0,0,0,.2);
+            -webkit-background-clip: padding-box;
+            -moz-background-clip: padding;
+            background-clip: padding-box;
+            width: 100%;
+        }
+
+        .tt-suggestion {
+            display: block;
+            padding: 3px 20px;
+        }
+
+            .tt-suggestion.tt-is-under-cursor {
+                color: #fff;
+                background-color: #0081c2;
+                background-image: -moz-linear-gradient(top, #0088cc, #0077b3);
+                background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0077b3));
+                background-image: -webkit-linear-gradient(top, #0088cc, #0077b3);
+                background-image: -o-linear-gradient(top, #0088cc, #0077b3);
+                background-image: linear-gradient(to bottom, #0088cc, #0077b3);
+                background-repeat: repeat-x;
+                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0);
+            }
+
+                .tt-suggestion.tt-is-under-cursor a {
+                    color: #fff;
+                }
+
+            .tt-suggestion p {
+                margin: 0;
+            }
+    </style>
+</head>
+<body>
+    <div id="wrapper" ng-controller="pagina">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#menu-toggle" id="menu-toggle" style="text-align: center;">
+                        <button class="btn btn-primary">Cerrar</button>
+                    </a>
+                </li>
+                <li>
+                    <div style="margin-right:35px; margin-top:30px;" class="row col-xs-12 col-sm-12">
+                        <img src="../img/user.png" alt="..." class="img-circle" width="150px" height="150px">
+
+                        <div style="margin-right: 25px; margin-top: 0; transform: translate(0px,-35px);">
+                            <h4><span class="label label-primary">{{usuario.empleado.Nombre}}</span></h4>
+                        </div>
+                    </div>
+
+                <li>
+                    <a href="../loginadmin/evaluacion.html" class="amarillo">
+                        <div class="col-xs-12 caja_izq row-centered">
+                            <i class="fa fa-pencil icono_grandes"></i>
+                            <h4 class="etiquetas">Evaluación</h4>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="../Empleados/indexempleado.html" class="amarillo">
+                        <div class="col-xs-12 caja_izq row-centered">
+                            <i class="fa fa-users icono_grandes"></i>
+                            <h4 class="etiquetas">Empleados</h4>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="../periodos/periodos.html" class="activo">
+                        <div class="col-xs-12 caja_izq row-centered">
+                            <i class="fa fa-clock-o icono_grandes"></i>
+                            <h4 class="etiquetas">Periodo</h4>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="../reportes/index.html" class="amarillo">
+                        <div class="col-xs-12 caja_izq row-centered">
+                            <i class="fa fa-bar-chart icono_grandes"></i>
+                            <h4 class="etiquetas">Reportes</h4>
+                        </div>
+                    </a>
+                </li>
+
+                <li>
+
+
+                <li>
+            </ul>
+            <div class="row col-xs-12 col-sm-12 caja_logo">
+
+                <img src="../img/logo2.jpg" class="img-rounded" width="90px" height="90px" />
+                <img src="../img/logo.png" class="img-rounded" width="70px" height="70px" />
+
+            </div>
+        </div>
+        <!-- /#sidebar-wrapper -->
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row" id="menu">
+                    <nav class="navbar navbar-default" role="navigation">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" id="mostrar" class="navbar-toggle pull-left menu_responsive" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand hidden-lg hidden-md pull-right" style="color:black;transform:translate(0px,-3px)" ng-show="usuario.tipo_usuario.length > 1">
+                                <select class="form-control" ng-model="tipos" ng-change="CambiarPagina()">
+                                    <option ng-repeat="t in usuario.tipo_usuario">{{t.tipo}}</option>
+                                </select>
+                            </a>
+                        </div>
+                        <ul class="nav navbar-nav navbar-right hidden-xs hidden-sm">
+                            <li style="transform:translate(330px,15px);z-index:2000;" ng-show="usuario.tipo_usuario.length > 1" class="hidden-sm hidden-xs">
+                                <select ng-model="tipos" ng-change="CambiarPagina()">
+                                    <option ng-repeat="t in usuario.tipo_usuario">{{t.tipo}}</option>
+                                </select>
+                            </li>
+                            <li>
+                                <div ng-class="{mover: usuario.tipo_usuario.length == 1}">
+                                    <span class="col-xs-8">
+                                        <h4></h4>
+                                    </span>
+                                    <span class="col-xs-4" id="icono_user"><i class="fa fa-user"></i></span>
+                                </div>
+                            </li>
+                        </ul>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse navbar-ex1-collapse">
+
+                        </div><!-- /.navbar-collapse -->
+                    </nav>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <br>
+                        <div class="col-sm-12">
+                            <div style="text-align: center; ">
+                                <h3 class="titulos">Periodos de Evaluación</h3>
+                                <br>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-2 hidden-sm hidden-xs hidden-md"><label style="margin-top: 5px;" for="busqueda">Buscar:</label></div>
+                                <div class="col-sm-8 col-xs-10"><input type="text" size="40" ng-model="query" ng-change="search()" id="busqueda" class="form-control" placeholder="ingrese texto a buscar"></div>
+                                <div class="col-xs-1">
+                                    <a class="plus" data-toggle="modal" data-backdrop="static" data-keyboard="false" href='#periodos'><i class="fa fa-plus-circle fa-3x"></i></a>
+                                </div>
+                            </div>
+                            <div>
+                                <script type="text/javascript">
+                                    var sortingOrder = 'evaluacion';
+                                </script>
+
+
+
+                                <div class="col-sm-12">
+                                    <h4>Pagina {{currentPage + 1}} de {{pagedItems.length}} </h4>
+                                </div>
+                                <div class="col-sm-12">
+
+                                    <table class="table table-bordered table-hover" style="text-align: center;">
+                                        <thead>
+                                            <tr class="list-group-item-header">
+                                                <th>Nombre de periodo</th>
+                                                <th style="text-align: center;">Estado</th>
+                                                <th style="text-align: center;">Editar</th>
+                                                <th style="text-align: center;">Fecha fin</th>
+                                                <th style="text-align: center;">Empleados</th>
+                                                <th style="text-align: center;">Enviar notifiaciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="item in pagedItems[currentPage] | orderBy:sortingOrder:reverse">
+                                                <td>{{item.nombre}}</td>
+                                                <td ng-switch="item.estado">
+                                                    <div ng-switch-when="0">
+                                                        <i class="fa fa-toggle-off fa-2x rojo"></i>
+                                                    </div>
+                                                    <div ng-switch-default>
+                                                        <i class="fa fa-toggle-on fa-2x verde"></i>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <a ng-click="cambiarPeriodo($index)" class="btn amarillo" data-toggle="modal" data-backdrop="static" data-keyboard="false" href='#editarperiodo'>
+                                                        <i class="fa fa-pencil-square fa-2x"></i>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    {{item.fechafinal.split('T')[0]}}
+                                                </td>
+                                                <td>
+                                                    <a ng-href='#empleadoperiodos' ng-click="getId(item.id)" data-toggle="modal" class="btn amarillo">
+                                                        <i class="fa fa-list-alt fa-2x"></i>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a href='#enviarnotificaciones' ng-click="GetId($index)" class="btn amarillo" data-toggle="modal" data-backdrop="static" data-keyboard="false">
+                                                        <i class="fa fa-bell-o fa-2x"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col-sm-12">
+
+                                    <div class="col-md-4 col-md-offset-4">
+                                        <a href ng-click="prevPage()" class="amarillo">
+                                            <div class="col-xs-6" ng-class="{gris: currentPage == 0}" style="text-align: center;">
+                                                <i class="fa fa-arrow-circle-left fa-4x"></i>
+                                                <br>
+                                                Anterior
+                                            </div>
+                                        </a>
+                                        <a href ng-click="nextPage()" class="amarillo">
+                                            <div class="col-xs-6" ng-class="{gris: currentPage == pagedItems.length - 1}" style="text-align: center;">
+                                                <i class="fa fa-arrow-circle-right fa-4x"></i>
+                                                <br>
+                                                Siguiente
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-offset-7 col-sm-5 submenu">
+                            <div class="col-xs-6  col-sm-offset-6 col-sm-3 caja_der amarillo" style="text-align: center">
+                                <i class="fa fa-question fa-3x"></i>
+                                <h4>Ayuda</h4>
+                            </div>
+                            <div ng-click="LogOut()" class="col-xs-4  col-sm-3 caja_der amarillo" style="text-align: center; cursor:pointer;">
+                                <i class="fa fa-times-circle-o fa-3x"></i>
+                                <h4>Cerrar</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /#page-content-wrapper -->
+            <!--MODALES-->
+            <!-- Aqui comienza el modal de periodos-->
+            <div class="modal fade" id="periodos" data-keyboard="false" data-backdrop>
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times fa-1x"></i></button>
+                            <h4 class="modal-title">Crear Periodo</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <label for="nombre">Nombre: </label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input ng-model="nombre" type="text" class="form-control" id="nombre">
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <div class="col-sm-8">
+                                        <div class="col-sm-12"><label>Seleccione la evaluacion: </label></div>
+                                        <div class="col-sm-12"><input id="query" type="text" class="form-control query"></div>
+                                        <div class="col-sm-12"><label for="">Metodologia: </label></div>
+                                        <div class="col-sm-12">
+                                            <div class="radio" ng-init="metodologia = 360">
+                                                <label class="radio-inline">
+                                                    <input type="radio" ng-model="metodologia" name="inlineRadioOptions" id="inlineRadio1" value="90"> 90°
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" ng-model="metodologia" name="inlineRadioOptions" id="inlineRadio2" value="180"> 180°
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" ng-model="metodologia" name="inlineRadioOptions" id="inlineRadio3" value="360"> 360°
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="col-sm-12"><label for="">Fecha Finalizacion: </label></div>
+                                        <div class="col-sm-12"><input ng-model="fecha_fin" type="date" /></div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-7 col-sm-offset-1">
+                                        <p style="background: #dddddd; text-align: justify; padding: 3px;">
+                                            Recuerde  selecionar y guardar antes de salir  asígneles el grupo de empleado en el icono listar empleados para que se les notifique a los  empleados si tiene alguna duda el boton de ayuda de la parte inferior del sistema lo ayuda
+                                        </p>
+                                    </div>
+                                    <div class="col-sm-3 col-sm-offset-1">
+                                        <button ng-click="RegistrarPeriodo()" data-dismiss="modal" class="btn btn-primary" style="background: #0072BC; ">Guardar cambios</button>
+                                    </div>
+                                </div>
+                            </form>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Aqui empieza el modal enviar notificaciones-->
+            <div class="modal" id="enviarnotificaciones" data-keyboard="false" data-backdrop>
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title">Crear Notificación</h4>S
+                        </div>
+                        <div class="modal-body" ng-init="progreso = false">
+                            <div class="row alineacion">
+                                <div class="col-sm-2"><label>Asunto:</label></div>
+                                <div class="col-sm-10"><input type="text" class="form-control" autocomplete="off" ng-model="asunto" ng-init="asunto = 'Enhorabuena estas seleccionado'" maxlength="250"></div>
+                                <br />
+                                <br />
+                                <br />
+                                <div class="col-sm-2"><label>email:</label></div>
+                                <div class="col-sm-4"><input type="email" class="form-control" id="email" autocomplete="off" ng-model="email" placeholder="email@empresa.com" maxlength="250"></div>
+                                <div class="col-sm-2"><label>Contraseña:</label></div>
+                                <div class="col-sm-4"><input type="password" class="form-control" id="pass" ng-model="pass" autocomplete="off" placeholder="****************" maxlength="400"></div>
+                                <br />
+                                <br />
+                                <br />
+                                <label for="textarea" class="col-sm-2">Mensaje:</label>
+                                <div class="col-sm-10">
+                                    <textarea ng-model="mensaje" id="textarea" class="form-control" rows="10" required="required"></textarea>
+                                </div>
+
+                                <div class="col-sm-12">
+                                    <div class="progress" ng-show="progreso">
+                                        <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                                            <span class="sr-only">100% Complete</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12" style="text-align:center;">
+                                    <br />
+                                    <button type="button" ng-click="EnviarNotifiaciones()" class="btn btn-success btn-lg">Enviar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <!-- Aqui comienza el modal de editar periodo-->
+
+            <div class="modal" id="editarperiodo" data-keyboard="false" data-backdrop>
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title"></h4>
+                        </div>
+                        <div class="modal-body">
+                            <form class="row">
+                                <div class="col-sm-4">
+                                    <label for="">Nombre del periodo: </label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <input ng-model="nombre_periodo_update" type="text" class="form-control" placeholder="Periodo 1">
+                                    <br />
+                                </div>
+                                <div class="col-sm-4"><label>Seleccione el tipo de la evaluacion: </label></div>
+                                <div class="col-sm-8">
+                                    <input type="text" id="query_update" class="form-control query" placeholder="Evaluacion 1">
+                                    <br />
+                                </div>
+                                <div class="col-sm-4"><label for="">Metodologia: </label></div>
+                                <div class="col-sm-8">
+                                    <div class="radio">
+                                        <label class="radio-inline">
+                                            <input type="radio" name="inlineRadioOptions" ng-model="metodologia_update" value="90"> 90°
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="inlineRadioOptions" ng-model="metodologia_update" value="180"> 180°
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="inlineRadioOptions" ng-model="metodologia_update" value="360"> 360°
+                                        </label>
+                                        <br />
+                                    </div>
+                                </div>
+                                <div class="col-sm-4"><label for="">Fecha finalizacion: </label></div>
+                                <div class="col-sm-8">
+                                    <input ng-model="fecha_fin_update" type="date" />
+                                    <br />
+                                </div>
+                                <div class="col-sm-12">
+                                    <br />
+                                    <p style="background: #dddddd; text-align: justify; padding: 3px;">
+                                        Recuerde  selecionar y guardar antes de salir  asigneles el grupo de empleado en el icono listar empleados para que se les notifique a los  empleados si tiene alguna duda el boton de ayuda de la parte inferior del sistema lo ayuda
+                                    </p>
+                                </div>
+                                <div class="col-sm-12 text-center">
+                                    <button ng-click="UpdatePeriodo()" data-dismiss="modal" class="btn btn-primary" style="background: #0072BC">Guardar cambios</button>
+                                </div>
+                            </form>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Aqui comienza el modal empleado-->
+            <div class="modal" id="empleadoperiodos" data-keyboard="false" data-backdrop>
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title">Empleados</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div style="transform:translate(150px,-70px);">
+                                    <a ng-href="Inactivos.html?periodo={{idperiodo}}">
+                                        <div class="col-xs-6 col-sm-3 caja_der amarillo" style="text-align: center">
+                                            <i class="fa fa-times-circle-o fa-5x"></i>
+                                            <h4>Inactivos</h4>
+                                        </div>
+                                    </a>
+                                    <a ng-href="seleccionados.html?periodo={{idperiodo}}">
+                                        <div class="col-xs-6 col-sm-3 caja_der amarillo" style="text-align: center">
+                                            <i class="fa fa-check-circle-o fa-5x"></i>
+                                            <h4>Seleccionados</h4>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Fin modales-->
+        </div>
+        <!-- jQuery -->
+        <script src="../js/jquery.js"></script>
+        <!-- Bootstrap JavaScript -->
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/angular1.min.js"></script>
+        <script src="../js/PeriodosInit.js"></script>
+        <script type="text/javascript">
+            // accion del boton mostrar del navbar
+            $("#mostrar").click(function () {
+                $("#wrapper").toggleClass("toggled");
+            });
+            $("#menu-toggle").click(function (e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+            });
+        </script>
+
+</body>
+</html>
