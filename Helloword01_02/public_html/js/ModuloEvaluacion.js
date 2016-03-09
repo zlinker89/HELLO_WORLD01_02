@@ -51,7 +51,7 @@ app.controller("pagina", function ($scope, $http, $q) {
             var CANTIDAD_LIDERADOS = 5;
             for (var i = 1; i <= 5; i++) {
                 if (sesion.empleado["liderado" + i] !== null) {
-                    $http.get('/ResultadoBy/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/' + sesion.empleado["liderado" + i] + '/liderados/').then(function (d) {
+                    $http.get('/ResultadoBy/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/' + sesion.empleado["liderado" + i] + '/jefe/').then(function (d) {
                         if (d.data.length > 0) {
                             cliderados++;
                         }
@@ -63,13 +63,14 @@ app.controller("pagina", function ($scope, $http, $q) {
                 }
             }
             $scope.ClickLiderados = function () {
-                SetPrueba('liderados');
+                // he invertido para indicar que estado tiene el evaluador
+                SetPrueba('jefe'); 
                 // traigo la lista de empleados por evaluar
                 list = [];
                 for (var i = 1; i <= 5; i++) {
                     if (sesion.empleado["liderado" + i] !== null) {
-                        console.log('/EmpleadosByCedula/' + sesion.empleado["liderado" + i] + '/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/liderados/');
-                        $http.get('/EmpleadosByCedula/' + sesion.empleado["liderado" + i] + '/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/liderados/').then(function (d) {
+                        console.log('/EmpleadosByCedula/' + sesion.empleado["liderado" + i] + '/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/jefe/');
+                        $http.get('/EmpleadosByCedula/' + sesion.empleado["liderado" + i] + '/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/jefe/').then(function (d) {
                             console.log(d.data);
                             if (d.data !== null) {
                                 list.push(d.data);
@@ -112,7 +113,7 @@ app.controller("pagina", function ($scope, $http, $q) {
             // jefe
             var CANTIDAD_JEFE = 1;
             if (sesion.empleado["jefe"] !== null) {
-                $http.get('/ResultadoBy/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/' + sesion.empleado["jefe"] + '/jefe/').then(function (d) {
+                $http.get('/ResultadoBy/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/' + sesion.empleado["jefe"] + '/liderados/').then(function (d) {
                     if (d.data.length > 0) {
                         jefe++;
                     }
@@ -123,8 +124,9 @@ app.controller("pagina", function ($scope, $http, $q) {
             }
             
             $scope.ClickJefe = function () {
-                SetPrueba('jefe');
-                $http.get('/EmpleadosByCedula/' + sesion.empleado["jefe"] + '/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/jefe/').then(function (d) {
+                // he invertido para indicar que estado tiene el evaluador
+                SetPrueba('liderados');
+                $http.get('/EmpleadosByCedula/' + sesion.empleado["jefe"] + '/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/liderados/').then(function (d) {
                     localStorage.setItem("evaluando", JSON.stringify(d.data));
                     location.href = "explicacion.html";
                 });

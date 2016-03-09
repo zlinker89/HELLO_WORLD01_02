@@ -24,6 +24,19 @@ var miApp = angular.module("miApp",[]);
 //localStorage.setItem(tprueba,undefined);
 
     miApp.controller("preguntaList", function ($scope, $http) {
+        // obtengo el EVALUADO
+        $scope.evaluado = JSON.parse(localStorage.getItem("evaluando"));
+        // verifico si tiene liderados lider
+        $scope.es_lider = 'Empleado';
+        // POR AHORA CINCO
+        console.log($scope.evaluado);
+        for (var k = 1; k < 5; k++) {
+            if ($scope.evaluado["liderado" + k] != null) {
+                $scope.es_lider = "Jefe";
+                console.log($scope.es_lider);
+            }
+        }
+
         $scope.tipos = sesion.tipo_usuario[0].tipo;
         // OJO usuario contiene .empleado
         $scope.usuario = sesion;
@@ -42,7 +55,7 @@ var miApp = angular.module("miApp",[]);
                 location.href = "/public_html/login-empleados/evaluacion-empleados.html";
             }
         };
-        $http.get('/Examen/'+idperiodo+'/').then(function (d) {
+        $http.get('/Examen/'+idperiodo+'/' + $scope.es_lider +'/').then(function (d) {
             $scope.respuestas = [
 		        { respuesta: "CASI NUNCA" },
 		        { respuesta: "EN POCAS OCASIONES" },
@@ -50,8 +63,7 @@ var miApp = angular.module("miApp",[]);
 		        { respuesta: "CON FRECUENCIA" },
 		        { respuesta: "SIEMPRE" },
             ];
-            // obtengo el EVALUADO
-            $scope.evaluado = JSON.parse(localStorage.getItem("evaluando"));
+            
 
             $scope.pagina = localStorage.getItem("competencia" + sesion.empleado.cedula + tprueba + $scope.evaluado.cedula) || 0;
             var respuestas = JSON.parse(localStorage.getItem(tprueba + sesion.empleado.cedula + $scope.evaluado.cedula)) || [];
@@ -66,6 +78,7 @@ var miApp = angular.module("miApp",[]);
                 }
             }
             $scope.examen = d.data;
+
             var cont = 0;
             // obtengo la cantidad de preguntas
             var cantidad_preguntas = 0;
@@ -74,6 +87,10 @@ var miApp = angular.module("miApp",[]);
             }
 
 
+            // obtengo la cantidad de preguntas
+            $scope.faltan = cantidad_preguntas - respuestas.length;
+            $scope.npreguntas = cantidad_preguntas;
+            
             $scope.seleccion = function (r) {
 
                 /*
@@ -114,6 +131,7 @@ var miApp = angular.module("miApp",[]);
             };
 
             $scope.GuardarRespuestas = function (c) {
+                // guardo
                 localStorage.setItem("competencia" + sesion.empleado.cedula + tprueba + $scope.evaluado.cedula, c);
                 localStorage.setItem(tprueba + sesion.empleado.cedula + $scope.evaluado.cedula, JSON.stringify(respuestas));
                 $scope.error = false;
@@ -121,10 +139,7 @@ var miApp = angular.module("miApp",[]);
             };
 
             $scope.EnviarRespuestas = function () {
-                // obtengo la cantidad de preguntas
-
-                $scope.faltan = cantidad_preguntas - respuestas.length;
-                $scope.npreguntas = cantidad_preguntas;
+                
                 // verifico si la cantidad es igual a la de las respuestas marcadas
                 if (cantidad_preguntas === respuestas.length) {
                     // aqui envio las respuestas

@@ -12,9 +12,9 @@ namespace Helloword01_02.Controllers
     {
         private Drummond02Entities db = new Drummond02Entities();
 
-        [Route("~/Examen/{idperiodo}/")]
+        [Route("~/Examen/{idperiodo}/{tipo_evaluado}/")]
         [HttpGet]
-        public List<ExamenDTO> GetExamen(long idperiodo)
+        public List<ExamenDTO> GetExamen(long idperiodo, string tipo_evaluado)
         {
             List<ExamenDTO> examenes = new List<ExamenDTO>();
             try
@@ -22,7 +22,11 @@ namespace Helloword01_02.Controllers
                 // consultas
                 periodos periodo = db.periodos.Where(x => x.id == idperiodo && x.estado != 0).FirstOrDefault();
                 evaluacion e = db.evaluacion.Where(x => x.id == periodo.id_evaluacion && x.estado != 0).FirstOrDefault();
-                List<competencias> competenciaslst = db.competencias.Where(x => x.idevaluacion == e.id).ToList();
+                // algoritmo para filtrar las competencias por rango
+                List<competencias> competenciaslst = tipo_evaluado.Equals("Jefe") ? 
+                    competenciaslst = db.competencias.Where(x => x.idevaluacion == e.id).ToList() 
+                    : 
+                    competenciaslst = db.competencias.Where(x => x.idevaluacion == e.id && x.rango_evaluacion == tipo_evaluado).ToList();
 
                 foreach(competencias c in competenciaslst){
                     ExamenDTO examen = new ExamenDTO();
