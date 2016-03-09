@@ -44,6 +44,7 @@ app.controller("pagina", function ($scope, $http, $q) {
                     idperiodo_seleccionado = p.data[l].id;
                 }
             }
+            console.log(idperiodo_seleccionado);
             // GUARDAMOS EL PERIODO
             localStorage.setItem("idperiodo",idperiodo_seleccionado);
             // liderados

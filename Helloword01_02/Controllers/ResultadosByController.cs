@@ -17,9 +17,9 @@ namespace Helloword01_02.Controllers
         {
             empleado e = db.empleado.Where(x => x.cedula == idevaluado).FirstOrDefault();
             // esto por la relacion es con empleado_seleccionado y no con empleado
-            int id_empleado_seleccionado = (int)db.empleados_selecionados.Where(x => x.id_empleados == idempleado).FirstOrDefault().id;
+            int id_empleado_seleccionado = (int)db.empleados_selecionados.Where(x => x.id_empleados == idempleado && x.id_periodos == idperiodo).FirstOrDefault().id;
             var resultados = from r in db.R_Evaluacion
-                            where r.id_evaluado == e.id && r.id_empleados_selecionados == id_empleado_seleccionado && r.tipo_evaluacion == tprueba
+                            where r.id_evaluado == e.id && r.id_empleados_selecionados == id_empleado_seleccionado && r.tipo_evaluacion == tprueba && r.id_periodo == idperiodo
                             select new ResultadosDTO()
                             {
                                 id = r.id,

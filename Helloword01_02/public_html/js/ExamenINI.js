@@ -39,7 +39,7 @@ var miApp = angular.module("miApp",[]);
             } else if ($scope.tipos == "Seguridad") {
                 location.href = "/public_html/seguridad/index.html";
             } else {
-                location.href = "/public_html/login-empleados/Moduloempleados.html";
+                location.href = "/public_html/login-empleados/evaluacion-empleados.html";
             }
         };
         $http.get('/Examen/'+idperiodo+'/').then(function (d) {
