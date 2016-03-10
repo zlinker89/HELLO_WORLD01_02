@@ -25,7 +25,7 @@ app.controller("pagina", function ($scope, $http, $q) {
     $scope.usuario = sesion;
     var deferred = $q.defer();
     // mi codigo
-    $http.get('/PeriodoEmpleados/' + sesion.id).then(function (p) {
+    $http.get('/PeriodoEmpleados/' + sesion.empleado.id).then(function (p) {
         console.log(p.data);
         $scope.periodos = p.data;
         $scope.periodo_seleccionado = p.data[0].nombre;

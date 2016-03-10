@@ -60,7 +60,7 @@ namespace Helloword01_02.Controllers
         {
             var periodos = from p in db.periodos
                            join es in db.empleados_selecionados on p.id equals es.id_periodos
-                           where p.estado != 0 && es.id_empleados == idempleado
+                           where es.estado == 1 && p.estado != 0 && es.id_empleados == idempleado
                            orderby p.id descending
                            select new PeriodoDTO()
                            {

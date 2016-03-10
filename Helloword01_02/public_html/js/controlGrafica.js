@@ -40,7 +40,7 @@ app.controller('resultados', function ($scope, $http) {
     };
 
     // OBTENGO LOS DATOS DEL SERVER
-    $http.get('/PeriodoEmpleados/' + sesion.id).then(function (p) {
+    $http.get('/PeriodoEmpleados/' + sesion.empleado.id).then(function (p) {
         $scope.periodos = p.data;
         $scope.periodo_seleccionado = p.data[0].nombre;
         $scope.Cambiarperiodo = function () {
