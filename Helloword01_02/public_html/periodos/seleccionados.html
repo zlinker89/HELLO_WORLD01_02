@@ -196,7 +196,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h4 class="modal-title">Deseleccionar un empleado</h4>
+                            <h4 class="modal-title">Modificar pares y liderados empleado</h4>
                         </div>
                         <div class="modal-body">
                             <div class="row">
@@ -204,9 +204,46 @@
                                     <br>
                                     <div class="col-sm-12">
                                         <div class="col-sm-2"><label for="">Documento:</label></div>
-                                        <div class="col-sm-10"><input type="number" id="documento" readonly class="form-control" size="60" /><br /></div>
+                                        <div class="col-sm-4"><input type="number" id="documento" readonly class="form-control" size="60" /><br /></div>
                                         <div class="col-sm-2"><label for="">Nombre:</label></div>
-                                        <div class="col-sm-10"><input type="text" id="nombre" readonly class="form-control" size="60" /></div>
+                                        <div class="col-sm-4"><input type="text" id="nombre" readonly class="form-control" size="60" /></div>
+                                        <br />
+                                        <br />
+                                        <hr />
+                                        <div class="col-sm-2"><label for="">Liderado 1:</label></div>
+                                        <div class="col-sm-4"><input type="text" id="liderado1" class="form-control" size="60" /></div>
+                                        <div class="col-sm-2"><label for="">Liderado 2:</label></div>
+                                        <div class="col-sm-4"><input type="text" id="liderado2" class="form-control" size="60" /></div>
+                                        <div class="col-sm-2"><label for="">Liderado 3:</label></div>
+                                        <div class="col-sm-4"><input type="text" id="liderado3" class="form-control" size="60" /></div>
+                                        <div class="col-sm-2"><label for="">Liderado 4:</label></div>
+                                        <div class="col-sm-4"><input type="text" id="liderado4" class="form-control" size="60" /></div>
+                                        <div class="col-sm-2"><label for="">Liderado 5:</label></div>
+                                        <div class="col-sm-4"><input type="text" id="liderado5" class="form-control" size="60" /></div>
+                                        <div class="col-sm-2"><label for="">Liderado 6:</label></div>
+                                        <div class="col-sm-4"><input type="text" id="liderado6" class="form-control" size="60" /></div>
+                                        <div class="col-sm-2"><label for="">Liderado 7:</label></div>
+                                        <div class="col-sm-4"><input type="text" id="liderado7" class="form-control" size="60" /></div>
+                                        <div class="col-sm-2"><label for="">Liderado 8:</label></div>
+                                        <div class="col-sm-4"><input type="text" id="liderado8" class="form-control" size="60" /></div>
+                                        <div class="col-sm-2"><label for="">Liderado 9:</label></div>
+                                        <div class="col-sm-4"><input type="text" id="liderado9" class="form-control" size="60" /></div>
+                                        <div class="col-sm-2"><label for="">Liderado 10:</label></div>
+                                        <div class="col-sm-4"><input type="text" id="liderado10" class="form-control" size="60" />
+                                            <br />
+                                        </div>
+                                        <div class="col-sm-2"><label for="">Par 1:</label></div>
+                                        <div class="col-sm-4"><input type="text" id="par1" class="form-control" size="60" /></div>
+                                        <div class="col-sm-2"><label for="">Par 2:</label></div>
+                                        <div class="col-sm-4"><input type="text" id="par2" class="form-control" size="60" /></div>
+                                        <div class="col-sm-2"><label for="">Par 3:</label></div>
+                                        <div class="col-sm-4"><input type="text" id="par3" class="form-control" size="60" /></div>
+                                        <div class="col-sm-2"><label for="">Par 4:</label></div>
+                                        <div class="col-sm-4"><input type="text" id="par4" class="form-control" size="60" /></div>
+                                        <div class="col-sm-2"><label for="">Par 5:</label></div>
+                                        <div class="col-sm-4"><input type="text" id="par5" class="form-control" size="60" /></div>
+                                        <div class="col-sm-2"><label for="">Jefe:</label></div>
+                                        <div class="col-sm-4"><input type="text" id="jefe" class="form-control" size="60" /></div>
                                     </div>
                                     <div class="col-sm-8 col-sm-offset-2" ng-show="enviado">
                                         <br>
@@ -218,6 +255,7 @@
                                         <br>
                                         <br>
                                         <div class="pull-right">
+                                            <button ng-click="UpdateEmpleado()" data-dismiss="modal" type="button" class="btn btn-success">Modificar</button>
                                             <button ng-click="RemoveEmpleado()" data-dismiss="modal" type="button" class="btn btn-danger">Deseleccionar</button>
                                         </div>
                                     </div>

@@ -148,5 +148,64 @@ namespace Helloword01_02.Controllers
                             };
             return empleados;
         }
+
+        [Route("~/UpdateEmpleadosSeleccionados/{inutil}")]
+        [HttpPut]
+        public empleado_seleccionadoDTO PutEmpleadoSeleccionado(long inutil, empleado_seleccionadoDTO empleado)
+        {
+            empleados_selecionados e = new empleados_selecionados();
+            e = db.empleados_selecionados.Where(x => x.id_empleados == empleado.id_empleados && x.id_periodos == empleado.id_periodos).FirstOrDefault();
+            e.jefe = empleado.jefe;
+            e.liderado1 = empleado.liderado1;
+            e.liderado2 = empleado.liderado2;
+            e.liderado3 = empleado.liderado3;
+            e.liderado4 = empleado.liderado4;
+            e.liderado5 = empleado.liderado5;
+            e.liderado6 = empleado.liderado6;
+            e.liderado7 = empleado.liderado7;
+            e.liderado8 = empleado.liderado8;
+            e.liderado9 = empleado.liderado9;
+            e.liderado10 = empleado.liderado10;
+            e.par1 = empleado.par1;
+            e.par2 = empleado.par2;
+            e.par3 = empleado.par3;
+            e.par4 = empleado.par4;
+            e.par5 = empleado.par5;
+
+            db.Entry(e).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
+
+            return empleado;
+        }
+
+        [Route("~/GetEmpleadosSeleccionado/{idperiodo}/{idempleado}/")]
+        [HttpGet]
+        public empleadoDTO PutEmpleadoSeleccionado(long idperiodo, long idempleado)
+        {
+            empleados_selecionados e = new empleados_selecionados();
+            e = db.empleados_selecionados.Where(x => x.id_empleados == idempleado && x.id_periodos == idperiodo).FirstOrDefault();
+            empleado ee= db.empleado.Where(x => x.id == idempleado).FirstOrDefault();
+            empleadoDTO empleado = new empleadoDTO();
+            empleado.jefe = e.jefe;
+            empleado.liderado1 = e.liderado1;
+            empleado.liderado2 = e.liderado2;
+            empleado.liderado3 = e.liderado3;
+            empleado.liderado4 = e.liderado4;
+            empleado.liderado5 = e.liderado5;
+            empleado.liderado6 = e.liderado6;
+            empleado.liderado7 = e.liderado7;
+            empleado.liderado8 = e.liderado8;
+            empleado.liderado9 = e.liderado9;
+            empleado.liderado10 = e.liderado10;
+            empleado.par1 = e.par1;
+            empleado.par2 = e.par2;
+            empleado.par3 = e.par3;
+            empleado.par4 = e.par4;
+            empleado.par5 = e.par5;
+            empleado.Nombre = ee.Nombre;
+            empleado.cedula = ee.cedula;
+
+            return empleado;
+        }
     }
 }

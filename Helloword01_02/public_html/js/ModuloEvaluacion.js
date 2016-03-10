@@ -29,134 +29,140 @@ app.controller("pagina", function ($scope, $http, $q) {
         console.log(p.data);
         $scope.periodos = p.data;
         $scope.periodo_seleccionado = p.data[0].nombre;
-        $scope.Cambiarperiodo = function () {
-            // verifico si hay resultados
-            var cliderados = 0;
-            var cpar = 0;
-            var jefe = 0;
-            var auto = 0;
-            var list = [];
-            var idperiodo_seleccionado;
-            // obtengo listas de empleados
-            for (var l in p.data) {
-                if (p.data[l].nombre == $scope.periodo_seleccionado) {
-                    $scope.metodologia = p.data[l].metodologia
-                    idperiodo_seleccionado = p.data[l].id;
-                }
-            }
-            console.log(idperiodo_seleccionado);
-            // GUARDAMOS EL PERIODO
-            localStorage.setItem("idperiodo",idperiodo_seleccionado);
-            // liderados
-            var CANTIDAD_LIDERADOS = 10; // ESTA CANTIDAD REPRESENTA LA PERMITIDA EN LA BASE DE DATOS
-            for (var i = 1; i <= 10; i++) {
-                if (sesion.empleado["liderado" + i]) {
-                    $http.get('/ResultadoBy/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/' + sesion.empleado["liderado" + i] + '/jefe/').then(function (d) {
-                        if (d.data.length > 0) {
-                            cliderados++;
-                        }
-                        $scope.nliderados = CANTIDAD_LIDERADOS - cliderados;
-                    });
-                } else {
-                    // disminuye si en la tabla hay menos de la cantidad limite
-                    CANTIDAD_LIDERADOS--;
-                }
-            }
-            $scope.ClickLiderados = function () {
-                // he invertido para indicar que estado tiene el evaluador
-                SetPrueba('jefe'); 
-                // traigo la lista de empleados por evaluar
-                list = [];
-                for (var i = 1; i <= 10; i++) {
-                    if (sesion.empleado["liderado" + i]) {
-                        console.log('/EmpleadosByCedula/' + sesion.empleado["liderado" + i] + '/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/jefe/');
-                        $http.get('/EmpleadosByCedula/' + sesion.empleado["liderado" + i] + '/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/jefe/').then(function (d) {
-                            console.log(d.data);
-                            if (d.data !== null) {
-                                list.push(d.data);
-                                $scope.listado = list;
-                            }
-                        });
-                    }
-                }
-            };
-
-            // pares
-            var CANTIDAD_PARES = 5; // ESTA CANTIDAD REPRESENTA LA PERMITIDA EN LA BASE DE DATOS
-            for (var i = 1; i <= 5; i++) {
-                if (sesion.empleado["par" + i]) {
-                    $http.get('/ResultadoBy/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/' + sesion.empleado["par" + i] + '/par/').then(function (d) {
-                        if (d.data.length > 0) {
-                            cpar++;
-                            console.log(cpar + "i");
-                        }
-                        $scope.npares = CANTIDAD_PARES - cpar;
-                    });
-                } else {
-                    CANTIDAD_PARES--;
-                }
-            }
-            $scope.ClickPares = function () {
-                SetPrueba('par');
-                list = [];
-                for (var i = 1; i <= 5; i++) {
-                    if (sesion.empleado["par" + i]) {
-                        $http.get('/EmpleadosByCedula/' + sesion.empleado["par" + i] + '/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/par/').then(function (d) {
-                            if (d.data != null) {
-                                list.push(d.data);
-                                $scope.listado = list;
-                            }
-                        });
-                    }
-                }
-            };
-            // jefe
-            var CANTIDAD_JEFE = 1;
-            if (sesion.empleado["jefe"]) {
-                $http.get('/ResultadoBy/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/' + sesion.empleado["jefe"] + '/liderados/').then(function (d) {
-                    if (d.data.length > 0) {
-                        jefe++;
-                    }
-                    $scope.njefe = CANTIDAD_JEFE - jefe;
-                });
-            } else {
-                $scope.njefe = 0;
-            }
-            
-            $scope.ClickJefe = function () {
-                // he invertido para indicar que estado tiene el evaluador
-                SetPrueba('liderados');
-                localStorage.setItem("EstadoPrueba", true);
-                $http.get('/EmpleadosByCedula/' + sesion.empleado["jefe"] + '/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/liderados/').then(function (d) {
-                    localStorage.setItem("evaluando", JSON.stringify(d.data));
-                    location.href = "explicacion.html";
-                });
-            };
-            // autoevaluacion
-            $http.get('/ResultadoBy/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/' + sesion.empleado.cedula + '/autoevaluacion/').then(function (d) {
-                if (d.data.length > 0) {
-                    auto++;
-                }
-                $scope.nauto = 1 - auto;
-            });
-            $scope.ClickAuto = function () {
-                SetPrueba('autoevaluacion');
-                localStorage.setItem("EstadoPrueba", true);
-                localStorage.setItem("evaluando", JSON.stringify(sesion.empleado));
-                location.href = "explicacion.html";
-            };
-            // mostramos
-            
-
-            /* Funcciones */
-            $scope.EvaluarA = function (i) {
-                localStorage.setItem("EstadoPrueba", true);
-                localStorage.setItem("evaluando", JSON.stringify(list[i]));
-                location.href = "explicacion.html";
-            }
-        };
         
-        $scope.Cambiarperiodo();
+        
+            $scope.Cambiarperiodo = function () {
+                // verifico si hay resultados
+                var cliderados = 0;
+                var cpar = 0;
+                var jefe = 0;
+                var auto = 0;
+                var list = [];
+                var idperiodo_seleccionado;
+                // obtengo listas de empleados
+                for (var l in p.data) {
+                    if (p.data[l].nombre == $scope.periodo_seleccionado) {
+                        $scope.metodologia = p.data[l].metodologia
+                        idperiodo_seleccionado = p.data[l].id;
+                    }
+                }
+               $http.get('/GetEmpleadosSeleccionado/' + idperiodo_seleccionado + '/' + sesion.empleado.id).then(function (empleadoActualizado) {
+                   console.log(idperiodo_seleccionado);
+                   
+                    // GUARDAMOS EL PERIODO
+                    localStorage.setItem("idperiodo", idperiodo_seleccionado);
+                    // liderados
+                    var CANTIDAD_LIDERADOS = 10; // ESTA CANTIDAD REPRESENTA LA PERMITIDA EN LA BASE DE DATOS
+                    for (var i = 1; i <= 10; i++) {
+                        if (empleadoActualizado.data["liderado" + i]) {
+                            $http.get('/ResultadoBy/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/' + empleadoActualizado.data["liderado" + i] + '/jefe/').then(function (d) {
+                                if (d.data.length > 0) {
+                                    cliderados++;
+                                }
+                                $scope.nliderados = CANTIDAD_LIDERADOS - cliderados;
+                            });
+                        } else {
+                            // disminuye si en la tabla hay menos de la cantidad limite
+                            CANTIDAD_LIDERADOS--;
+                        }
+                    }
+                    $scope.ClickLiderados = function () {
+                        // he invertido para indicar que estado tiene el evaluador
+                        SetPrueba('jefe');
+                        // traigo la lista de empleados por evaluar
+                        list = [];
+                        for (var i = 1; i <= 10; i++) {
+                            if (empleadoActualizado.data["liderado" + i]) {
+                                $http.get('/EmpleadosByCedula/' + empleadoActualizado.data["liderado" + i] + '/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/jefe/').then(function (d) {
+                                    console.log(d.data);
+                                    if (d.data !== null) {
+                                        list.push(d.data);
+                                        $scope.listado = list;
+                                    }
+                                });
+                            }
+                        }
+                    };
+
+                    // pares
+                    var CANTIDAD_PARES = 5; // ESTA CANTIDAD REPRESENTA LA PERMITIDA EN LA BASE DE DATOS
+                    for (var i = 1; i <= 5; i++) {
+                        if (empleadoActualizado.data["par" + i]) {
+                            $http.get('/ResultadoBy/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/' + empleadoActualizado.data["par" + i] + '/par/').then(function (d) {
+                                if (d.data.length > 0) {
+                                    cpar++;
+                                    console.log(cpar + "i");
+                                }
+                                $scope.npares = CANTIDAD_PARES - cpar;
+                            });
+                        } else {
+                            CANTIDAD_PARES--;
+                        }
+                    }
+                    $scope.ClickPares = function () {
+                        SetPrueba('par');
+                        list = [];
+                        for (var i = 1; i <= 5; i++) {
+                            if (empleadoActualizado.data["par" + i]) {
+                                $http.get('/EmpleadosByCedula/' + empleadoActualizado.data["par" + i] + '/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/par/').then(function (d) {
+                                    if (d.data != null) {
+                                        list.push(d.data);
+                                        $scope.listado = list;
+                                    }
+                                });
+                            }
+                        }
+                    };
+                    // jefe
+                    var CANTIDAD_JEFE = 1;
+                    if (sesion.empleado["jefe"]) {
+                        $http.get('/ResultadoBy/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/' + empleadoActualizado.data["jefe"] + '/liderados/').then(function (d) {
+                            if (d.data.length > 0) {
+                                jefe++;
+                            }
+                            $scope.njefe = CANTIDAD_JEFE - jefe;
+                        });
+                    } else {
+                        $scope.njefe = 0;
+                    }
+
+                    $scope.ClickJefe = function () {
+                        // he invertido para indicar que estado tiene el evaluador
+                        SetPrueba('liderados');
+                        localStorage.setItem("EstadoPrueba", true);
+                        $http.get('/EmpleadosByCedula/' + empleadoActualizado.data["jefe"] + '/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/liderados/').then(function (d) {
+                            localStorage.setItem("evaluando", JSON.stringify(d.data));
+                            location.href = "explicacion.html";
+                        });
+                    };
+                    // autoevaluacion
+                    $http.get('/ResultadoBy/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/' + sesion.empleado.cedula + '/autoevaluacion/').then(function (d) {
+                        if (d.data.length > 0) {
+                            auto++;
+                        }
+                        $scope.nauto = 1 - auto;
+                    });
+                    $scope.ClickAuto = function () {
+                        SetPrueba('autoevaluacion');
+                        localStorage.setItem("EstadoPrueba", true);
+                        localStorage.setItem("evaluando", JSON.stringify(sesion.empleado));
+                        location.href = "explicacion.html";
+                    };
+                    // mostramos
+
+
+                    /* Funcciones */
+                    $scope.EvaluarA = function (i) {
+                        localStorage.setItem("EstadoPrueba", true);
+                        localStorage.setItem("evaluando", JSON.stringify(list[i]));
+                        location.href = "explicacion.html";
+                    }
+                });
+
+            };
+            $scope.Cambiarperiodo();
+
+        
 
     });
 
