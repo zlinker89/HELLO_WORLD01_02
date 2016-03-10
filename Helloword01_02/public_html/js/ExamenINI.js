@@ -1,3 +1,7 @@
+// VERIFICO SI SE PUEDE REALIZAR
+NoRepetirPrueba(); // primera vez
+setInterval(NoRepetirPrueba(), 3000); // por si acaso
+
 // valor temporal
 var tprueba = localStorage.getItem("tprueba");
 
@@ -55,7 +59,7 @@ var miApp = angular.module("miApp",[]);
                 location.href = "/public_html/login-empleados/evaluacion-empleados.html";
             }
         };
-        $http.get('/Examen/'+idperiodo+'/' + $scope.es_lider +'/').then(function (d) {
+        $http.get('/Examen/' + idperiodo + '/' + $scope.es_lider + '/').then(function (d) {
             $scope.respuestas = [
 		        { respuesta: "CASI NUNCA" },
 		        { respuesta: "EN POCAS OCASIONES" },
@@ -63,7 +67,7 @@ var miApp = angular.module("miApp",[]);
 		        { respuesta: "CON FRECUENCIA" },
 		        { respuesta: "SIEMPRE" },
             ];
-            
+
 
             $scope.pagina = localStorage.getItem("competencia" + sesion.empleado.cedula + tprueba + $scope.evaluado.cedula) || 0;
             var respuestas = JSON.parse(localStorage.getItem(tprueba + sesion.empleado.cedula + $scope.evaluado.cedula)) || [];
@@ -90,7 +94,7 @@ var miApp = angular.module("miApp",[]);
             // obtengo la cantidad de preguntas
             $scope.faltan = cantidad_preguntas - respuestas.length;
             $scope.npreguntas = cantidad_preguntas;
-            
+
             $scope.seleccion = function (r) {
 
                 /*
@@ -139,7 +143,7 @@ var miApp = angular.module("miApp",[]);
             };
 
             $scope.EnviarRespuestas = function () {
-                
+
                 // verifico si la cantidad es igual a la de las respuestas marcadas
                 if (cantidad_preguntas === respuestas.length) {
                     // aqui envio las respuestas
@@ -151,31 +155,35 @@ var miApp = angular.module("miApp",[]);
                     // mensajes
                     $scope.error = false;
                     $scope.mensaje = true;
-                    
+
                     // reiniciamos todo
                     localStorage.setItem("competencia" + sesion.empleado.cedula + tprueba + $scope.evaluado.cedula, "0");
                     localStorage.setItem(tprueba + sesion.empleado.cedula + $scope.evaluado.cedula, JSON.stringify([]));
+                    history.go(1);
+                    // desmarco todos
+                    respuestas = [];
+                    localStorage.setItem("evaluando", undefined);
+                    // bandera para que no se repita
+                    localStorage.setItem("EstadoPrueba", false);
                     // aqui lo cambio de vista
                     location.href = "/public_html/login-empleados/evaluacion-empleados.html";
-                    // desmarco todos
-                    
-                    for (var i in respuestas) {
-                        //console.log(examen[respuestas[i].competencia].preguntas[respuestas[i].idpregunta].resultados[respuestas[i].idrespuesta]);
-                        if (d.data[respuestas[i].id_competencia].preguntas[respuestas[i].idpregunta] !== undefined) {
-                            d.data[respuestas[i].id_competencia].preguntas[respuestas[i].idpregunta]["seleccion"] = undefined;
-                        }
-                    }
-                    respuestas = [];
-                    $scope.examen = d.data;
                 } else {
                     $scope.error = true;
                     $scope.mensaje = false;
                 }
             };
         });
-        
+
         function cerrarSession() {
             localStorage.removeItem("usuario");
             location.href = "../login.html";
         }
-    })
+    });
+    // evito que repita prueba
+    function NoRepetirPrueba() {
+        var estado_prueba = localStorage.getItem("EstadoPrueba") || false;
+        if (!estado_prueba) {
+            location.href = "evaluacion-empleados.html";
+        }
+    }
+    // fin evito que repita prueba 

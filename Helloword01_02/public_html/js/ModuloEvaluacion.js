@@ -126,6 +126,7 @@ app.controller("pagina", function ($scope, $http, $q) {
             $scope.ClickJefe = function () {
                 // he invertido para indicar que estado tiene el evaluador
                 SetPrueba('liderados');
+                localStorage.setItem("EstadoPrueba", true);
                 $http.get('/EmpleadosByCedula/' + sesion.empleado["jefe"] + '/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/liderados/').then(function (d) {
                     localStorage.setItem("evaluando", JSON.stringify(d.data));
                     location.href = "explicacion.html";
@@ -140,6 +141,7 @@ app.controller("pagina", function ($scope, $http, $q) {
             });
             $scope.ClickAuto = function () {
                 SetPrueba('autoevaluacion');
+                localStorage.setItem("EstadoPrueba", true);
                 localStorage.setItem("evaluando", JSON.stringify(sesion.empleado));
                 location.href = "explicacion.html";
             };
@@ -148,6 +150,7 @@ app.controller("pagina", function ($scope, $http, $q) {
 
             /* Funcciones */
             $scope.EvaluarA = function (i) {
+                localStorage.setItem("EstadoPrueba", true);
                 localStorage.setItem("evaluando", JSON.stringify(list[i]));
                 location.href = "explicacion.html";
             }
