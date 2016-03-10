@@ -22,6 +22,24 @@ namespace BL
                 {
                     obj.id_empleados = empleado.id;
                     obj.estado = 1;
+                    // tomo los valores de la base de datos
+                    // para no perderlos, cuando halla cambios
+                    obj.liderado1 = empleado.liderado1;
+                    obj.liderado2 = empleado.liderado2;
+                    obj.liderado3 = empleado.liderado3;
+                    obj.liderado4 = empleado.liderado4;
+                    obj.liderado5 = empleado.liderado5;
+                    obj.liderado6 = empleado.liderado6;
+                    obj.liderado7 = empleado.liderado7;
+                    obj.liderado8 = empleado.liderado8;
+                    obj.liderado9 = empleado.liderado9;
+                    obj.liderado10 = empleado.liderado10;
+                    obj.par1 = empleado.par1;
+                    obj.par2 = empleado.par2;
+                    obj.par3 = empleado.par3;
+                    obj.par4 = empleado.par4;
+                    obj.par5 = empleado.par5;
+                    obj.jefe = empleado.jefe;
                     e.Create(obj);
                 }
             }
