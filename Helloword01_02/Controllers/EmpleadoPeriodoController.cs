@@ -38,9 +38,16 @@ namespace Helloword01_02.Controllers
                                 liderado3 = e.liderado3,
                                 liderado4 = e.liderado4,
                                 liderado5 = e.liderado5,
+                                liderado6 = e.liderado6,
+                                liderado7 = e.liderado7,
+                                liderado8 = e.liderado8,
+                                liderado9 = e.liderado9,
+                                liderado10 = e.liderado10,
                                 par1 = e.par1,
                                 par2 = e.par2,
                                 par3 = e.par3,
+                                par4 = e.par4,
+                                par5 = e.par5,
                                 jefe = e.jefe
                             };
             return empleados;
@@ -126,9 +133,16 @@ namespace Helloword01_02.Controllers
                                 liderado3 = e.liderado3,
                                 liderado4 = e.liderado4,
                                 liderado5 = e.liderado5,
+                                liderado6 = e.liderado6,
+                                liderado7 = e.liderado7,
+                                liderado8 = e.liderado8,
+                                liderado9 = e.liderado9,
+                                liderado10 = e.liderado10,
                                 par1 = e.par1,
                                 par2 = e.par2,
                                 par3 = e.par3,
+                                par4 = e.par4,
+                                par5 = e.par5,
                                 jefe = e.jefe
                             };
             return empleados;

@@ -67,9 +67,16 @@ namespace Helloword01_02.Controllers
                                 liderado3 = e.liderado3,
                                 liderado4 = e.liderado4,
                                 liderado5 = e.liderado5,
+                                liderado6 = e.liderado6,
+                                liderado7 = e.liderado7,
+                                liderado8 = e.liderado8,
+                                liderado9 = e.liderado9,
+                                liderado10 = e.liderado10,
                                 par1 = e.par1,
                                 par2 = e.par2,
                                 par3 = e.par3,
+                                par4 = e.par4,
+                                par5 = e.par5,
                                 jefe = e.jefe
                             };
             return empleados;
@@ -121,54 +128,7 @@ namespace Helloword01_02.Controllers
 
             return StatusCode(HttpStatusCode.NoContent);
         }
-        /*
-        [Route("~/Empleados/")]
-        [HttpPost]
-        public string SaveEmpleadosFast(List<empleado> empleadoslst)
-        {
-            
-            try
-            {
-                List<empleado> empleados = new List<empleado>();
-                foreach (empleado e in empleadoslst){
-                    // crea el objeto
-                    usuarios u = new usuarios();
-                    // verifico si ya existe un usuario
-                    var cont = usuarioHelper.Search(x => x.nombre_usuario == e.cedula).ToList();
-                    if (cont.Count() == 0)
-                    {
-                        // SOLO registra un susuario si este no existe
-                        u.nombre_usuario = e.cedula;
-                        u.password_usuario = e.cedula;
-                        // insertar el usuario
-                        usuarioHelper.Create(u);
-                        //obtener el usario
-                        u = usuarioHelper.Search(x => x.nombre_usuario == e.cedula).First();
-                        // enlazamos el usuario con su tipo_usuario
-                        Usuario_Tipo_usuario utipo = new Usuario_Tipo_usuario();
-                        utipo.id_user = u.id;
-                        utipo.idtipo_usuario = tipo_usuarioHelper.Search(x => x.tipo_usuario1 == "Empleado").FirstOrDefault().id; // id 1 es empleado
-                        // lo insertamos
-                        utu.Create(utipo);
-                        e.id_user = u.id;
-                        // agregamos
-                        empleados.Add(e);
-                    }
-                    return "cuenta";
-                }
-                if (empleados.Count() > 0)
-                {
-                    db.empleado.AddRange(empleados);
-                    db.SaveChanges();
-                }
-                
-            }
-            catch (Exception)
-            {
-            }
-            return "termine";
-
-        }*/
+        
 
         // POST api/Empleado
         [ResponseType(typeof(empleado))]
@@ -298,9 +258,16 @@ namespace Helloword01_02.Controllers
                                     liderado3 = e.liderado3,
                                     liderado4 = e.liderado4,
                                     liderado5 = e.liderado5,
+                                    liderado6 = e.liderado6,
+                                    liderado7 = e.liderado7,
+                                    liderado8 = e.liderado8,
+                                    liderado9 = e.liderado9,
+                                    liderado10 = e.liderado10,
                                     par1 = e.par1,
                                     par2 = e.par2,
                                     par3 = e.par3,
+                                    par4 = e.par4,
+                                    par5 = e.par5,
                                     jefe = e.jefe
                                 }).FirstOrDefault();
                 return empleado;

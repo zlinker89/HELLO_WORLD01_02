@@ -132,7 +132,7 @@
                         <div class="row row-centered" style="margin-top: 70px;">
                             <div class="centrar_div">
                                 <div style="text-align: center; ">
-                                    <h3 class="titulos">Listado de Preguntas</h3>
+                                    <h3 class="titulos">listado de comportamientos</h3>
                                     <br>
                                 </div>
                                 <form class="form-inline">
@@ -163,13 +163,13 @@
                                         <table class="table table-bordered table-hover" style="text-align: center;">
                                             <thead>
                                                 <tr class="list-group-item-header">
-                                                    <th>Preguntas</th>
-                                                    <th>Estado</th>
+                                                    <th>Comportamiento</th>
+                                                    <th>Opciones</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr ng-repeat="item in pagedItems[currentPage] | orderBy:sortingOrder:reverse">
-                                                    <td>{{item.nombre}}</td>
+                                                    <td style="text-align:justify;">{{item.nombre}}</td>
                                                     <td>
                                                         <a ng-click="cambiarPregunta($index)" class="btn amarillo" data-toggle="modal" data-backdrop="static" data-keyboard="false" href='#modificar-evaluacion'>
                                                             <i class="fa fa-pencil-square fa-2x"></i>
@@ -231,7 +231,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times fa-1x"></i></button>
-                        <h4 class="modal-title">Crear Preguntas</h4>
+                        <h4 class="modal-title">Crear Comportamiento</h4>
                     </div>
                     <div class="modal-body">
                         <div class="row">

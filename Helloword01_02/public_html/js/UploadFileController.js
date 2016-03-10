@@ -115,11 +115,18 @@ app.controller('PreviewController', function ($scope, XLSXReaderService, $http) 
                                 liderado3: obj[i]['Liderado 3'],
                                 liderado4: obj[i]['Liderado 4'],
                                 liderado5: obj[i]['Liderado 5'],
+                                liderado6: obj[i]['Liderado 6'],
+                                liderado7: obj[i]['Liderado 7'],
+                                liderado8: obj[i]['Liderado 8'],
+                                liderado9: obj[i]['Liderado 9'],
+                                liderado10: obj[i]['Liderado 10'],
                                 par1: obj[i]['Par 1'],
                                 par2: obj[i]['Par 2'],
                                 par3: obj[i]['Par 3'],
+                                par4: obj[i]['Par 4'],
+                                par5: obj[i]['Par 5'],
                                 jefe: obj[i]['Jefe']
-                            }
+                            };
                             $http.post("/api/Empleado/", empleado).then(function (data) {
                                 $scope.contador++;
                                 console.log(JSON.stringify(data.data));

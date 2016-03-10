@@ -14,6 +14,13 @@
     <EntitySetMapping Name="empleado">
       <EntityTypeMapping TypeName="Drummond02Model.empleado">
         <MappingFragment StoreEntitySet="empleado">
+          <ScalarProperty Name="par5" ColumnName="par5" />
+          <ScalarProperty Name="par4" ColumnName="par4" />
+          <ScalarProperty Name="liderado10" ColumnName="liderado10" />
+          <ScalarProperty Name="liderado9" ColumnName="liderado9" />
+          <ScalarProperty Name="liderado8" ColumnName="liderado8" />
+          <ScalarProperty Name="liderado7" ColumnName="liderado7" />
+          <ScalarProperty Name="liderado6" ColumnName="liderado6" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="cedula" ColumnName="cedula" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -41,6 +48,22 @@
     <EntitySetMapping Name="empleados_selecionados">
       <EntityTypeMapping TypeName="Drummond02Model.empleados_selecionados">
         <MappingFragment StoreEntitySet="empleados_selecionados">
+          <ScalarProperty Name="jefe" ColumnName="jefe" />
+          <ScalarProperty Name="par5" ColumnName="par5" />
+          <ScalarProperty Name="par4" ColumnName="par4" />
+          <ScalarProperty Name="par3" ColumnName="par3" />
+          <ScalarProperty Name="par2" ColumnName="par2" />
+          <ScalarProperty Name="par1" ColumnName="par1" />
+          <ScalarProperty Name="liderado10" ColumnName="liderado10" />
+          <ScalarProperty Name="liderado9" ColumnName="liderado9" />
+          <ScalarProperty Name="liderado8" ColumnName="liderado8" />
+          <ScalarProperty Name="liderado7" ColumnName="liderado7" />
+          <ScalarProperty Name="liderado6" ColumnName="liderado6" />
+          <ScalarProperty Name="liderado5" ColumnName="liderado5" />
+          <ScalarProperty Name="liderado4" ColumnName="liderado4" />
+          <ScalarProperty Name="liderado3" ColumnName="liderado3" />
+          <ScalarProperty Name="liderado2" ColumnName="liderado2" />
+          <ScalarProperty Name="liderado1" ColumnName="liderado1" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="id_empleados" ColumnName="id_empleados" />
           <ScalarProperty Name="id_periodos" ColumnName="id_periodos" />

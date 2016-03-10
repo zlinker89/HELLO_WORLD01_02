@@ -41,6 +41,13 @@
     <NavigationProperty Name="usuarios" Relationship="Self.FK_empleado_usuarios" FromRole="empleado" ToRole="usuarios" />
     <NavigationProperty Name="empleados_selecionados" Relationship="Self.FK_empleados_selecionados_empleado" FromRole="empleado" ToRole="empleados_selecionados" />
     <NavigationProperty Name="R_Evaluacion" Relationship="Self.FK_R_Evaluacion_empleado" FromRole="empleado" ToRole="R_Evaluacion" />
+    <Property Name="liderado6" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="liderado7" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="liderado8" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="liderado9" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="liderado10" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="par4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="par5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="empleados_selecionados">
     <Key>
@@ -53,6 +60,22 @@
     <NavigationProperty Name="empleado" Relationship="Self.FK_empleados_selecionados_empleado" FromRole="empleados_selecionados" ToRole="empleado" />
     <NavigationProperty Name="periodos" Relationship="Self.FK_empleados_selecionados_periodos1" FromRole="empleados_selecionados" ToRole="periodos" />
     <NavigationProperty Name="R_Evaluacion" Relationship="Self.FK_R_Evaluacion_empleados_selecionados" FromRole="empleados_selecionados" ToRole="R_Evaluacion" />
+    <Property Name="liderado1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="liderado2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="liderado3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="liderado4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="liderado5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="liderado6" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="liderado7" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="liderado8" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="liderado9" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="liderado10" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="par1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="par2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="par3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="par4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="par5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="jefe" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="evaluacion">
     <Key>

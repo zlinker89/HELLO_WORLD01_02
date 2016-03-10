@@ -30,9 +30,16 @@
     <Property Name="liderado3" Type="varchar" MaxLength="50" />
     <Property Name="liderado4" Type="varchar" MaxLength="50" />
     <Property Name="liderado5" Type="varchar" MaxLength="50" />
+    <Property Name="liderado6" Type="varchar" MaxLength="50" />
+    <Property Name="liderado7" Type="varchar" MaxLength="50" />
+    <Property Name="liderado8" Type="varchar" MaxLength="50" />
+    <Property Name="liderado9" Type="varchar" MaxLength="50" />
+    <Property Name="liderado10" Type="varchar" MaxLength="50" />
     <Property Name="par1" Type="varchar" MaxLength="50" />
     <Property Name="par2" Type="varchar" MaxLength="50" />
     <Property Name="par3" Type="varchar" MaxLength="50" />
+    <Property Name="par4" Type="varchar" MaxLength="50" />
+    <Property Name="par5" Type="varchar" MaxLength="50" />
     <Property Name="jefe" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="empleados_selecionados">
@@ -43,6 +50,22 @@
     <Property Name="id_empleados" Type="bigint" />
     <Property Name="id_periodos" Type="bigint" />
     <Property Name="estado" Type="tinyint" />
+    <Property Name="liderado1" Type="varchar" MaxLength="50" />
+    <Property Name="liderado2" Type="varchar" MaxLength="50" />
+    <Property Name="liderado3" Type="varchar" MaxLength="50" />
+    <Property Name="liderado4" Type="varchar" MaxLength="50" />
+    <Property Name="liderado5" Type="varchar" MaxLength="50" />
+    <Property Name="liderado6" Type="varchar" MaxLength="50" />
+    <Property Name="liderado7" Type="varchar" MaxLength="50" />
+    <Property Name="liderado8" Type="varchar" MaxLength="50" />
+    <Property Name="liderado9" Type="varchar" MaxLength="50" />
+    <Property Name="liderado10" Type="varchar" MaxLength="50" />
+    <Property Name="par1" Type="varchar" MaxLength="50" />
+    <Property Name="par2" Type="varchar" MaxLength="50" />
+    <Property Name="par3" Type="varchar" MaxLength="50" />
+    <Property Name="par4" Type="varchar" MaxLength="50" />
+    <Property Name="par5" Type="varchar" MaxLength="50" />
+    <Property Name="jefe" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="evaluacion">
     <Key>

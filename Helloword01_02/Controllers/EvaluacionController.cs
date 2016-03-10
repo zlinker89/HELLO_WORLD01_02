@@ -20,7 +20,7 @@ namespace Helloword01_02.Controllers
         // GET api/Evaluacion
         public IQueryable<EvaluacionDTO> Getevaluacion()
         {
-            var evaluaciones = from e in db.evaluacion 
+            var evaluaciones = from e in db.evaluacion
                 select new EvaluacionDTO()
                 {
                     id = e.id,

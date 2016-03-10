@@ -40,7 +40,7 @@ app.controller("pagina", function ($scope, $filter, $http) {
     };
     // init
     $scope.sortingOrder = sortingOrder;
-    $scope.reverse = false;
+    $scope.reverse = true;
     $scope.filteredItems = [];
     $scope.groupedItems = [];
     $scope.itemsPerPage = 5;

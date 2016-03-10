@@ -29,6 +29,13 @@ namespace Entities.DTOs
         public string par2 { get; set; }
         public string par3 { get; set; }
         public string jefe { get; set; }
+        public string liderado6 { get; set; }
+        public string liderado7 { get; set; }
+        public string liderado8 { get; set; }
+        public string liderado9 { get; set; }
+        public string liderado10 { get; set; }
+        public string par4 { get; set; }
+        public string par5 { get; set; }
 
     }
 }

@@ -153,7 +153,7 @@
                             <div class="col-sm-8 col-sm-offset-2">
                                 <div>
                                     <script type="text/javascript">
-                                        var sortingOrder = 'nombre';
+                                        var sortingOrder = 'id';
                                     </script>
 
 
@@ -197,21 +197,15 @@
                                     </div>
                                     <div class="col-sm-12">
 
-                                        <div class="col-sm-4 col-sm-offset-4">
-                                            <a href ng-click="prevPage()" class="amarillo">
-                                                <div class="col-xs-6" ng-class="{gris: currentPage == 0}" style="text-align: center;">
+                                        <div class="col-sm-4 col-sm-offset-4" >
+                                                <div ng-click="prevPage()" class="col-xs-6 amarillo" ng-class="{gris: currentPage == 0}" style="text-align: center;">
                                                     <i class="fa fa-arrow-circle-left fa-4x"></i>
-                                                    <br>
                                                     Anterior
                                                 </div>
-                                            </a>
-                                            <a href ng-click="nextPage()" class="amarillo">
-                                                <div class="col-xs-6" ng-class="{gris: currentPage == pagedItems.length - 1}" style="text-align: center;">
+                                                <div ng-click="nextPage()" class="amarillo col-xs-6" ng-class="{gris: currentPage == pagedItems.length - 1}" style="text-align: center; cursor:pointer;">
                                                     <i class="fa fa-arrow-circle-right fa-4x"></i>
-                                                    <br>
                                                     Siguiente
                                                 </div>
-                                            </a>
                                         </div>
                                     </div>
                                 </div>

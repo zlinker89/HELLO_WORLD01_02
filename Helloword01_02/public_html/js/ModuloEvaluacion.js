@@ -48,9 +48,9 @@ app.controller("pagina", function ($scope, $http, $q) {
             // GUARDAMOS EL PERIODO
             localStorage.setItem("idperiodo",idperiodo_seleccionado);
             // liderados
-            var CANTIDAD_LIDERADOS = 5;
-            for (var i = 1; i <= 5; i++) {
-                if (sesion.empleado["liderado" + i] !== null) {
+            var CANTIDAD_LIDERADOS = 10; // ESTA CANTIDAD REPRESENTA LA PERMITIDA EN LA BASE DE DATOS
+            for (var i = 1; i <= 10; i++) {
+                if (sesion.empleado["liderado" + i]) {
                     $http.get('/ResultadoBy/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/' + sesion.empleado["liderado" + i] + '/jefe/').then(function (d) {
                         if (d.data.length > 0) {
                             cliderados++;
@@ -67,8 +67,8 @@ app.controller("pagina", function ($scope, $http, $q) {
                 SetPrueba('jefe'); 
                 // traigo la lista de empleados por evaluar
                 list = [];
-                for (var i = 1; i <= 5; i++) {
-                    if (sesion.empleado["liderado" + i] !== null) {
+                for (var i = 1; i <= 10; i++) {
+                    if (sesion.empleado["liderado" + i]) {
                         console.log('/EmpleadosByCedula/' + sesion.empleado["liderado" + i] + '/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/jefe/');
                         $http.get('/EmpleadosByCedula/' + sesion.empleado["liderado" + i] + '/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/jefe/').then(function (d) {
                             console.log(d.data);
@@ -82,9 +82,9 @@ app.controller("pagina", function ($scope, $http, $q) {
             };
 
             // pares
-            var CANTIDAD_PARES = 3;
-            for (var i = 1; i <= 3; i++) {
-                if (sesion.empleado["par" + i] !== null) {
+            var CANTIDAD_PARES = 5; // ESTA CANTIDAD REPRESENTA LA PERMITIDA EN LA BASE DE DATOS
+            for (var i = 1; i <= 5; i++) {
+                if (sesion.empleado["par" + i]) {
                     $http.get('/ResultadoBy/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/' + sesion.empleado["par" + i] + '/par/').then(function (d) {
                         if (d.data.length > 0) {
                             cpar++;
@@ -99,8 +99,8 @@ app.controller("pagina", function ($scope, $http, $q) {
             $scope.ClickPares = function () {
                 SetPrueba('par');
                 list = [];
-                for (var i = 1; i <= 3; i++) {
-                    if (sesion.empleado["par" + i] !== null) {
+                for (var i = 1; i <= 5; i++) {
+                    if (sesion.empleado["par" + i]) {
                         $http.get('/EmpleadosByCedula/' + sesion.empleado["par" + i] + '/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/par/').then(function (d) {
                             if (d.data != null) {
                                 list.push(d.data);
@@ -112,7 +112,7 @@ app.controller("pagina", function ($scope, $http, $q) {
             };
             // jefe
             var CANTIDAD_JEFE = 1;
-            if (sesion.empleado["jefe"] !== null) {
+            if (sesion.empleado["jefe"]) {
                 $http.get('/ResultadoBy/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/' + sesion.empleado["jefe"] + '/liderados/').then(function (d) {
                     if (d.data.length > 0) {
                         jefe++;

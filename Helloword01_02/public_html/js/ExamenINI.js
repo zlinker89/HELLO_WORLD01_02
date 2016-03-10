@@ -30,7 +30,7 @@ var miApp = angular.module("miApp",[]);
         $scope.es_lider = 'Empleado';
         // POR AHORA CINCO
         console.log($scope.evaluado);
-        for (var k = 1; k < 5; k++) {
+        for (var k = 1; k < 10; k++) {
             if ($scope.evaluado["liderado" + k] != null) {
                 $scope.es_lider = "Jefe";
                 console.log($scope.es_lider);
