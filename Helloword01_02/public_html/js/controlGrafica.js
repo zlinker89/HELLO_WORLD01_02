@@ -122,6 +122,8 @@ app.controller('resultados', function ($scope, $http) {
                 //Call function to draw the Radar chart
                 RadarChart(".radarChart", data, radarChartOptions);
             }
+
+                    
         });
             
         };
