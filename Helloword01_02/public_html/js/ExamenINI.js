@@ -1,6 +1,6 @@
 // VERIFICO SI SE PUEDE REALIZAR
 NoRepetirPrueba(); // primera vez
-setInterval(NoRepetirPrueba(), 3000); // por si acaso
+
 
 // valor temporal
 var tprueba = localStorage.getItem("tprueba");
@@ -163,8 +163,6 @@ var miApp = angular.module("miApp",[]);
                     // desmarco todos
                     respuestas = [];
                     localStorage.setItem("evaluando", undefined);
-                    // bandera para que no se repita
-                    localStorage.setItem("EstadoPrueba", false);
                     // aqui lo cambio de vista
                     location.href = "/public_html/login-empleados/evaluacion-empleados.html";
                 } else {
@@ -181,7 +179,7 @@ var miApp = angular.module("miApp",[]);
     });
     // evito que repita prueba
     function NoRepetirPrueba() {
-        var estado_prueba = localStorage.getItem("EstadoPrueba") || false;
+        var estado_prueba = localStorage.getItem("evaluando") || false;
         if (!estado_prueba) {
             location.href = "evaluacion-empleados.html";
         }

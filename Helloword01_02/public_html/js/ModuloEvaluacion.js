@@ -1,4 +1,6 @@
 ﻿var app = angular.module('miApp', []);
+// BORRO EL EVALUADO
+localStorage.removeItem("evaluando");
 // verifico si existe una sesion
 var sesion = JSON.parse(localStorage.getItem("usuario")) || null;
 if (sesion === null) {
@@ -39,6 +41,10 @@ app.controller("pagina", function ($scope, $http, $q) {
                 var auto = 0;
                 var list = [];
                 var idperiodo_seleccionado;
+                // para que borrre los datos de pantalla
+                $scope.nliderados = 0;
+                $scope.npares = 0;
+                $scope.njefe = 0;
                 // obtengo listas de empleados
                 for (var l in p.data) {
                     if (p.data[l].nombre == $scope.periodo_seleccionado) {
@@ -129,7 +135,6 @@ app.controller("pagina", function ($scope, $http, $q) {
                     $scope.ClickJefe = function () {
                         // he invertido para indicar que estado tiene el evaluador
                         SetPrueba('liderados');
-                        localStorage.setItem("EstadoPrueba", true);
                         $http.get('/EmpleadosByCedula/' + empleadoActualizado.data["jefe"] + '/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/liderados/').then(function (d) {
                             localStorage.setItem("evaluando", JSON.stringify(d.data));
                             location.href = "explicacion.html";
@@ -144,16 +149,16 @@ app.controller("pagina", function ($scope, $http, $q) {
                     });
                     $scope.ClickAuto = function () {
                         SetPrueba('autoevaluacion');
-                        localStorage.setItem("EstadoPrueba", true);
-                        localStorage.setItem("evaluando", JSON.stringify(sesion.empleado));
-                        location.href = "explicacion.html";
+                        $http.get('/EmpleadosByCedula/' + sesion.empleado.cedula + '/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/liderados/').then(function (d) {
+                            localStorage.setItem("evaluando", JSON.stringify(d.data));
+                            location.href = "explicacion.html";
+                        });
                     };
                     // mostramos
 
 
                     /* Funcciones */
                     $scope.EvaluarA = function (i) {
-                        localStorage.setItem("EstadoPrueba", true);
                         localStorage.setItem("evaluando", JSON.stringify(list[i]));
                         location.href = "explicacion.html";
                     }
