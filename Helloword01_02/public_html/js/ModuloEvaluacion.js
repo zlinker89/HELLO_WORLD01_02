@@ -122,6 +122,7 @@ app.controller("pagina", function ($scope, $http, $q) {
                     // jefe
                     var CANTIDAD_JEFE = 1;
                     if (sesion.empleado["jefe"]) {
+                        console.log('/ResultadoBy/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/' + empleadoActualizado.data["jefe"] + '/liderados/');
                         $http.get('/ResultadoBy/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/' + empleadoActualizado.data["jefe"] + '/liderados/').then(function (d) {
                             if (d.data.length > 0) {
                                 jefe++;
@@ -142,6 +143,7 @@ app.controller("pagina", function ($scope, $http, $q) {
                     };
                     // autoevaluacion
                     $http.get('/ResultadoBy/' + idperiodo_seleccionado + '/' + sesion.empleado.id + '/' + sesion.empleado.cedula + '/autoevaluacion/').then(function (d) {
+                        console.log(d.data);
                         if (d.data.length > 0) {
                             auto++;
                         }
