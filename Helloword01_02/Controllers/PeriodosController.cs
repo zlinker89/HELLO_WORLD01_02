@@ -21,6 +21,8 @@ namespace Helloword01_02.Controllers
         // GET api/Periodos
         public IQueryable<PeriodoDTO> Getperiodos()
         {
+            // verificamos
+            VerificarFechaVencimiento();
             var periodos = from p in db.periodos
                            orderby p.id descending
                            select new PeriodoDTO()
@@ -52,6 +54,7 @@ namespace Helloword01_02.Controllers
         // PUT api/Periodos/5
         public async Task<IHttpActionResult> Putperiodos(long id, periodos periodos)
         {
+            
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -79,7 +82,8 @@ namespace Helloword01_02.Controllers
                     throw;
                 }
             }
-
+            // verificamos
+            VerificarFechaVencimiento();
             return StatusCode(HttpStatusCode.NoContent);
         }
 
@@ -118,7 +122,7 @@ namespace Helloword01_02.Controllers
 
             db.periodos.Remove(periodos);
             await db.SaveChangesAsync();
-
+            
             return Ok(periodos);
         }
 
@@ -134,6 +138,34 @@ namespace Helloword01_02.Controllers
         private bool periodosExists(long id)
         {
             return db.periodos.Count(e => e.id == id) > 0;
+        }
+        // ------------ verifico la fecha de vencimiento de periodo y la comparo con la actual
+        // comparo 
+        // si son iguales devuelve 0
+        // la fecha de hoy menor que la final devuelve -1
+        // la fecha de hoy mayor que la final devuelve 1
+        private void VerificarFechaVencimiento()
+        {
+            List<periodos> periodoslst = db.periodos.ToList();
+            foreach (periodos p in periodoslst)
+            {
+                if (DateTime.Today.CompareTo(p.fechafinal) >= 0)
+                {
+                    p.estado = 0; // desactivo el periodo por vencimiento
+                    db.Entry(p).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
+                }
+                else
+                {
+                    if (p.estado == 0)
+                    {
+                        p.estado = 1; // activo el periodo
+                        db.Entry(p).State = System.Data.Entity.EntityState.Modified;
+                        db.SaveChanges();
+                    }
+                }
+            }
+            // ------------ FIN verifico la fecha de vencimiento de periodo y la comparo con la actual
         }
     }
 }

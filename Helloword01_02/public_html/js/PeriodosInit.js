@@ -236,7 +236,7 @@ app.controller("pagina", function ($scope, $filter, $http) {
     };
 
     
-
+    
     // update
     $scope.UpdatePeriodo = function () {
         $http.get('/Evaluacion/' + document.getElementById('query_update').value).then(function (d) {

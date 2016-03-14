@@ -58,6 +58,31 @@ namespace Helloword01_02.Controllers
         [HttpGet]
         public IEnumerable<PeriodoDTO> GetPeriodoByIdEmpleado(long idempleado)
         {
+            // ------------ verifico la fecha de vencimiento de periodo y la comparo con la actual
+            List<periodos> periodoslst = db.periodos.ToList();
+            foreach (periodos p in periodoslst)
+            {
+                // comparo 
+                // si son iguales devuelve 0
+                // la fecha de hoy menor que la final devuelve -1
+                // la fecha de hoy mayor que la final devuelve 1
+                if (DateTime.Today.CompareTo(p.fechafinal) >= 0 ) 
+                {
+                    p.estado = 0; // desactivo el periodo por vencimiento
+                    db.Entry(p).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
+                }
+                else
+                {
+                    if (p.estado == 0)
+                    {
+                        p.estado = 1; // activo el periodo
+                        db.Entry(p).State = System.Data.Entity.EntityState.Modified;
+                        db.SaveChanges();
+                    }
+                }
+            }
+            // ------------ FIN verifico la fecha de vencimiento de periodo y la comparo con la actual
             var periodos = from p in db.periodos
                            join es in db.empleados_selecionados on p.id equals es.id_periodos
                            where es.estado == 1 && p.estado != 0 && es.id_empleados == idempleado

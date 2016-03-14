@@ -180,19 +180,19 @@
                                                 <thead>
                                                     <tr>
                                                         <th>Competencias</th>
-                                                        <th>Liderados</th>
-                                                        <th>Jefe</th>
-                                                        <th>Pares</th>
-                                                        <th>Autoevaluación</th>
+                                                        <th ng-show="metodologia >= 360">Liderados</th>
+                                                        <th ng-show="metodologia >= 90">Jefe</th>
+                                                        <th ng-show="metodologia >= 180">Pares</th>
+                                                        <th ng-show="metodologia >= 90">Autoevaluación</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <tr ng-repeat="r in resultados">
                                                         <td>{{r.competencia}}</td>
-                                                        <td><span ng-show="r.liderados > 0">{{r.liderados}}</span></td>
-                                                        <td><span ng-show="r.jefe > 0">{{r.jefe}}</span></td>
-                                                        <td><span ng-show="r.pares > 0">{{r.pares}}</span></td>
-                                                        <td><span ng-show="r.autoevaluacion > 0">{{r.autoevaluacion}}</span></td>
+                                                        <td><span ng-show="r.liderados > 0 && metodologia >= 360">{{r.liderados}}</span></td>
+                                                        <td><span ng-show="r.jefe > 0 && metodologia >= 90">{{r.jefe}}</span></td>
+                                                        <td><span ng-show="r.pares > 0 && metodologia >= 180">{{r.pares}}</span></td>
+                                                        <td><span ng-show="r.autoevaluacion > 0 && metodologia >= 90">{{r.autoevaluacion}}</span></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
