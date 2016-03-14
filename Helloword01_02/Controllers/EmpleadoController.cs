@@ -239,7 +239,7 @@ namespace Helloword01_02.Controllers
             {
                 var empleado = (from e in db.empleado
                                 join se in db.empleados_selecionados on e.id equals se.id_empleados
-                                where e.id == evaluado.id
+                                where e.id == evaluado.id && se.id_periodos == idperiodo
                                 select new empleadoDTO()
                                 {
                                     id = e.id,

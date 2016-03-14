@@ -213,6 +213,22 @@ angular.module("miApp", []).controller("tabla", function ($scope, $http) {
                         row = r1;
                         $("#nombre").val(empleados[r1].Nombre);
                         $("#documento").val(empleados[r1].cedula);
+                        $("#liderado1").val(empleados[r1].liderado1);
+                        $("#liderado2").val(empleados[r1].liderado2);
+                        $("#liderado3").val(empleados[r1].liderado3);
+                        $("#liderado4").val(empleados[r1].liderado4);
+                        $("#liderado5").val(empleados[r1].liderado5);
+                        $("#liderado6").val(empleados[r1].liderado6);
+                        $("#liderado7").val(empleados[r1].liderado7);
+                        $("#liderado8").val(empleados[r1].liderado8);
+                        $("#liderado9").val(empleados[r1].liderado9);
+                        $("#liderado10").val(empleados[r1].liderado10);
+                        $("#par1").val(empleados[r1].par1);
+                        $("#par2").val(empleados[r1].par2);
+                        $("#par3").val(empleados[r1].par3);
+                        $("#par4").val(empleados[r1].par4);
+                        $("#par5").val(empleados[r1].par5);
+                        $("#jefe").val(empleados[r1].jefe);
                         empleado_seleccionado = empleados[r1];
                         $("#ventana").modal("show");
                     },
@@ -302,24 +318,54 @@ angular.module("miApp", []).controller("tabla", function ($scope, $http) {
                 
                 $scope.RemoveEmpleado = function () {
                     // AQUI EL CODIGO PARA ENVIAR el empleado AL SERVIDOR a seleccionados
-                            // en este punto se manda el id al server para remover el empleado
-                            var seleccionado = {
-                                    id: null,
-                                    id_empleados: empleado_seleccionado.id,
-                                    id_periodos: Number(vars.periodo),
-                                    estado: 0
-                                };
-                            
-                            console.log(seleccionado);
-                            $http.put('/RemoveEmpleados/0', seleccionado).then(function (d) {
-                                hot.destroy();
-                                console.log(d.data);
-                                $scope.iniciar();
-                            });
-                        }
+                    // en este punto se manda el id al server para remover el empleado
+                    var seleccionado = {
+                        id: null,
+                        id_empleados: empleado_seleccionado.id,
+                        id_periodos: Number(vars.periodo),
+                        estado: 0
+                    };
+
+                    console.log(seleccionado);
+                    $http.put('/RemoveEmpleados/0', seleccionado).then(function (d) {
+                        hot.destroy();
+                        console.log(d.data);
+                        $scope.iniciar();
+                    });
+                };
+                $scope.UpdateEmpleado = function () {
+                    var seleccionado = {
+                        id: null,
+                        id_empleados: empleado_seleccionado.id,
+                        id_periodos: Number(vars.periodo),
+                        estado: 1,
+                        liderado1: $("#liderado1").val(),
+                        liderado2: $("#liderado2").val(),
+                        liderado3: $("#liderado3").val(),
+                        liderado4: $("#liderado4").val(),
+                        liderado5: $("#liderado5").val(),
+                        liderado6: $("#liderado6").val(),
+                        liderado7: $("#liderado7").val(),
+                        liderado8: $("#liderado8").val(),
+                        liderado9: $("#liderado9").val(),
+                        liderado10: $("#liderado10").val(),
+                        par1: $("#par1").val(),
+                        par2: $("#par2").val(),
+                        par3: $("#par3").val(),
+                        par4: $("#par4").val(),
+                        par5: $("#par5").val(),
+                        jefe: $("#jefe").val()
+                    };
+                    $http.put('/UpdateEmpleadosSeleccionados/0', seleccionado).then(function () {
+                        console.log(d.data);
+                        // refrescamos vista
+                        hot.destroy();
+                        $scope.iniciar();
+                    });
+                };
             });
         };
-
+        
         $scope.iniciar();
     });
 

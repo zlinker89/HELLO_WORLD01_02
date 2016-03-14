@@ -203,6 +203,11 @@
     <Content Include="public_html\js\app.js" />
     <Content Include="public_html\js\bootstrap.js" />
     <Content Include="public_html\js\bootstrap.min.js" />
+    <Content Include="public_html\js\canvg\canvg.js" />
+    <Content Include="public_html\js\canvg\html2canvas.js" />
+    <Content Include="public_html\js\canvg\html2canvas.svg.js" />
+    <Content Include="public_html\js\canvg\rgbcolor.js" />
+    <Content Include="public_html\js\canvg\StackBlur.js" />
     <Content Include="public_html\js\CompetenciaInit.js" />
     <Content Include="public_html\js\controlGrafica.js" />
     <Content Include="public_html\js\d3.min.js" />
@@ -302,9 +307,11 @@
     <Content Include="public_html\js\handsontable\moment\moment.js" />
     <Content Include="public_html\js\handsontable\pikaday\pikaday.css" />
     <Content Include="public_html\js\handsontable\pikaday\pikaday.js" />
+    <Content Include="public_html\js\jsPDF\ToPDF.js" />
     <Content Include="public_html\js\handsontable\zeroclipboard\ZeroClipboard.js" />
     <Content Include="public_html\js\handsontable\zeroclipboard\ZeroClipboard.swf" />
     <Content Include="public_html\js\jquery.js" />
+    <Content Include="public_html\js\jsPDF\jspdf.js" />
     <Content Include="public_html\js\listaperiodo.js" />
     <Content Include="public_html\js\ModuloEvaluacion.js" />
     <Content Include="public_html\js\npm.js" />

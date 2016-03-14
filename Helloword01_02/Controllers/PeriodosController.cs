@@ -22,6 +22,7 @@ namespace Helloword01_02.Controllers
         public IQueryable<PeriodoDTO> Getperiodos()
         {
             var periodos = from p in db.periodos
+                           orderby p.id descending
                            select new PeriodoDTO()
                            {
                                id = p.id,

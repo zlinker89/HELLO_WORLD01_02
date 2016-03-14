@@ -23,7 +23,8 @@ namespace Helloword01_02.Controllers
                 // solo una vez
                 // obtengo el id de empleado seleccionado con el id empleado
                 int id_empleado_seleccionado = (int)resultados_anterior[0].id_empleados_selecionados;
-                empleados_selecionados empleado_seleccionado = db.empleados_selecionados.Where(x => x.id_empleados == id_empleado_seleccionado).First();
+                int id_periodo = (int)resultados_anterior[0].id_periodo;
+                empleados_selecionados empleado_seleccionado = db.empleados_selecionados.Where(x => x.id_empleados == id_empleado_seleccionado && x.id_periodos == id_periodo).First();
                 for (int j = 0; j < resultados_anterior.Count(); j++)
                 {
                     R_Evaluacion r = new R_Evaluacion();
